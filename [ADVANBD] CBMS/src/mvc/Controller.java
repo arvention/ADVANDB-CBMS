@@ -1,5 +1,8 @@
 package mvc;
 
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+
 import database.FacadeDatabase;
 
 public class Controller {
@@ -8,7 +11,7 @@ public class Controller {
 	private final ModelTable modelTable;
 	private final FacadeDatabase facadeDatabase;
 	
-	public Controller getInstance(){
+	public static Controller getInstance(){
 		return controller;
 	}
 	
@@ -16,6 +19,9 @@ public class Controller {
 		this.view = view;
 		this.modelTable = modelTable;
 		this.facadeDatabase = facadeDatabase;
+		addListeners();
+		
+		this.view.setVisible(true);
 	}
 
 	public View getView() {
@@ -31,6 +37,19 @@ public class Controller {
 	}
 	
 	public void addListeners(){
-		
+		view.getTextAreaQuery().addFocusListener(new FocusListener(){
+
+			@Override
+			public void focusGained(FocusEvent e) {
+				if(view.getTextAreaQuery().getText().equals("Enter Query Here"))
+					view.getTextAreaQuery().setText("");
+			}
+
+			@Override
+			public void focusLost(FocusEvent e) {
+				if(view.getTextAreaQuery().getText().equals(""))
+					view.getTextAreaQuery().setText("Enter Query Here");
+			}
+		});
 	}
 }

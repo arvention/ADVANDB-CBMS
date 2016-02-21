@@ -7,6 +7,8 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import mvc.ModelTable;
+
 public class FacadeDatabase {
 	private static FacadeDatabase facadeDatabase = new FacadeDatabase();
 	
@@ -19,7 +21,7 @@ public class FacadeDatabase {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             String host = "jdbc:mysql://127.0.0.1:3306/equilibrium_spsweng?user=root";
             String uUser = "root";
-            String uPass = "admin";
+            String uPass = "password";
             con = DriverManager.getConnection(host, uUser, uPass);
             stmt = con.createStatement();
         } catch (Exception e) {
@@ -36,33 +38,34 @@ public class FacadeDatabase {
 		return con;
 	}
 	
-	public String[][] getResult(String query){
+	public ModelTable getResult(String query, ModelTable modelTable){
 		
 		try{
 			rs = stmt.executeQuery(query);
 			ResultSetMetaData rsmd = rs.getMetaData();
 			
 			rs.last();
-			String[][] result = new String[rs.getRow()][rsmd.getColumnCount()];
+			modelTable.setTable(new String[rs.getRow()][rsmd.getColumnCount()]);
 			
 			rs.beforeFirst();
 			
 			for(int i = 0; i < rsmd.getColumnCount(); i++){
-				result[0][i] = rsmd.getColumnName(i);
+				modelTable.getTable()[0][i] = rsmd.getColumnName(i);
 			}
 			
 			for(int i = 1; rs.next(); i++){
 				for(int j = 0; j < rsmd.getColumnCount(); j++){
 					Object object = rs.getObject(j);
 					String value = (object == null ? "" : object.toString());
-					result[i][j] = value;
+					modelTable.getTable()[i][j] = value;
 				}
 			}
 			
-			return result;
+			
 		}catch(SQLException e){
 			e.printStackTrace();
-			return null;
+			
 		}
+		return modelTable;
 	}
 }

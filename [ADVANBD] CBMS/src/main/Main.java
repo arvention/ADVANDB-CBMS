@@ -1,10 +1,9 @@
 package main;
 
-import mvc.View;
+import mvc.Controller;
 
 public class Main {
 	public static void main(String args[]){
-		View view = View.getInstance();
-		view.setVisible(true);
+		Controller controller = Controller.getInstance();
 	}
 }
