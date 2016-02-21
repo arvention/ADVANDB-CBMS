@@ -1,2 +1,8 @@
 1456032627454	Delete element
 1456032670351	Rename package 'Main'
+1456033623724	Move compilation unit
+1456034463745	Rename package 'gui'
+1456034553265	Rename type 'GUI'
+1456037339860	Encapsulate field 'textAreaQuery'
+1456037352583	Encapsulate field 'tableResults'
+1456037364207	Encapsulate field 'lblRunningTime'
