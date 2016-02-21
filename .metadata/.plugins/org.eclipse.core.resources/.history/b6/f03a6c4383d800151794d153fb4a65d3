@@ -1,0 +1,6 @@
+package mvc;
+
+public class Controller {
+	private static final Controller controller = new Controller();
+	
+}

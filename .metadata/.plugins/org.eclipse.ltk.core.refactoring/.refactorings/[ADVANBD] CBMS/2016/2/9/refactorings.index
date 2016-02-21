@@ -6,3 +6,7 @@
 1456037339860	Encapsulate field 'textAreaQuery'
 1456037352583	Encapsulate field 'tableResults'
 1456037364207	Encapsulate field 'lblRunningTime'
+1456049094764	Encapsulate field 'table'
+1456049308192	Rename compilation unit 'controller.java'
+1456049827557	Encapsulate field 'view'
+1456049837846	Encapsulate field 'modelTable'
