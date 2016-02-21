@@ -10,3 +10,4 @@
 1456049308192	Rename compilation unit 'controller.java'
 1456049827557	Encapsulate field 'view'
 1456049837846	Encapsulate field 'modelTable'
+1456055187091	Encapsulate field 'facadeDatabase'

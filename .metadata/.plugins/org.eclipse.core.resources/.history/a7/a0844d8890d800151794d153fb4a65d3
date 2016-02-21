@@ -3,7 +3,7 @@ package mvc;
 import database.FacadeDatabase;
 
 public class Controller {
-	private static final Controller controller = new Controller(View.getInstance(), ModelTable.getInstance(), FacadeDatabase.getInstance());
+	private static final Controller controller = new Controller(View.getInstance(), ModelTable.getInstance());
 	private final View view;
 	private final ModelTable modelTable;
 	private final FacadeDatabase facadeDatabase;
@@ -24,13 +24,5 @@ public class Controller {
 
 	public ModelTable getModelTable() {
 		return modelTable;
-	}
-	
-	public FacadeDatabase getFacadeDatabase() {
-		return facadeDatabase;
-	}
-	
-	public void addListeners(){
-		
 	}
 }

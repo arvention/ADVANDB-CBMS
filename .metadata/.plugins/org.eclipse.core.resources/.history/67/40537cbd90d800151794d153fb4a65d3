@@ -26,10 +26,6 @@ public class Controller {
 		return modelTable;
 	}
 	
-	public FacadeDatabase getFacadeDatabase() {
-		return facadeDatabase;
-	}
-	
 	public void addListeners(){
 		
 	}

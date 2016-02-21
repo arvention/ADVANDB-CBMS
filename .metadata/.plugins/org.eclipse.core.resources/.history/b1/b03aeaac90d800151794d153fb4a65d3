@@ -25,12 +25,4 @@ public class Controller {
 	public ModelTable getModelTable() {
 		return modelTable;
 	}
-	
-	public FacadeDatabase getFacadeDatabase() {
-		return facadeDatabase;
-	}
-	
-	public void addListeners(){
-		
-	}
 }
