@@ -4,7 +4,11 @@ package mvc;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumn;
 import javax.swing.JLabel;
+
+import java.awt.Component;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.JTextArea;
@@ -88,25 +92,36 @@ public class View extends JFrame {
 		gbc_scrollPaneResult.gridy = 2;
 		contentPane.add(scrollPaneResult, gbc_scrollPaneResult);
 		
-		setTableResults(new JTable());
+		setTableResults(new JTable(){
+			private static final long serialVersionUID = 1L;
+			@Override
+		    public Component prepareRenderer(TableCellRenderer renderer, int row, int column) {
+				Component component = super.prepareRenderer(renderer, row, column);
+				int rendererWidth = component.getPreferredSize().width;
+				TableColumn tableColumn = getColumnModel().getColumn(column);
+				tableColumn.setPreferredWidth(Math.max(rendererWidth + getIntercellSpacing().width, tableColumn.getPreferredWidth()));
+				return component;
+			}
+		});
+		getTableResults().setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		scrollPaneResult.setViewportView(getTableResults());
 		
-		setLblRunningTime(new JLabel("Running Time"));
-		getLblRunningTime().setHorizontalAlignment(SwingConstants.CENTER);
+		setLabelRunningTime(new JLabel("Running time:"));
+		getLabelRunningTime().setHorizontalAlignment(SwingConstants.CENTER);
 		GridBagConstraints gbc_labelRunningTime = new GridBagConstraints();
 		gbc_labelRunningTime.anchor = GridBagConstraints.WEST;
 		gbc_labelRunningTime.insets = new Insets(0, 0, 0, 5);
 		gbc_labelRunningTime.gridx = 0;
 		gbc_labelRunningTime.gridy = 3;
-		contentPane.add(getLblRunningTime(), gbc_labelRunningTime);
+		contentPane.add(getLabelRunningTime(), gbc_labelRunningTime);
 		
-		setBtnExecuteQuery(new JButton("Execute Query"));
+		setButtonExecuteQuery(new JButton("Execute Query"));
 		GridBagConstraints gbc_buttonExecuteQuery = new GridBagConstraints();
 		gbc_buttonExecuteQuery.fill = GridBagConstraints.HORIZONTAL;
 		gbc_buttonExecuteQuery.anchor = GridBagConstraints.EAST;
 		gbc_buttonExecuteQuery.gridx = 1;
 		gbc_buttonExecuteQuery.gridy = 3;
-		contentPane.add(getBtnExecuteQuery(), gbc_buttonExecuteQuery);
+		contentPane.add(getButtonExecuteQuery(), gbc_buttonExecuteQuery);
 		
 	}
 
@@ -126,19 +141,19 @@ public class View extends JFrame {
 		this.tableResults = tableResults;
 	}
 
-	public JLabel getLblRunningTime() {
+	public JLabel getLabelRunningTime() {
 		return labelRunningTime;
 	}
 
-	public void setLblRunningTime(JLabel lblRunningTime) {
+	public void setLabelRunningTime(JLabel lblRunningTime) {
 		this.labelRunningTime = lblRunningTime;
 	}
 
-	private JButton getBtnExecuteQuery() {
+	public JButton getButtonExecuteQuery() {
 		return buttonExecuteQuery;
 	}
 
-	private void setBtnExecuteQuery(JButton btnExecuteQuery) {
+	public void setButtonExecuteQuery(JButton btnExecuteQuery) {
 		this.buttonExecuteQuery = btnExecuteQuery;
 	}
 	

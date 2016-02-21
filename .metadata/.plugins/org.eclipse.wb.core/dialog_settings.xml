@@ -6,4 +6,10 @@
 		<item value="247" key="y"/>
 		<item value="281" key="height"/>
 	</section>
+	<section name="org.eclipse.wb.internal.swing.model.property.editor.models.table.TableModelDialog">
+		<item value="296" key="x"/>
+		<item value="774" key="width"/>
+		<item value="88" key="y"/>
+		<item value="551" key="height"/>
+	</section>
 </section>

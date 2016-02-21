@@ -12,3 +12,9 @@
 1456049837846	Encapsulate field 'modelTable'
 1456055187091	Encapsulate field 'facadeDatabase'
 1456059149311	Encapsulate field 'btnExecuteQuery'
+1456062823861	Encapsulate field 'columnName'
+1456062832784	Encapsulate field 'data'
+1456064807704	Copy package
+1456064815977	Delete element
+1456064824706	Copy compilation unit
+1456065673691	Delete element

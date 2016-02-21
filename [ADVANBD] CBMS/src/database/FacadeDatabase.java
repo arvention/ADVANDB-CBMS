@@ -19,7 +19,7 @@ public class FacadeDatabase {
 	private FacadeDatabase(){
 		try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
-            String host = "jdbc:mysql://127.0.0.1:3306/equilibrium_spsweng?user=root";
+            String host = "jdbc:mysql://127.0.0.1:3306/poverty_profiling?user=root";
             String uUser = "root";
             String uPass = "password";
             con = DriverManager.getConnection(host, uUser, uPass);
@@ -45,19 +45,19 @@ public class FacadeDatabase {
 			ResultSetMetaData rsmd = rs.getMetaData();
 			
 			rs.last();
-			modelTable.setTable(new String[rs.getRow()][rsmd.getColumnCount()]);
+			modelTable.setColumnName(new String[rsmd.getColumnCount()]);
+			modelTable.setData(new String[rs.getRow()][rsmd.getColumnCount()]);
 			
 			rs.beforeFirst();
-			
 			for(int i = 0; i < rsmd.getColumnCount(); i++){
-				modelTable.getTable()[0][i] = rsmd.getColumnName(i);
+				modelTable.getColumnName()[i] = rsmd.getColumnLabel(i+1);
 			}
 			
-			for(int i = 1; rs.next(); i++){
+			for(int i = 0; rs.next(); i++){
 				for(int j = 0; j < rsmd.getColumnCount(); j++){
-					Object object = rs.getObject(j);
+					Object object = rs.getObject(j+1);
 					String value = (object == null ? "" : object.toString());
-					modelTable.getTable()[i][j] = value;
+					modelTable.getData()[i][j] = value;
 				}
 			}
 			
