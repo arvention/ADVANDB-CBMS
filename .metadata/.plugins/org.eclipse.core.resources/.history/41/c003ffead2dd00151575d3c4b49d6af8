@@ -1,0 +1,383 @@
+package mvc;
+
+import java.awt.CardLayout;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+import javax.swing.JSpinner;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+import javax.swing.table.DefaultTableModel;
+
+import database.FacadeDatabase;
+
+public class Controller {
+	private static final Controller controller = new Controller(View.getInstance(), ModelTable.getInstance(), FacadeDatabase.getInstance());
+	
+	private final String TRUE = "1";
+	private final String FALSE = "2";
+	
+	private final View view;
+	private final ModelTable modelTable;
+	private final FacadeDatabase facadeDatabase;
+	
+	public static Controller getInstance(){
+		return controller;
+	}
+	
+	public Controller(View view, ModelTable modelTable, FacadeDatabase facadeDatabase){
+		this.view = view;
+		this.modelTable = modelTable;
+		this.facadeDatabase = facadeDatabase;
+		addListeners();
+		
+		this.view.setVisible(true);
+	}
+
+	public View getView() {
+		return view;
+	}
+
+	public ModelTable getModelTable() {
+		return modelTable;
+	}
+	
+	public FacadeDatabase getFacadeDatabase() {
+		return facadeDatabase;
+	}
+	
+	public void addListeners(){
+		view.getButtonQuery1().addMouseListener(new MouseAdapter(){
+			public void mouseClicked(MouseEvent e) {
+				CardLayout cardLayout = (CardLayout) view.getContentPane().getLayout();
+				cardLayout.show(view.getContentPane(), "panel_query1");
+		      }
+		});
+		
+		view.getButtonQuery2().addMouseListener(new MouseAdapter(){
+			public void mouseClicked(MouseEvent e) {
+				CardLayout cardLayout = (CardLayout) view.getContentPane().getLayout();
+				cardLayout.show(view.getContentPane(), "panel_query2");
+		      }
+		});
+		
+		view.getButtonQuery1Back().addMouseListener(new MouseAdapter(){
+			public void mouseClicked(MouseEvent e) {
+				CardLayout cardLayout = (CardLayout) view.getContentPane().getLayout();
+				cardLayout.show(view.getContentPane(), "panel_main");
+		      }
+		});
+		
+		view.getSpinnerQuery1BagyoFrequencyLower().addChangeListener(new ChangeListener() {
+
+			@Override
+			public void stateChanged(ChangeEvent e) {
+				changeUpperBound(view.getSpinnerQuery1BagyoFrequencyLower(), view.getSpinnerQuery1BagyoFrequencyUpper());
+			}
+        });
+		
+		view.getSpinnerQuery1BagyoFrequencyUpper().addChangeListener(new ChangeListener(){
+			@Override
+			public void stateChanged(ChangeEvent e) {
+				changeLowerBound(view.getSpinnerQuery1BagyoFrequencyLower(), view.getSpinnerQuery1BagyoFrequencyUpper());
+			}
+		});
+		
+		view.getSpinnerQuery1BahaFrequencyLower().addChangeListener(new ChangeListener() {
+
+			@Override
+			public void stateChanged(ChangeEvent e) {
+				changeUpperBound(view.getSpinnerQuery1BahaFrequencyLower(), view.getSpinnerQuery1BahaFrequencyUpper());
+			}
+        });
+		
+		view.getSpinnerQuery1BahaFrequencyUpper().addChangeListener(new ChangeListener(){
+			@Override
+			public void stateChanged(ChangeEvent e) {
+				changeLowerBound(view.getSpinnerQuery1BahaFrequencyLower(), view.getSpinnerQuery1BahaFrequencyUpper());
+			}
+		});
+		
+		view.getSpinnerQuery1TagtuyotFrequencyLower().addChangeListener(new ChangeListener() {
+
+			@Override
+			public void stateChanged(ChangeEvent e) {
+				changeUpperBound(view.getSpinnerQuery1TagtuyotFrequencyLower(), view.getSpinnerQuery1TagtuyotFrequencyUpper());
+			}
+        });
+		
+		view.getSpinnerQuery1TagtuyotFrequencyUpper().addChangeListener(new ChangeListener(){
+			@Override
+			public void stateChanged(ChangeEvent e) {
+				changeLowerBound(view.getSpinnerQuery1TagtuyotFrequencyLower(), view.getSpinnerQuery1TagtuyotFrequencyUpper());
+			}
+		});
+		
+		view.getSpinnerQuery1LindolFrequencyLower().addChangeListener(new ChangeListener() {
+
+			@Override
+			public void stateChanged(ChangeEvent e) {
+				changeUpperBound(view.getSpinnerQuery1LindolFrequencyLower(), view.getSpinnerQuery1LindolFrequencyUpper());
+			}
+        });
+		
+		view.getSpinnerQuery1LindolFrequencyUpper().addChangeListener(new ChangeListener(){
+			@Override
+			public void stateChanged(ChangeEvent e) {
+				changeLowerBound(view.getSpinnerQuery1LindolFrequencyLower(), view.getSpinnerQuery1LindolFrequencyUpper());
+			}
+		});
+		
+		view.getSpinnerQuery1SunogFrequencyLower().addChangeListener(new ChangeListener() {
+
+			@Override
+			public void stateChanged(ChangeEvent e) {
+				changeUpperBound(view.getSpinnerQuery1SunogFrequencyLower(), view.getSpinnerQuery1SunogFrequencyUpper());
+			}
+        });
+		
+		view.getSpinnerQuery1SunogFrequencyUpper().addChangeListener(new ChangeListener(){
+			@Override
+			public void stateChanged(ChangeEvent e) {
+				changeLowerBound(view.getSpinnerQuery1SunogFrequencyLower(), view.getSpinnerQuery1SunogFrequencyUpper());
+			}
+		});
+		
+		view.getButtonQuery1Query().addMouseListener(new MouseAdapter(){
+			public void mouseClicked(MouseEvent e) {
+				
+				String sql = query1Builder();
+				System.out.println(sql);
+				
+				long startTime = System.nanoTime();
+				facadeDatabase.getResult(sql, modelTable);
+				long endTime = System.nanoTime() - startTime;
+				double seconds = endTime / 1.0E09;
+				
+				view.getLabelQuery1Status().setText("Running time: " + seconds + " seconds");
+				DefaultTableModel dtm = new DefaultTableModel(modelTable.getData(), modelTable.getColumnName());
+				view.getTableQuery1ResultTable().setModel(dtm);
+			}
+		});
+		
+		view.getButtonQuery2Back().addMouseListener(new MouseAdapter(){
+			public void mouseClicked(MouseEvent e){
+				CardLayout cardLayout = (CardLayout)view.getContentPane().getLayout();
+				cardLayout.show(view.getContentPane(), "panel_main");
+			}
+		});
+		
+		view.getSpinnerQuery2SLPNumLower().addChangeListener(new ChangeListener(){
+			@Override
+			public void stateChanged(ChangeEvent arg0) {
+				changeUpperBound(view.getSpinnerQuery2SLPNumLower(), view.getSpinnerQuery2SLPNumUpper());
+			}
+		});
+		
+		view.getSpinnerQuery2SLPNumUpper().addChangeListener(new ChangeListener(){
+			@Override
+			public void stateChanged(ChangeEvent arg0) {
+				changeLowerBound(view.getSpinnerQuery2SLPNumLower(), view.getSpinnerQuery2SLPNumUpper());
+			}
+		});
+	}
+	
+	public void changeUpperBound(JSpinner lowerSpinner, JSpinner upperSpinner){
+		int lower = Integer.parseInt(lowerSpinner.getValue().toString());
+		int upper = Integer.parseInt(upperSpinner.getValue().toString());
+		if(lower > upper)
+			upperSpinner.setValue(lower);
+	}
+	
+	public void changeLowerBound(JSpinner lowerSpinner, JSpinner upperSpinner){
+		int lower = Integer.parseInt(lowerSpinner.getValue().toString());
+		int upper = Integer.parseInt(upperSpinner.getValue().toString());
+		if(upper < lower)
+			lowerSpinner.setValue(upper);
+	}
+	
+	public String appendWhereChecker(String sql){
+		String query = sql;
+		if(!query.contains("where"))
+			query += "where ";
+		else
+			query += " and ";
+		return query;
+	}
+	
+	public String query1Builder(){
+		String sql = "Select id as ID, mun as Municipality, zone as Zone, brgy as Barangay, purok as Purok, "
+				+ "nbr as HouseNumber, roof as Roof, wall as Wall, nofw as NumberofOFW, nnucfam as NumberofFamilies, "
+				+ "calam1_hus_aid_o as TumulongNoongBagyo, calam2_hus_aid_o as TumulongNoongBaha, "
+				+ "calam3_hus_aid_o as TumulongNoongTagtuyot, calam4_hus_aid_o as TumulongNoongLindol, "
+				+ "calam8_hus_aid_o as TumulongNoongSunog from hpq_hh ";
+		
+		if(view.getComboBoxQuery1Municipality().getSelectedIndex() != 0){
+			sql = appendWhereChecker(sql);
+			sql += "mun = " + view.getComboBoxQuery1Municipality().getSelectedItem().toString();
+		}
+		
+		if(view.getComboBoxQuery1Zone().getSelectedIndex() != 0){
+			sql = appendWhereChecker(sql);
+			sql += "zone = " + view.getComboBoxQuery1Zone().getSelectedItem().toString();
+		}
+		
+		if(view.getComboBoxQuery1Barangay().getSelectedIndex() != 0){
+			sql = appendWhereChecker(sql);
+			sql += "brgy = " + view.getComboBoxQuery1Barangay().getSelectedItem().toString();
+		}
+		
+		if(view.getComboBoxQuery1Purok().getSelectedIndex() != 0){
+			sql = appendWhereChecker(sql);
+			sql += "purok = " + view.getComboBoxQuery1Purok().getSelectedItem().toString();
+		}
+		
+		if(view.getComboBoxQuery1HouseType().getSelectedIndex() != 0){
+			sql = appendWhereChecker(sql);
+			if(view.getComboBoxQuery1HouseType().getSelectedItem().toString().equals("Single"))
+				sql += "house_type = 1";
+			else if(view.getComboBoxQuery1HouseType().getSelectedItem().toString().equals("Duplex"))
+				sql += "house_type = 2";
+			else if(view.getComboBoxQuery1HouseType().getSelectedItem().toString().equals("Multi-unit"))
+				sql += "house_type = 3";
+			else if(view.getComboBoxQuery1HouseType().getSelectedItem().toString().equals("Commercial"))
+				sql += "house_type = 4";
+			else if(view.getComboBoxQuery1HouseType().getSelectedItem().toString().equals("Others"))
+				sql += "house_type = 5";
+		}
+		
+		if(view.getComboBoxQuery1Bagyo().getSelectedIndex() != 0 ){
+			sql = appendWhereChecker(sql);
+			if(view.getComboBoxQuery1Bagyo().getSelectedItem().toString().equals("Naranasan"))
+				sql += "calam1 = " + TRUE;
+			else if(view.getComboBoxQuery1Bagyo().getSelectedItem().toString().equals("Hindi Naranasan"))
+				sql += "calam1 = " + FALSE;
+		}
+		
+		if(!view.getSpinnerQuery1BagyoFrequencyLower().getValue().toString().equals("-1")){
+			sql = appendWhereChecker(sql);
+			sql += "calam1_hwmny > " + view.getSpinnerQuery1BagyoFrequencyLower().getValue().toString();
+		}
+		
+		if(!view.getSpinnerQuery1BagyoFrequencyUpper().getValue().toString().equals("-1")){
+			sql = appendWhereChecker(sql);
+			sql += "calam1_hwmny <= " + view.getSpinnerQuery1BagyoFrequencyUpper().getValue().toString();
+		}
+		
+		if(view.getComboBoxQuery1BagyoAid().getSelectedIndex() != 0){
+			sql = appendWhereChecker(sql);
+			if(view.getComboBoxQuery1BagyoAid().getSelectedItem().toString().equals("Nakatanggap"))
+				sql += "calam1_aid = " + TRUE;
+			else if(view.getComboBoxQuery1BagyoAid().getSelectedItem().toString().equals("Hindi Nakatanggap"))
+				sql += "calam1_aid = " + FALSE;
+		}
+		
+		if(view.getComboBoxQuery1Baha().getSelectedIndex() != 0 ){
+			sql = appendWhereChecker(sql);
+			if(view.getComboBoxQuery1Baha().getSelectedItem().toString().equals("Naranasan"))
+				sql += "calam2 = " + TRUE;
+			else if(view.getComboBoxQuery1Baha().getSelectedItem().toString().equals("Hindi Naranasan"))
+				sql += "calam2 = " + FALSE;
+		}
+		
+		if(!view.getSpinnerQuery1BahaFrequencyLower().getValue().toString().equals("-1")){
+			sql = appendWhereChecker(sql);
+			sql += "calam2_hwmny > " + view.getSpinnerQuery1BahaFrequencyLower().getValue().toString();
+		}
+		
+		if(!view.getSpinnerQuery1BahaFrequencyUpper().getValue().toString().equals("-1")){
+			sql = appendWhereChecker(sql);
+			sql += "calam2_hwmny <= " + view.getSpinnerQuery1BahaFrequencyUpper().getValue().toString();
+		}
+		
+		if(view.getComboBoxQuery1BahaAid().getSelectedIndex() != 0){
+			sql = appendWhereChecker(sql);
+			if(view.getComboBoxQuery1BahaAid().getSelectedItem().toString().equals("Nakatanggap"))
+				sql += "calam2_aid = " + TRUE;
+			else if(view.getComboBoxQuery1BahaAid().getSelectedItem().toString().equals("Hindi Nakatanggap"))
+				sql += "calam2_aid = " + FALSE;
+		}
+		
+		if(view.getComboBoxQuery1Tagtuyot().getSelectedIndex() != 0 ){
+			sql = appendWhereChecker(sql);
+			if(view.getComboBoxQuery1Tagtuyot().getSelectedItem().toString().equals("Naranasan"))
+				sql += "calam3 = " + TRUE;
+			else if(view.getComboBoxQuery1Tagtuyot().getSelectedItem().toString().equals("Hindi Naranasan"))
+				sql += "calam3 = " + FALSE;
+		}
+		
+		if(!view.getSpinnerQuery1TagtuyotFrequencyLower().getValue().toString().equals("-1")){
+			sql = appendWhereChecker(sql);
+			sql += "calam3_hwmny > " + view.getSpinnerQuery1TagtuyotFrequencyLower().getValue().toString();
+		}
+		
+		if(!view.getSpinnerQuery1TagtuyotFrequencyUpper().getValue().toString().equals("-1")){
+			sql = appendWhereChecker(sql);
+			sql += "calam3_hwmny <= " + view.getSpinnerQuery1TagtuyotFrequencyUpper().getValue().toString();
+		}
+		
+		if(view.getComboBoxQuery1TagtuyotAid().getSelectedIndex() != 0){
+			sql = appendWhereChecker(sql);
+			if(view.getComboBoxQuery1TagtuyotAid().getSelectedItem().toString().equals("Nakatanggap"))
+				sql += "calam3_aid = " + TRUE;
+			else if(view.getComboBoxQuery1TagtuyotAid().getSelectedItem().toString().equals("Hindi Nakatanggap"))
+				sql += "calam3_aid = " + FALSE;
+		}
+		
+		if(view.getComboBoxQuery1Lindol().getSelectedIndex() != 0 ){
+			sql = appendWhereChecker(sql);
+			if(view.getComboBoxQuery1Lindol().getSelectedItem().toString().equals("Naranasan"))
+				sql += "calam4 = " + TRUE;
+			else if(view.getComboBoxQuery1Lindol().getSelectedItem().toString().equals("Hindi Naranasan"))
+				sql += "calam4 = " + FALSE;
+		}
+		
+		if(!view.getSpinnerQuery1LindolFrequencyLower().getValue().toString().equals("-1")){
+			sql = appendWhereChecker(sql);
+			sql += "calam4_hwmny > " + view.getSpinnerQuery1LindolFrequencyLower().getValue().toString();
+		}
+		
+		if(!view.getSpinnerQuery1LindolFrequencyUpper().getValue().toString().equals("-1")){
+			sql = appendWhereChecker(sql);
+			sql += "calam4_hwmny <= " + view.getSpinnerQuery1LindolFrequencyUpper().getValue().toString();
+		}
+		
+		if(view.getComboBoxQuery1LindolAid().getSelectedIndex() != 0){
+			sql = appendWhereChecker(sql);
+			if(view.getComboBoxQuery1LindolAid().getSelectedItem().toString().equals("Nakatanggap"))
+				sql += "calam4_aid = " + TRUE;
+			else if(view.getComboBoxQuery1LindolAid().getSelectedItem().toString().equals("Hindi Nakatanggap"))
+				sql += "calam4_aid = " + FALSE;
+		}
+		
+		if(view.getComboBoxQuery1Sunog().getSelectedIndex() != 0 ){
+			sql = appendWhereChecker(sql);
+			if(view.getComboBoxQuery1Sunog().getSelectedItem().toString().equals("Naranasan"))
+				sql += "calam8 = " + TRUE;
+			else if(view.getComboBoxQuery1Sunog().getSelectedItem().toString().equals("Hindi Naranasan"))
+				sql += "calam8 = " + FALSE;
+		}
+		
+		if(!view.getSpinnerQuery1SunogFrequencyLower().getValue().toString().equals("-1")){
+			sql = appendWhereChecker(sql);
+			sql += "calam8_hwmny > " + view.getSpinnerQuery1SunogFrequencyLower().getValue().toString();
+		}
+		
+		if(!view.getSpinnerQuery1SunogFrequencyUpper().getValue().toString().equals("-1")){
+			sql = appendWhereChecker(sql);
+			sql += "calam8_hwmny <= " + view.getSpinnerQuery1SunogFrequencyUpper().getValue().toString();
+		}
+		
+		if(view.getComboBoxQuery1SunogAid().getSelectedIndex() != 0){
+			sql = appendWhereChecker(sql);
+			if(view.getComboBoxQuery1SunogAid().getSelectedItem().toString().equals("Nakatanggap"))
+				sql += "calam8_aid = " + TRUE;
+			else if(view.getComboBoxQuery1SunogAid().getSelectedItem().toString().equals("Hindi Nakatanggap"))
+				sql += "calam8_aid = " + FALSE;
+		}
+		
+		return sql;
+	}
+	
+	
+}

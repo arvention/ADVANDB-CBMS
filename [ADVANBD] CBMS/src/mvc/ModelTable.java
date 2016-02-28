@@ -24,6 +24,4 @@ public class ModelTable {
 	public void setData(String[][] data) {
 		this.data = data;
 	}
-	
-	
 }

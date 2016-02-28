@@ -1,0 +1,74 @@
+package mvc;
+
+
+
+import java.awt.CardLayout;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+import database.FacadeDatabase;
+
+public class Controller {
+	private static final Controller controller = new Controller(View.getInstance(), ModelTable.getInstance(), FacadeDatabase.getInstance());
+	private final View view;
+	private final ModelTable modelTable;
+	private final FacadeDatabase facadeDatabase;
+	
+	public static Controller getInstance(){
+		return controller;
+	}
+	
+	public Controller(View view, ModelTable modelTable, FacadeDatabase facadeDatabase){
+		this.view = view;
+		this.modelTable = modelTable;
+		this.facadeDatabase = facadeDatabase;
+		addListeners();
+		
+		this.view.setVisible(true);
+	}
+
+	public View getView() {
+		return view;
+	}
+
+	public ModelTable getModelTable() {
+		return modelTable;
+	}
+	
+	public FacadeDatabase getFacadeDatabase() {
+		return facadeDatabase;
+	}
+	
+	public void addListeners(){
+		view.getButtonQuery1().addMouseListener(new MouseAdapter(){
+			public void mouseClicked(MouseEvent e) {
+				CardLayout cardLayout = (CardLayout) view.getContentPane().getLayout();
+				cardLayout.show(view.getContentPane(), "panel_query1");
+		      }
+		});
+		
+		view.getButtonQuery1Back().addMouseListener(new MouseAdapter(){
+			public void mouseClicked(MouseEvent e) {
+				CardLayout cardLayout = (CardLayout) view.getContentPane().getLayout();
+				cardLayout.show(view.getContentPane(), "panel_main");
+		      }
+		});
+		
+		view.getButtonQuery1Query().addMouseListener(new MouseAdapter(){
+			public void mouseClicked(MouseEvent e) {
+				String sql = "Select id, mun, zone, brgy, purok, house_type, house_type_o, nbr, "
+						+ "roof, wall, nofw, nnucfam, calam1, calam1_hwmny, calam1_aid, calam1_hus_aid_o, "
+						+ "calam2, calam2_hwmny, calam2_aid, calam2_hus_aid_o, calam3, calam3_hwmny, calam3_aid, "
+						+ "calam3_hus_aid, calam3_hus_aid_o, calam4, calam4_hwmny, calam4_aid, calam4_hus_aid_o, "
+						+ "calam8, calam8_hwmny, calam8_aid, calam8_hus_aid_o from hpq_hh ";
+				if(view.getComboBoxQuery1Municipality().getSelectedIndex() != -1){
+					if(!sql.contains("where"))
+						sql += "where ";
+					else
+						sql += "and ";
+					sql += "mun = " + view.getComboBoxQuery1Municipality().getSelectedItem().toString();
+				}
+			}
+		});
+	}
+}

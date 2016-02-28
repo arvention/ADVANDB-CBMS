@@ -1,0 +1,653 @@
+package mvc;
+
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.border.EmptyBorder;
+
+import java.awt.CardLayout;
+import java.awt.GridBagLayout;
+import java.awt.Image;
+
+import javax.swing.JLabel;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
+import java.awt.Font;
+import javax.swing.JButton;
+import javax.swing.JTable;
+import javax.swing.JComboBox;
+import javax.swing.JScrollPane;
+import javax.swing.ImageIcon;
+import java.awt.Toolkit;
+import javax.swing.DefaultComboBoxModel;
+
+public class View extends JFrame {
+
+	private static final long serialVersionUID = 1L;
+	private static final View view = new View();
+	private JPanel panel_main;
+	private JLabel label;
+	private JLabel labelCMBS;
+	private JPanel contentPane;
+	private JButton buttonQuery1;
+	private JButton buttonQuery2;
+	private JButton buttonQuery3;
+	private JButton buttonQuery4;
+	private JButton buttonQuery5;
+	private JButton buttonQuery6;
+	private JButton buttonQuery7;
+	private JPanel panel_query1;
+	private JPanel panel_query2;
+	private JPanel panel_query3;
+	private JPanel panel_query4;
+	private JPanel panel_query5;
+	private JPanel panel_query6;
+	private JPanel panel_query7;
+	private JButton buttonQuery1Back;
+	private JLabel labelQuery1;
+	private JComboBox<Integer> comboBoxQuery1Municipality;
+	private JLabel labelQuery1Municipality;
+	private JComboBox<Integer> comboBoxQuery1Zone;
+	private JLabel labelQuery1Zone;
+	private JComboBox<Integer> comboBoxQuery1Barangay;
+	private JLabel labelQuery1Barangay;
+	private JComboBox<Integer> comboBoxQuery1Purok;
+	private JLabel labelQuery1Purok;
+	private JComboBox<String> comboBoxQuery1HouseType;
+	private JLabel labelQuery1HouseType;
+	private JLabel labelQuery1CalamityExperiences;
+	private JComboBox<String> comboBoxQuery1Bagyo;
+	private JLabel labelQuery1Bagyo;
+	private JComboBox<Integer> comboBoxQuery1BagyoFrequency;
+	private JLabel labelQuery1BagyoFrequency;
+	private JComboBox<Integer> comboBoxQuery1BagyoAid;
+	private JLabel labelQuery1BagyoAid;
+	private JComboBox<String> comboBoxQuery1Baha;
+	private JLabel labelQuery1Baha;
+	private JComboBox<Integer> comboBoxQuery1BahaFrequency;
+	private JLabel labelQuery1BahaFrequency;
+	private JComboBox<Integer> comboBoxQuery1BahaAid;
+	private JLabel labelQuery1BahaAid;
+	private JComboBox<String> comboBoxQuery1Tagtuyot;
+	private JLabel labelQuery1Tagtuyot;
+	private JComboBox<Integer> comboBoxQuery1TagtuyotFrequency;
+	private JLabel labelQuery1TagtuyotFrequency;
+	private JComboBox<Integer> comboBoxQuery1TagtuyotAid;
+	private JLabel labelQuery1TagtuyotAid;
+	private JComboBox<String> comboBoxQuery1Lindol;
+	private JLabel labelQuery1Lindol;
+	private JComboBox<Integer> comboBoxQuery1LindolFrequency;
+	private JLabel labelQuery1LindolFrequency;
+	private JComboBox<Integer> comboBoxQuery1LindolAid;
+	private JLabel labelQuery1LindolAid;
+	private JComboBox<String> comboBoxQuery1Sunog;
+	private JLabel labelQuery1Sunog;
+	private JComboBox<Integer> comboBoxQuery1SunogFrequency;
+	private JLabel labelQuery1SunogFrequency;
+	private JLabel labelQuery1SunogAid;
+	private JButton buttonQuery1Query;
+	private JComboBox<Integer> comboBoxQuery1SunogAid;
+	private JScrollPane scrollPaneQuery1ResultTable;
+	private JTable tableQuery1ResultTable;
+	private JLabel labelQuery1Status;
+	
+	private View() {
+		setTitle("Community-Based Monitoring System");
+		setResizable(false);
+		setIconImage(Toolkit.getDefaultToolkit().getImage(View.class.getResource("/img/cbms_logo.png")));
+		
+		initializeComponents();
+	}
+
+	public static View getInstance(){
+		return view;
+	}
+	
+	private void initializeComponents(){
+		try {
+			UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException
+				| UnsupportedLookAndFeelException e) {
+			e.printStackTrace();
+		} 
+		// frame
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 500, 480);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(new CardLayout(0, 0));
+		
+		panel_main = new JPanel();
+		contentPane.add(panel_main, "panel_main");
+		GridBagLayout gbl_panel_main = new GridBagLayout();
+		gbl_panel_main.columnWidths = new int[]{50, 95, 95, 95, 95, 50, 0};
+		gbl_panel_main.rowHeights = new int[]{160, 35, 60, 60, 60, 60, 0};
+		gbl_panel_main.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel_main.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		panel_main.setLayout(gbl_panel_main);
+		
+		label = new JLabel("");
+		ImageIcon imageIcon = new ImageIcon(View.class.getResource("/img/cbms_logo.png")); 
+		Image image = imageIcon.getImage(); 
+		Image newimg = image.getScaledInstance(160, 160,  java.awt.Image.SCALE_SMOOTH);
+		label.setIcon(new ImageIcon(newimg));
+		GridBagConstraints gbc_label = new GridBagConstraints();
+		gbc_label.gridwidth = 2;
+		gbc_label.insets = new Insets(0, 0, 5, 5);
+		gbc_label.gridx = 2;
+		gbc_label.gridy = 0;
+		panel_main.add(label, gbc_label);
+		
+		labelCMBS = new JLabel("Community-Based Monitoring System");
+		labelCMBS.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		GridBagConstraints gbc_labelCMBS = new GridBagConstraints();
+		gbc_labelCMBS.gridwidth = 4;
+		gbc_labelCMBS.insets = new Insets(0, 0, 5, 5);
+		gbc_labelCMBS.gridx = 1;
+		gbc_labelCMBS.gridy = 1;
+		panel_main.add(labelCMBS, gbc_labelCMBS);
+		
+		buttonQuery1 = new JButton("Calamity Report");
+		getButtonQuery1().setFont(new Font("Tahoma", Font.PLAIN, 14));
+		GridBagConstraints gbc_buttonQuery1 = new GridBagConstraints();
+		gbc_buttonQuery1.fill = GridBagConstraints.BOTH;
+		gbc_buttonQuery1.gridwidth = 2;
+		gbc_buttonQuery1.insets = new Insets(0, 0, 5, 5);
+		gbc_buttonQuery1.gridx = 1;
+		gbc_buttonQuery1.gridy = 2;
+		panel_main.add(getButtonQuery1(), gbc_buttonQuery1);
+		
+		buttonQuery2 = new JButton("Query 2");
+		buttonQuery2.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		GridBagConstraints gbc_buttonQuery2 = new GridBagConstraints();
+		gbc_buttonQuery2.gridwidth = 2;
+		gbc_buttonQuery2.fill = GridBagConstraints.BOTH;
+		gbc_buttonQuery2.insets = new Insets(0, 0, 5, 5);
+		gbc_buttonQuery2.gridx = 3;
+		gbc_buttonQuery2.gridy = 2;
+		panel_main.add(buttonQuery2, gbc_buttonQuery2);
+		
+		buttonQuery3 = new JButton("Query 3");
+		buttonQuery3.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		GridBagConstraints gbc_buttonQuery3 = new GridBagConstraints();
+		gbc_buttonQuery3.gridwidth = 2;
+		gbc_buttonQuery3.fill = GridBagConstraints.BOTH;
+		gbc_buttonQuery3.insets = new Insets(0, 0, 5, 5);
+		gbc_buttonQuery3.gridx = 1;
+		gbc_buttonQuery3.gridy = 3;
+		panel_main.add(buttonQuery3, gbc_buttonQuery3);
+		
+		buttonQuery4 = new JButton("Query 4");
+		buttonQuery4.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		GridBagConstraints gbc_buttonQuery4 = new GridBagConstraints();
+		gbc_buttonQuery4.fill = GridBagConstraints.BOTH;
+		gbc_buttonQuery4.gridwidth = 2;
+		gbc_buttonQuery4.insets = new Insets(0, 0, 5, 5);
+		gbc_buttonQuery4.gridx = 3;
+		gbc_buttonQuery4.gridy = 3;
+		panel_main.add(buttonQuery4, gbc_buttonQuery4);
+		
+		buttonQuery5 = new JButton("Query 5");
+		buttonQuery5.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		GridBagConstraints gbc_buttonQuery5 = new GridBagConstraints();
+		gbc_buttonQuery5.fill = GridBagConstraints.BOTH;
+		gbc_buttonQuery5.gridwidth = 2;
+		gbc_buttonQuery5.insets = new Insets(0, 0, 5, 5);
+		gbc_buttonQuery5.gridx = 1;
+		gbc_buttonQuery5.gridy = 4;
+		panel_main.add(buttonQuery5, gbc_buttonQuery5);
+		
+		buttonQuery6 = new JButton("Query 6");
+		buttonQuery6.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		GridBagConstraints gbc_buttonQuery6 = new GridBagConstraints();
+		gbc_buttonQuery6.gridwidth = 2;
+		gbc_buttonQuery6.fill = GridBagConstraints.BOTH;
+		gbc_buttonQuery6.insets = new Insets(0, 0, 5, 5);
+		gbc_buttonQuery6.gridx = 3;
+		gbc_buttonQuery6.gridy = 4;
+		panel_main.add(buttonQuery6, gbc_buttonQuery6);
+		
+		buttonQuery7 = new JButton("Query 7");
+		buttonQuery7.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		GridBagConstraints gbc_buttonQuery7 = new GridBagConstraints();
+		gbc_buttonQuery7.fill = GridBagConstraints.BOTH;
+		gbc_buttonQuery7.gridwidth = 4;
+		gbc_buttonQuery7.insets = new Insets(0, 0, 0, 5);
+		gbc_buttonQuery7.gridx = 1;
+		gbc_buttonQuery7.gridy = 5;
+		panel_main.add(buttonQuery7, gbc_buttonQuery7);
+		
+		panel_query1 = new JPanel();
+		contentPane.add(getPanel_query1(), "panel_query1");
+		GridBagLayout gbl_panel_query1 = new GridBagLayout();
+		gbl_panel_query1.columnWidths = new int[]{80, 80, 80, 80, 80, 80, 0};
+		gbl_panel_query1.rowHeights = new int[]{50, 0, 0, 0, 0, 0, 0, 0, 0, 0, 140, 185, 0};
+		gbl_panel_query1.columnWeights = new double[]{1.0, 1.0, 0.0, 1.0, 0.0, 1.0, Double.MIN_VALUE};
+		gbl_panel_query1.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+		getPanel_query1().setLayout(gbl_panel_query1);
+		
+		buttonQuery1Back = new JButton("<<");
+		getButtonQuery1Back().setFont(new Font("SansSerif", Font.PLAIN, 14));
+		GridBagConstraints gbc_buttonQuery1Back = new GridBagConstraints();
+		gbc_buttonQuery1Back.fill = GridBagConstraints.HORIZONTAL;
+		gbc_buttonQuery1Back.anchor = GridBagConstraints.WEST;
+		gbc_buttonQuery1Back.insets = new Insets(0, 0, 5, 5);
+		gbc_buttonQuery1Back.gridx = 0;
+		gbc_buttonQuery1Back.gridy = 0;
+		getPanel_query1().add(getButtonQuery1Back(), gbc_buttonQuery1Back);
+		
+		labelQuery1 = new JLabel("Calamity Report");
+		labelQuery1.setFont(new Font("SansSerif", Font.BOLD, 20));
+		GridBagConstraints gbc_labelQuery1 = new GridBagConstraints();
+		gbc_labelQuery1.anchor = GridBagConstraints.WEST;
+		gbc_labelQuery1.fill = GridBagConstraints.VERTICAL;
+		gbc_labelQuery1.gridwidth = 5;
+		gbc_labelQuery1.insets = new Insets(0, 0, 5, 0);
+		gbc_labelQuery1.gridx = 1;
+		gbc_labelQuery1.gridy = 0;
+		getPanel_query1().add(labelQuery1, gbc_labelQuery1);
+		
+		labelQuery1Municipality = new JLabel("Municipality");
+		GridBagConstraints gbc_labelQuery1Municipality = new GridBagConstraints();
+		gbc_labelQuery1Municipality.anchor = GridBagConstraints.EAST;
+		gbc_labelQuery1Municipality.insets = new Insets(0, 0, 5, 5);
+		gbc_labelQuery1Municipality.gridx = 0;
+		gbc_labelQuery1Municipality.gridy = 1;
+		getPanel_query1().add(labelQuery1Municipality, gbc_labelQuery1Municipality);
+		
+		comboBoxQuery1Municipality = new JComboBox<Integer>();
+		comboBoxQuery1Municipality.setModel(new DefaultComboBoxModel<Integer>(new Integer[] {1, 2, 3, 4, 5, 6}));
+		GridBagConstraints gbc_comboBoxQuery1Municipality = new GridBagConstraints();
+		gbc_comboBoxQuery1Municipality.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBoxQuery1Municipality.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxQuery1Municipality.gridx = 1;
+		gbc_comboBoxQuery1Municipality.gridy = 1;
+		getPanel_query1().add(comboBoxQuery1Municipality, gbc_comboBoxQuery1Municipality);
+		
+		labelQuery1Zone = new JLabel("Zone");
+		GridBagConstraints gbc_labelQuery1Zone = new GridBagConstraints();
+		gbc_labelQuery1Zone.insets = new Insets(0, 0, 5, 5);
+		gbc_labelQuery1Zone.anchor = GridBagConstraints.EAST;
+		gbc_labelQuery1Zone.gridx = 2;
+		gbc_labelQuery1Zone.gridy = 1;
+		getPanel_query1().add(labelQuery1Zone, gbc_labelQuery1Zone);
+		
+		comboBoxQuery1Zone = new JComboBox<Integer>();
+		comboBoxQuery1Zone.setModel(new DefaultComboBoxModel<Integer>(new Integer[] {1, 2, 3, 4, 5, 6, 7, 9, 13, 18, 19, 99}));
+		GridBagConstraints gbc_comboBoxQuery1Zone = new GridBagConstraints();
+		gbc_comboBoxQuery1Zone.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBoxQuery1Zone.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxQuery1Zone.gridx = 3;
+		gbc_comboBoxQuery1Zone.gridy = 1;
+		getPanel_query1().add(comboBoxQuery1Zone, gbc_comboBoxQuery1Zone);
+		
+		labelQuery1Barangay = new JLabel("Barangay");
+		GridBagConstraints gbc_labelQuery1Barangay = new GridBagConstraints();
+		gbc_labelQuery1Barangay.insets = new Insets(0, 0, 5, 5);
+		gbc_labelQuery1Barangay.anchor = GridBagConstraints.EAST;
+		gbc_labelQuery1Barangay.gridx = 4;
+		gbc_labelQuery1Barangay.gridy = 1;
+		getPanel_query1().add(labelQuery1Barangay, gbc_labelQuery1Barangay);
+		
+		comboBoxQuery1Barangay = new JComboBox<Integer>();
+		comboBoxQuery1Barangay.setModel(new DefaultComboBoxModel<Integer>(new Integer[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61}));
+		GridBagConstraints gbc_comboBoxQuery1Barangay = new GridBagConstraints();
+		gbc_comboBoxQuery1Barangay.fill = GridBagConstraints.BOTH;
+		gbc_comboBoxQuery1Barangay.insets = new Insets(0, 0, 5, 0);
+		gbc_comboBoxQuery1Barangay.gridx = 5;
+		gbc_comboBoxQuery1Barangay.gridy = 1;
+		getPanel_query1().add(comboBoxQuery1Barangay, gbc_comboBoxQuery1Barangay);
+		
+		labelQuery1Purok = new JLabel("Purok");
+		GridBagConstraints gbc_labelQuery1Purok = new GridBagConstraints();
+		gbc_labelQuery1Purok.anchor = GridBagConstraints.EAST;
+		gbc_labelQuery1Purok.insets = new Insets(0, 0, 5, 5);
+		gbc_labelQuery1Purok.gridx = 0;
+		gbc_labelQuery1Purok.gridy = 2;
+		getPanel_query1().add(labelQuery1Purok, gbc_labelQuery1Purok);
+		
+		comboBoxQuery1Purok = new JComboBox<Integer>();
+		comboBoxQuery1Purok.setModel(new DefaultComboBoxModel<Integer>(new Integer[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 26, 99}));
+		GridBagConstraints gbc_comboBoxQuery1Purok = new GridBagConstraints();
+		gbc_comboBoxQuery1Purok.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBoxQuery1Purok.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxQuery1Purok.gridx = 1;
+		gbc_comboBoxQuery1Purok.gridy = 2;
+		getPanel_query1().add(comboBoxQuery1Purok, gbc_comboBoxQuery1Purok);
+		
+		labelQuery1HouseType = new JLabel("House Type");
+		GridBagConstraints gbc_labelQuery1HouseType = new GridBagConstraints();
+		gbc_labelQuery1HouseType.insets = new Insets(0, 0, 5, 5);
+		gbc_labelQuery1HouseType.anchor = GridBagConstraints.EAST;
+		gbc_labelQuery1HouseType.gridx = 2;
+		gbc_labelQuery1HouseType.gridy = 2;
+		getPanel_query1().add(labelQuery1HouseType, gbc_labelQuery1HouseType);
+		
+		comboBoxQuery1HouseType = new JComboBox<String>();
+		comboBoxQuery1HouseType.setModel(new DefaultComboBoxModel<String>(new String[] {"Single", "Duplex", "Multi-unit", "Commercial", "Others"}));
+		GridBagConstraints gbc_comboBoxQuery1HouseType = new GridBagConstraints();
+		gbc_comboBoxQuery1HouseType.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBoxQuery1HouseType.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxQuery1HouseType.gridx = 3;
+		gbc_comboBoxQuery1HouseType.gridy = 2;
+		getPanel_query1().add(comboBoxQuery1HouseType, gbc_comboBoxQuery1HouseType);
+		
+		labelQuery1CalamityExperiences = new JLabel("Calamity Experiences:");
+		labelQuery1CalamityExperiences.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		GridBagConstraints gbc_labelQuery1CalamityExperiences = new GridBagConstraints();
+		gbc_labelQuery1CalamityExperiences.gridwidth = 6;
+		gbc_labelQuery1CalamityExperiences.insets = new Insets(0, 0, 5, 0);
+		gbc_labelQuery1CalamityExperiences.gridx = 0;
+		gbc_labelQuery1CalamityExperiences.gridy = 3;
+		getPanel_query1().add(labelQuery1CalamityExperiences, gbc_labelQuery1CalamityExperiences);
+		
+		labelQuery1Bagyo = new JLabel("Bagyo");
+		GridBagConstraints gbc_labelQuery1Bagyo = new GridBagConstraints();
+		gbc_labelQuery1Bagyo.insets = new Insets(0, 0, 5, 5);
+		gbc_labelQuery1Bagyo.anchor = GridBagConstraints.EAST;
+		gbc_labelQuery1Bagyo.gridx = 0;
+		gbc_labelQuery1Bagyo.gridy = 4;
+		getPanel_query1().add(labelQuery1Bagyo, gbc_labelQuery1Bagyo);
+		
+		comboBoxQuery1Bagyo = new JComboBox<String>();
+		comboBoxQuery1Bagyo.setModel(new DefaultComboBoxModel<String>(new String[] {"Naranasan", "Hindi Naranasan"}));
+		GridBagConstraints gbc_comboBoxQuery1Bagyo = new GridBagConstraints();
+		gbc_comboBoxQuery1Bagyo.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBoxQuery1Bagyo.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxQuery1Bagyo.gridx = 1;
+		gbc_comboBoxQuery1Bagyo.gridy = 4;
+		getPanel_query1().add(comboBoxQuery1Bagyo, gbc_comboBoxQuery1Bagyo);
+		
+		labelQuery1BagyoFrequency = new JLabel("Frequency");
+		GridBagConstraints gbc_labelQuery1BagyoFrequency = new GridBagConstraints();
+		gbc_labelQuery1BagyoFrequency.insets = new Insets(0, 0, 5, 5);
+		gbc_labelQuery1BagyoFrequency.anchor = GridBagConstraints.EAST;
+		gbc_labelQuery1BagyoFrequency.gridx = 2;
+		gbc_labelQuery1BagyoFrequency.gridy = 4;
+		getPanel_query1().add(labelQuery1BagyoFrequency, gbc_labelQuery1BagyoFrequency);
+		
+		comboBoxQuery1BagyoFrequency = new JComboBox<Integer>();
+		GridBagConstraints gbc_comboBoxQuery1BagyoFrequency = new GridBagConstraints();
+		gbc_comboBoxQuery1BagyoFrequency.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBoxQuery1BagyoFrequency.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxQuery1BagyoFrequency.gridx = 3;
+		gbc_comboBoxQuery1BagyoFrequency.gridy = 4;
+		getPanel_query1().add(comboBoxQuery1BagyoFrequency, gbc_comboBoxQuery1BagyoFrequency);
+		
+		labelQuery1BagyoAid = new JLabel("Aid");
+		GridBagConstraints gbc_labelQuery1BagyoAid = new GridBagConstraints();
+		gbc_labelQuery1BagyoAid.insets = new Insets(0, 0, 5, 5);
+		gbc_labelQuery1BagyoAid.anchor = GridBagConstraints.EAST;
+		gbc_labelQuery1BagyoAid.gridx = 4;
+		gbc_labelQuery1BagyoAid.gridy = 4;
+		getPanel_query1().add(labelQuery1BagyoAid, gbc_labelQuery1BagyoAid);
+		
+		comboBoxQuery1BagyoAid = new JComboBox<Integer>();
+		GridBagConstraints gbc_comboBoxQuery1BagyoAid = new GridBagConstraints();
+		gbc_comboBoxQuery1BagyoAid.insets = new Insets(0, 0, 5, 0);
+		gbc_comboBoxQuery1BagyoAid.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxQuery1BagyoAid.gridx = 5;
+		gbc_comboBoxQuery1BagyoAid.gridy = 4;
+		getPanel_query1().add(comboBoxQuery1BagyoAid, gbc_comboBoxQuery1BagyoAid);
+		
+		labelQuery1Baha = new JLabel("Baha");
+		GridBagConstraints gbc_labelQuery1Baha = new GridBagConstraints();
+		gbc_labelQuery1Baha.insets = new Insets(0, 0, 5, 5);
+		gbc_labelQuery1Baha.anchor = GridBagConstraints.EAST;
+		gbc_labelQuery1Baha.gridx = 0;
+		gbc_labelQuery1Baha.gridy = 5;
+		getPanel_query1().add(labelQuery1Baha, gbc_labelQuery1Baha);
+		
+		comboBoxQuery1Baha = new JComboBox<String>();
+		comboBoxQuery1Baha.setModel(new DefaultComboBoxModel<String>(new String[] {"Naranasan", "Hindi Naranasan"}));
+		GridBagConstraints gbc_comboBoxQuery1Baha = new GridBagConstraints();
+		gbc_comboBoxQuery1Baha.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBoxQuery1Baha.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxQuery1Baha.gridx = 1;
+		gbc_comboBoxQuery1Baha.gridy = 5;
+		getPanel_query1().add(comboBoxQuery1Baha, gbc_comboBoxQuery1Baha);
+		
+		labelQuery1BahaFrequency = new JLabel("Frequency");
+		GridBagConstraints gbc_labelQuery1BahaFrequency = new GridBagConstraints();
+		gbc_labelQuery1BahaFrequency.insets = new Insets(0, 0, 5, 5);
+		gbc_labelQuery1BahaFrequency.anchor = GridBagConstraints.EAST;
+		gbc_labelQuery1BahaFrequency.gridx = 2;
+		gbc_labelQuery1BahaFrequency.gridy = 5;
+		getPanel_query1().add(labelQuery1BahaFrequency, gbc_labelQuery1BahaFrequency);
+		
+		comboBoxQuery1BahaFrequency = new JComboBox<Integer>();
+		GridBagConstraints gbc_comboBoxQuery1BahaFrequency = new GridBagConstraints();
+		gbc_comboBoxQuery1BahaFrequency.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBoxQuery1BahaFrequency.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxQuery1BahaFrequency.gridx = 3;
+		gbc_comboBoxQuery1BahaFrequency.gridy = 5;
+		getPanel_query1().add(comboBoxQuery1BahaFrequency, gbc_comboBoxQuery1BahaFrequency);
+		
+		labelQuery1BahaAid = new JLabel("Aid");
+		GridBagConstraints gbc_labelQuery1BahaAid = new GridBagConstraints();
+		gbc_labelQuery1BahaAid.insets = new Insets(0, 0, 5, 5);
+		gbc_labelQuery1BahaAid.anchor = GridBagConstraints.EAST;
+		gbc_labelQuery1BahaAid.gridx = 4;
+		gbc_labelQuery1BahaAid.gridy = 5;
+		getPanel_query1().add(labelQuery1BahaAid, gbc_labelQuery1BahaAid);
+		
+		comboBoxQuery1BahaAid = new JComboBox<Integer>();
+		GridBagConstraints gbc_comboBoxQuery1BahaAid = new GridBagConstraints();
+		gbc_comboBoxQuery1BahaAid.insets = new Insets(0, 0, 5, 0);
+		gbc_comboBoxQuery1BahaAid.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxQuery1BahaAid.gridx = 5;
+		gbc_comboBoxQuery1BahaAid.gridy = 5;
+		getPanel_query1().add(comboBoxQuery1BahaAid, gbc_comboBoxQuery1BahaAid);
+		
+		labelQuery1Tagtuyot = new JLabel("Tagtuyot");
+		GridBagConstraints gbc_labelQuery1Tagtuyot = new GridBagConstraints();
+		gbc_labelQuery1Tagtuyot.insets = new Insets(0, 0, 5, 5);
+		gbc_labelQuery1Tagtuyot.anchor = GridBagConstraints.EAST;
+		gbc_labelQuery1Tagtuyot.gridx = 0;
+		gbc_labelQuery1Tagtuyot.gridy = 6;
+		getPanel_query1().add(labelQuery1Tagtuyot, gbc_labelQuery1Tagtuyot);
+		
+		comboBoxQuery1Tagtuyot = new JComboBox<String>();
+		comboBoxQuery1Tagtuyot.setModel(new DefaultComboBoxModel<String>(new String[] {"Naranasan", "Hindi Naranasan"}));
+		GridBagConstraints gbc_comboBoxQuery1Tagtuyot = new GridBagConstraints();
+		gbc_comboBoxQuery1Tagtuyot.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBoxQuery1Tagtuyot.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxQuery1Tagtuyot.gridx = 1;
+		gbc_comboBoxQuery1Tagtuyot.gridy = 6;
+		getPanel_query1().add(comboBoxQuery1Tagtuyot, gbc_comboBoxQuery1Tagtuyot);
+		
+		labelQuery1TagtuyotFrequency = new JLabel("Frequency");
+		GridBagConstraints gbc_labelQuery1TagtuyotFrequency = new GridBagConstraints();
+		gbc_labelQuery1TagtuyotFrequency.insets = new Insets(0, 0, 5, 5);
+		gbc_labelQuery1TagtuyotFrequency.anchor = GridBagConstraints.EAST;
+		gbc_labelQuery1TagtuyotFrequency.gridx = 2;
+		gbc_labelQuery1TagtuyotFrequency.gridy = 6;
+		getPanel_query1().add(labelQuery1TagtuyotFrequency, gbc_labelQuery1TagtuyotFrequency);
+		
+		comboBoxQuery1TagtuyotFrequency = new JComboBox<Integer>();
+		GridBagConstraints gbc_comboBoxQuery1TagtuyotFrequency = new GridBagConstraints();
+		gbc_comboBoxQuery1TagtuyotFrequency.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBoxQuery1TagtuyotFrequency.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxQuery1TagtuyotFrequency.gridx = 3;
+		gbc_comboBoxQuery1TagtuyotFrequency.gridy = 6;
+		getPanel_query1().add(comboBoxQuery1TagtuyotFrequency, gbc_comboBoxQuery1TagtuyotFrequency);
+		
+		labelQuery1TagtuyotAid = new JLabel("Aid");
+		GridBagConstraints gbc_labelQuery1TagtuyotAid = new GridBagConstraints();
+		gbc_labelQuery1TagtuyotAid.insets = new Insets(0, 0, 5, 5);
+		gbc_labelQuery1TagtuyotAid.anchor = GridBagConstraints.EAST;
+		gbc_labelQuery1TagtuyotAid.gridx = 4;
+		gbc_labelQuery1TagtuyotAid.gridy = 6;
+		getPanel_query1().add(labelQuery1TagtuyotAid, gbc_labelQuery1TagtuyotAid);
+		
+		comboBoxQuery1TagtuyotAid = new JComboBox<Integer>();
+		GridBagConstraints gbc_comboBoxQuery1TagtuyotAid = new GridBagConstraints();
+		gbc_comboBoxQuery1TagtuyotAid.insets = new Insets(0, 0, 5, 0);
+		gbc_comboBoxQuery1TagtuyotAid.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxQuery1TagtuyotAid.gridx = 5;
+		gbc_comboBoxQuery1TagtuyotAid.gridy = 6;
+		getPanel_query1().add(comboBoxQuery1TagtuyotAid, gbc_comboBoxQuery1TagtuyotAid);
+		
+		labelQuery1Lindol = new JLabel("Lindol");
+		GridBagConstraints gbc_labelQuery1Lindol = new GridBagConstraints();
+		gbc_labelQuery1Lindol.insets = new Insets(0, 0, 5, 5);
+		gbc_labelQuery1Lindol.anchor = GridBagConstraints.EAST;
+		gbc_labelQuery1Lindol.gridx = 0;
+		gbc_labelQuery1Lindol.gridy = 7;
+		panel_query1.add(labelQuery1Lindol, gbc_labelQuery1Lindol);
+		
+		comboBoxQuery1Lindol = new JComboBox<String>();
+		comboBoxQuery1Lindol.setModel(new DefaultComboBoxModel<String>(new String[] {"Naranasan", "Hindi Naranasan"}));
+		GridBagConstraints gbc_comboBoxQuery1Lindol = new GridBagConstraints();
+		gbc_comboBoxQuery1Lindol.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBoxQuery1Lindol.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxQuery1Lindol.gridx = 1;
+		gbc_comboBoxQuery1Lindol.gridy = 7;
+		panel_query1.add(comboBoxQuery1Lindol, gbc_comboBoxQuery1Lindol);
+		
+		labelQuery1LindolFrequency = new JLabel("Frequency");
+		GridBagConstraints gbc_labelQuery1LindolFrequency = new GridBagConstraints();
+		gbc_labelQuery1LindolFrequency.insets = new Insets(0, 0, 5, 5);
+		gbc_labelQuery1LindolFrequency.anchor = GridBagConstraints.EAST;
+		gbc_labelQuery1LindolFrequency.gridx = 2;
+		gbc_labelQuery1LindolFrequency.gridy = 7;
+		panel_query1.add(labelQuery1LindolFrequency, gbc_labelQuery1LindolFrequency);
+		
+		comboBoxQuery1LindolFrequency = new JComboBox<Integer>();
+		GridBagConstraints gbc_comboBoxQuery1LindolFrequency = new GridBagConstraints();
+		gbc_comboBoxQuery1LindolFrequency.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBoxQuery1LindolFrequency.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxQuery1LindolFrequency.gridx = 3;
+		gbc_comboBoxQuery1LindolFrequency.gridy = 7;
+		panel_query1.add(comboBoxQuery1LindolFrequency, gbc_comboBoxQuery1LindolFrequency);
+		
+		labelQuery1LindolAid = new JLabel("Aid");
+		GridBagConstraints gbc_labelQuery1LindolAid = new GridBagConstraints();
+		gbc_labelQuery1LindolAid.insets = new Insets(0, 0, 5, 5);
+		gbc_labelQuery1LindolAid.anchor = GridBagConstraints.EAST;
+		gbc_labelQuery1LindolAid.gridx = 4;
+		gbc_labelQuery1LindolAid.gridy = 7;
+		panel_query1.add(labelQuery1LindolAid, gbc_labelQuery1LindolAid);
+		
+		comboBoxQuery1LindolAid = new JComboBox<Integer>();
+		GridBagConstraints gbc_comboBoxQuery1LindolAid = new GridBagConstraints();
+		gbc_comboBoxQuery1LindolAid.insets = new Insets(0, 0, 5, 0);
+		gbc_comboBoxQuery1LindolAid.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxQuery1LindolAid.gridx = 5;
+		gbc_comboBoxQuery1LindolAid.gridy = 7;
+		panel_query1.add(comboBoxQuery1LindolAid, gbc_comboBoxQuery1LindolAid);
+		
+		labelQuery1Sunog = new JLabel("Sunog");
+		GridBagConstraints gbc_labelQuery1Sunog = new GridBagConstraints();
+		gbc_labelQuery1Sunog.insets = new Insets(0, 0, 5, 5);
+		gbc_labelQuery1Sunog.anchor = GridBagConstraints.EAST;
+		gbc_labelQuery1Sunog.gridx = 0;
+		gbc_labelQuery1Sunog.gridy = 8;
+		getPanel_query1().add(labelQuery1Sunog, gbc_labelQuery1Sunog);
+		
+		comboBoxQuery1Sunog = new JComboBox<String>();
+		comboBoxQuery1Sunog.setModel(new DefaultComboBoxModel<String>(new String[] {"Naranasan", "Hindi Naranasan"}));
+		GridBagConstraints gbc_comboBoxQuery1Sunog = new GridBagConstraints();
+		gbc_comboBoxQuery1Sunog.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBoxQuery1Sunog.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxQuery1Sunog.gridx = 1;
+		gbc_comboBoxQuery1Sunog.gridy = 8;
+		getPanel_query1().add(comboBoxQuery1Sunog, gbc_comboBoxQuery1Sunog);
+		
+		labelQuery1SunogFrequency = new JLabel("Frequency");
+		GridBagConstraints gbc_labelQuery1SunogFrequency = new GridBagConstraints();
+		gbc_labelQuery1SunogFrequency.insets = new Insets(0, 0, 5, 5);
+		gbc_labelQuery1SunogFrequency.anchor = GridBagConstraints.EAST;
+		gbc_labelQuery1SunogFrequency.gridx = 2;
+		gbc_labelQuery1SunogFrequency.gridy = 8;
+		getPanel_query1().add(labelQuery1SunogFrequency, gbc_labelQuery1SunogFrequency);
+		
+		comboBoxQuery1SunogFrequency = new JComboBox<Integer>();
+		GridBagConstraints gbc_comboBoxQuery1SunogFrequency = new GridBagConstraints();
+		gbc_comboBoxQuery1SunogFrequency.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBoxQuery1SunogFrequency.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxQuery1SunogFrequency.gridx = 3;
+		gbc_comboBoxQuery1SunogFrequency.gridy = 8;
+		getPanel_query1().add(comboBoxQuery1SunogFrequency, gbc_comboBoxQuery1SunogFrequency);
+		
+		labelQuery1SunogAid = new JLabel("Aid");
+		GridBagConstraints gbc_labelQuery1SunogAid = new GridBagConstraints();
+		gbc_labelQuery1SunogAid.insets = new Insets(0, 0, 5, 5);
+		gbc_labelQuery1SunogAid.anchor = GridBagConstraints.EAST;
+		gbc_labelQuery1SunogAid.gridx = 4;
+		gbc_labelQuery1SunogAid.gridy = 8;
+		getPanel_query1().add(labelQuery1SunogAid, gbc_labelQuery1SunogAid);
+		
+		comboBoxQuery1SunogAid = new JComboBox<Integer>();
+		GridBagConstraints gbc_comboBoxQuery1SunogAid = new GridBagConstraints();
+		gbc_comboBoxQuery1SunogAid.insets = new Insets(0, 0, 5, 0);
+		gbc_comboBoxQuery1SunogAid.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxQuery1SunogAid.gridx = 5;
+		gbc_comboBoxQuery1SunogAid.gridy = 8;
+		getPanel_query1().add(comboBoxQuery1SunogAid, gbc_comboBoxQuery1SunogAid);
+		
+		buttonQuery1Query = new JButton("Query");
+		GridBagConstraints gbc_buttonQuery1Query = new GridBagConstraints();
+		gbc_buttonQuery1Query.insets = new Insets(0, 0, 5, 0);
+		gbc_buttonQuery1Query.gridwidth = 2;
+		gbc_buttonQuery1Query.fill = GridBagConstraints.BOTH;
+		gbc_buttonQuery1Query.gridx = 4;
+		gbc_buttonQuery1Query.gridy = 9;
+		getPanel_query1().add(buttonQuery1Query, gbc_buttonQuery1Query);
+		
+		scrollPaneQuery1ResultTable = new JScrollPane();
+		GridBagConstraints gbc_scrollPaneQuery1ResultTable = new GridBagConstraints();
+		gbc_scrollPaneQuery1ResultTable.anchor = GridBagConstraints.WEST;
+		gbc_scrollPaneQuery1ResultTable.gridwidth = 6;
+		gbc_scrollPaneQuery1ResultTable.fill = GridBagConstraints.BOTH;
+		gbc_scrollPaneQuery1ResultTable.insets = new Insets(0, 0, 5, 0);
+		gbc_scrollPaneQuery1ResultTable.gridx = 0;
+		gbc_scrollPaneQuery1ResultTable.gridy = 10;
+		getPanel_query1().add(scrollPaneQuery1ResultTable, gbc_scrollPaneQuery1ResultTable);
+		
+		tableQuery1ResultTable = new JTable();
+		scrollPaneQuery1ResultTable.setViewportView(tableQuery1ResultTable);
+		
+		labelQuery1Status = new JLabel("Status:");
+		GridBagConstraints gbc_labelQuery1Status = new GridBagConstraints();
+		gbc_labelQuery1Status.anchor = GridBagConstraints.SOUTHWEST;
+		gbc_labelQuery1Status.insets = new Insets(0, 0, 0, 5);
+		gbc_labelQuery1Status.gridx = 0;
+		gbc_labelQuery1Status.gridy = 11;
+		getPanel_query1().add(labelQuery1Status, gbc_labelQuery1Status);
+		
+		panel_query2 = new JPanel();
+		contentPane.add(panel_query2, "panel_query2");
+		
+		panel_query3 = new JPanel();
+		contentPane.add(panel_query3, "panel_query3");
+		
+		panel_query4 = new JPanel();
+		contentPane.add(panel_query4, "panel_query4");
+		
+		panel_query5 = new JPanel();
+		contentPane.add(panel_query5, "panel_query5");
+		
+		panel_query6 = new JPanel();
+		contentPane.add(panel_query6, "panel_query6");
+		
+		panel_query7 = new JPanel();
+		contentPane.add(panel_query7, "panel_query7");
+		
+	}
+	
+	public JButton getButtonQuery1() {
+		return buttonQuery1;
+	}
+
+	public JPanel getPanel_query1() {
+		return panel_query1;
+	}
+
+	public JButton getButtonQuery1Back() {
+		return buttonQuery1Back;
+	}
+}

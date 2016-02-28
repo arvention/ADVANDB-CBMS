@@ -13,7 +13,6 @@
 <fullyQualifiedTypeName name="database.FacadeDatabase"/>
 <fullyQualifiedTypeName name="mvc.ModelTable"/>
 <fullyQualifiedTypeName name="java.awt.event.FocusListener"/>
-<fullyQualifiedTypeName name="mvc.Controller"/>
 <fullyQualifiedTypeName name="javax.swing.event.CaretListener"/>
 <fullyQualifiedTypeName name="java.awt.event.MouseListener"/>
 <fullyQualifiedTypeName name="javax.swing.table.AbstractTableModel"/>
@@ -21,7 +20,11 @@
 <fullyQualifiedTypeName name="javax.swing.table.TableModel"/>
 <fullyQualifiedTypeName name="javax.swing.table.DefaultTableModel"/>
 <fullyQualifiedTypeName name="javax.swing.JTable"/>
+<fullyQualifiedTypeName name="javax.swing.UIManager"/>
+<fullyQualifiedTypeName name="javax.swing.table.TableColumnModel"/>
 <fullyQualifiedTypeName name="java.awt.Component"/>
-<fullyQualifiedTypeName name="javax.swing.table.TableColumn"/>
 <fullyQualifiedTypeName name="javax.swing.table.TableCellRenderer"/>
+<fullyQualifiedTypeName name="javax.swing.table.TableColumn"/>
+<fullyQualifiedTypeName name="javax.swing.event.ChangeListener"/>
+<fullyQualifiedTypeName name="mvc.Controller"/>
 </qualifiedTypeNameHistroy>
