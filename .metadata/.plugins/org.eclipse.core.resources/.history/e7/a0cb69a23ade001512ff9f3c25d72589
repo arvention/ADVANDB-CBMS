@@ -1118,6 +1118,100 @@ public class Controller {
 	public String query3Builder(){
 		String sql = "";
 		
+		if(view.getComboBoxQuery3Municipality().getSelectedIndex() != 0 &&
+			view.getComboBoxQuery3Zone().getSelectedIndex() != 0 &&
+			view.getComboBoxQuery3Barangay().getSelectedIndex() != 0 &&
+			view.getComboBoxQuery3Purok().getSelectedIndex() != 0 &&
+			view.getComboBoxQuery3CropType().getSelectedIndex() != 0){
+			sql += "select mun as 'Municipality', zone as 'Zone', brgy as 'Barangay', purok as 'Purok', "
+					+ "croptype as 'Uri ng Pananim', "
+					+ "COUNT(croptype) as 'Bilang ng Pamilya na Nagtatanim ng Uri ng Tanim' "
+					+ "from hpq_crop C JOIN hpq_hh H ON C.`main.id`= H.id ";
+			sql += "where mun = " + view.getComboBoxQuery3Municipality().getSelectedItem().toString();
+			sql += " and zone = " + view.getComboBoxQuery3Zone().getSelectedItem().toString();
+			sql += " and brgy = " + view.getComboBoxQuery3Barangay().getSelectedItem().toString();
+			sql += " and purok = " + view.getComboBoxQuery3Purok().getSelectedItem().toString();
+			
+			if(view.getComboBoxQuery3CropType().getSelectedItem().toString().equals("Sugar Cane")){
+				sql += " and croptype = 1 ";
+			}else if(view.getComboBoxQuery3CropType().getSelectedItem().toString().equals("Palay")){
+				sql += " and croptype = 2 ";
+			}else if(view.getComboBoxQuery3CropType().getSelectedItem().toString().equals("Corn")){
+				sql += " and croptype = 3 ";
+			}else if(view.getComboBoxQuery3CropType().getSelectedItem().toString().equals("Coffee")){
+				sql += " and croptype = 4 ";
+			}else if(view.getComboBoxQuery3CropType().getSelectedItem().toString().equals("Other Crops")){
+				sql += " and croptype = 5 ";
+			}
+			sql += "group by mun, zone, brgy, purok, croptype";
+		} else if(view.getComboBoxQuery3Municipality().getSelectedIndex() != 0 &&
+				view.getComboBoxQuery3Zone().getSelectedIndex() != 0 &&
+				view.getComboBoxQuery3Barangay().getSelectedIndex() != 0 &&
+				view.getComboBoxQuery3CropType().getSelectedIndex() != 0){
+				sql += "select mun as 'Municipality', zone as 'Zone', brgy as 'Barangay', "
+						+ "croptype as 'Uri ng Pananim', "
+						+ "COUNT(croptype) as 'Bilang ng Pamilya na Nagtatanim ng Uri ng Tanim' "
+						+ "from hpq_crop C JOIN hpq_hh H ON C.`main.id`= H.id ";
+				sql += "where mun = " + view.getComboBoxQuery3Municipality().getSelectedItem().toString();
+				sql += " and zone = " + view.getComboBoxQuery3Zone().getSelectedItem().toString();
+				sql += " and brgy = " + view.getComboBoxQuery3Barangay().getSelectedItem().toString();
+				
+				if(view.getComboBoxQuery3CropType().getSelectedItem().toString().equals("Sugar Cane")){
+					sql += " and croptype = 1 ";
+				}else if(view.getComboBoxQuery3CropType().getSelectedItem().toString().equals("Palay")){
+					sql += " and croptype = 2 ";
+				}else if(view.getComboBoxQuery3CropType().getSelectedItem().toString().equals("Corn")){
+					sql += " and croptype = 3 ";
+				}else if(view.getComboBoxQuery3CropType().getSelectedItem().toString().equals("Coffee")){
+					sql += " and croptype = 4 ";
+				}else if(view.getComboBoxQuery3CropType().getSelectedItem().toString().equals("Other Crops")){
+					sql += " and croptype = 5 ";
+				}
+				sql += "group by mun, zone, brgy, croptype";
+		} else if(view.getComboBoxQuery3Municipality().getSelectedIndex() != 0 &&
+				view.getComboBoxQuery3Zone().getSelectedIndex() != 0 &&
+				view.getComboBoxQuery3CropType().getSelectedIndex() != 0){
+				sql += "select mun as 'Municipality', zone as 'Zone', "
+						+ "croptype as 'Uri ng Pananim', "
+						+ "COUNT(croptype) as 'Bilang ng Pamilya na Nagtatanim ng Uri ng Tanim' "
+						+ "from hpq_crop C JOIN hpq_hh H ON C.`main.id`= H.id ";
+				sql += "where mun = " + view.getComboBoxQuery3Municipality().getSelectedItem().toString();
+				sql += " and zone = " + view.getComboBoxQuery3Zone().getSelectedItem().toString();
+				
+				if(view.getComboBoxQuery3CropType().getSelectedItem().toString().equals("Sugar Cane")){
+					sql += " and croptype = 1 ";
+				}else if(view.getComboBoxQuery3CropType().getSelectedItem().toString().equals("Palay")){
+					sql += " and croptype = 2 ";
+				}else if(view.getComboBoxQuery3CropType().getSelectedItem().toString().equals("Corn")){
+					sql += " and croptype = 3 ";
+				}else if(view.getComboBoxQuery3CropType().getSelectedItem().toString().equals("Coffee")){
+					sql += " and croptype = 4 ";
+				}else if(view.getComboBoxQuery3CropType().getSelectedItem().toString().equals("Other Crops")){
+					sql += " and croptype = 5 ";
+				}
+				sql += "group by mun, zone, croptype";
+		} else if(view.getComboBoxQuery3Municipality().getSelectedIndex() != 0 &&
+				view.getComboBoxQuery3CropType().getSelectedIndex() != 0){
+				sql += "select mun as 'Municipality', "
+						+ "croptype as 'Uri ng Pananim', "
+						+ "COUNT(croptype) as 'Bilang ng Pamilya na Nagtatanim ng Uri ng Tanim' "
+						+ "from hpq_crop C JOIN hpq_hh H ON C.`main.id`= H.id ";
+				sql += "where mun = " + view.getComboBoxQuery3Municipality().getSelectedItem().toString();
+				
+				if(view.getComboBoxQuery3CropType().getSelectedItem().toString().equals("Sugar Cane")){
+					sql += " and croptype = 1 ";
+				}else if(view.getComboBoxQuery3CropType().getSelectedItem().toString().equals("Palay")){
+					sql += " and croptype = 2 ";
+				}else if(view.getComboBoxQuery3CropType().getSelectedItem().toString().equals("Corn")){
+					sql += " and croptype = 3 ";
+				}else if(view.getComboBoxQuery3CropType().getSelectedItem().toString().equals("Coffee")){
+					sql += " and croptype = 4 ";
+				}else if(view.getComboBoxQuery3CropType().getSelectedItem().toString().equals("Other Crops")){
+					sql += " and croptype = 5 ";
+				}
+				sql += "group by mun, croptype";
+		}
+		
 		return sql;
 	}
 }

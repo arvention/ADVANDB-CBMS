@@ -1117,7 +1117,6 @@ public class Controller {
 	
 	public String query3Builder(){
 		String sql = "";
-		
 		return sql;
 	}
 }

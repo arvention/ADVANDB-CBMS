@@ -1118,6 +1118,11 @@ public class Controller {
 	public String query3Builder(){
 		String sql = "";
 		
+		String select;
+		if(view.getComboBoxQuery3Municipality().getSelectedIndex() != 0){
+			
+		}
+		
 		return sql;
 	}
 }

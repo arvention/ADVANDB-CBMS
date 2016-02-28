@@ -1118,6 +1118,19 @@ public class Controller {
 	public String query3Builder(){
 		String sql = "";
 		
+		String select = "Select ";
+		String from = "From hpq_crop C JOIN hpq_hh H ON C.`main.id`= H.id ";
+		String where = "";
+		String groupBy = "";
+		if(view.getComboBoxQuery3Municipality().getSelectedIndex() != 0){
+			select += "mun as 'Municipality'";
+			
+			where = appendWhereChecker(where);
+			where += "mun = " + view.getComboBoxQuery3Municipality().getSelectedItem().toString();
+			
+			
+		}
+		
 		return sql;
 	}
 }

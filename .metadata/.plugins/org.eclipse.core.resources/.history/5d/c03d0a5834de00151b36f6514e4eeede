@@ -1935,7 +1935,7 @@ public class View extends JFrame {
 		panel_query3.add(labelQuery3Municipality, gbc_labelQuery3Municipality);
 		
 		comboBoxQuery3Municipality = new JComboBox<String>();
-		comboBoxQuery3Municipality.setModel(new DefaultComboBoxModel<String>(new String[] {"[SELECT]", "1", "2", "3", "4", "5", "6"}));
+		comboBoxQuery3Municipality.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6"}));
 		GridBagConstraints gbc_comboBoxQuery3Municipality = new GridBagConstraints();
 		gbc_comboBoxQuery3Municipality.fill = GridBagConstraints.HORIZONTAL;
 		gbc_comboBoxQuery3Municipality.insets = new Insets(0, 0, 5, 5);

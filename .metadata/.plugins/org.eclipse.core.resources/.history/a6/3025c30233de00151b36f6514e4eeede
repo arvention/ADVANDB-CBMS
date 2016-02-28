@@ -1118,6 +1118,17 @@ public class Controller {
 	public String query3Builder(){
 		String sql = "";
 		
+		if(view.getComboBoxQuery3Municipality().getSelectedIndex() != 0 &&
+			view.getComboBoxQuery3Zone().getSelectedIndex() != 0 &&
+			view.getComboBoxQuery3Barangay().getSelectedIndex() != 0 &&
+			view.getComboBoxQuery3Purok().getSelectedIndex() != 0 &&
+			view.getComboBoxQuery3CropType().getSelectedIndex() != 0){
+			sql += "select mun as 'Municipality', zone as 'Zone', brgy as 'Baranga'’, purok as 'Purok', "
+					+ "croptype as Uri ng Pananim', "
+					+ "COUNT(croptype) as 'Bilang ng Pamilya na Nagtatanim ng Uri ng Tanim' "
+					+ "from hpq_crop C JOIN hpq_hh H ON C.`main.id`= H.id";
+		}
+		
 		return sql;
 	}
 }

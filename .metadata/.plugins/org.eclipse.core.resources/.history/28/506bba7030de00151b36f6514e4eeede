@@ -449,6 +449,7 @@ public class Controller {
 				long endTime = System.nanoTime() - startTime;
 				double seconds = endTime / 1.0E09;
 				view.getLabelQuery2Status().setText("Rows returned: " + modelTable.getData().length + " | Running time: " + seconds + " seconds");
+				//view.getLabelQuery2Status().setText("Running time: " + seconds + " seconds");
 				DefaultTableModel dtm = new DefaultTableModel(modelTable.getData(), modelTable.getColumnName());
 				view.getTableQuery2ResultTable().setModel(dtm);
 			}
@@ -470,16 +471,7 @@ public class Controller {
 		
 		view.getButtonQuery3Query().addMouseListener(new MouseAdapter(){
 			public void mouseClicked(MouseEvent e){
-				String sql = query3Builder();
-				System.out.println(sql);
 				
-				long startTime = System.nanoTime();
-				facadeDatabase.getResult(sql, modelTable);
-				long endTime = System.nanoTime() - startTime;
-				double seconds = endTime / 1.0E09;
-				view.getLabelQuery3Status().setText("Rows returned: " + modelTable.getData().length + " | Running time: " + seconds + " seconds");
-				DefaultTableModel dtm = new DefaultTableModel(modelTable.getData(), modelTable.getColumnName());
-				view.getTableQuery3ResultTable().setModel(dtm);
 			}
 		});
 	}
@@ -1115,9 +1107,4 @@ public class Controller {
 		return sql;
 	}
 	
-	public String query3Builder(){
-		String sql = "";
-		
-		return sql;
-	}
 }

@@ -449,6 +449,7 @@ public class Controller {
 				long endTime = System.nanoTime() - startTime;
 				double seconds = endTime / 1.0E09;
 				view.getLabelQuery2Status().setText("Rows returned: " + modelTable.getData().length + " | Running time: " + seconds + " seconds");
+				//view.getLabelQuery2Status().setText("Running time: " + seconds + " seconds");
 				DefaultTableModel dtm = new DefaultTableModel(modelTable.getData(), modelTable.getColumnName());
 				view.getTableQuery2ResultTable().setModel(dtm);
 			}
@@ -1115,9 +1116,4 @@ public class Controller {
 		return sql;
 	}
 	
-	public String query3Builder(){
-		String sql = "";
-		
-		return sql;
-	}
 }

@@ -1,8 +1,0 @@
-package mvc;
-
-public class ModelTable {
-	private static ModelTable modelTable = new ModelTable();
-	private String[][] table;
-	
-	
-}

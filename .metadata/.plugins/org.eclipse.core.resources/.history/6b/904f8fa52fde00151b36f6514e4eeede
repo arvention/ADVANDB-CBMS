@@ -232,8 +232,6 @@ public class View extends JFrame {
 	private JComboBox<String> comboBoxQuery3CropType;
 	private JButton buttonQuery3Query;
 	private JLabel labelQuery3Status;
-	private JTable tableQuery3ResultTable;
-	private JScrollPane scrollPaneQuery3ResultTable;
 	
 	private View() {
 		setTitle("Community-Based Monitoring System");
@@ -1899,10 +1897,10 @@ public class View extends JFrame {
 		panel_query3 = new JPanel();
 		contentPane.add(panel_query3, "panel_query3");
 		GridBagLayout gbl_panel_query3 = new GridBagLayout();
-		gbl_panel_query3.columnWidths = new int[]{70, 148, 60, 45, 48, 98, 0};
-		gbl_panel_query3.rowHeights = new int[]{50, 0, 0, 0, 520, -63, 0};
-		gbl_panel_query3.columnWeights = new double[]{1.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
-		gbl_panel_query3.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+		gbl_panel_query3.columnWidths = new int[]{70, 148, 60, 45, 75, 48, 98, 0};
+		gbl_panel_query3.rowHeights = new int[]{50, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 181, -63, 0};
+		gbl_panel_query3.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+		gbl_panel_query3.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		panel_query3.setLayout(gbl_panel_query3);
 		
 		buttonQuery3Back = new JButton("<<");
@@ -1920,7 +1918,7 @@ public class View extends JFrame {
 		GridBagConstraints gbc_labelQuery3 = new GridBagConstraints();
 		gbc_labelQuery3.fill = GridBagConstraints.VERTICAL;
 		gbc_labelQuery3.anchor = GridBagConstraints.WEST;
-		gbc_labelQuery3.gridwidth = 5;
+		gbc_labelQuery3.gridwidth = 6;
 		gbc_labelQuery3.insets = new Insets(0, 0, 5, 0);
 		gbc_labelQuery3.gridx = 1;
 		gbc_labelQuery3.gridy = 0;
@@ -1955,6 +1953,7 @@ public class View extends JFrame {
 		comboBoxQuery3Zone.setModel(new DefaultComboBoxModel<String>(new String[] {"[SELECT]", "1", "2", "3", "4", "5", "6", "7", "9", "13", "18", "19", "99"}));
 		GridBagConstraints gbc_comboBoxQuery3Zone = new GridBagConstraints();
 		gbc_comboBoxQuery3Zone.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxQuery3Zone.gridwidth = 2;
 		gbc_comboBoxQuery3Zone.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBoxQuery3Zone.gridx = 3;
 		gbc_comboBoxQuery3Zone.gridy = 1;
@@ -1964,7 +1963,7 @@ public class View extends JFrame {
 		GridBagConstraints gbc_labelQuery3Barangay = new GridBagConstraints();
 		gbc_labelQuery3Barangay.anchor = GridBagConstraints.EAST;
 		gbc_labelQuery3Barangay.insets = new Insets(0, 0, 5, 5);
-		gbc_labelQuery3Barangay.gridx = 4;
+		gbc_labelQuery3Barangay.gridx = 5;
 		gbc_labelQuery3Barangay.gridy = 1;
 		panel_query3.add(labelQuery3Barangay, gbc_labelQuery3Barangay);
 		
@@ -1973,7 +1972,7 @@ public class View extends JFrame {
 		GridBagConstraints gbc_comboBoxQuery3Barangay = new GridBagConstraints();
 		gbc_comboBoxQuery3Barangay.fill = GridBagConstraints.BOTH;
 		gbc_comboBoxQuery3Barangay.insets = new Insets(0, 0, 5, 0);
-		gbc_comboBoxQuery3Barangay.gridx = 5;
+		gbc_comboBoxQuery3Barangay.gridx = 6;
 		gbc_comboBoxQuery3Barangay.gridy = 1;
 		panel_query3.add(comboBoxQuery3Barangay, gbc_comboBoxQuery3Barangay);
 		
@@ -2006,6 +2005,7 @@ public class View extends JFrame {
 		comboBoxQuery3CropType.setModel(new DefaultComboBoxModel<String>(new String[] {"[SELECT]", "Sugar Cane", "Palay", "Corn", "Coffee", "Other Crops"}));
 		GridBagConstraints gbc_comboBoxQuery3CropType = new GridBagConstraints();
 		gbc_comboBoxQuery3CropType.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxQuery3CropType.gridwidth = 2;
 		gbc_comboBoxQuery3CropType.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBoxQuery3CropType.gridx = 3;
 		gbc_comboBoxQuery3CropType.gridy = 2;
@@ -2016,21 +2016,9 @@ public class View extends JFrame {
 		gbc_buttonQuery3Query.fill = GridBagConstraints.BOTH;
 		gbc_buttonQuery3Query.gridwidth = 2;
 		gbc_buttonQuery3Query.insets = new Insets(0, 0, 5, 0);
-		gbc_buttonQuery3Query.gridx = 4;
+		gbc_buttonQuery3Query.gridx = 5;
 		gbc_buttonQuery3Query.gridy = 3;
 		panel_query3.add(buttonQuery3Query, gbc_buttonQuery3Query);
-		
-		scrollPaneQuery3ResultTable = new JScrollPane();
-		GridBagConstraints gbc_scrollPaneQuery3ResultTable = new GridBagConstraints();
-		gbc_scrollPaneQuery3ResultTable.fill = GridBagConstraints.BOTH;
-		gbc_scrollPaneQuery3ResultTable.gridwidth = 6;
-		gbc_scrollPaneQuery3ResultTable.insets = new Insets(0, 0, 5, 0);
-		gbc_scrollPaneQuery3ResultTable.gridx = 0;
-		gbc_scrollPaneQuery3ResultTable.gridy = 4;
-		panel_query3.add(scrollPaneQuery3ResultTable, gbc_scrollPaneQuery3ResultTable);
-		
-		tableQuery3ResultTable = new JTable();
-		scrollPaneQuery3ResultTable.setViewportView(tableQuery3ResultTable);
 		
 		labelQuery3Status = new JLabel("");
 		GridBagConstraints gbc_labelQuery3Status = new GridBagConstraints();
@@ -2038,7 +2026,7 @@ public class View extends JFrame {
 		gbc_labelQuery3Status.gridwidth = 3;
 		gbc_labelQuery3Status.insets = new Insets(0, 0, 0, 5);
 		gbc_labelQuery3Status.gridx = 0;
-		gbc_labelQuery3Status.gridy = 5;
+		gbc_labelQuery3Status.gridy = 16;
 		panel_query3.add(labelQuery3Status, gbc_labelQuery3Status);
 		
 	}
@@ -2789,73 +2777,5 @@ public class View extends JFrame {
 
 	public JSpinner getSpinnerQuery1ForestFireFrequencyLower() {
 		return spinnerQuery1ForestFireFrequencyLower;
-	}
-
-	public JPanel getPanel_query3() {
-		return panel_query3;
-	}
-
-	public JButton getButtonQuery3Back() {
-		return buttonQuery3Back;
-	}
-
-	public JLabel getLabelQuery3() {
-		return labelQuery3;
-	}
-
-	public JLabel getLabelQuery3Municipality() {
-		return labelQuery3Municipality;
-	}
-
-	public JComboBox<String> getComboBoxQuery3Municipality() {
-		return comboBoxQuery3Municipality;
-	}
-
-	public JLabel getLabelQuery3Zone() {
-		return labelQuery3Zone;
-	}
-
-	public JComboBox<String> getComboBoxQuery3Zone() {
-		return comboBoxQuery3Zone;
-	}
-
-	public JLabel getLabelQuery3Barangay() {
-		return labelQuery3Barangay;
-	}
-
-	public JComboBox<String> getComboBoxQuery3Barangay() {
-		return comboBoxQuery3Barangay;
-	}
-
-	public JLabel getLabelQuery3Purok() {
-		return labelQuery3Purok;
-	}
-
-	public JComboBox<String> getComboBoxQuery3Purok() {
-		return comboBoxQuery3Purok;
-	}
-
-	public JLabel getLabelQuery3CropType() {
-		return labelQuery3CropType;
-	}
-
-	public JComboBox<String> getComboBoxQuery3CropType() {
-		return comboBoxQuery3CropType;
-	}
-
-	public JButton getButtonQuery3Query() {
-		return buttonQuery3Query;
-	}
-
-	public JLabel getLabelQuery3Status() {
-		return labelQuery3Status;
-	}
-
-	public JTable getTableQuery3ResultTable() {
-		return tableQuery3ResultTable;
-	}
-
-	public JScrollPane getScrollPaneQuery3ResultTable() {
-		return scrollPaneQuery3ResultTable;
 	}
 }

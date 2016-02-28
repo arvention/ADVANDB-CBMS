@@ -507,6 +507,15 @@ public class Controller {
 		return query;
 	}
 	
+	public String appendSelectChecker(String sql){
+		String query = sql;
+		if(!query.contains("select"))
+			query += "select ";
+		else
+			query += " and ";
+		return query;
+	}
+	
 	public String query1Builder(){
 		String sql = "Select id as ID, mun as Municipality, zone as Zone, brgy as Barangay, "
 				+ "purok as Purok, house_type_o as 'House Type', nbr as 'House Number', "
@@ -1117,6 +1126,19 @@ public class Controller {
 	
 	public String query3Builder(){
 		String sql = "";
+		
+		String select = "Select ";
+		String from = "From hpq_crop C JOIN hpq_hh H ON C.`main.id`= H.id ";
+		String where = "";
+		String groupBy = "";
+		if(view.getComboBoxQuery3Municipality().getSelectedIndex() != 0){
+			select += "mun as 'Municipality'";
+			
+			where = appendWhereChecker(where);
+			where += "mun = " + view.getComboBoxQuery3Municipality().getSelectedItem().toString();
+			
+			
+		}
 		
 		return sql;
 	}
