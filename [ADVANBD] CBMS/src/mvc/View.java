@@ -27,6 +27,8 @@ import java.awt.Toolkit;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.JCheckBox;
+import javax.swing.SwingConstants;
 
 public class View extends JFrame {
 
@@ -234,6 +236,74 @@ public class View extends JFrame {
 	private JLabel labelQuery3Status;
 	private JTable tableQuery3ResultTable;
 	private JScrollPane scrollPaneQuery3ResultTable;
+	private JCheckBox checkBoxQuery3Municipality;
+	private JCheckBox checkBoxQuery3Purok;
+	private JCheckBox checkBoxQuery3Zone;
+	private JCheckBox checkBoxQuery3CropType;
+	private JCheckBox checkBoxQuery3Barangay;
+	private JPanel panel_query4;
+	private JButton buttonQuery4Back;
+	private JLabel labelQuery4;
+	private JCheckBox checkBoxQuery4Municipality;
+	private JLabel labelQuery4Municipality;
+	private JComboBox<String> comboBoxQuery4Municipality;
+	private JCheckBox checkBoxQuery4Zone;
+	private JLabel labelQuery4Zone;
+	private JComboBox<String> comboBoxQuery4Zone;
+	private JCheckBox checkBoxQuery4Barangay;
+	private JLabel labelQuery4Barangay;
+	private JComboBox<String> comboBoxQuery4Barangay;
+	private JCheckBox checkBoxQuery4Purok;
+	private JLabel labelQuery4Purok;
+	private JComboBox<String> comboBoxQuery4Purok;
+	private JCheckBox checkBoxQuery4Pagkamatay;
+	private JLabel labelQuery4Pagkamatay;
+	private JComboBox<String> comboBoxQuery4Pagkamatay;
+	private JButton buttonQuery4Query;
+	private JLabel labelQuery4Status;
+	private JTable tableQuery4ResultTable;
+	private JScrollPane scrollPaneQuery4ResultTable;
+	private JPanel panel_query5;
+	private JButton buttonQuery5Back;
+	private JLabel labelQuery5;
+	private JCheckBox checkBoxQuery5Municipality;
+	private JLabel labelQuery5Municipality;
+	private JComboBox<String> comboBoxQuery5Municipality;
+	private JCheckBox checkBoxQuery5Zone;
+	private JLabel labelQuery5Zone;
+	private JComboBox<String> comboBoxQuery5Zone;
+	private JCheckBox checkBoxQuery5Barangay;
+	private JLabel labelQuery5Barangay;
+	private JComboBox<String> comboBoxQuery5Barangay;
+	private JCheckBox checkBoxQuery5Purok;
+	private JLabel labelQuery5Purok;
+	private JComboBox<String> comboBoxQuery5Purok;
+	private JCheckBox checkBoxQuery5Kagamitan;
+	private JLabel labelQuery5Kagamitan;
+	private JComboBox<String> comboBoxQuery5Kagamitan;
+	private JButton buttonQuery5Query;
+	private JLabel labelQuery5Status;
+	private JTable tableQuery5ResultTable;
+	private JScrollPane scrollPaneQuery5ResultTable;
+	private JPanel panel_query6;
+	private JButton buttonQuery6Back;
+	private JLabel labelQuery6;
+	private JCheckBox checkBoxQuery6Municipality;
+	private JLabel labelQuery6Municipality;
+	private JComboBox<String> comboBoxQuery6Municipality;
+	private JCheckBox checkBoxQuery6Zone;
+	private JLabel labelQuery6Zone;
+	private JComboBox<String> comboBoxQuery6Zone;
+	private JCheckBox checkBoxQuery6Barangay;
+	private JLabel labelQuery6Barangay;
+	private JComboBox<String> comboBoxQuery6Barangay;
+	private JCheckBox checkBoxQuery6Purok;
+	private JLabel labelQuery6Purok;
+	private JComboBox<String> comboBoxQuery6Purok;
+	private JButton buttonQuery6Query;
+	private JLabel labelQuery6Status;
+	private JTable tableQuery6ResultTable;
+	private JScrollPane scrollPaneQuery6ResultTable;
 	
 	private View() {
 		setTitle("Community-Based Monitoring System");
@@ -322,7 +392,7 @@ public class View extends JFrame {
 		gbc_buttonQuery3.gridy = 3;
 		panel_main.add(buttonQuery3, gbc_buttonQuery3);
 		
-		buttonQuery4 = new JButton("Query 4");
+		buttonQuery4 = new JButton("Death Area Report");
 		buttonQuery4.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		GridBagConstraints gbc_buttonQuery4 = new GridBagConstraints();
 		gbc_buttonQuery4.fill = GridBagConstraints.BOTH;
@@ -1899,15 +1969,16 @@ public class View extends JFrame {
 		panel_query3 = new JPanel();
 		contentPane.add(panel_query3, "panel_query3");
 		GridBagLayout gbl_panel_query3 = new GridBagLayout();
-		gbl_panel_query3.columnWidths = new int[]{70, 148, 60, 45, 48, 98, 0};
+		gbl_panel_query3.columnWidths = new int[]{10, 70, 90, 10, 60, 100, 10, 64, 98, 0};
 		gbl_panel_query3.rowHeights = new int[]{50, 0, 0, 0, 520, -63, 0};
-		gbl_panel_query3.columnWeights = new double[]{1.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+		gbl_panel_query3.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		gbl_panel_query3.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		panel_query3.setLayout(gbl_panel_query3);
 		
 		buttonQuery3Back = new JButton("<<");
 		buttonQuery3Back.setFont(new Font("SansSerif", Font.PLAIN, 14));
 		GridBagConstraints gbc_buttonQuery3Back = new GridBagConstraints();
+		gbc_buttonQuery3Back.gridwidth = 2;
 		gbc_buttonQuery3Back.fill = GridBagConstraints.HORIZONTAL;
 		gbc_buttonQuery3Back.anchor = GridBagConstraints.WEST;
 		gbc_buttonQuery3Back.insets = new Insets(0, 0, 5, 5);
@@ -1920,94 +1991,135 @@ public class View extends JFrame {
 		GridBagConstraints gbc_labelQuery3 = new GridBagConstraints();
 		gbc_labelQuery3.fill = GridBagConstraints.VERTICAL;
 		gbc_labelQuery3.anchor = GridBagConstraints.WEST;
-		gbc_labelQuery3.gridwidth = 5;
+		gbc_labelQuery3.gridwidth = 7;
 		gbc_labelQuery3.insets = new Insets(0, 0, 5, 0);
-		gbc_labelQuery3.gridx = 1;
+		gbc_labelQuery3.gridx = 2;
 		gbc_labelQuery3.gridy = 0;
 		panel_query3.add(labelQuery3, gbc_labelQuery3);
 		
-		labelQuery3Municipality = new JLabel("Municipality");
+		checkBoxQuery3Municipality = new JCheckBox("");
+		GridBagConstraints gbc_checkBoxQuery3Municipality = new GridBagConstraints();
+		gbc_checkBoxQuery3Municipality.fill = GridBagConstraints.BOTH;
+		gbc_checkBoxQuery3Municipality.insets = new Insets(0, 0, 5, 5);
+		gbc_checkBoxQuery3Municipality.gridx = 0;
+		gbc_checkBoxQuery3Municipality.gridy = 1;
+		panel_query3.add(checkBoxQuery3Municipality, gbc_checkBoxQuery3Municipality);
+		
+		labelQuery3Municipality = new JLabel("by Municipality");
 		GridBagConstraints gbc_labelQuery3Municipality = new GridBagConstraints();
-		gbc_labelQuery3Municipality.anchor = GridBagConstraints.EAST;
+		gbc_labelQuery3Municipality.anchor = GridBagConstraints.WEST;
 		gbc_labelQuery3Municipality.insets = new Insets(0, 0, 5, 5);
-		gbc_labelQuery3Municipality.gridx = 0;
+		gbc_labelQuery3Municipality.gridx = 1;
 		gbc_labelQuery3Municipality.gridy = 1;
 		panel_query3.add(labelQuery3Municipality, gbc_labelQuery3Municipality);
 		
 		comboBoxQuery3Municipality = new JComboBox<String>();
+		comboBoxQuery3Municipality.setEnabled(false);
 		comboBoxQuery3Municipality.setModel(new DefaultComboBoxModel<String>(new String[] {"[SELECT]", "1", "2", "3", "4", "5", "6"}));
 		GridBagConstraints gbc_comboBoxQuery3Municipality = new GridBagConstraints();
 		gbc_comboBoxQuery3Municipality.fill = GridBagConstraints.HORIZONTAL;
 		gbc_comboBoxQuery3Municipality.insets = new Insets(0, 0, 5, 5);
-		gbc_comboBoxQuery3Municipality.gridx = 1;
+		gbc_comboBoxQuery3Municipality.gridx = 2;
 		gbc_comboBoxQuery3Municipality.gridy = 1;
 		panel_query3.add(comboBoxQuery3Municipality, gbc_comboBoxQuery3Municipality);
 		
-		labelQuery3Zone = new JLabel("Zone");
+		checkBoxQuery3Zone = new JCheckBox("");
+		GridBagConstraints gbc_checkBoxQuery3Zone = new GridBagConstraints();
+		gbc_checkBoxQuery3Zone.insets = new Insets(0, 0, 5, 5);
+		gbc_checkBoxQuery3Zone.gridx = 3;
+		gbc_checkBoxQuery3Zone.gridy = 1;
+		panel_query3.add(checkBoxQuery3Zone, gbc_checkBoxQuery3Zone);
+		
+		labelQuery3Zone = new JLabel("by Zone");
 		GridBagConstraints gbc_labelQuery3Zone = new GridBagConstraints();
-		gbc_labelQuery3Zone.anchor = GridBagConstraints.EAST;
+		gbc_labelQuery3Zone.anchor = GridBagConstraints.WEST;
 		gbc_labelQuery3Zone.insets = new Insets(0, 0, 5, 5);
-		gbc_labelQuery3Zone.gridx = 2;
+		gbc_labelQuery3Zone.gridx = 4;
 		gbc_labelQuery3Zone.gridy = 1;
 		panel_query3.add(labelQuery3Zone, gbc_labelQuery3Zone);
 		
 		comboBoxQuery3Zone = new JComboBox<String>();
+		comboBoxQuery3Zone.setEnabled(false);
 		comboBoxQuery3Zone.setModel(new DefaultComboBoxModel<String>(new String[] {"[SELECT]", "1", "2", "3", "4", "5", "6", "7", "9", "13", "18", "19", "99"}));
 		GridBagConstraints gbc_comboBoxQuery3Zone = new GridBagConstraints();
 		gbc_comboBoxQuery3Zone.fill = GridBagConstraints.HORIZONTAL;
 		gbc_comboBoxQuery3Zone.insets = new Insets(0, 0, 5, 5);
-		gbc_comboBoxQuery3Zone.gridx = 3;
+		gbc_comboBoxQuery3Zone.gridx = 5;
 		gbc_comboBoxQuery3Zone.gridy = 1;
 		panel_query3.add(comboBoxQuery3Zone, gbc_comboBoxQuery3Zone);
 		
-		labelQuery3Barangay = new JLabel("Barangay");
+		checkBoxQuery3Barangay = new JCheckBox("");
+		GridBagConstraints gbc_checkBoxQuery3Barangay = new GridBagConstraints();
+		gbc_checkBoxQuery3Barangay.insets = new Insets(0, 0, 5, 5);
+		gbc_checkBoxQuery3Barangay.gridx = 6;
+		gbc_checkBoxQuery3Barangay.gridy = 1;
+		panel_query3.add(checkBoxQuery3Barangay, gbc_checkBoxQuery3Barangay);
+		
+		labelQuery3Barangay = new JLabel("by Barangay");
 		GridBagConstraints gbc_labelQuery3Barangay = new GridBagConstraints();
-		gbc_labelQuery3Barangay.anchor = GridBagConstraints.EAST;
+		gbc_labelQuery3Barangay.anchor = GridBagConstraints.WEST;
 		gbc_labelQuery3Barangay.insets = new Insets(0, 0, 5, 5);
-		gbc_labelQuery3Barangay.gridx = 4;
+		gbc_labelQuery3Barangay.gridx = 7;
 		gbc_labelQuery3Barangay.gridy = 1;
 		panel_query3.add(labelQuery3Barangay, gbc_labelQuery3Barangay);
 		
 		comboBoxQuery3Barangay = new JComboBox<String>();
+		comboBoxQuery3Barangay.setEnabled(false);
 		comboBoxQuery3Barangay.setModel(new DefaultComboBoxModel<String>(new String[] {"[SELECT]", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61"}));
 		GridBagConstraints gbc_comboBoxQuery3Barangay = new GridBagConstraints();
 		gbc_comboBoxQuery3Barangay.fill = GridBagConstraints.BOTH;
 		gbc_comboBoxQuery3Barangay.insets = new Insets(0, 0, 5, 0);
-		gbc_comboBoxQuery3Barangay.gridx = 5;
+		gbc_comboBoxQuery3Barangay.gridx = 8;
 		gbc_comboBoxQuery3Barangay.gridy = 1;
 		panel_query3.add(comboBoxQuery3Barangay, gbc_comboBoxQuery3Barangay);
 		
-		labelQuery3Purok = new JLabel("Purok");
+		checkBoxQuery3Purok = new JCheckBox("");
+		GridBagConstraints gbc_checkBoxQuery3Purok = new GridBagConstraints();
+		gbc_checkBoxQuery3Purok.insets = new Insets(0, 0, 5, 5);
+		gbc_checkBoxQuery3Purok.gridx = 0;
+		gbc_checkBoxQuery3Purok.gridy = 2;
+		panel_query3.add(checkBoxQuery3Purok, gbc_checkBoxQuery3Purok);
+		
+		labelQuery3Purok = new JLabel("by Purok");
 		GridBagConstraints gbc_labelQuery3Purok = new GridBagConstraints();
-		gbc_labelQuery3Purok.anchor = GridBagConstraints.EAST;
+		gbc_labelQuery3Purok.anchor = GridBagConstraints.WEST;
 		gbc_labelQuery3Purok.insets = new Insets(0, 0, 5, 5);
-		gbc_labelQuery3Purok.gridx = 0;
+		gbc_labelQuery3Purok.gridx = 1;
 		gbc_labelQuery3Purok.gridy = 2;
 		panel_query3.add(labelQuery3Purok, gbc_labelQuery3Purok);
 		
 		comboBoxQuery3Purok = new JComboBox<String>();
+		comboBoxQuery3Purok.setEnabled(false);
 		comboBoxQuery3Purok.setModel(new DefaultComboBoxModel<String>(new String[] {"[SELECT]", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "26", "99"}));
 		GridBagConstraints gbc_comboBoxQuery3Purok = new GridBagConstraints();
 		gbc_comboBoxQuery3Purok.fill = GridBagConstraints.HORIZONTAL;
 		gbc_comboBoxQuery3Purok.insets = new Insets(0, 0, 5, 5);
-		gbc_comboBoxQuery3Purok.gridx = 1;
+		gbc_comboBoxQuery3Purok.gridx = 2;
 		gbc_comboBoxQuery3Purok.gridy = 2;
 		panel_query3.add(comboBoxQuery3Purok, gbc_comboBoxQuery3Purok);
 		
-		labelQuery3CropType = new JLabel("Crop Type");
+		checkBoxQuery3CropType = new JCheckBox("");
+		GridBagConstraints gbc_checkBoxQuery3CropType = new GridBagConstraints();
+		gbc_checkBoxQuery3CropType.insets = new Insets(0, 0, 5, 5);
+		gbc_checkBoxQuery3CropType.gridx = 3;
+		gbc_checkBoxQuery3CropType.gridy = 2;
+		panel_query3.add(checkBoxQuery3CropType, gbc_checkBoxQuery3CropType);
+		
+		labelQuery3CropType = new JLabel("by Crop Type");
 		GridBagConstraints gbc_labelQuery3CropType = new GridBagConstraints();
-		gbc_labelQuery3CropType.anchor = GridBagConstraints.EAST;
+		gbc_labelQuery3CropType.anchor = GridBagConstraints.WEST;
 		gbc_labelQuery3CropType.insets = new Insets(0, 0, 5, 5);
-		gbc_labelQuery3CropType.gridx = 2;
+		gbc_labelQuery3CropType.gridx = 4;
 		gbc_labelQuery3CropType.gridy = 2;
 		panel_query3.add(labelQuery3CropType, gbc_labelQuery3CropType);
 		
 		comboBoxQuery3CropType = new JComboBox<String>();
+		comboBoxQuery3CropType.setEnabled(false);
 		comboBoxQuery3CropType.setModel(new DefaultComboBoxModel<String>(new String[] {"[SELECT]", "Sugar Cane", "Palay", "Corn", "Coffee", "Other Crops"}));
 		GridBagConstraints gbc_comboBoxQuery3CropType = new GridBagConstraints();
 		gbc_comboBoxQuery3CropType.fill = GridBagConstraints.HORIZONTAL;
 		gbc_comboBoxQuery3CropType.insets = new Insets(0, 0, 5, 5);
-		gbc_comboBoxQuery3CropType.gridx = 3;
+		gbc_comboBoxQuery3CropType.gridx = 5;
 		gbc_comboBoxQuery3CropType.gridy = 2;
 		panel_query3.add(comboBoxQuery3CropType, gbc_comboBoxQuery3CropType);
 		
@@ -2016,14 +2128,14 @@ public class View extends JFrame {
 		gbc_buttonQuery3Query.fill = GridBagConstraints.BOTH;
 		gbc_buttonQuery3Query.gridwidth = 2;
 		gbc_buttonQuery3Query.insets = new Insets(0, 0, 5, 0);
-		gbc_buttonQuery3Query.gridx = 4;
+		gbc_buttonQuery3Query.gridx = 7;
 		gbc_buttonQuery3Query.gridy = 3;
 		panel_query3.add(buttonQuery3Query, gbc_buttonQuery3Query);
 		
 		scrollPaneQuery3ResultTable = new JScrollPane();
 		GridBagConstraints gbc_scrollPaneQuery3ResultTable = new GridBagConstraints();
 		gbc_scrollPaneQuery3ResultTable.fill = GridBagConstraints.BOTH;
-		gbc_scrollPaneQuery3ResultTable.gridwidth = 6;
+		gbc_scrollPaneQuery3ResultTable.gridwidth = 9;
 		gbc_scrollPaneQuery3ResultTable.insets = new Insets(0, 0, 5, 0);
 		gbc_scrollPaneQuery3ResultTable.gridx = 0;
 		gbc_scrollPaneQuery3ResultTable.gridy = 4;
@@ -2035,11 +2147,551 @@ public class View extends JFrame {
 		labelQuery3Status = new JLabel("");
 		GridBagConstraints gbc_labelQuery3Status = new GridBagConstraints();
 		gbc_labelQuery3Status.anchor = GridBagConstraints.SOUTHWEST;
-		gbc_labelQuery3Status.gridwidth = 3;
+		gbc_labelQuery3Status.gridwidth = 5;
 		gbc_labelQuery3Status.insets = new Insets(0, 0, 0, 5);
 		gbc_labelQuery3Status.gridx = 0;
 		gbc_labelQuery3Status.gridy = 5;
 		panel_query3.add(labelQuery3Status, gbc_labelQuery3Status);
+		
+		panel_query4 = new JPanel();
+		contentPane.add(panel_query4, "panel_query4");
+		GridBagLayout gbl_panel_query4 = new GridBagLayout();
+		gbl_panel_query4.columnWidths = new int[]{10, 70, 80, 10, 60, 90, 10, 64, 71, 0};
+		gbl_panel_query4.rowHeights = new int[]{50, 0, 0, 0, 520, -63, 0};
+		gbl_panel_query4.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel_query4.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 1.0, 1.0, Double.MIN_VALUE};
+		panel_query4.setLayout(gbl_panel_query4);
+		
+		buttonQuery4Back = new JButton("<<");
+		buttonQuery4Back.setFont(new Font("SansSerif", Font.PLAIN, 14));
+		GridBagConstraints gbc_buttonQuery4Back = new GridBagConstraints();
+		gbc_buttonQuery4Back.fill = GridBagConstraints.HORIZONTAL;
+		gbc_buttonQuery4Back.anchor = GridBagConstraints.WEST;
+		gbc_buttonQuery4Back.gridwidth = 2;
+		gbc_buttonQuery4Back.insets = new Insets(0, 0, 5, 5);
+		gbc_buttonQuery4Back.gridx = 0;
+		gbc_buttonQuery4Back.gridy = 0;
+		panel_query4.add(buttonQuery4Back, gbc_buttonQuery4Back);
+		
+		labelQuery4 = new JLabel("Death Area Report");
+		labelQuery4.setFont(new Font("SansSerif", Font.BOLD, 20));
+		GridBagConstraints gbc_labelQuery4 = new GridBagConstraints();
+		gbc_labelQuery4.fill = GridBagConstraints.VERTICAL;
+		gbc_labelQuery4.anchor = GridBagConstraints.WEST;
+		gbc_labelQuery4.gridwidth = 7;
+		gbc_labelQuery4.insets = new Insets(0, 0, 5, 0);
+		gbc_labelQuery4.gridx = 2;
+		gbc_labelQuery4.gridy = 0;
+		panel_query4.add(labelQuery4, gbc_labelQuery4);
+		
+		checkBoxQuery4Municipality = new JCheckBox("");
+		GridBagConstraints gbc_checkBoxQuery4Municipality = new GridBagConstraints();
+		gbc_checkBoxQuery4Municipality.fill = GridBagConstraints.BOTH;
+		gbc_checkBoxQuery4Municipality.insets = new Insets(0, 0, 5, 5);
+		gbc_checkBoxQuery4Municipality.gridx = 0;
+		gbc_checkBoxQuery4Municipality.gridy = 1;
+		panel_query4.add(checkBoxQuery4Municipality, gbc_checkBoxQuery4Municipality);
+		
+		labelQuery4Municipality = new JLabel("by Municipality");
+		GridBagConstraints gbc_labelQuery4Municipality = new GridBagConstraints();
+		gbc_labelQuery4Municipality.anchor = GridBagConstraints.WEST;
+		gbc_labelQuery4Municipality.insets = new Insets(0, 0, 5, 5);
+		gbc_labelQuery4Municipality.gridx = 1;
+		gbc_labelQuery4Municipality.gridy = 1;
+		panel_query4.add(labelQuery4Municipality, gbc_labelQuery4Municipality);
+		
+		comboBoxQuery4Municipality = new JComboBox<String>();
+		comboBoxQuery4Municipality.setEnabled(false);
+		comboBoxQuery4Municipality.setModel(new DefaultComboBoxModel<String>(new String[] {"[SELECT]", "1", "2", "3", "4", "5", "6"}));
+		GridBagConstraints gbc_comboBoxQuery4Municipality = new GridBagConstraints();
+		gbc_comboBoxQuery4Municipality.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxQuery4Municipality.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBoxQuery4Municipality.gridx = 2;
+		gbc_comboBoxQuery4Municipality.gridy = 1;
+		panel_query4.add(comboBoxQuery4Municipality, gbc_comboBoxQuery4Municipality);
+		
+		checkBoxQuery4Zone = new JCheckBox("");
+		GridBagConstraints gbc_checkBoxQuery4Zone = new GridBagConstraints();
+		gbc_checkBoxQuery4Zone.insets = new Insets(0, 0, 5, 5);
+		gbc_checkBoxQuery4Zone.gridx = 3;
+		gbc_checkBoxQuery4Zone.gridy = 1;
+		panel_query4.add(checkBoxQuery4Zone, gbc_checkBoxQuery4Zone);
+		
+		labelQuery4Zone = new JLabel("by Zone");
+		GridBagConstraints gbc_labelQuery4Zone = new GridBagConstraints();
+		gbc_labelQuery4Zone.anchor = GridBagConstraints.WEST;
+		gbc_labelQuery4Zone.insets = new Insets(0, 0, 5, 5);
+		gbc_labelQuery4Zone.gridx = 4;
+		gbc_labelQuery4Zone.gridy = 1;
+		panel_query4.add(labelQuery4Zone, gbc_labelQuery4Zone);
+		
+		comboBoxQuery4Zone = new JComboBox<String>();
+		comboBoxQuery4Zone.setEnabled(false);
+		comboBoxQuery4Zone.setModel(new DefaultComboBoxModel<String>(new String[] {"[SELECT]", "1", "2", "3", "4", "5", "6", "7", "9", "13", "18", "19", "99"}));
+		GridBagConstraints gbc_comboBoxQuery4Zone = new GridBagConstraints();
+		gbc_comboBoxQuery4Zone.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxQuery4Zone.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBoxQuery4Zone.gridx = 5;
+		gbc_comboBoxQuery4Zone.gridy = 1;
+		panel_query4.add(comboBoxQuery4Zone, gbc_comboBoxQuery4Zone);
+		
+		checkBoxQuery4Barangay = new JCheckBox("");
+		GridBagConstraints gbc_checkBoxQuery4Barangay = new GridBagConstraints();
+		gbc_checkBoxQuery4Barangay.insets = new Insets(0, 0, 5, 5);
+		gbc_checkBoxQuery4Barangay.gridx = 6;
+		gbc_checkBoxQuery4Barangay.gridy = 1;
+		panel_query4.add(checkBoxQuery4Barangay, gbc_checkBoxQuery4Barangay);
+		
+		labelQuery4Barangay = new JLabel("by Barangay");
+		GridBagConstraints gbc_labelQuery4Barangay = new GridBagConstraints();
+		gbc_labelQuery4Barangay.anchor = GridBagConstraints.EAST;
+		gbc_labelQuery4Barangay.insets = new Insets(0, 0, 5, 5);
+		gbc_labelQuery4Barangay.gridx = 7;
+		gbc_labelQuery4Barangay.gridy = 1;
+		panel_query4.add(labelQuery4Barangay, gbc_labelQuery4Barangay);
+		
+		comboBoxQuery4Barangay = new JComboBox<String>();
+		comboBoxQuery4Barangay.setEnabled(false);
+		comboBoxQuery4Barangay.setModel(new DefaultComboBoxModel<String>(new String[] {"[SELECT]", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61"}));
+		GridBagConstraints gbc_comboBoxQuery4Barangay = new GridBagConstraints();
+		gbc_comboBoxQuery4Barangay.fill = GridBagConstraints.BOTH;
+		gbc_comboBoxQuery4Barangay.insets = new Insets(0, 0, 5, 0);
+		gbc_comboBoxQuery4Barangay.gridx = 8;
+		gbc_comboBoxQuery4Barangay.gridy = 1;
+		panel_query4.add(comboBoxQuery4Barangay, gbc_comboBoxQuery4Barangay);
+		
+		checkBoxQuery4Purok = new JCheckBox("");
+		GridBagConstraints gbc_checkBoxQuery4Purok = new GridBagConstraints();
+		gbc_checkBoxQuery4Purok.insets = new Insets(0, 0, 5, 5);
+		gbc_checkBoxQuery4Purok.gridx = 0;
+		gbc_checkBoxQuery4Purok.gridy = 2;
+		panel_query4.add(checkBoxQuery4Purok, gbc_checkBoxQuery4Purok);
+		
+		labelQuery4Purok = new JLabel("by Purok");
+		GridBagConstraints gbc_labelQuery4Purok = new GridBagConstraints();
+		gbc_labelQuery4Purok.anchor = GridBagConstraints.WEST;
+		gbc_labelQuery4Purok.insets = new Insets(0, 0, 5, 5);
+		gbc_labelQuery4Purok.gridx = 1;
+		gbc_labelQuery4Purok.gridy = 2;
+		panel_query4.add(labelQuery4Purok, gbc_labelQuery4Purok);
+		
+		comboBoxQuery4Purok = new JComboBox<String>();
+		comboBoxQuery4Purok.setEnabled(false);
+		comboBoxQuery4Purok.setModel(new DefaultComboBoxModel<String>(new String[] {"[SELECT]", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "26", "99"}));
+		GridBagConstraints gbc_comboBoxQuery4Purok = new GridBagConstraints();
+		gbc_comboBoxQuery4Purok.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxQuery4Purok.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBoxQuery4Purok.gridx = 2;
+		gbc_comboBoxQuery4Purok.gridy = 2;
+		panel_query4.add(comboBoxQuery4Purok, gbc_comboBoxQuery4Purok);
+		
+		checkBoxQuery4Pagkamatay = new JCheckBox("");
+		GridBagConstraints gbc_checkBoxQuery4Pagkamatay = new GridBagConstraints();
+		gbc_checkBoxQuery4Pagkamatay.insets = new Insets(0, 0, 5, 5);
+		gbc_checkBoxQuery4Pagkamatay.gridx = 3;
+		gbc_checkBoxQuery4Pagkamatay.gridy = 2;
+		panel_query4.add(checkBoxQuery4Pagkamatay, gbc_checkBoxQuery4Pagkamatay);
+		
+		labelQuery4Pagkamatay = new JLabel("by Sanhi ng Pagkamatay");
+		GridBagConstraints gbc_labelQuery4Pagkamatay = new GridBagConstraints();
+		gbc_labelQuery4Pagkamatay.anchor = GridBagConstraints.WEST;
+		gbc_labelQuery4Pagkamatay.insets = new Insets(0, 0, 5, 5);
+		gbc_labelQuery4Pagkamatay.gridx = 4;
+		gbc_labelQuery4Pagkamatay.gridy = 2;
+		panel_query4.add(labelQuery4Pagkamatay, gbc_labelQuery4Pagkamatay);
+		
+		comboBoxQuery4Pagkamatay = new JComboBox<String>();
+		comboBoxQuery4Pagkamatay.setEnabled(false);
+		comboBoxQuery4Pagkamatay.setModel(new DefaultComboBoxModel<String>(new String[] {"[SELECT]", "Diseases of the heart", "Diseases of the vascular system", "Pneumonia", "Tuberculosis", "Cancer", "Diarrhea", "Measles", "Complication during pregnancy or childbirth", "Accident", "Diabetes", "Disease of the lungs", "Disease of the kidney", "Drowned from flood", "Victim of landslide", "Electrocuted during typhoon", "Murder"}));
+		GridBagConstraints gbc_comboBoxQuery4Pagkamatay = new GridBagConstraints();
+		gbc_comboBoxQuery4Pagkamatay.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxQuery4Pagkamatay.gridwidth = 4;
+		gbc_comboBoxQuery4Pagkamatay.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBoxQuery4Pagkamatay.gridx = 5;
+		gbc_comboBoxQuery4Pagkamatay.gridy = 2;
+		panel_query4.add(comboBoxQuery4Pagkamatay, gbc_comboBoxQuery4Pagkamatay);
+		
+		buttonQuery4Query = new JButton("Query");
+		GridBagConstraints gbc_buttonQuery4Query = new GridBagConstraints();
+		gbc_buttonQuery4Query.gridwidth = 2;
+		gbc_buttonQuery4Query.fill = GridBagConstraints.BOTH;
+		gbc_buttonQuery4Query.insets = new Insets(0, 0, 5, 0);
+		gbc_buttonQuery4Query.gridx = 7;
+		gbc_buttonQuery4Query.gridy = 3;
+		panel_query4.add(buttonQuery4Query, gbc_buttonQuery4Query);
+		
+		scrollPaneQuery4ResultTable = new JScrollPane();
+		GridBagConstraints gbc_scrollPaneQuery4ResultTable = new GridBagConstraints();
+		gbc_scrollPaneQuery4ResultTable.fill = GridBagConstraints.BOTH;
+		gbc_scrollPaneQuery4ResultTable.gridwidth = 9;
+		gbc_scrollPaneQuery4ResultTable.insets = new Insets(0, 0, 5, 5);
+		gbc_scrollPaneQuery4ResultTable.gridx = 0;
+		gbc_scrollPaneQuery4ResultTable.gridy = 4;
+		panel_query4.add(scrollPaneQuery4ResultTable, gbc_scrollPaneQuery4ResultTable);
+		
+		tableQuery4ResultTable = new JTable();
+		scrollPaneQuery4ResultTable.setViewportView(tableQuery4ResultTable);
+		
+		labelQuery4Status = new JLabel("");
+		GridBagConstraints gbc_labelQuery4Status = new GridBagConstraints();
+		gbc_labelQuery4Status.anchor = GridBagConstraints.SOUTHWEST;
+		gbc_labelQuery4Status.gridwidth = 5;
+		gbc_labelQuery4Status.insets = new Insets(0, 0, 0, 5);
+		gbc_labelQuery4Status.gridx = 0;
+		gbc_labelQuery4Status.gridy = 5;
+		panel_query4.add(labelQuery4Status, gbc_labelQuery4Status);
+		
+		panel_query5 = new JPanel();
+		contentPane.add(panel_query5, "panel_query5");
+		GridBagLayout gbl_panel_query5 = new GridBagLayout();
+		gbl_panel_query5.columnWidths = new int[]{10, 70, 90, 10, 60, 100, 10, 64, 98, 0};
+		gbl_panel_query5.rowHeights = new int[]{50, 0, 0, 0, 520, -63, 0};
+		gbl_panel_query5.columnWeights = new double[]{1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+		gbl_panel_query5.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 1.0, 1.0, Double.MIN_VALUE};
+		panel_query5.setLayout(gbl_panel_query5);
+		
+		buttonQuery5Back = new JButton("<<");
+		buttonQuery5Back.setFont(new Font("SansSerif", Font.PLAIN, 14));
+		GridBagConstraints gbc_buttonQuery5Back = new GridBagConstraints();
+		gbc_buttonQuery5Back.fill = GridBagConstraints.HORIZONTAL;
+		gbc_buttonQuery5Back.anchor = GridBagConstraints.WEST;
+		gbc_buttonQuery5Back.gridwidth = 2;
+		gbc_buttonQuery5Back.insets = new Insets(0, 0, 5, 5);
+		gbc_buttonQuery5Back.gridx = 0;
+		gbc_buttonQuery5Back.gridy = 0;
+		panel_query5.add(buttonQuery5Back, gbc_buttonQuery5Back);
+		
+		labelQuery5 = new JLabel("Query5 Report");
+		labelQuery5.setFont(new Font("SansSerif", Font.BOLD, 20));
+		GridBagConstraints gbc_labelQuery5 = new GridBagConstraints();
+		gbc_labelQuery5.fill = GridBagConstraints.VERTICAL;
+		gbc_labelQuery5.anchor = GridBagConstraints.WEST;
+		gbc_labelQuery5.gridwidth = 7;
+		gbc_labelQuery5.insets = new Insets(0, 0, 5, 0);
+		gbc_labelQuery5.gridx = 2;
+		gbc_labelQuery5.gridy = 0;
+		panel_query5.add(labelQuery5, gbc_labelQuery5);
+		
+		checkBoxQuery5Municipality = new JCheckBox("");
+		checkBoxQuery5Municipality.setHorizontalAlignment(SwingConstants.CENTER);
+		GridBagConstraints gbc_checkBoxQuery5Municipality = new GridBagConstraints();
+		gbc_checkBoxQuery5Municipality.fill = GridBagConstraints.BOTH;
+		gbc_checkBoxQuery5Municipality.insets = new Insets(0, 0, 5, 5);
+		gbc_checkBoxQuery5Municipality.gridx = 0;
+		gbc_checkBoxQuery5Municipality.gridy = 1;
+		panel_query5.add(checkBoxQuery5Municipality, gbc_checkBoxQuery5Municipality);
+		
+		labelQuery5Municipality = new JLabel("by Municipality");
+		GridBagConstraints gbc_labelQuery5Municipality = new GridBagConstraints();
+		gbc_labelQuery5Municipality.anchor = GridBagConstraints.WEST;
+		gbc_labelQuery5Municipality.insets = new Insets(0, 0, 5, 5);
+		gbc_labelQuery5Municipality.gridx = 1;
+		gbc_labelQuery5Municipality.gridy = 1;
+		panel_query5.add(labelQuery5Municipality, gbc_labelQuery5Municipality);
+		
+		comboBoxQuery5Municipality = new JComboBox<String>();
+		comboBoxQuery5Municipality.setEnabled(false);
+		comboBoxQuery5Municipality.setModel(new DefaultComboBoxModel<String>(new String[] {"[SELECT]", "1", "2", "3", "4", "5", "6"}));
+		GridBagConstraints gbc_comboBoxQuery5Municipality = new GridBagConstraints();
+		gbc_comboBoxQuery5Municipality.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxQuery5Municipality.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBoxQuery5Municipality.gridx = 2;
+		gbc_comboBoxQuery5Municipality.gridy = 1;
+		panel_query5.add(comboBoxQuery5Municipality, gbc_comboBoxQuery5Municipality);
+		
+		checkBoxQuery5Zone = new JCheckBox("");
+		GridBagConstraints gbc_checkBoxQuery5Zone = new GridBagConstraints();
+		gbc_checkBoxQuery5Zone.insets = new Insets(0, 0, 5, 5);
+		gbc_checkBoxQuery5Zone.gridx = 3;
+		gbc_checkBoxQuery5Zone.gridy = 1;
+		panel_query5.add(checkBoxQuery5Zone, gbc_checkBoxQuery5Zone);
+		
+		labelQuery5Zone = new JLabel("by Zone");
+		GridBagConstraints gbc_labelQuery5Zone = new GridBagConstraints();
+		gbc_labelQuery5Zone.anchor = GridBagConstraints.WEST;
+		gbc_labelQuery5Zone.insets = new Insets(0, 0, 5, 5);
+		gbc_labelQuery5Zone.gridx = 4;
+		gbc_labelQuery5Zone.gridy = 1;
+		panel_query5.add(labelQuery5Zone, gbc_labelQuery5Zone);
+		
+		comboBoxQuery5Zone = new JComboBox<String>();
+		comboBoxQuery5Zone.setEnabled(false);
+		comboBoxQuery5Zone.setModel(new DefaultComboBoxModel<String>(new String[] {"[SELECT]", "1", "2", "3", "4", "5", "6", "7", "9", "13", "18", "19", "99"}));
+		GridBagConstraints gbc_comboBoxQuery5Zone = new GridBagConstraints();
+		gbc_comboBoxQuery5Zone.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxQuery5Zone.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBoxQuery5Zone.gridx = 5;
+		gbc_comboBoxQuery5Zone.gridy = 1;
+		panel_query5.add(comboBoxQuery5Zone, gbc_comboBoxQuery5Zone);
+		
+		checkBoxQuery5Barangay = new JCheckBox("");
+		GridBagConstraints gbc_checkBoxQuery5Barangay = new GridBagConstraints();
+		gbc_checkBoxQuery5Barangay.insets = new Insets(0, 0, 5, 5);
+		gbc_checkBoxQuery5Barangay.gridx = 6;
+		gbc_checkBoxQuery5Barangay.gridy = 1;
+		panel_query5.add(checkBoxQuery5Barangay, gbc_checkBoxQuery5Barangay);
+		
+		labelQuery5Barangay = new JLabel("by Barangay");
+		GridBagConstraints gbc_labelQuery5Barangay = new GridBagConstraints();
+		gbc_labelQuery5Barangay.anchor = GridBagConstraints.WEST;
+		gbc_labelQuery5Barangay.insets = new Insets(0, 0, 5, 5);
+		gbc_labelQuery5Barangay.gridx = 7;
+		gbc_labelQuery5Barangay.gridy = 1;
+		panel_query5.add(labelQuery5Barangay, gbc_labelQuery5Barangay);
+		
+		comboBoxQuery5Barangay = new JComboBox<String>();
+		comboBoxQuery5Barangay.setEnabled(false);
+		comboBoxQuery5Barangay.setModel(new DefaultComboBoxModel<String>(new String[] {"[SELECT]", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61"}));
+		GridBagConstraints gbc_comboBoxQuery5Barangay = new GridBagConstraints();
+		gbc_comboBoxQuery5Barangay.fill = GridBagConstraints.BOTH;
+		gbc_comboBoxQuery5Barangay.insets = new Insets(0, 0, 5, 0);
+		gbc_comboBoxQuery5Barangay.gridx = 8;
+		gbc_comboBoxQuery5Barangay.gridy = 1;
+		panel_query5.add(comboBoxQuery5Barangay, gbc_comboBoxQuery5Barangay);
+		
+		checkBoxQuery5Purok = new JCheckBox("");
+		GridBagConstraints gbc_checkBoxQuery5Purok = new GridBagConstraints();
+		gbc_checkBoxQuery5Purok.insets = new Insets(0, 0, 5, 5);
+		gbc_checkBoxQuery5Purok.gridx = 0;
+		gbc_checkBoxQuery5Purok.gridy = 2;
+		panel_query5.add(checkBoxQuery5Purok, gbc_checkBoxQuery5Purok);
+		
+		labelQuery5Purok = new JLabel("by Purok");
+		GridBagConstraints gbc_labelQuery5Purok = new GridBagConstraints();
+		gbc_labelQuery5Purok.anchor = GridBagConstraints.WEST;
+		gbc_labelQuery5Purok.insets = new Insets(0, 0, 5, 5);
+		gbc_labelQuery5Purok.gridx = 1;
+		gbc_labelQuery5Purok.gridy = 2;
+		panel_query5.add(labelQuery5Purok, gbc_labelQuery5Purok);
+		
+		comboBoxQuery5Purok = new JComboBox<String>();
+		comboBoxQuery5Purok.setEnabled(false);
+		comboBoxQuery5Purok.setModel(new DefaultComboBoxModel<String>(new String[] {"[SELECT]", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "26", "99"}));
+		GridBagConstraints gbc_comboBoxQuery5Purok = new GridBagConstraints();
+		gbc_comboBoxQuery5Purok.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxQuery5Purok.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBoxQuery5Purok.gridx = 2;
+		gbc_comboBoxQuery5Purok.gridy = 2;
+		panel_query5.add(comboBoxQuery5Purok, gbc_comboBoxQuery5Purok);
+		
+		checkBoxQuery5Kagamitan = new JCheckBox("");
+		GridBagConstraints gbc_checkBoxQuery5Kagamitan = new GridBagConstraints();
+		gbc_checkBoxQuery5Kagamitan.insets = new Insets(0, 0, 5, 5);
+		gbc_checkBoxQuery5Kagamitan.gridx = 3;
+		gbc_checkBoxQuery5Kagamitan.gridy = 2;
+		panel_query5.add(checkBoxQuery5Kagamitan, gbc_checkBoxQuery5Kagamitan);
+		
+		labelQuery5Kagamitan = new JLabel("by Uri ng Kagamitang Pangingisda");
+		GridBagConstraints gbc_labelQuery5Kagamitan = new GridBagConstraints();
+		gbc_labelQuery5Kagamitan.gridwidth = 2;
+		gbc_labelQuery5Kagamitan.anchor = GridBagConstraints.WEST;
+		gbc_labelQuery5Kagamitan.insets = new Insets(0, 0, 5, 5);
+		gbc_labelQuery5Kagamitan.gridx = 4;
+		gbc_labelQuery5Kagamitan.gridy = 2;
+		panel_query5.add(labelQuery5Kagamitan, gbc_labelQuery5Kagamitan);
+		
+		comboBoxQuery5Kagamitan = new JComboBox<String>();
+		comboBoxQuery5Kagamitan.setEnabled(false);
+		comboBoxQuery5Kagamitan.setModel(new DefaultComboBoxModel<String>(new String[] {"[SELECT]", "Fish net", "Electricity", "Bagnets", "Gillnets", "Traps", "Hooks and line", "Sift net", "Others"}));
+		GridBagConstraints gbc_comboBoxQuery5Kagamitan = new GridBagConstraints();
+		gbc_comboBoxQuery5Kagamitan.gridwidth = 3;
+		gbc_comboBoxQuery5Kagamitan.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxQuery5Kagamitan.insets = new Insets(0, 0, 5, 0);
+		gbc_comboBoxQuery5Kagamitan.gridx = 6;
+		gbc_comboBoxQuery5Kagamitan.gridy = 2;
+		panel_query5.add(comboBoxQuery5Kagamitan, gbc_comboBoxQuery5Kagamitan);
+		
+		buttonQuery5Query = new JButton("Query");
+		GridBagConstraints gbc_buttonQuery5Query = new GridBagConstraints();
+		gbc_buttonQuery5Query.fill = GridBagConstraints.BOTH;
+		gbc_buttonQuery5Query.gridwidth = 2;
+		gbc_buttonQuery5Query.insets = new Insets(0, 0, 5, 0);
+		gbc_buttonQuery5Query.gridx = 7;
+		gbc_buttonQuery5Query.gridy = 3;
+		panel_query5.add(buttonQuery5Query, gbc_buttonQuery5Query);
+		
+		scrollPaneQuery5ResultTable = new JScrollPane();
+		GridBagConstraints gbc_scrollPaneQuery5ResultTable = new GridBagConstraints();
+		gbc_scrollPaneQuery5ResultTable.fill = GridBagConstraints.BOTH;
+		gbc_scrollPaneQuery5ResultTable.gridwidth = 9;
+		gbc_scrollPaneQuery5ResultTable.insets = new Insets(0, 0, 5, 5);
+		gbc_scrollPaneQuery5ResultTable.gridx = 0;
+		gbc_scrollPaneQuery5ResultTable.gridy = 4;
+		panel_query5.add(scrollPaneQuery5ResultTable, gbc_scrollPaneQuery5ResultTable);
+		
+		tableQuery5ResultTable = new JTable();
+		scrollPaneQuery5ResultTable.setViewportView(tableQuery5ResultTable);
+		
+		labelQuery5Status = new JLabel("");
+		GridBagConstraints gbc_labelQuery5Status = new GridBagConstraints();
+		gbc_labelQuery5Status.anchor = GridBagConstraints.SOUTHWEST;
+		gbc_labelQuery5Status.gridwidth = 5;
+		gbc_labelQuery5Status.insets = new Insets(0, 0, 0, 5);
+		gbc_labelQuery5Status.gridx = 0;
+		gbc_labelQuery5Status.gridy = 5;
+		panel_query5.add(labelQuery5Status, gbc_labelQuery5Status);
+		
+		panel_query6 = new JPanel();
+		contentPane.add(panel_query6, "panel_query6");
+		GridBagLayout gbl_panel_query6 = new GridBagLayout();
+		gbl_panel_query6.columnWidths = new int[]{10, 70, 90, 10, 60, 100, 10, 64, 98, 0};
+		gbl_panel_query6.rowHeights = new int[]{50, 0, 0, 0, 520, -63, 0};
+		gbl_panel_query6.columnWeights = new double[]{1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+		gbl_panel_query6.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 1.0, 1.0, Double.MIN_VALUE};
+		panel_query6.setLayout(gbl_panel_query6);
+		
+		buttonQuery6Back = new JButton("<<");
+		buttonQuery6Back.setFont(new Font("SansSerif", Font.PLAIN, 14));
+		GridBagConstraints gbc_buttonQuery6Back = new GridBagConstraints();
+		gbc_buttonQuery6Back.fill = GridBagConstraints.HORIZONTAL;
+		gbc_buttonQuery6Back.anchor = GridBagConstraints.WEST;
+		gbc_buttonQuery6Back.gridwidth = 2;
+		gbc_buttonQuery6Back.insets = new Insets(0, 0, 5, 5);
+		gbc_buttonQuery6Back.gridx = 0;
+		gbc_buttonQuery6Back.gridy = 0;
+		panel_query6.add(buttonQuery6Back, gbc_buttonQuery6Back);
+		
+		labelQuery6 = new JLabel("Query6 Report");
+		labelQuery6.setFont(new Font("SansSerif", Font.BOLD, 20));
+		GridBagConstraints gbc_labelQuery6 = new GridBagConstraints();
+		gbc_labelQuery6.fill = GridBagConstraints.VERTICAL;
+		gbc_labelQuery6.anchor = GridBagConstraints.WEST;
+		gbc_labelQuery6.gridwidth = 7;
+		gbc_labelQuery6.insets = new Insets(0, 0, 5, 0);
+		gbc_labelQuery6.gridx = 2;
+		gbc_labelQuery6.gridy = 0;
+		panel_query6.add(labelQuery6, gbc_labelQuery6);
+		
+		checkBoxQuery6Municipality = new JCheckBox("");
+		GridBagConstraints gbc_checkBoxQuery6Municipality = new GridBagConstraints();
+		gbc_checkBoxQuery6Municipality.fill = GridBagConstraints.VERTICAL;
+		gbc_checkBoxQuery6Municipality.insets = new Insets(0, 0, 5, 5);
+		gbc_checkBoxQuery6Municipality.gridx = 0;
+		gbc_checkBoxQuery6Municipality.gridy = 1;
+		panel_query6.add(checkBoxQuery6Municipality, gbc_checkBoxQuery6Municipality);
+		
+		labelQuery6Municipality = new JLabel("by Municipality");
+		GridBagConstraints gbc_labelQuery6Municipality = new GridBagConstraints();
+		gbc_labelQuery6Municipality.anchor = GridBagConstraints.WEST;
+		gbc_labelQuery6Municipality.insets = new Insets(0, 0, 5, 5);
+		gbc_labelQuery6Municipality.gridx = 1;
+		gbc_labelQuery6Municipality.gridy = 1;
+		panel_query6.add(labelQuery6Municipality, gbc_labelQuery6Municipality);
+		
+		comboBoxQuery6Municipality = new JComboBox<String>();
+		comboBoxQuery6Municipality.setModel(new DefaultComboBoxModel<String>(new String[] {"[SELECT]", "1", "2", "3", "4", "5", "6"}));
+		comboBoxQuery6Municipality.setEnabled(false);
+		GridBagConstraints gbc_comboBoxQuery6Municipality = new GridBagConstraints();
+		gbc_comboBoxQuery6Municipality.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxQuery6Municipality.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBoxQuery6Municipality.gridx = 2;
+		gbc_comboBoxQuery6Municipality.gridy = 1;
+		panel_query6.add(comboBoxQuery6Municipality, gbc_comboBoxQuery6Municipality);
+		
+		checkBoxQuery6Zone = new JCheckBox("");
+		GridBagConstraints gbc_checkBoxQuery6Zone = new GridBagConstraints();
+		gbc_checkBoxQuery6Zone.insets = new Insets(0, 0, 5, 5);
+		gbc_checkBoxQuery6Zone.gridx = 3;
+		gbc_checkBoxQuery6Zone.gridy = 1;
+		panel_query6.add(checkBoxQuery6Zone, gbc_checkBoxQuery6Zone);
+		
+		labelQuery6Zone = new JLabel("by Zone");
+		GridBagConstraints gbc_labelQuery6Zone = new GridBagConstraints();
+		gbc_labelQuery6Zone.anchor = GridBagConstraints.WEST;
+		gbc_labelQuery6Zone.insets = new Insets(0, 0, 5, 5);
+		gbc_labelQuery6Zone.gridx = 4;
+		gbc_labelQuery6Zone.gridy = 1;
+		panel_query6.add(labelQuery6Zone, gbc_labelQuery6Zone);
+		
+		comboBoxQuery6Zone = new JComboBox<String>();
+		comboBoxQuery6Zone.setModel(new DefaultComboBoxModel<String>(new String[] {"[SELECT]", "1", "2", "3", "4", "5", "6", "7", "9", "13", "18", "19", "99"}));
+		comboBoxQuery6Zone.setEnabled(false);
+		GridBagConstraints gbc_comboBoxQuery6Zone = new GridBagConstraints();
+		gbc_comboBoxQuery6Zone.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxQuery6Zone.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBoxQuery6Zone.gridx = 5;
+		gbc_comboBoxQuery6Zone.gridy = 1;
+		panel_query6.add(comboBoxQuery6Zone, gbc_comboBoxQuery6Zone);
+		
+		checkBoxQuery6Barangay = new JCheckBox("");
+		GridBagConstraints gbc_checkBoxQuery6Barangay = new GridBagConstraints();
+		gbc_checkBoxQuery6Barangay.insets = new Insets(0, 0, 5, 5);
+		gbc_checkBoxQuery6Barangay.gridx = 6;
+		gbc_checkBoxQuery6Barangay.gridy = 1;
+		panel_query6.add(checkBoxQuery6Barangay, gbc_checkBoxQuery6Barangay);
+		
+		labelQuery6Barangay = new JLabel("by Barangay");
+		GridBagConstraints gbc_labelQuery6Barangay = new GridBagConstraints();
+		gbc_labelQuery6Barangay.anchor = GridBagConstraints.WEST;
+		gbc_labelQuery6Barangay.insets = new Insets(0, 0, 5, 5);
+		gbc_labelQuery6Barangay.gridx = 7;
+		gbc_labelQuery6Barangay.gridy = 1;
+		panel_query6.add(labelQuery6Barangay, gbc_labelQuery6Barangay);
+		
+		comboBoxQuery6Barangay = new JComboBox<String>();
+		comboBoxQuery6Barangay.setModel(new DefaultComboBoxModel<String>(new String[] {"[SELECT]", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61"}));
+		comboBoxQuery6Barangay.setEnabled(false);
+		GridBagConstraints gbc_comboBoxQuery6Barangay = new GridBagConstraints();
+		gbc_comboBoxQuery6Barangay.fill = GridBagConstraints.BOTH;
+		gbc_comboBoxQuery6Barangay.insets = new Insets(0, 0, 5, 0);
+		gbc_comboBoxQuery6Barangay.gridx = 8;
+		gbc_comboBoxQuery6Barangay.gridy = 1;
+		panel_query6.add(comboBoxQuery6Barangay, gbc_comboBoxQuery6Barangay);
+		
+		checkBoxQuery6Purok = new JCheckBox("");
+		GridBagConstraints gbc_checkBoxQuery6Purok = new GridBagConstraints();
+		gbc_checkBoxQuery6Purok.insets = new Insets(0, 0, 5, 5);
+		gbc_checkBoxQuery6Purok.gridx = 0;
+		gbc_checkBoxQuery6Purok.gridy = 2;
+		panel_query6.add(checkBoxQuery6Purok, gbc_checkBoxQuery6Purok);
+		
+		labelQuery6Purok = new JLabel("by Purok");
+		GridBagConstraints gbc_labelQuery6Purok = new GridBagConstraints();
+		gbc_labelQuery6Purok.anchor = GridBagConstraints.WEST;
+		gbc_labelQuery6Purok.insets = new Insets(0, 0, 5, 5);
+		gbc_labelQuery6Purok.gridx = 1;
+		gbc_labelQuery6Purok.gridy = 2;
+		panel_query6.add(labelQuery6Purok, gbc_labelQuery6Purok);
+		
+		comboBoxQuery6Purok = new JComboBox<String>();
+		comboBoxQuery6Purok.setModel(new DefaultComboBoxModel<String>(new String[] {"[SELECT]", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "26", "99"}));
+		comboBoxQuery6Purok.setEnabled(false);
+		GridBagConstraints gbc_comboBoxQuery6Purok = new GridBagConstraints();
+		gbc_comboBoxQuery6Purok.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxQuery6Purok.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBoxQuery6Purok.gridx = 2;
+		gbc_comboBoxQuery6Purok.gridy = 2;
+		panel_query6.add(comboBoxQuery6Purok, gbc_comboBoxQuery6Purok);
+		
+		buttonQuery6Query = new JButton("Query");
+		GridBagConstraints gbc_buttonQuery6Query = new GridBagConstraints();
+		gbc_buttonQuery6Query.fill = GridBagConstraints.BOTH;
+		gbc_buttonQuery6Query.gridwidth = 2;
+		gbc_buttonQuery6Query.insets = new Insets(0, 0, 5, 0);
+		gbc_buttonQuery6Query.gridx = 7;
+		gbc_buttonQuery6Query.gridy = 3;
+		panel_query6.add(buttonQuery6Query, gbc_buttonQuery6Query);
+		
+		scrollPaneQuery6ResultTable = new JScrollPane();
+		GridBagConstraints gbc_scrollPaneQuery6ResultTable = new GridBagConstraints();
+		gbc_scrollPaneQuery6ResultTable.fill = GridBagConstraints.BOTH;
+		gbc_scrollPaneQuery6ResultTable.gridwidth = 9;
+		gbc_scrollPaneQuery6ResultTable.insets = new Insets(0, 0, 5, 5);
+		gbc_scrollPaneQuery6ResultTable.gridx = 0;
+		gbc_scrollPaneQuery6ResultTable.gridy = 4;
+		panel_query6.add(scrollPaneQuery6ResultTable, gbc_scrollPaneQuery6ResultTable);
+		
+		tableQuery6ResultTable = new JTable();
+		scrollPaneQuery6ResultTable.setViewportView(tableQuery6ResultTable);
+		
+		labelQuery6Status = new JLabel("");
+		GridBagConstraints gbc_labelQuery6Status = new GridBagConstraints();
+		gbc_labelQuery6Status.anchor = GridBagConstraints.SOUTHWEST;
+		gbc_labelQuery6Status.gridwidth = 5;
+		gbc_labelQuery6Status.insets = new Insets(0, 0, 0, 5);
+		gbc_labelQuery6Status.gridx = 0;
+		gbc_labelQuery6Status.gridy = 5;
+		panel_query6.add(labelQuery6Status, gbc_labelQuery6Status);
 		
 	}
 
@@ -2857,5 +3509,277 @@ public class View extends JFrame {
 
 	public JScrollPane getScrollPaneQuery3ResultTable() {
 		return scrollPaneQuery3ResultTable;
+	}
+
+	public JCheckBox getCheckBoxQuery3Municipality() {
+		return checkBoxQuery3Municipality;
+	}
+
+	public JCheckBox getCheckBoxQuery3Purok() {
+		return checkBoxQuery3Purok;
+	}
+
+	public JCheckBox getCheckBoxQuery3Zone() {
+		return checkBoxQuery3Zone;
+	}
+
+	public JCheckBox getCheckBoxQuery3CropType() {
+		return checkBoxQuery3CropType;
+	}
+
+	public JCheckBox getCheckBoxQuery3Barangay() {
+		return checkBoxQuery3Barangay;
+	}
+
+	public JPanel getPanel_query4() {
+		return panel_query4;
+	}
+
+	public JButton getButtonQuery4Back() {
+		return buttonQuery4Back;
+	}
+
+	public JLabel getLabelQuery4() {
+		return labelQuery4;
+	}
+
+	public JCheckBox getCheckBoxQuery4Municipality() {
+		return checkBoxQuery4Municipality;
+	}
+
+	public JLabel getLabelQuery4Municipality() {
+		return labelQuery4Municipality;
+	}
+
+	public JComboBox<String> getComboBoxQuery4Municipality() {
+		return comboBoxQuery4Municipality;
+	}
+
+	public JCheckBox getCheckBoxQuery4Zone() {
+		return checkBoxQuery4Zone;
+	}
+
+	public JLabel getLabelQuery4Zone() {
+		return labelQuery4Zone;
+	}
+
+	public JComboBox<String> getComboBoxQuery4Zone() {
+		return comboBoxQuery4Zone;
+	}
+
+	public JCheckBox getCheckBoxQuery4Barangay() {
+		return checkBoxQuery4Barangay;
+	}
+
+	public JLabel getLabelQuery4Barangay() {
+		return labelQuery4Barangay;
+	}
+
+	public JComboBox<String> getComboBoxQuery4Barangay() {
+		return comboBoxQuery4Barangay;
+	}
+
+	public JCheckBox getCheckBoxQuery4Purok() {
+		return checkBoxQuery4Purok;
+	}
+
+	public JLabel getLabelQuery4Purok() {
+		return labelQuery4Purok;
+	}
+
+	public JComboBox<String> getComboBoxQuery4Purok() {
+		return comboBoxQuery4Purok;
+	}
+
+	public JCheckBox getCheckBoxQuery4Pagkamatay() {
+		return checkBoxQuery4Pagkamatay;
+	}
+
+	public JLabel getLabelQuery4Pagkamatay() {
+		return labelQuery4Pagkamatay;
+	}
+
+	public JComboBox<String> getComboBoxQuery4Pagkamatay() {
+		return comboBoxQuery4Pagkamatay;
+	}
+
+	public JButton getButtonQuery4Query() {
+		return buttonQuery4Query;
+	}
+
+	public JLabel getLabelQuery4Status() {
+		return labelQuery4Status;
+	}
+
+	public JTable getTableQuery4ResultTable() {
+		return tableQuery4ResultTable;
+	}
+
+	public JScrollPane getScrollPaneQuery4ResultTable() {
+		return scrollPaneQuery4ResultTable;
+	}
+
+	public JPanel getPanel_query5() {
+		return panel_query5;
+	}
+
+	public JButton getButtonQuery5Back() {
+		return buttonQuery5Back;
+	}
+
+	public JLabel getLabelQuery5() {
+		return labelQuery5;
+	}
+
+	public JCheckBox getCheckBoxQuery5Municipality() {
+		return checkBoxQuery5Municipality;
+	}
+
+	public JLabel getLabelQuery5Municipality() {
+		return labelQuery5Municipality;
+	}
+
+	public JComboBox<String> getComboBoxQuery5Municipality() {
+		return comboBoxQuery5Municipality;
+	}
+
+	public JCheckBox getCheckBoxQuery5Zone() {
+		return checkBoxQuery5Zone;
+	}
+
+	public JLabel getLabelQuery5Zone() {
+		return labelQuery5Zone;
+	}
+
+	public JComboBox<String> getComboBoxQuery5Zone() {
+		return comboBoxQuery5Zone;
+	}
+
+	public JCheckBox getCheckBoxQuery5Barangay() {
+		return checkBoxQuery5Barangay;
+	}
+
+	public JLabel getLabelQuery5Barangay() {
+		return labelQuery5Barangay;
+	}
+
+	public JComboBox<String> getComboBoxQuery5Barangay() {
+		return comboBoxQuery5Barangay;
+	}
+
+	public JCheckBox getCheckBoxQuery5Purok() {
+		return checkBoxQuery5Purok;
+	}
+
+	public JLabel getLabelQuery5Purok() {
+		return labelQuery5Purok;
+	}
+
+	public JComboBox<String> getComboBoxQuery5Purok() {
+		return comboBoxQuery5Purok;
+	}
+
+	public JCheckBox getCheckBoxQuery5Kagamitan() {
+		return checkBoxQuery5Kagamitan;
+	}
+
+	public JLabel getLabelQuery5Kagamitan() {
+		return labelQuery5Kagamitan;
+	}
+
+	public JComboBox<String> getComboBoxQuery5Kagamitan() {
+		return comboBoxQuery5Kagamitan;
+	}
+
+	public JButton getButtonQuery5Query() {
+		return buttonQuery5Query;
+	}
+
+	public JLabel getLabelQuery5Status() {
+		return labelQuery5Status;
+	}
+
+	public JTable getTableQuery5ResultTable() {
+		return tableQuery5ResultTable;
+	}
+
+	public JScrollPane getScrollPaneQuery5ResultTable() {
+		return scrollPaneQuery5ResultTable;
+	}
+
+	public JPanel getPanel_query6() {
+		return panel_query6;
+	}
+
+	public JButton getButtonQuery6Back() {
+		return buttonQuery6Back;
+	}
+
+	public JLabel getLabelQuery6() {
+		return labelQuery6;
+	}
+
+	public JCheckBox getCheckBoxQuery6Municipality() {
+		return checkBoxQuery6Municipality;
+	}
+
+	public JLabel getLabelQuery6Municipality() {
+		return labelQuery6Municipality;
+	}
+
+	public JComboBox<String> getComboBoxQuery6Municipality() {
+		return comboBoxQuery6Municipality;
+	}
+
+	public JCheckBox getCheckBoxQuery6Zone() {
+		return checkBoxQuery6Zone;
+	}
+
+	public JLabel getLabelQuery6Zone() {
+		return labelQuery6Zone;
+	}
+
+	public JComboBox<String> getComboBoxQuery6Zone() {
+		return comboBoxQuery6Zone;
+	}
+
+	public JCheckBox getCheckBoxQuery6Barangay() {
+		return checkBoxQuery6Barangay;
+	}
+
+	public JLabel getLabelQuery6Barangay() {
+		return labelQuery6Barangay;
+	}
+
+	public JComboBox<String> getComboBoxQuery6Barangay() {
+		return comboBoxQuery6Barangay;
+	}
+
+	public JCheckBox getCheckBoxQuery6Purok() {
+		return checkBoxQuery6Purok;
+	}
+
+	public JLabel getLabelQuery6Purok() {
+		return labelQuery6Purok;
+	}
+
+	public JComboBox<String> getComboBoxQuery6Purok() {
+		return comboBoxQuery6Purok;
+	}
+
+	public JButton getButtonQuery6Query() {
+		return buttonQuery6Query;
+	}
+
+	public JLabel getLabelQuery6Status() {
+		return labelQuery6Status;
+	}
+
+	public JTable getTableQuery6ResultTable() {
+		return tableQuery6ResultTable;
+	}
+
+	public JScrollPane getScrollPaneQuery6ResultTable() {
+		return scrollPaneQuery6ResultTable;
 	}
 }

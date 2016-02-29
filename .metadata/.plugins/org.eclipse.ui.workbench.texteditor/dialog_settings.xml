@@ -2,30 +2,30 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="philheal_life_nmem" key="selection"/>
+		<item value="Query6" key="selection"/>
 		<item value="true" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="Query3"/>
+			<item value="CropType"/>
+			<item value="Municipality"/>
+			<item value="&#x09;&#x09;buttonQuery6Button"/>
+			<item value="Back"/>
 			<item value="philheal_life_nmem"/>
 			<item value="PHL"/>
 			<item value="cct"/>
-			<item value="CCT"/>
-			<item value="fudforwrk"/>
-			<item value="FFWP"/>
-			<item value="fudforsch"/>
-			<item value="FFSP"/>
 		</list>
 		<list key="replacehistory">
-			<item value="nprog"/>
-			<item value="OtherPrograms"/>
-			<item value="philheal_life"/>
-			<item value="PHL"/>
-			<item value="philheal_spon"/>
-			<item value="PHS"/>
-			<item value="philheal_indiv"/>
-			<item value="PHIP"/>
+			<item value="Query6"/>
+			<item value="Kagamitan"/>
+			<item value="Query5"/>
+			<item value="Pagkamatay"/>
+			<item value="Query4"/>
+			<item value="CropType"/>
+			<item value="Purok"/>
+			<item value="Barangay"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
