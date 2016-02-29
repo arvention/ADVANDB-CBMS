@@ -802,6 +802,19 @@ public class Controller {
 			query += " and ";
 		return query;
 	}
+	
+	public String appendColumnEntry(String sql, String appendWhat, String appendBefore){
+		String query;
+		int index = sql.indexOf(appendBefore);
+		String leftHalf = sql.substring(0, index);
+		String rightHalf = sql.substring(index);
+		
+		leftHalf += appendWhat + ", ";
+		
+		query = leftHalf += rightHalf;
+		
+		return query;
+	}
 
 	public String query1Builder(){
 		String sql = "Select id as ID, mun as Municipality, zone as Zone, brgy as Barangay, "
@@ -1412,8 +1425,82 @@ public class Controller {
 	}
 
 	public String query3Builder(){
-		String sql = "";
-
+		String sql = "select croptype as 'Uri ng Pananim', COUNT(croptype) as 'Bilang ng Pamilya na Nagtatanim ng Uri ng Tanim' "
+				+ "from hpq_crop C JOIN hpq_hh H ON C.`main.id`= H.id ";
+		
+		String group = " group by croptype";
+		
+		boolean isMunSelected = view.getCheckBoxQuery3Municipality().isSelected();
+		boolean isZoneSelected = view.getCheckBoxQuery3Zone().isSelected();
+		boolean isBrgySelected = view.getCheckBoxQuery3Barangay().isSelected();
+		boolean isPurokSelected = view.getCheckBoxQuery3Purok().isSelected();
+		boolean isCropTypeSelected = view.getCheckBoxQuery3CropType().isSelected();
+		
+		if(isMunSelected){
+			sql = appendColumnEntry(sql, "mun as 'Municipality'", "croptype");
+			group = appendColumnEntry(group, "mun", "croptype");
+		}
+		if(isZoneSelected){
+			if(!isMunSelected){
+				sql = appendColumnEntry(sql, "mun as 'Municipality', zone as 'Zone'", "croptype");
+				group = appendColumnEntry(group, "mun, zone", "croptype");
+			}
+			else{
+				sql = appendColumnEntry(sql, "zone as 'Zone'", "croptype");
+				group = appendColumnEntry(group, "zone", "croptype");
+			}
+		}
+		if(isBrgySelected){
+			if(!isMunSelected && !isZoneSelected){
+				sql = appendColumnEntry(sql, "mun as 'Municipality', zone as 'Zone', brgy as 'Barangay'", "croptype");
+				group = appendColumnEntry(group, "mun, zone, brgy", "croptype");
+			}else if(isMunSelected && !isZoneSelected){
+				sql = appendColumnEntry(sql, "zone as 'Zone', brgy as 'Barangay'", "croptype");
+				group = appendColumnEntry(group, "zone, brgy", "croptype");
+			}else if(isZoneSelected){
+				sql = appendColumnEntry(sql, "brgy as 'Barangay'", "croptype");
+				group = appendColumnEntry(group, "brgy", "croptype");
+			}
+		}
+		if(isPurokSelected){
+			if(!isMunSelected && !isZoneSelected && !isBrgySelected){
+				sql = appendColumnEntry(sql, "mun as 'Municipality', zone as 'Zone', brgy as 'Barangay', purok as 'Purok'", "croptype");
+				group = appendColumnEntry(group, "mun, zone, brgy, purok", "croptype");
+			}else if(isMunSelected && !isZoneSelected && !isBrgySelected){
+				sql = appendColumnEntry(sql, "zone as 'Zone', brgy as 'Barangay', purok as 'Purok'", "croptype");
+				group = appendColumnEntry(group, "zone, brgy, purok", "croptype");
+			}else if(isZoneSelected && !isBrgySelected){
+				sql = appendColumnEntry(sql, "brgy as 'Barangay', purok as 'Purok'", "croptype");
+				group = appendColumnEntry(group, "brgy, purok", "croptype");
+			}else if(isBrgySelected){
+				sql = appendColumnEntry(sql, "purok as 'Purok'", "croptype");
+				group = appendColumnEntry(group, "purok", "croptype");
+			}
+		}
+		
+		if(isMunSelected && view.getComboBoxQuery3Municipality().getSelectedIndex() != 0){
+			sql = appendWhereChecker(sql);
+			sql += "mun = " + view.getComboBoxQuery3Municipality().getSelectedItem().toString();
+		}
+		if(isZoneSelected && view.getComboBoxQuery3Zone().getSelectedIndex() != 0){
+			sql = appendWhereChecker(sql);
+			sql += "zone = " + view.getComboBoxQuery3Zone().getSelectedItem().toString();	
+		}
+		if(isBrgySelected && view.getComboBoxQuery3Barangay().getSelectedIndex() != 0){
+			sql = appendWhereChecker(sql);
+			sql += "brgy = " + view.getComboBoxQuery3Barangay().getSelectedItem().toString();	
+		}
+		if(isPurokSelected && view.getComboBoxQuery3Purok().getSelectedIndex() != 0){
+			sql = appendWhereChecker(sql);
+			sql += "purok = " + view.getComboBoxQuery3Purok().getSelectedItem().toString();	
+		}
+		if(isCropTypeSelected && view.getComboBoxQuery3CropType().getSelectedIndex() != 0){
+			sql = appendWhereChecker(sql);
+			sql += "croptype = " + view.getComboBoxQuery3CropType().getSelectedItem().toString();	
+		}
+		
+		sql += group;
+		
 		return sql;
 	}
 	
