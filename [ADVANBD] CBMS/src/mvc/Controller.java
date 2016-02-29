@@ -1416,7 +1416,7 @@ public class Controller {
 
 		return sql;
 	}
-
+	
 	public String query4Builder(){
 		String sql = "";
 
@@ -1424,12 +1424,62 @@ public class Controller {
 	}
 
 	public String query5Builder(){
-		String sql = "";
+		String sql = "Select mun as 'Municipality', zone as 'Zone', brgy as 'Barangay', purok as 'Purok',"
+				+ "aquaequiptype as 'Gamit sa Pangingisda', aquaequiptype_o as 'Iba Pang Gamit sa Pangingisda',"
+				+ "aquani_vol as 'Bilang ng Nahuling Isda (Kg) from hpq_hh"
+				+ "join hpq_aquaequip on hpq_hh.`main.id` = hpq_aquaequip.`main.id`"
+				+ "join hpq_aquani on hpq_aquaequip.`main.id` = hpq_aquni.`main.id`";
+		
+		if(view.getComboBoxQuery5Municipality().getSelectedIndex() != 0){
+			sql = appendWhereChecker(sql);
+			sql += "mun = " + view.getComboBoxQuery5Municipality().getSelectedItem().toString();
+		}
+
+		if(view.getComboBoxQuery5Zone().getSelectedIndex() != 0){
+			sql = appendWhereChecker(sql);
+			sql += "zone = " + view.getComboBoxQuery5Zone().getSelectedItem().toString();
+		}
+
+		if(view.getComboBoxQuery5Barangay().getSelectedIndex() != 0){
+			sql = appendWhereChecker(sql);
+			sql += "brgy = " + view.getComboBoxQuery5Barangay().getSelectedItem().toString();
+		}
+
+		if(view.getComboBoxQuery5Purok().getSelectedIndex() != 0){
+			sql = appendWhereChecker(sql);
+			sql += "purok = " + view.getComboBoxQuery5Purok().getSelectedItem().toString();
+		}
+		
 		return sql;
 	}
 
 	public String query6Builder(){
-		String sql = "";
+		String sql = "Select mun as 'Municipality', zone as 'Zone', brgy as 'Barangay', purok as 'Purok',"
+				+ "sum(cropincsh) as 'Kabuuang Kita Mula Sa Ani', sum(crop_vol) as 'Kabuuang Bilang ng Naani',"
+				+ "sum(fishincsh) as 'Kabuuang Kita Mula Sa Pangingisda', sum(aquani_vol) as 'Kabuuang Bilang ng Nahuling Isda'"
+				+ "from hpq_hh join hpq_crop on hpq_hh.`main.id` = hpq_crop.`main.id`"
+				+ "join hpq_aquani on hpq_crop.`main.id` = hpq_aquani.`main.id`";
+		
+		if(view.getComboBoxQuery6Municipality().getSelectedIndex() != 0){
+			sql = appendWhereChecker(sql);
+			sql += "mun = " + view.getComboBoxQuery6Municipality().getSelectedItem().toString();
+		}
+
+		if(view.getComboBoxQuery6Zone().getSelectedIndex() != 0){
+			sql = appendWhereChecker(sql);
+			sql += "zone = " + view.getComboBoxQuery6Zone().getSelectedItem().toString();
+		}
+
+		if(view.getComboBoxQuery6Barangay().getSelectedIndex() != 0){
+			sql = appendWhereChecker(sql);
+			sql += "brgy = " + view.getComboBoxQuery6Barangay().getSelectedItem().toString();
+		}
+
+		if(view.getComboBoxQuery6Purok().getSelectedIndex() != 0){
+			sql = appendWhereChecker(sql);
+			sql += "purok = " + view.getComboBoxQuery6Purok().getSelectedItem().toString();
+		}
+		
 		return sql;
 	}
 
