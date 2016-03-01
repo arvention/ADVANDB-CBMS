@@ -1645,67 +1645,112 @@ public class Controller {
 				sql += "mdeady = 17";
 			}
 		}
+		
 		sql += group;
 		
 		return sql;
 	}
 
 	public String query5Builder(){
-		String sql = "Select mun as 'Municipality', zone as 'Zone', brgy as 'Barangay', purok as 'Purok',"
-				+ "aquaequiptype as 'Gamit sa Pangingisda', aquaequiptype_o as 'Iba Pang Gamit sa Pangingisda',"
-				+ "aquani_vol as 'Bilang ng Nahuling Isda (Kg) from hpq_hh"
-				+ "join hpq_aquaequip on hpq_hh.`main.id` = hpq_aquaequip.`main.id`"
+		String sql = "Select aquaequiptype as 'Gamit sa Pangingisda', aquaequiptype_o as 'Iba Pang Gamit sa Pangingisda', "
+				+ "aquani_vol as 'Bilang ng Nahuling Isda (Kg)' from hpq_hh "
+				+ "join hpq_aquaequip on hpq_hh.`main.id` = hpq_aquaequip.`main.id` "
 				+ "join hpq_aquani on hpq_aquaequip.`main.id` = hpq_aquni.`main.id`";
 		
-		if(view.getComboBoxQuery5Municipality().getSelectedIndex() != 0){
+		String group = " group by aquaequiptype";
+		
+		boolean isMunSelected = view.getCheckBoxQuery5Municipality().isSelected();
+		boolean isZoneSelected = view.getCheckBoxQuery5Zone().isSelected();
+		boolean isBrgySelected = view.getCheckBoxQuery5Barangay().isSelected();
+		boolean isPurokSelected = view.getCheckBoxQuery5Purok().isSelected();
+		boolean isKagamitanSelected = view.getCheckBoxQuery5Kagamitan().isSelected();
+		
+		if(isMunSelected){
+			sql = appendColumnEntry(sql, "mun as 'Municipality'", "aquaequiptype");
+			group = appendColumnEntry(group, "mun", "aquaequiptype");
+		}
+		if(isZoneSelected){
+			if(!isMunSelected){
+				sql = appendColumnEntry(sql, "mun as 'Municipality', zone as 'Zone'", "aquaequiptype");
+				group = appendColumnEntry(group, "mun, zone", "aquaequiptype");
+			}
+			else{
+				sql = appendColumnEntry(sql, "zone as 'Zone'", "aquaequiptype");
+				group = appendColumnEntry(group, "zone", "aquaequiptype");
+			}
+		}
+		if(isBrgySelected){
+			if(!isMunSelected && !isZoneSelected){
+				sql = appendColumnEntry(sql, "mun as 'Municipality', zone as 'Zone', brgy as 'Barangay'", "aquaequiptype");
+				group = appendColumnEntry(group, "mun, zone, brgy", "aquaequiptype");
+			}else if(isMunSelected && !isZoneSelected){
+				sql = appendColumnEntry(sql, "zone as 'Zone', brgy as 'Barangay'", "aquaequiptype");
+				group = appendColumnEntry(group, "zone, brgy", "aquaequiptype");
+			}else if(isZoneSelected){
+				sql = appendColumnEntry(sql, "brgy as 'Barangay'", "aquaequiptype");
+				group = appendColumnEntry(group, "brgy", "aquaequiptype");
+			}
+		}
+		if(isPurokSelected){
+			if(!isMunSelected && !isZoneSelected && !isBrgySelected){
+				sql = appendColumnEntry(sql, "mun as 'Municipality', zone as 'Zone', brgy as 'Barangay', purok as 'Purok'", "aquaequiptype");
+				group = appendColumnEntry(group, "mun, zone, brgy, purok", "aquaequiptype");
+			}else if(isMunSelected && !isZoneSelected && !isBrgySelected){
+				sql = appendColumnEntry(sql, "zone as 'Zone', brgy as 'Barangay', purok as 'Purok'", "aquaequiptype");
+				group = appendColumnEntry(group, "zone, brgy, purok", "aquaequiptype");
+			}else if(isZoneSelected && !isBrgySelected){
+				sql = appendColumnEntry(sql, "brgy as 'Barangay', purok as 'Purok'", "aquaequiptype");
+				group = appendColumnEntry(group, "brgy, purok", "aquaequiptype");
+			}else if(isBrgySelected){
+				sql = appendColumnEntry(sql, "purok as 'Purok'", "aquaequiptype");
+				group = appendColumnEntry(group, "purok", "aquaequiptype");
+			}
+		}
+		
+		if(isMunSelected && view.getComboBoxQuery5Municipality().getSelectedIndex() != 0){
 			sql = appendWhereChecker(sql);
 			sql += "mun = " + view.getComboBoxQuery5Municipality().getSelectedItem().toString();
 		}
-
-		if(view.getComboBoxQuery5Zone().getSelectedIndex() != 0){
+		if(isZoneSelected && view.getComboBoxQuery5Zone().getSelectedIndex() != 0){
 			sql = appendWhereChecker(sql);
-			sql += "zone = " + view.getComboBoxQuery5Zone().getSelectedItem().toString();
+			sql += "zone = " + view.getComboBoxQuery5Zone().getSelectedItem().toString();	
 		}
-
-		if(view.getComboBoxQuery5Barangay().getSelectedIndex() != 0){
+		if(isBrgySelected && view.getComboBoxQuery5Barangay().getSelectedIndex() != 0){
 			sql = appendWhereChecker(sql);
-			sql += "brgy = " + view.getComboBoxQuery5Barangay().getSelectedItem().toString();
+			sql += "brgy = " + view.getComboBoxQuery5Barangay().getSelectedItem().toString();	
 		}
-
-		if(view.getComboBoxQuery5Purok().getSelectedIndex() != 0){
+		if(isPurokSelected && view.getComboBoxQuery5Purok().getSelectedIndex() != 0){
 			sql = appendWhereChecker(sql);
-			sql += "purok = " + view.getComboBoxQuery5Purok().getSelectedItem().toString();
+			sql += "purok = " + view.getComboBoxQuery5Purok().getSelectedItem().toString();	
 		}
+		if(isKagamitanSelected && view.getComboBoxQuery5Kagamitan().getSelectedIndex() != 0){
+			sql = appendWhereChecker(sql);
+			if(view.getComboBoxQuery5Kagamitan().getSelectedItem().equals("Fish Net")){
+				sql += "aquaequiptype = 1";
+			} else if(view.getComboBoxQuery5Kagamitan().getSelectedItem().equals("Electricity")){
+				sql += "aquaequiptype = 2";
+			} else if(view.getComboBoxQuery5Kagamitan().getSelectedItem().equals("Bagnet")){
+				sql += "aquaequiptype = 3";
+			} else if(view.getComboBoxQuery5Kagamitan().getSelectedItem().equals("Gillnets")){
+				sql += "aquaequiptype = 4";
+			} else if(view.getComboBoxQuery5Kagamitan().getSelectedItem().equals("Traps")){
+				sql += "aquaequiptype = 5";
+			} else if(view.getComboBoxQuery5Kagamitan().getSelectedItem().equals("Hooks and Line")) {
+				sql += "aquaequiptype = 6";
+			} else if(view.getComboBoxQuery5Kagamitan().getSelectedItem().equals("Sift Net")) {
+				sql += "aquaequiptype = 7";
+			} else if(view.getComboBoxQuery5Kagamitan().getSelectedItem().equals("Others")) {
+				sql += "aquaequiptype = 8";
+			}
+		}
+		
+		sql += group;
 		
 		return sql;
 	}
 
 	public String query6Builder(){
-		String sql = "Select mun as 'Municipality', zone as 'Zone', brgy as 'Barangay', purok as 'Purok',"
-				+ "sum(cropincsh) as 'Kabuuang Kita Mula Sa Ani', sum(crop_vol) as 'Kabuuang Bilang ng Naani',"
-				+ "sum(fishincsh) as 'Kabuuang Kita Mula Sa Pangingisda', sum(aquani_vol) as 'Kabuuang Bilang ng Nahuling Isda'"
-				+ "from hpq_hh join hpq_crop on hpq_hh.`main.id` = hpq_crop.`main.id`"
-				+ "join hpq_aquani on hpq_crop.`main.id` = hpq_aquani.`main.id`";
-		
-		if(view.getComboBoxQuery6Municipality().getSelectedIndex() != 0){
-			sql = appendWhereChecker(sql);
-			sql += "mun = " + view.getComboBoxQuery6Municipality().getSelectedItem().toString();
-		}
-
-		if(view.getComboBoxQuery6Zone().getSelectedIndex() != 0){
-			sql = appendWhereChecker(sql);
-			sql += "zone = " + view.getComboBoxQuery6Zone().getSelectedItem().toString();
-		}
-
-		if(view.getComboBoxQuery6Barangay().getSelectedIndex() != 0){
-			sql = appendWhereChecker(sql);
-			sql += "brgy = " + view.getComboBoxQuery6Barangay().getSelectedItem().toString();
-		}
-
-		if(view.getComboBoxQuery6Purok().getSelectedIndex() != 0){
-			sql = appendWhereChecker(sql);
-			sql += "purok = " + view.getComboBoxQuery6Purok().getSelectedItem().toString();
-		}
+		String sql = "";
 		
 		return sql;
 	}

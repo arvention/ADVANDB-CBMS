@@ -402,7 +402,7 @@ public class View extends JFrame {
 		gbc_buttonQuery4.gridy = 3;
 		panel_main.add(buttonQuery4, gbc_buttonQuery4);
 		
-		buttonQuery5 = new JButton("Query 5");
+		buttonQuery5 = new JButton("Fishing Equipment Report");
 		buttonQuery5.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		GridBagConstraints gbc_buttonQuery5 = new GridBagConstraints();
 		gbc_buttonQuery5.fill = GridBagConstraints.BOTH;
@@ -412,7 +412,7 @@ public class View extends JFrame {
 		gbc_buttonQuery5.gridy = 4;
 		panel_main.add(buttonQuery5, gbc_buttonQuery5);
 		
-		buttonQuery6 = new JButton("Query 6");
+		buttonQuery6 = new JButton("Fishery and Crop Income Report");
 		buttonQuery6.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		GridBagConstraints gbc_buttonQuery6 = new GridBagConstraints();
 		gbc_buttonQuery6.gridwidth = 2;
