@@ -1538,9 +1538,115 @@ public class Controller {
 	}
 	
 	public String query4Builder(){
-		// please rename deady column as 'Sanhi ng Pagkamatay'
-		String sql = "";
-
+		String sql = "select mdeady as 'Sanhi ng Pagkamatay', COUNT(mdeady) as 'Bilang ng Sanhi ng Pagkamatay' "
+				+ "from hpq_death D JOIN hpq_hh H ON D.`main.id`= H.id ";
+		
+		String group = " group by mdeady";
+		
+		boolean isMunSelected = view.getCheckBoxQuery4Municipality().isSelected();
+		boolean isZoneSelected = view.getCheckBoxQuery4Zone().isSelected();
+		boolean isBrgySelected = view.getCheckBoxQuery4Barangay().isSelected();
+		boolean isPurokSelected = view.getCheckBoxQuery4Purok().isSelected();
+		boolean isPagkamataySelected = view.getCheckBoxQuery4Pagkamatay().isSelected();
+		
+		if(isMunSelected){
+			sql = appendColumnEntry(sql, "mun as 'Municipality'", "mdeady");
+			group = appendColumnEntry(group, "mun", "mdeady");
+		}
+		if(isZoneSelected){
+			if(!isMunSelected){
+				sql = appendColumnEntry(sql, "mun as 'Municipality', zone as 'Zone'", "mdeady");
+				group = appendColumnEntry(group, "mun, zone", "mdeady");
+			}
+			else{
+				sql = appendColumnEntry(sql, "zone as 'Zone'", "mdeady");
+				group = appendColumnEntry(group, "zone", "mdeady");
+			}
+		}
+		if(isBrgySelected){
+			if(!isMunSelected && !isZoneSelected){
+				sql = appendColumnEntry(sql, "mun as 'Municipality', zone as 'Zone', brgy as 'Barangay'", "mdeady");
+				group = appendColumnEntry(group, "mun, zone, brgy", "mdeady");
+			}else if(isMunSelected && !isZoneSelected){
+				sql = appendColumnEntry(sql, "zone as 'Zone', brgy as 'Barangay'", "mdeady");
+				group = appendColumnEntry(group, "zone, brgy", "mdeady");
+			}else if(isZoneSelected){
+				sql = appendColumnEntry(sql, "brgy as 'Barangay'", "mdeady");
+				group = appendColumnEntry(group, "brgy", "mdeady");
+			}
+		}
+		if(isPurokSelected){
+			if(!isMunSelected && !isZoneSelected && !isBrgySelected){
+				sql = appendColumnEntry(sql, "mun as 'Municipality', zone as 'Zone', brgy as 'Barangay', purok as 'Purok'", "mdeady");
+				group = appendColumnEntry(group, "mun, zone, brgy, purok", "mdeady");
+			}else if(isMunSelected && !isZoneSelected && !isBrgySelected){
+				sql = appendColumnEntry(sql, "zone as 'Zone', brgy as 'Barangay', purok as 'Purok'", "mdeady");
+				group = appendColumnEntry(group, "zone, brgy, purok", "mdeady");
+			}else if(isZoneSelected && !isBrgySelected){
+				sql = appendColumnEntry(sql, "brgy as 'Barangay', purok as 'Purok'", "mdeady");
+				group = appendColumnEntry(group, "brgy, purok", "mdeady");
+			}else if(isBrgySelected){
+				sql = appendColumnEntry(sql, "purok as 'Purok'", "mdeady");
+				group = appendColumnEntry(group, "purok", "mdeady");
+			}
+		}
+		
+		if(isMunSelected && view.getComboBoxQuery4Municipality().getSelectedIndex() != 0){
+			sql = appendWhereChecker(sql);
+			sql += "mun = " + view.getComboBoxQuery4Municipality().getSelectedItem().toString();
+		}
+		if(isZoneSelected && view.getComboBoxQuery4Zone().getSelectedIndex() != 0){
+			sql = appendWhereChecker(sql);
+			sql += "zone = " + view.getComboBoxQuery4Zone().getSelectedItem().toString();	
+		}
+		if(isBrgySelected && view.getComboBoxQuery4Barangay().getSelectedIndex() != 0){
+			sql = appendWhereChecker(sql);
+			sql += "brgy = " + view.getComboBoxQuery4Barangay().getSelectedItem().toString();	
+		}
+		if(isPurokSelected && view.getComboBoxQuery4Purok().getSelectedIndex() != 0){
+			sql = appendWhereChecker(sql);
+			sql += "purok = " + view.getComboBoxQuery4Purok().getSelectedItem().toString();	
+		}
+		if(isPagkamataySelected && view.getComboBoxQuery4Pagkamatay().getSelectedIndex() != 0){
+			sql = appendWhereChecker(sql);
+			if(view.getComboBoxQuery4Pagkamatay().getSelectedItem().equals("Diseases of the heart")){
+				sql += "mdeady = 1";
+			} else if(view.getComboBoxQuery4Pagkamatay().getSelectedItem().equals("Diseases of the vascular system")){
+				sql += "mdeady = 2";
+			} else if(view.getComboBoxQuery4Pagkamatay().getSelectedItem().equals("Pneumonia")){
+				sql += "mdeady = 3";
+			} else if(view.getComboBoxQuery4Pagkamatay().getSelectedItem().equals("Tuberculosis")){
+				sql += "mdeady = 4";
+			} else if(view.getComboBoxQuery4Pagkamatay().getSelectedItem().equals("Cancer")){
+				sql += "mdeady = 5";
+			} else if(view.getComboBoxQuery4Pagkamatay().getSelectedItem().equals("Diarrhea")){
+				sql += "mdeady = 6";
+			} else if(view.getComboBoxQuery4Pagkamatay().getSelectedItem().equals("Measles")){
+				sql += "mdeady = 7";
+			} else if(view.getComboBoxQuery4Pagkamatay().getSelectedItem().equals("Complication during pregnancy or childbirth")){
+				sql += "mdeady = 8";
+			} else if(view.getComboBoxQuery4Pagkamatay().getSelectedItem().equals("Accident")){
+				sql += "mdeady = 9";
+			} else if(view.getComboBoxQuery4Pagkamatay().getSelectedItem().equals("Diabetes")){
+				sql += "mdeady = 10";
+			} else if(view.getComboBoxQuery4Pagkamatay().getSelectedItem().equals("Disease of the lungs")){
+				sql += "mdeady = 11";
+			} else if(view.getComboBoxQuery4Pagkamatay().getSelectedItem().equals("Disease of the kidney")){
+				sql += "mdeady = 12";
+			} else if(view.getComboBoxQuery4Pagkamatay().getSelectedItem().equals("Drowned from flood")){
+				sql += "mdeady = 13";
+			} else if(view.getComboBoxQuery4Pagkamatay().getSelectedItem().equals("Victim of Landslide")){
+				sql += "mdeady = 14";
+			} else if(view.getComboBoxQuery4Pagkamatay().getSelectedItem().equals("Electrocuted during typhoon")){
+				sql += "mdeady = 15";
+			} else if(view.getComboBoxQuery4Pagkamatay().getSelectedItem().equals("Murder")){
+				sql += "mdeady = 16";
+			} else if(view.getComboBoxQuery4Pagkamatay().getSelectedItem().equals("Other Causes")){
+				sql += "mdeady = 17";
+			}
+		}
+		sql += group;
+		
 		return sql;
 	}
 

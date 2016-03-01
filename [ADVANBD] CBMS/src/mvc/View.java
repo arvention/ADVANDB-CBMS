@@ -2317,7 +2317,7 @@ public class View extends JFrame {
 		
 		comboBoxQuery4Pagkamatay = new JComboBox<String>();
 		comboBoxQuery4Pagkamatay.setEnabled(false);
-		comboBoxQuery4Pagkamatay.setModel(new DefaultComboBoxModel<String>(new String[] {"[SELECT]", "Diseases of the heart", "Diseases of the vascular system", "Pneumonia", "Tuberculosis", "Cancer", "Diarrhea", "Measles", "Complication during pregnancy or childbirth", "Accident", "Diabetes", "Disease of the lungs", "Disease of the kidney", "Drowned from flood", "Victim of landslide", "Electrocuted during typhoon", "Murder"}));
+		comboBoxQuery4Pagkamatay.setModel(new DefaultComboBoxModel<String>(new String[] {"[SELECT]", "Diseases of the heart", "Diseases of the vascular system", "Pneumonia", "Tuberculosis", "Cancer", "Diarrhea", "Measles", "Complication during pregnancy or childbirth", "Accident", "Diabetes", "Disease of the lungs", "Disease of the kidney", "Drowned from flood", "Victim of landslide", "Electrocuted during typhoon", "Murder", "Other Causes"}));
 		GridBagConstraints gbc_comboBoxQuery4Pagkamatay = new GridBagConstraints();
 		gbc_comboBoxQuery4Pagkamatay.fill = GridBagConstraints.HORIZONTAL;
 		gbc_comboBoxQuery4Pagkamatay.gridwidth = 4;
