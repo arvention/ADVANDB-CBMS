@@ -196,13 +196,13 @@ public class Controller {
 			public void mouseClicked(MouseEvent e){
 				String sql = query3Builder();
 				System.out.println(sql);
-
-				modelTableUriNgPananimConverter();
-				
 				long startTime = System.nanoTime();
 				facadeDatabase.getResult(sql, modelTable);
 				long endTime = System.nanoTime() - startTime;
 				double seconds = endTime / 1.0E09;
+				
+				modelTableUriNgPananimConverter();
+				
 				view.getLabelQuery3Status().setText("Rows returned: " + modelTable.getData().length + " | Running time: " + seconds + " seconds");
 				DefaultTableModel dtm = new DefaultTableModel(modelTable.getData(), modelTable.getColumnName());
 				view.getTableQuery3ResultTable().setModel(dtm);
@@ -213,13 +213,13 @@ public class Controller {
 			public void mouseClicked(MouseEvent e){
 				String sql = query4Builder();
 				System.out.println(sql);
-
-				modelTableSanhiNgPagkamatayConverter();
-				
 				long startTime = System.nanoTime();
 				facadeDatabase.getResult(sql, modelTable);
 				long endTime = System.nanoTime() - startTime;
 				double seconds = endTime / 1.0E09;
+				
+				modelTableSanhiNgPagkamatayConverter();
+				
 				view.getLabelQuery4Status().setText("Rows returned: " + modelTable.getData().length + " | Running time: " + seconds + " seconds");
 				DefaultTableModel dtm = new DefaultTableModel(modelTable.getData(), modelTable.getColumnName());
 				view.getTableQuery4ResultTable().setModel(dtm);
@@ -230,13 +230,13 @@ public class Controller {
 			public void mouseClicked(MouseEvent e){
 				String sql = query5Builder();
 				System.out.println(sql);
-
-				modelTableGamitSaPangingisdaConverter();
-				
 				long startTime = System.nanoTime();
 				facadeDatabase.getResult(sql, modelTable);
 				long endTime = System.nanoTime() - startTime;
 				double seconds = endTime / 1.0E09;
+				
+				modelTableGamitSaPangingisdaConverter();
+				
 				view.getLabelQuery5Status().setText("Rows returned: " + modelTable.getData().length + " | Running time: " + seconds + " seconds");
 				DefaultTableModel dtm = new DefaultTableModel(modelTable.getData(), modelTable.getColumnName());
 				view.getTableQuery5ResultTable().setModel(dtm);
