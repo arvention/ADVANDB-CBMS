@@ -1654,8 +1654,8 @@ public class Controller {
 	public String query5Builder(){
 		String sql = "Select aquaequiptype as 'Gamit sa Pangingisda', aquaequiptype_o as 'Iba Pang Gamit sa Pangingisda', "
 				+ "aquani_vol as 'Bilang ng Nahuling Isda (Kg)' from hpq_hh "
-				+ "join hpq_aquaequip on hpq_hh.`main.id` = hpq_aquaequip.`main.id` "
-				+ "join hpq_aquani on hpq_aquaequip.`main.id` = hpq_aquni.`main.id`";
+				+ "join hpq_aquaequip on hpq_hh.id = hpq_aquaequip.`main.id` "
+				+ "join hpq_aquani on hpq_aquaequip.`main.id` = hpq_aquani.`main.id`";
 		
 		String group = " group by aquaequiptype";
 		
