@@ -820,6 +820,16 @@ public class Controller {
 		return query;
 	}
 	
+	public String appendGroupByChecker(String sql) {
+		String query = sql;
+		if(!query.contains("group by"))
+			query += "group by ";
+		else
+			query += ", ";
+		
+		return query;
+	}
+	
 	public String appendColumnEntry(String sql, String appendWhat, String appendBefore){
 		String query;
 		int index = sql.indexOf(appendBefore);
@@ -1652,7 +1662,7 @@ public class Controller {
 	}
 
 	public String query5Builder(){
-		String sql = "Select aquaequiptype as 'Gamit sa Pangingisda', aquaequiptype_o as 'Iba Pang Gamit sa Pangingisda', "
+		String sql = "Select aquaequiptype as 'Gamit sa Pangingisda', "
 				+ "aquani_vol as 'Bilang ng Nahuling Isda (Kg)' from hpq_hh "
 				+ "join hpq_aquaequip on hpq_hh.id = hpq_aquaequip.`main.id` "
 				+ "join hpq_aquani on hpq_aquaequip.`main.id` = hpq_aquani.`main.id`";
@@ -1750,7 +1760,59 @@ public class Controller {
 	}
 
 	public String query6Builder(){
-		String sql = "";
+		String sql = "Select sum(cropincsh) as 'Kabuuang Kita Mula Sa Ani', "
+				+ "sum(crop_vol) as 'Kabuuang Bilang ng Naani', sum(fishincsh) as 'Kabuuang Kita Mula Sa Pangingisda', "
+				+ "sum(aquani_vol) as 'Kabuuang Bilang ng Isdang Nahuli' from hpq_hh "
+				+ "join hpq_crop on hpq_hh.id = hpq_crop.`main.id` "
+				+ "join hpq_aquani on hpq_crop.`main.id` = hpq_aquani.`main.id`";
+		
+		boolean isMunSelected = view.getCheckBoxQuery6Municipality().isSelected();
+		boolean isZoneSelected = view.getCheckBoxQuery6Zone().isSelected();
+		boolean isBrgySelected = view.getCheckBoxQuery6Barangay().isSelected();
+		boolean isPurokSelected = view.getCheckBoxQuery6Purok().isSelected();
+		
+		if(isMunSelected){
+			sql = appendColumnEntry(sql, "mun as 'Municipality'", "sum(cropincsh)");
+			
+			sql = appendGroupByChecker(sql);
+			sql += "mun";
+		}
+		if(isZoneSelected){
+			sql = appendColumnEntry(sql, "mun as 'Municipality', zone as 'Zone'", "sum(cropincsh)");
+			
+			sql = appendGroupByChecker(sql);
+			sql += "zone";
+		}
+		if(isBrgySelected){
+			sql = appendColumnEntry(sql, "mun as 'Municipality', zone as 'Zone', brgy as 'Barangay'", "sum(cropincsh)");
+			
+			sql = appendGroupByChecker(sql);
+			sql += "brgy";
+			
+		}
+		if(isPurokSelected){
+			sql = appendColumnEntry(sql, "mun as 'Municipality', zone as 'Zone', brgy as 'Barangay', purok as 'Purok'", "sum(cropincsh)");
+			
+			sql = appendGroupByChecker(sql);
+			sql += "purok";
+		}
+		
+		if(isMunSelected && view.getComboBoxQuery6Municipality().getSelectedIndex() != 0){
+			sql = appendWhereChecker(sql);
+			sql += "mun = " + view.getComboBoxQuery4Municipality().getSelectedItem().toString();
+		}
+		if(isZoneSelected && view.getComboBoxQuery6Zone().getSelectedIndex() != 0){
+			sql = appendWhereChecker(sql);
+			sql += "zone = " + view.getComboBoxQuery6Zone().getSelectedItem().toString();	
+		}
+		if(isBrgySelected && view.getComboBoxQuery6Barangay().getSelectedIndex() != 0){
+			sql = appendWhereChecker(sql);
+			sql += "brgy = " + view.getComboBoxQuery6Barangay().getSelectedItem().toString();	
+		}
+		if(isPurokSelected && view.getComboBoxQuery6Purok().getSelectedIndex() != 0){
+			sql = appendWhereChecker(sql);
+			sql += "purok = " + view.getComboBoxQuery6Purok().getSelectedItem().toString();	
+		}
 		
 		return sql;
 	}
