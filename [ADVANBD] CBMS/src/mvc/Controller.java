@@ -3,6 +3,8 @@ package mvc;
 import java.awt.CardLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Arrays;
+import java.util.List;
 
 import javax.swing.JSpinner;
 import javax.swing.event.ChangeEvent;
@@ -159,6 +161,10 @@ public class Controller {
 				long endTime = System.nanoTime() - startTime;
 				double seconds = endTime / 1.0E09;
 
+				modelTableHouseTypeConverter();
+				modelTableRoofCompositionConverter();
+				modelTableWallCompositionConverter();
+				
 				view.getLabelQuery1Status().setText("Rows returned: " + modelTable.getData().length + " | Running time: " + seconds + " seconds");
 				DefaultTableModel dtm = new DefaultTableModel(modelTable.getData(), modelTable.getColumnName());
 				view.getTableQuery1ResultTable().setModel(dtm);
@@ -175,6 +181,11 @@ public class Controller {
 				facadeDatabase.getResult(sql, modelTable);
 				long endTime = System.nanoTime() - startTime;
 				double seconds = endTime / 1.0E09;
+				
+				modelTableHouseTypeConverter();
+				modelTableRoofCompositionConverter();
+				modelTableWallCompositionConverter();
+				
 				view.getLabelQuery2Status().setText("Rows returned: " + modelTable.getData().length + " | Running time: " + seconds + " seconds");
 				DefaultTableModel dtm = new DefaultTableModel(modelTable.getData(), modelTable.getColumnName());
 				view.getTableQuery2ResultTable().setModel(dtm);
@@ -186,6 +197,8 @@ public class Controller {
 				String sql = query3Builder();
 				System.out.println(sql);
 
+				modelTableUriNgPananimConverter();
+				
 				long startTime = System.nanoTime();
 				facadeDatabase.getResult(sql, modelTable);
 				long endTime = System.nanoTime() - startTime;
@@ -201,6 +214,8 @@ public class Controller {
 				String sql = query4Builder();
 				System.out.println(sql);
 
+				modelTableSanhiNgPagkamatayConverter();
+				
 				long startTime = System.nanoTime();
 				facadeDatabase.getResult(sql, modelTable);
 				long endTime = System.nanoTime() - startTime;
@@ -216,6 +231,8 @@ public class Controller {
 				String sql = query5Builder();
 				System.out.println(sql);
 
+				modelTableGamitSaPangingisdaConverter();
+				
 				long startTime = System.nanoTime();
 				facadeDatabase.getResult(sql, modelTable);
 				long endTime = System.nanoTime() - startTime;
@@ -817,16 +834,22 @@ public class Controller {
 	}
 
 	public String query1Builder(){
-		String sql = "Select id as ID, mun as Municipality, zone as Zone, brgy as Barangay, "
-				+ "purok as Purok, house_type_o as 'House Type', nbr as 'House Number', "
-				+ "roof as Roof, wall as Wall, nofw as 'Number of OFW', nnucfam as 'Number of Families', "
+		/*String sql = "Select id as ID, mun as Municipality, zone as Zone, brgy as Barangay, "
+				+ "purok as Purok, house_type_o as 'House Type', nbr as 'Room Count', "
+				+ "roof as 'Roof Composition', wall as 'Wall Composition', nofw as 'Number of OFW', nnucfam as 'Number of Families', "
 				+ "calam1_hus_aid_o as 'Tumulong Noong May Bagyo', calam2_hus_aid_o as 'Tumulong Noong May Baha', "
 				+ "calam3_hus_aid_o as 'Tumulong Noong May Tagtuyot', calam4_hus_aid_o as 'Tumulong Noong Lindol', "
 				+ "calam5_hus_aid_o as 'Tumulong Noong Sumabog ang Bulkan', "
 				+ "calam6_hus_aid_o as 'Tumulong Noong May Landslide', calam7_hus_aid_o as 'Tumulong Noong May Tsunami', "
 				+ "calam8_hus_aid_o as 'Tumulong Noong May Sunog', calam9_hus_aid_o as 'Tumulong Noong May Forest Fire', "
 				+ "calam10_hus_aid_o as 'Tumulong Noong May Digmaan' from hpq_hh ";
+		*/
 
+		String sql = "Select id as ID, mun as Municipality, zone as Zone, brgy as Barangay, "
+				+ "purok as Purok, house_type as 'House Type', nbr as 'Room Count', "
+				+ "roof as 'Roof Composition', wall as 'Wall Composition', nofw as 'Number of OFW', nnucfam as 'Number of Families' "
+				+ "from hpq_hh ";
+		
 		if(view.getComboBoxQuery1Municipality().getSelectedIndex() != 0){
 			sql = appendWhereChecker(sql);
 			sql += "mun = " + view.getComboBoxQuery1Municipality().getSelectedItem().toString();
@@ -1126,8 +1149,8 @@ public class Controller {
 
 	public String query2Builder(){
 		String sql = "Select id as ID, mun as Municipality, zone as Zone, brgy as Barangay, purok as Purok, "
-				+ "house_type_o as 'House Type', nbr as 'House Number', roof as Roof, wall as Wall, "
-				+ "nofw as 'Number of OFW', nnucfam as 'Number of Families', "
+				+ "house_type as 'House Type', nbr as 'Room Count', roof as 'Roof Composition', "
+				+ "wall as 'Wall Composition', nofw as 'Number of OFW', nnucfam as 'Number of Families', "
 				+ "prog_slp_nmem as 'Bilang ng Nakikinabang sa Sustainable Livelihood Program', "
 				+ "prog_fudforsch_nmem as 'Bilang ng Nakikinabang sa Food for School Program', "
 				+ "prog_fudforwrk_nmem as 'Bilang ng Nakikinabang sa Food for Work Program', "
@@ -1496,7 +1519,17 @@ public class Controller {
 		}
 		if(isCropTypeSelected && view.getComboBoxQuery3CropType().getSelectedIndex() != 0){
 			sql = appendWhereChecker(sql);
-			sql += "croptype = " + view.getComboBoxQuery3CropType().getSelectedItem().toString();	
+			if(view.getComboBoxQuery3CropType().getSelectedItem().equals("Sugar Cane")){
+				sql += "croptype = 1";
+			} else if(view.getComboBoxQuery3CropType().getSelectedItem().equals("Palay")){
+				sql += "croptype = 2";
+			} else if(view.getComboBoxQuery3CropType().getSelectedItem().equals("Corn")){
+				sql += "croptype = 3";
+			} else if(view.getComboBoxQuery3CropType().getSelectedItem().equals("Coffee")){
+				sql += "croptype = 4";
+			} else if(view.getComboBoxQuery3CropType().getSelectedItem().equals("Other Crops")){
+				sql += "croptype = 5";
+			}
 		}
 		
 		sql += group;
@@ -1505,6 +1538,7 @@ public class Controller {
 	}
 	
 	public String query4Builder(){
+		// please rename deady column as 'Sanhi ng Pagkamatay'
 		String sql = "";
 
 		return sql;
@@ -1569,5 +1603,151 @@ public class Controller {
 		
 		return sql;
 	}
+	
+	public void modelTableHouseTypeConverter(){
+		List<String> columnNames = Arrays.asList(modelTable.getColumnName());
+		int columnIndex = columnNames.indexOf("House Type");
+		for(int i = 0; i < modelTable.getData().length; i++){
+			if(modelTable.getData()[i][columnIndex].equals("1")){
+				modelTable.getData()[i][columnIndex] = "Single house";
+			} else if(modelTable.getData()[i][columnIndex].equals("2")){
+				modelTable.getData()[i][columnIndex] = "Duplex";
+			} else if(modelTable.getData()[i][columnIndex].equals("3")){
+				modelTable.getData()[i][columnIndex] = "Multi-unit Residential";
+			} else if(modelTable.getData()[i][columnIndex].equals("4")){
+				modelTable.getData()[i][columnIndex] = "Commercial/Industrial/Agricultural";
+			} else if(modelTable.getData()[i][columnIndex].equals("5")){
+				modelTable.getData()[i][columnIndex] = "Others";
+			}
+		}
+	}
+	
+	public void modelTableRoofCompositionConverter(){
+		List<String> columnNames = Arrays.asList(modelTable.getColumnName());
+		int columnIndex = columnNames.indexOf("Roof Composition");
+		for(int i = 0; i < modelTable.getData().length; i++){
+			if(modelTable.getData()[i][columnIndex].equals("1")){
+				modelTable.getData()[i][columnIndex] = "Strong materials";
+			} else if(modelTable.getData()[i][columnIndex].equals("2")){
+				modelTable.getData()[i][columnIndex] = "Light materials";
+			} else if(modelTable.getData()[i][columnIndex].equals("3")){
+				modelTable.getData()[i][columnIndex] = "Makeshift materials";
+			} else if(modelTable.getData()[i][columnIndex].equals("4")){
+				modelTable.getData()[i][columnIndex] = "Mixed but predominantly strong materials";
+			} else if(modelTable.getData()[i][columnIndex].equals("5")){
+				modelTable.getData()[i][columnIndex] = "Mixed but predominantly light materials";
+			} else if(modelTable.getData()[i][columnIndex].equals("6")){
+				modelTable.getData()[i][columnIndex] = "Mixed but predominantly makeshift materials";
+			} else if(modelTable.getData()[i][columnIndex].equals("7")){
+				modelTable.getData()[i][columnIndex] = "Not Applicable";
+			}
+		}
+	}
+	
+	public void modelTableWallCompositionConverter(){
+		List<String> columnNames = Arrays.asList(modelTable.getColumnName());
+		int columnIndex = columnNames.indexOf("Wall Composition");
+		for(int i = 0; i < modelTable.getData().length; i++){
+			if(modelTable.getData()[i][columnIndex].equals("1")){
+				modelTable.getData()[i][columnIndex] = "Strong materials";
+			} else if(modelTable.getData()[i][columnIndex].equals("2")){
+				modelTable.getData()[i][columnIndex] = "Light materials";
+			} else if(modelTable.getData()[i][columnIndex].equals("3")){
+				modelTable.getData()[i][columnIndex] = "Makeshift materials";
+			} else if(modelTable.getData()[i][columnIndex].equals("4")){
+				modelTable.getData()[i][columnIndex] = "Mixed but predominantly strong materials";
+			} else if(modelTable.getData()[i][columnIndex].equals("5")){
+				modelTable.getData()[i][columnIndex] = "Mixed but predominantly light materials";
+			} else if(modelTable.getData()[i][columnIndex].equals("6")){
+				modelTable.getData()[i][columnIndex] = "Mixed but predominantly makeshift materials";
+			} else if(modelTable.getData()[i][columnIndex].equals("7")){
+				modelTable.getData()[i][columnIndex] = "Not Applicable";
+			}
+		}
+	}
+	
+	public void modelTableUriNgPananimConverter(){
+		List<String> columnNames = Arrays.asList(modelTable.getColumnName());
+		int columnIndex = columnNames.indexOf("Uri ng Pananim");
+		for(int i = 0; i < modelTable.getData().length; i++){
+			if(modelTable.getData()[i][columnIndex].equals("1")){
+				modelTable.getData()[i][columnIndex] = "Sugar Cane";
+			} else if(modelTable.getData()[i][columnIndex].equals("2")){
+				modelTable.getData()[i][columnIndex] = "Palay";
+			} else if(modelTable.getData()[i][columnIndex].equals("3")){
+				modelTable.getData()[i][columnIndex] = "Corn";
+			} else if(modelTable.getData()[i][columnIndex].equals("4")){
+				modelTable.getData()[i][columnIndex] = "Coffee";
+			} else if(modelTable.getData()[i][columnIndex].equals("5")){
+				modelTable.getData()[i][columnIndex] = "Other Crops";
+			}
+		}
+	}
+	
+	public void modelTableSanhiNgPagkamatayConverter(){
+		List<String> columnNames = Arrays.asList(modelTable.getColumnName());
+		int columnIndex = columnNames.indexOf("Sanhi ng Pagkamatay");
+		for(int i = 0; i < modelTable.getData().length; i++){
+			if(modelTable.getData()[i][columnIndex].equals("1")){
+				modelTable.getData()[i][columnIndex] = "Diseases of the heart";
+			} else if(modelTable.getData()[i][columnIndex].equals("2")){
+				modelTable.getData()[i][columnIndex] = "Diseases of the vascular system";
+			} else if(modelTable.getData()[i][columnIndex].equals("3")){
+				modelTable.getData()[i][columnIndex] = "Pneumonia";
+			} else if(modelTable.getData()[i][columnIndex].equals("4")){
+				modelTable.getData()[i][columnIndex] = "Tuberculosis";
+			} else if(modelTable.getData()[i][columnIndex].equals("5")){
+				modelTable.getData()[i][columnIndex] = "Cancer";
+			} else if(modelTable.getData()[i][columnIndex].equals("6")){
+				modelTable.getData()[i][columnIndex] = "Diarrhea";
+			} else if(modelTable.getData()[i][columnIndex].equals("7")){
+				modelTable.getData()[i][columnIndex] = "Measles";
+			} else if(modelTable.getData()[i][columnIndex].equals("8")){
+				modelTable.getData()[i][columnIndex] = "Complication during pregancy or childbirth";
+			} else if(modelTable.getData()[i][columnIndex].equals("9")){
+				modelTable.getData()[i][columnIndex] = "Accident";
+			} else if(modelTable.getData()[i][columnIndex].equals("10")){
+				modelTable.getData()[i][columnIndex] = "Diabetes";
+			} else if(modelTable.getData()[i][columnIndex].equals("11")){
+				modelTable.getData()[i][columnIndex] = "Disease of the lungs";
+			} else if(modelTable.getData()[i][columnIndex].equals("12")){
+				modelTable.getData()[i][columnIndex] = "Disease of the kidney";
+			} else if(modelTable.getData()[i][columnIndex].equals("13")){
+				modelTable.getData()[i][columnIndex] = "Drowned from flood";
+			} else if(modelTable.getData()[i][columnIndex].equals("14")){
+				modelTable.getData()[i][columnIndex] = "Victim of landslide";
+			} else if(modelTable.getData()[i][columnIndex].equals("15")){
+				modelTable.getData()[i][columnIndex] = "Electrocuted during typhoon";
+			} else if(modelTable.getData()[i][columnIndex].equals("16")){
+				modelTable.getData()[i][columnIndex] = "Murder";
+			} else if(modelTable.getData()[i][columnIndex].equals("17")){
+				modelTable.getData()[i][columnIndex] = "Other causes";
+			}
+		}
+	}
 
+	
+	public void modelTableGamitSaPangingisdaConverter(){
+		List<String> columnNames = Arrays.asList(modelTable.getColumnName());
+		int columnIndex = columnNames.indexOf("Gamit sa Pangingisda");
+		for(int i = 0; i < modelTable.getData().length; i++){
+			if(modelTable.getData()[i][columnIndex].equals("1")){
+				modelTable.getData()[i][columnIndex] = "Fish net";
+			} else if(modelTable.getData()[i][columnIndex].equals("2")){
+				modelTable.getData()[i][columnIndex] = "Electricity";
+			} else if(modelTable.getData()[i][columnIndex].equals("3")){
+				modelTable.getData()[i][columnIndex] = "Bagnets";
+			} else if(modelTable.getData()[i][columnIndex].equals("4")){
+				modelTable.getData()[i][columnIndex] = "Gillnets";
+			} else if(modelTable.getData()[i][columnIndex].equals("5")){
+				modelTable.getData()[i][columnIndex] = "Traps";
+			} else if(modelTable.getData()[i][columnIndex].equals("6")){
+				modelTable.getData()[i][columnIndex] = "Hooks and line";
+			} else if(modelTable.getData()[i][columnIndex].equals("7")){
+				modelTable.getData()[i][columnIndex] = "Sift net";
+			} else if(modelTable.getData()[i][columnIndex].equals("8")){
+				modelTable.getData()[i][columnIndex] = "Others";
+			}
+		}
+	}
 }

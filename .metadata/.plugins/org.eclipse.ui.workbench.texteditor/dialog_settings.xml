@@ -2,20 +2,20 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="Query6" key="selection"/>
-		<item value="true" key="casesensitive"/>
+		<item value="query6B" key="selection"/>
+		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
-			<item value="Query3"/>
-			<item value="CropType"/>
-			<item value="Municipality"/>
-			<item value="&#x09;&#x09;buttonQuery6Button"/>
-			<item value="Back"/>
-			<item value="philheal_life_nmem"/>
-			<item value="PHL"/>
-			<item value="cct"/>
+			<item value="Query6B"/>
+			<item value="Pangingisda"/>
+			<item value="query5B"/>
+			<item value="query4Builder"/>
+			<item value="pagkamatay"/>
+			<item value="query3Builder"/>
+			<item value="query3"/>
+			<item value="Uri ng"/>
 		</list>
 		<list key="replacehistory">
 			<item value="Query6"/>
