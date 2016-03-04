@@ -53,12 +53,10 @@ public class Controller {
 		addListenersBackButtons();
 		addListenersQuery1Spinners();
 		addListenersQuery2Spinners();
-		addListenersQuery7Spinners();
 		addListenersQuery3CheckBox();
 		addListenersQuery4CheckBox();
 		addListenersQuery5CheckBox();
 		addListenersQuery6CheckBox();
-		addListenersQuery7CheckBox();
 
 		addListenersQueryButtons();
 	}
@@ -631,33 +629,7 @@ public class Controller {
 	}
 
 	public void addListenersQuery7Spinners(){
-		view.getSpinnerQuery7AgeLower().addChangeListener(new ChangeListener(){
-			@Override
-			public void stateChanged(ChangeEvent arg0) {
-				changeUpperBound(view.getSpinnerQuery7AgeLower(), view.getSpinnerQuery7AgeUpper());
-			}
-		});
-
-		view.getSpinnerQuery7AgeUpper().addChangeListener(new ChangeListener(){
-			@Override
-			public void stateChanged(ChangeEvent arg0) {
-				changeLowerBound(view.getSpinnerQuery7AgeLower(), view.getSpinnerQuery7AgeLower());
-			}
-		});
 		
-		view.getSpinnerQuery7YearFarmingLower().addChangeListener(new ChangeListener(){
-			@Override
-			public void stateChanged(ChangeEvent arg0) {
-				changeUpperBound(view.getSpinnerQuery7YearFarmingLower(), view.getSpinnerQuery7YearFarmingUpper());
-			}
-		});
-
-		view.getSpinnerQuery7YearFarmingUpper().addChangeListener(new ChangeListener(){
-			@Override
-			public void stateChanged(ChangeEvent arg0) {
-				changeLowerBound(view.getSpinnerQuery7YearFarmingLower(), view.getSpinnerQuery7YearFarmingLower());
-			}
-		});
 	}
 	
 	public void addListenersQuery3CheckBox(){
@@ -859,55 +831,7 @@ public class Controller {
 	}
 
 	public void addListenersQuery7CheckBox(){
-		view.getCheckBoxQuery7Municipality().addMouseListener(new MouseAdapter(){
-			public void mouseClicked(MouseEvent e) {
-				if(view.getCheckBoxQuery7Municipality().isSelected()){
-					view.getComboBoxQuery7Municipality().setEnabled(true);
-				} else{
-					view.getComboBoxQuery7Municipality().setEnabled(false);
-				}
-			}
-		});
 		
-		view.getCheckBoxQuery7Zone().addMouseListener(new MouseAdapter(){
-			public void mouseClicked(MouseEvent e) {
-				if(view.getCheckBoxQuery7Zone().isSelected()){
-					view.getComboBoxQuery7Zone().setEnabled(true);
-				} else{
-					view.getComboBoxQuery7Zone().setEnabled(false);
-				}
-			}
-		});
-		
-		view.getCheckBoxQuery7Barangay().addMouseListener(new MouseAdapter(){
-			public void mouseClicked(MouseEvent e) {
-				if(view.getCheckBoxQuery7Barangay().isSelected()){
-					view.getComboBoxQuery7Barangay().setEnabled(true);
-				} else{
-					view.getComboBoxQuery7Barangay().setEnabled(false);
-				}
-			}
-		});
-		
-		view.getCheckBoxQuery7Purok().addMouseListener(new MouseAdapter(){
-			public void mouseClicked(MouseEvent e) {
-				if(view.getCheckBoxQuery7Purok().isSelected()){
-					view.getComboBoxQuery7Purok().setEnabled(true);
-				} else{
-					view.getComboBoxQuery7Purok().setEnabled(false);
-				}
-			}
-		});
-		
-		view.getCheckBoxQuery7CropType().addMouseListener(new MouseAdapter(){
-			public void mouseClicked(MouseEvent e) {
-				if(view.getCheckBoxQuery7CropType().isSelected()){
-					view.getComboBoxQuery7CropType().setEnabled(true);
-				} else{
-					view.getComboBoxQuery7CropType().setEnabled(false);
-				}
-			}
-		});
 	}
 	
 	public void changeUpperBound(JSpinner lowerSpinner, JSpinner upperSpinner){

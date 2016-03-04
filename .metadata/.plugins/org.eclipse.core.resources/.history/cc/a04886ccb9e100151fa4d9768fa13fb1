@@ -366,8 +366,8 @@ public class View extends JFrame {
 	private JLabel labelQuery7YearFarming;
 	private JSpinner spinnerQuery7YearFarmingLower;
 	private JSpinner spinnerQuery7YearFarmingUpper;
-	private JComboBox<String> comboBoxQuery7ARCDP;
-	private JLabel labelQuery7ARCDP;
+	private JComboBox<String> comboBoxQuery7ARCDPRecipient;
+	private JLabel labelQuery7ARCDPRecipient;
 	private JLabel labelQuery7Dahilan;
 	private JComboBox<String> comboBoxQuery7Dahilan;
 	private JComboBox<String> comboBoxQuery7CropInsurance;
@@ -376,7 +376,6 @@ public class View extends JFrame {
 	private JLabel labelQuery7EquipmentInsurance;
 	private JTable tableQuery7ResultTable;
 	private JScrollPane scrollPaneQuery7ResultTable;
-	private JButton buttonQuery7Query;
 	
 	private View() {
 		setTitle("Community-Based Monitoring System");
@@ -495,7 +494,7 @@ public class View extends JFrame {
 		gbc_buttonQuery6.gridy = 4;
 		panel_main.add(buttonQuery6, gbc_buttonQuery6);
 		
-		buttonQuery7 = new JButton("Agricultural Status Area Report");
+		buttonQuery7 = new JButton("Query 7");
 		buttonQuery7.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		GridBagConstraints gbc_buttonQuery7 = new GridBagConstraints();
 		gbc_buttonQuery7.fill = GridBagConstraints.BOTH;
@@ -2813,9 +2812,9 @@ public class View extends JFrame {
 		contentPane.add(panel_query7, "panel_query7");
 		GridBagLayout gbl_panel_query7 = new GridBagLayout();
 		gbl_panel_query7.columnWidths = new int[]{35, 85, 40, 30, 10, 60, 30, 30, 10, 64, 98, 0};
-		gbl_panel_query7.rowHeights = new int[]{50, 0, 0, 15, 0, 0, 0, 0, 0, 0, 0, 0, 0, 300, -63, 0};
+		gbl_panel_query7.rowHeights = new int[]{50, 0, 0, 15, 0, 0, 0, 0, 0, 0, 0, 0, 320, -63, 0};
 		gbl_panel_query7.columnWeights = new double[]{1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
-		gbl_panel_query7.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+		gbl_panel_query7.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		panel_query7.setLayout(gbl_panel_query7);
 		
 		buttonQuery7Back = new JButton("<<");
@@ -2856,7 +2855,6 @@ public class View extends JFrame {
 		panel_query7.add(labelQuery7Municipality, gbc_labelQuery7Municipality);
 		
 		comboBoxQuery7Municipality = new JComboBox<String>();
-		comboBoxQuery7Municipality.setModel(new DefaultComboBoxModel<String>(new String[] {"[SELECT]", "1", "2", "3", "4", "5", "6"}));
 		comboBoxQuery7Municipality.setEnabled(false);
 		GridBagConstraints gbc_comboBoxQuery7Municipality = new GridBagConstraints();
 		gbc_comboBoxQuery7Municipality.gridwidth = 2;
@@ -2882,7 +2880,6 @@ public class View extends JFrame {
 		panel_query7.add(labelQuery7Zone, gbc_labelQuery7Zone);
 		
 		comboBoxQuery7Zone = new JComboBox<String>();
-		comboBoxQuery7Zone.setModel(new DefaultComboBoxModel<String>(new String[] {"[SELECT]", "1", "2", "3", "4", "5", "6", "7", "9", "13", "18", "19", "99"}));
 		comboBoxQuery7Zone.setEnabled(false);
 		GridBagConstraints gbc_comboBoxQuery7Zone = new GridBagConstraints();
 		gbc_comboBoxQuery7Zone.gridwidth = 2;
@@ -2908,7 +2905,6 @@ public class View extends JFrame {
 		panel_query7.add(labelQuery7Barangay, gbc_labelQuery7Barangay);
 		
 		comboBoxQuery7Barangay = new JComboBox<String>();
-		comboBoxQuery7Barangay.setModel(new DefaultComboBoxModel<String>(new String[] {"[SELECT]", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61"}));
 		comboBoxQuery7Barangay.setEnabled(false);
 		GridBagConstraints gbc_comboBoxQuery7Barangay = new GridBagConstraints();
 		gbc_comboBoxQuery7Barangay.fill = GridBagConstraints.BOTH;
@@ -2933,7 +2929,6 @@ public class View extends JFrame {
 		panel_query7.add(labelQuery7Purok, gbc_labelQuery7Purok);
 		
 		comboBoxQuery7Purok = new JComboBox<String>();
-		comboBoxQuery7Purok.setModel(new DefaultComboBoxModel<String>(new String[] {"[SELECT]", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "26", "99"}));
 		comboBoxQuery7Purok.setEnabled(false);
 		GridBagConstraints gbc_comboBoxQuery7Purok = new GridBagConstraints();
 		gbc_comboBoxQuery7Purok.gridwidth = 2;
@@ -2959,7 +2954,6 @@ public class View extends JFrame {
 		panel_query7.add(labelQuery7CropType, gbc_labelQuery7CropType);
 		
 		comboBoxQuery7CropType = new JComboBox<String>();
-		comboBoxQuery7CropType.setModel(new DefaultComboBoxModel<String>(new String[] {"[SELECT]", "Sugar Cane", "Palay", "Corn", "Coffee", "Other Crops"}));
 		comboBoxQuery7CropType.setEnabled(false);
 		GridBagConstraints gbc_comboBoxQuery7CropType = new GridBagConstraints();
 		gbc_comboBoxQuery7CropType.gridwidth = 2;
@@ -3021,23 +3015,22 @@ public class View extends JFrame {
 		gbc_spinnerQuery7YearFarmingUpper.gridy = 3;
 		panel_query7.add(spinnerQuery7YearFarmingUpper, gbc_spinnerQuery7YearFarmingUpper);
 		
-		labelQuery7ARCDP = new JLabel("ARCDP");
-		GridBagConstraints gbc_labelQuery7ARCDP = new GridBagConstraints();
-		gbc_labelQuery7ARCDP.gridwidth = 2;
-		gbc_labelQuery7ARCDP.insets = new Insets(0, 0, 5, 5);
-		gbc_labelQuery7ARCDP.anchor = GridBagConstraints.EAST;
-		gbc_labelQuery7ARCDP.gridx = 8;
-		gbc_labelQuery7ARCDP.gridy = 3;
-		panel_query7.add(labelQuery7ARCDP, gbc_labelQuery7ARCDP);
+		labelQuery7ARCDPRecipient = new JLabel("ARCDP Recipient");
+		GridBagConstraints gbc_labelQuery7ARCDPRecipient = new GridBagConstraints();
+		gbc_labelQuery7ARCDPRecipient.gridwidth = 2;
+		gbc_labelQuery7ARCDPRecipient.insets = new Insets(0, 0, 5, 5);
+		gbc_labelQuery7ARCDPRecipient.anchor = GridBagConstraints.EAST;
+		gbc_labelQuery7ARCDPRecipient.gridx = 8;
+		gbc_labelQuery7ARCDPRecipient.gridy = 3;
+		panel_query7.add(labelQuery7ARCDPRecipient, gbc_labelQuery7ARCDPRecipient);
 		
-		comboBoxQuery7ARCDP = new JComboBox<String>();
-		comboBoxQuery7ARCDP.setModel(new DefaultComboBoxModel<String>(new String[] {"Nakatanggap", "Hindi Nakatanggap"}));
-		GridBagConstraints gbc_comboBoxQuery7ARCDP = new GridBagConstraints();
-		gbc_comboBoxQuery7ARCDP.insets = new Insets(0, 0, 5, 0);
-		gbc_comboBoxQuery7ARCDP.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxQuery7ARCDP.gridx = 10;
-		gbc_comboBoxQuery7ARCDP.gridy = 3;
-		panel_query7.add(comboBoxQuery7ARCDP, gbc_comboBoxQuery7ARCDP);
+		comboBoxQuery7ARCDPRecipient = new JComboBox();
+		GridBagConstraints gbc_comboBoxQuery7ARCDPRecipient = new GridBagConstraints();
+		gbc_comboBoxQuery7ARCDPRecipient.insets = new Insets(0, 0, 5, 0);
+		gbc_comboBoxQuery7ARCDPRecipient.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxQuery7ARCDPRecipient.gridx = 10;
+		gbc_comboBoxQuery7ARCDPRecipient.gridy = 3;
+		panel_query7.add(comboBoxQuery7ARCDPRecipient, gbc_comboBoxQuery7ARCDPRecipient);
 		
 		labelQuery7AgriculturalRecord = new JLabel("Agricultural Record");
 		labelQuery7AgriculturalRecord.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -3057,8 +3050,7 @@ public class View extends JFrame {
 		gbc_labelQuery7BeastOfBurden.gridy = 5;
 		panel_query7.add(labelQuery7BeastOfBurden, gbc_labelQuery7BeastOfBurden);
 		
-		comboBoxQuery7BeastOfBurden = new JComboBox<String>();
-		comboBoxQuery7BeastOfBurden.setModel(new DefaultComboBoxModel<String>(new String[] {"[SELECT]", "Mayroon", "Wala"}));
+		comboBoxQuery7BeastOfBurden = new JComboBox();
 		GridBagConstraints gbc_comboBoxQuery7BeastOfBurden = new GridBagConstraints();
 		gbc_comboBoxQuery7BeastOfBurden.gridwidth = 2;
 		gbc_comboBoxQuery7BeastOfBurden.insets = new Insets(0, 0, 5, 5);
@@ -3076,8 +3068,7 @@ public class View extends JFrame {
 		gbc_labelQuery7Plow.gridy = 5;
 		panel_query7.add(labelQuery7Plow, gbc_labelQuery7Plow);
 		
-		comboBoxQuery7Plow = new JComboBox<String>();
-		comboBoxQuery7Plow.setModel(new DefaultComboBoxModel<String>(new String[] {"[SELECT]", "Mayroon", "Wala"}));
+		comboBoxQuery7Plow = new JComboBox();
 		GridBagConstraints gbc_comboBoxQuery7Plow = new GridBagConstraints();
 		gbc_comboBoxQuery7Plow.gridwidth = 2;
 		gbc_comboBoxQuery7Plow.insets = new Insets(0, 0, 5, 5);
@@ -3095,8 +3086,7 @@ public class View extends JFrame {
 		gbc_labelQuery7Harrow.gridy = 5;
 		panel_query7.add(labelQuery7Harrow, gbc_labelQuery7Harrow);
 		
-		comboBoxQuery7Harrow = new JComboBox<String>();
-		comboBoxQuery7Harrow.setModel(new DefaultComboBoxModel<String>(new String[] {"[SELECT]", "Mayroon", "Wala"}));
+		comboBoxQuery7Harrow = new JComboBox();
 		GridBagConstraints gbc_comboBoxQuery7Harrow = new GridBagConstraints();
 		gbc_comboBoxQuery7Harrow.insets = new Insets(0, 0, 5, 0);
 		gbc_comboBoxQuery7Harrow.fill = GridBagConstraints.HORIZONTAL;
@@ -3112,8 +3102,7 @@ public class View extends JFrame {
 		gbc_labelQuery7Mower.gridy = 6;
 		panel_query7.add(labelQuery7Mower, gbc_labelQuery7Mower);
 		
-		comboBoxQuery7Mower = new JComboBox<String>();
-		comboBoxQuery7Mower.setModel(new DefaultComboBoxModel<String>(new String[] {"[SELECT]", "Mayroon", "Wala"}));
+		comboBoxQuery7Mower = new JComboBox();
 		GridBagConstraints gbc_comboBoxQuery7Mower = new GridBagConstraints();
 		gbc_comboBoxQuery7Mower.gridwidth = 2;
 		gbc_comboBoxQuery7Mower.insets = new Insets(0, 0, 5, 5);
@@ -3131,8 +3120,7 @@ public class View extends JFrame {
 		gbc_labelQuery7Thresher.gridy = 6;
 		panel_query7.add(labelQuery7Thresher, gbc_labelQuery7Thresher);
 		
-		comboBoxQuery7Thresher = new JComboBox<String>();
-		comboBoxQuery7Thresher.setModel(new DefaultComboBoxModel<String>(new String[] {"[SELECT]", "Mayroon", "Wala"}));
+		comboBoxQuery7Thresher = new JComboBox();
 		GridBagConstraints gbc_comboBoxQuery7Thresher = new GridBagConstraints();
 		gbc_comboBoxQuery7Thresher.gridwidth = 2;
 		gbc_comboBoxQuery7Thresher.insets = new Insets(0, 0, 5, 5);
@@ -3150,8 +3138,7 @@ public class View extends JFrame {
 		gbc_labelQuery7InsecticideSprayer.gridy = 6;
 		panel_query7.add(labelQuery7InsecticideSprayer, gbc_labelQuery7InsecticideSprayer);
 		
-		comboBoxQuery7InsecticideSprayer = new JComboBox<String>();
-		comboBoxQuery7InsecticideSprayer.setModel(new DefaultComboBoxModel<String>(new String[] {"[SELECT]", "Mayroon", "Wala"}));
+		comboBoxQuery7InsecticideSprayer = new JComboBox();
 		GridBagConstraints gbc_comboBoxQuery7InsecticideSprayer = new GridBagConstraints();
 		gbc_comboBoxQuery7InsecticideSprayer.insets = new Insets(0, 0, 5, 0);
 		gbc_comboBoxQuery7InsecticideSprayer.fill = GridBagConstraints.HORIZONTAL;
@@ -3168,8 +3155,7 @@ public class View extends JFrame {
 		gbc_labelQuery7FarmTractor.gridy = 7;
 		panel_query7.add(labelQuery7FarmTractor, gbc_labelQuery7FarmTractor);
 		
-		comboBoxQuery7FarmTractor = new JComboBox<String>();
-		comboBoxQuery7FarmTractor.setModel(new DefaultComboBoxModel<String>(new String[] {"[SELECT]", "Mayroon", "Wala"}));
+		comboBoxQuery7FarmTractor = new JComboBox();
 		GridBagConstraints gbc_comboBoxQuery7FarmTractor = new GridBagConstraints();
 		gbc_comboBoxQuery7FarmTractor.gridwidth = 2;
 		gbc_comboBoxQuery7FarmTractor.insets = new Insets(0, 0, 5, 5);
@@ -3187,8 +3173,7 @@ public class View extends JFrame {
 		gbc_labelQuery7HandTractor.gridy = 7;
 		panel_query7.add(labelQuery7HandTractor, gbc_labelQuery7HandTractor);
 		
-		comboBoxQuery7HandTractor = new JComboBox<String>();
-		comboBoxQuery7HandTractor.setModel(new DefaultComboBoxModel<String>(new String[] {"[SELECT]", "Mayroon", "Wala"}));
+		comboBoxQuery7HandTractor = new JComboBox();
 		GridBagConstraints gbc_comboBoxQuery7HandTractor = new GridBagConstraints();
 		gbc_comboBoxQuery7HandTractor.gridwidth = 2;
 		gbc_comboBoxQuery7HandTractor.insets = new Insets(0, 0, 5, 5);
@@ -3206,8 +3191,7 @@ public class View extends JFrame {
 		gbc_labelQuery7Mudboat.gridy = 7;
 		panel_query7.add(labelQuery7Mudboat, gbc_labelQuery7Mudboat);
 		
-		comboBoxQuery7Mudboat = new JComboBox<String>();
-		comboBoxQuery7Mudboat.setModel(new DefaultComboBoxModel<String>(new String[] {"[SELECT]", "Mayroon", "Wala"}));
+		comboBoxQuery7Mudboat = new JComboBox();
 		GridBagConstraints gbc_comboBoxQuery7Mudboat = new GridBagConstraints();
 		gbc_comboBoxQuery7Mudboat.insets = new Insets(0, 0, 5, 0);
 		gbc_comboBoxQuery7Mudboat.fill = GridBagConstraints.HORIZONTAL;
@@ -3224,8 +3208,7 @@ public class View extends JFrame {
 		gbc_labelQuery7PlanterDryer.gridy = 8;
 		panel_query7.add(labelQuery7PlanterDryer, gbc_labelQuery7PlanterDryer);
 		
-		comboBoxQuery7PlanterDryer = new JComboBox<String>();
-		comboBoxQuery7PlanterDryer.setModel(new DefaultComboBoxModel<String>(new String[] {"[SELECT]", "Mayroon", "Wala"}));
+		comboBoxQuery7PlanterDryer = new JComboBox();
 		GridBagConstraints gbc_comboBoxQuery7PlanterDryer = new GridBagConstraints();
 		gbc_comboBoxQuery7PlanterDryer.gridwidth = 2;
 		gbc_comboBoxQuery7PlanterDryer.insets = new Insets(0, 0, 5, 5);
@@ -3243,8 +3226,7 @@ public class View extends JFrame {
 		gbc_labelQuery7MechanicalDryer.gridy = 8;
 		panel_query7.add(labelQuery7MechanicalDryer, gbc_labelQuery7MechanicalDryer);
 		
-		comboBoxQuery7MechanicalDryer = new JComboBox<String>();
-		comboBoxQuery7MechanicalDryer.setModel(new DefaultComboBoxModel<String>(new String[] {"[SELECT]", "Mayroon", "Wala"}));
+		comboBoxQuery7MechanicalDryer = new JComboBox();
 		GridBagConstraints gbc_comboBoxQuery7MechanicalDryer = new GridBagConstraints();
 		gbc_comboBoxQuery7MechanicalDryer.gridwidth = 2;
 		gbc_comboBoxQuery7MechanicalDryer.insets = new Insets(0, 0, 5, 5);
@@ -3262,8 +3244,7 @@ public class View extends JFrame {
 		gbc_labelQuery7DryingPavement.gridy = 8;
 		panel_query7.add(labelQuery7DryingPavement, gbc_labelQuery7DryingPavement);
 		
-		comboBoxQuery7DryingPavement = new JComboBox<String>();
-		comboBoxQuery7DryingPavement.setModel(new DefaultComboBoxModel<String>(new String[] {"[SELECT]", "Mayroon", "Wala"}));
+		comboBoxQuery7DryingPavement = new JComboBox();
 		GridBagConstraints gbc_comboBoxQuery7DryingPavement = new GridBagConstraints();
 		gbc_comboBoxQuery7DryingPavement.insets = new Insets(0, 0, 5, 0);
 		gbc_comboBoxQuery7DryingPavement.fill = GridBagConstraints.HORIZONTAL;
@@ -3280,8 +3261,7 @@ public class View extends JFrame {
 		gbc_labelQuery7FeedMill.gridy = 9;
 		panel_query7.add(labelQuery7FeedMill, gbc_labelQuery7FeedMill);
 		
-		comboBoxQuery7FeedMill = new JComboBox<String>();
-		comboBoxQuery7FeedMill.setModel(new DefaultComboBoxModel<String>(new String[] {"[SELECT]", "Mayroon", "Wala"}));
+		comboBoxQuery7FeedMill = new JComboBox();
 		GridBagConstraints gbc_comboBoxQuery7FeedMill = new GridBagConstraints();
 		gbc_comboBoxQuery7FeedMill.gridwidth = 2;
 		gbc_comboBoxQuery7FeedMill.insets = new Insets(0, 0, 5, 5);
@@ -3299,8 +3279,7 @@ public class View extends JFrame {
 		gbc_labelQuery7Harvester.gridy = 9;
 		panel_query7.add(labelQuery7Harvester, gbc_labelQuery7Harvester);
 		
-		comboBoxQuery7Harvester = new JComboBox<String>();
-		comboBoxQuery7Harvester.setModel(new DefaultComboBoxModel<String>(new String[] {"[SELECT]", "Mayroon", "Wala"}));
+		comboBoxQuery7Harvester = new JComboBox();
 		GridBagConstraints gbc_comboBoxQuery7Harvester = new GridBagConstraints();
 		gbc_comboBoxQuery7Harvester.gridwidth = 2;
 		gbc_comboBoxQuery7Harvester.insets = new Insets(0, 0, 5, 5);
@@ -3318,8 +3297,7 @@ public class View extends JFrame {
 		gbc_labelQuery7WarehouseGranary.gridy = 9;
 		panel_query7.add(labelQuery7WarehouseGranary, gbc_labelQuery7WarehouseGranary);
 		
-		comboBoxQuery7WarehouseGranary = new JComboBox<String>();
-		comboBoxQuery7WarehouseGranary.setModel(new DefaultComboBoxModel<String>(new String[] {"[SELECT]", "Mayroon", "Wala"}));
+		comboBoxQuery7WarehouseGranary = new JComboBox();
 		GridBagConstraints gbc_comboBoxQuery7WarehouseGranary = new GridBagConstraints();
 		gbc_comboBoxQuery7WarehouseGranary.insets = new Insets(0, 0, 5, 0);
 		gbc_comboBoxQuery7WarehouseGranary.fill = GridBagConstraints.HORIZONTAL;
@@ -3336,8 +3314,7 @@ public class View extends JFrame {
 		gbc_labelQuery7Farmshed.gridy = 10;
 		panel_query7.add(labelQuery7Farmshed, gbc_labelQuery7Farmshed);
 		
-		comboBoxQuery7Farmshed = new JComboBox<String>();
-		comboBoxQuery7Farmshed.setModel(new DefaultComboBoxModel<String>(new String[] {"[SELECT]", "Mayroon", "Wala"}));
+		comboBoxQuery7Farmshed = new JComboBox();
 		GridBagConstraints gbc_comboBoxQuery7Farmshed = new GridBagConstraints();
 		gbc_comboBoxQuery7Farmshed.gridwidth = 2;
 		gbc_comboBoxQuery7Farmshed.insets = new Insets(0, 0, 5, 5);
@@ -3355,8 +3332,7 @@ public class View extends JFrame {
 		gbc_labelQuery7IrrigationPump.gridy = 10;
 		panel_query7.add(labelQuery7IrrigationPump, gbc_labelQuery7IrrigationPump);
 		
-		comboBoxQuery7IrrigationPump = new JComboBox<String>();
-		comboBoxQuery7IrrigationPump.setModel(new DefaultComboBoxModel<String>(new String[] {"[SELECT]", "Mayroon", "Wala"}));
+		comboBoxQuery7IrrigationPump = new JComboBox();
 		GridBagConstraints gbc_comboBoxQuery7IrrigationPump = new GridBagConstraints();
 		gbc_comboBoxQuery7IrrigationPump.gridwidth = 2;
 		gbc_comboBoxQuery7IrrigationPump.insets = new Insets(0, 0, 5, 5);
@@ -3374,8 +3350,7 @@ public class View extends JFrame {
 		gbc_labelQuery7Others.gridy = 10;
 		panel_query7.add(labelQuery7Others, gbc_labelQuery7Others);
 		
-		comboBoxQuery7Others = new JComboBox<String>();
-		comboBoxQuery7Others.setModel(new DefaultComboBoxModel<String>(new String[] {"[SELECT]", "Mayroon", "Wala"}));
+		comboBoxQuery7Others = new JComboBox();
 		GridBagConstraints gbc_comboBoxQuery7Others = new GridBagConstraints();
 		gbc_comboBoxQuery7Others.insets = new Insets(0, 0, 5, 0);
 		gbc_comboBoxQuery7Others.fill = GridBagConstraints.HORIZONTAL;
@@ -3383,22 +3358,39 @@ public class View extends JFrame {
 		gbc_comboBoxQuery7Others.gridy = 10;
 		panel_query7.add(comboBoxQuery7Others, gbc_comboBoxQuery7Others);
 		
+		labelQuery7Dahilan = new JLabel("Bumaba ang ani dahil");
+		GridBagConstraints gbc_labelQuery7Dahilan = new GridBagConstraints();
+		gbc_labelQuery7Dahilan.anchor = GridBagConstraints.EAST;
+		gbc_labelQuery7Dahilan.gridwidth = 2;
+		gbc_labelQuery7Dahilan.insets = new Insets(0, 0, 5, 5);
+		gbc_labelQuery7Dahilan.gridx = 0;
+		gbc_labelQuery7Dahilan.gridy = 11;
+		panel_query7.add(labelQuery7Dahilan, gbc_labelQuery7Dahilan);
+		
+		comboBoxQuery7Dahilan = new JComboBox();
+		GridBagConstraints gbc_comboBoxQuery7Dahilan = new GridBagConstraints();
+		gbc_comboBoxQuery7Dahilan.gridwidth = 2;
+		gbc_comboBoxQuery7Dahilan.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBoxQuery7Dahilan.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxQuery7Dahilan.gridx = 2;
+		gbc_comboBoxQuery7Dahilan.gridy = 11;
+		panel_query7.add(comboBoxQuery7Dahilan, gbc_comboBoxQuery7Dahilan);
+		
 		labelQuery7CropInsurance = new JLabel("Crop Insurance");
 		GridBagConstraints gbc_labelQuery7CropInsurance = new GridBagConstraints();
 		gbc_labelQuery7CropInsurance.gridwidth = 2;
 		gbc_labelQuery7CropInsurance.insets = new Insets(0, 0, 5, 5);
 		gbc_labelQuery7CropInsurance.anchor = GridBagConstraints.EAST;
-		gbc_labelQuery7CropInsurance.gridx = 0;
+		gbc_labelQuery7CropInsurance.gridx = 4;
 		gbc_labelQuery7CropInsurance.gridy = 11;
 		panel_query7.add(labelQuery7CropInsurance, gbc_labelQuery7CropInsurance);
 		
-		comboBoxQuery7CropInsurance = new JComboBox<String>();
-		comboBoxQuery7CropInsurance.setModel(new DefaultComboBoxModel<String>(new String[] {"[SELECT]", "Mayroon", "Wala"}));
+		comboBoxQuery7CropInsurance = new JComboBox();
 		GridBagConstraints gbc_comboBoxQuery7CropInsurance = new GridBagConstraints();
 		gbc_comboBoxQuery7CropInsurance.gridwidth = 2;
 		gbc_comboBoxQuery7CropInsurance.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBoxQuery7CropInsurance.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxQuery7CropInsurance.gridx = 2;
+		gbc_comboBoxQuery7CropInsurance.gridx = 6;
 		gbc_comboBoxQuery7CropInsurance.gridy = 11;
 		panel_query7.add(comboBoxQuery7CropInsurance, gbc_comboBoxQuery7CropInsurance);
 		
@@ -3407,46 +3399,17 @@ public class View extends JFrame {
 		gbc_labelQuery7EquipmentInsurance.gridwidth = 2;
 		gbc_labelQuery7EquipmentInsurance.insets = new Insets(0, 0, 5, 5);
 		gbc_labelQuery7EquipmentInsurance.anchor = GridBagConstraints.EAST;
-		gbc_labelQuery7EquipmentInsurance.gridx = 4;
+		gbc_labelQuery7EquipmentInsurance.gridx = 8;
 		gbc_labelQuery7EquipmentInsurance.gridy = 11;
 		panel_query7.add(labelQuery7EquipmentInsurance, gbc_labelQuery7EquipmentInsurance);
 		
-		comboBoxQuery7EquipmentInsurance = new JComboBox<String>();
-		comboBoxQuery7EquipmentInsurance.setModel(new DefaultComboBoxModel<String>(new String[] {"[SELECT]", "Mayroon", "Wala"}));
+		comboBoxQuery7EquipmentInsurance = new JComboBox();
 		GridBagConstraints gbc_comboBoxQuery7EquipmentInsurance = new GridBagConstraints();
-		gbc_comboBoxQuery7EquipmentInsurance.gridwidth = 2;
-		gbc_comboBoxQuery7EquipmentInsurance.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBoxQuery7EquipmentInsurance.insets = new Insets(0, 0, 5, 0);
 		gbc_comboBoxQuery7EquipmentInsurance.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxQuery7EquipmentInsurance.gridx = 6;
+		gbc_comboBoxQuery7EquipmentInsurance.gridx = 10;
 		gbc_comboBoxQuery7EquipmentInsurance.gridy = 11;
 		panel_query7.add(comboBoxQuery7EquipmentInsurance, gbc_comboBoxQuery7EquipmentInsurance);
-		
-		labelQuery7Dahilan = new JLabel("Bumaba ang ani dahil");
-		GridBagConstraints gbc_labelQuery7Dahilan = new GridBagConstraints();
-		gbc_labelQuery7Dahilan.anchor = GridBagConstraints.EAST;
-		gbc_labelQuery7Dahilan.gridwidth = 2;
-		gbc_labelQuery7Dahilan.insets = new Insets(0, 0, 5, 5);
-		gbc_labelQuery7Dahilan.gridx = 0;
-		gbc_labelQuery7Dahilan.gridy = 12;
-		panel_query7.add(labelQuery7Dahilan, gbc_labelQuery7Dahilan);
-		
-		comboBoxQuery7Dahilan = new JComboBox<String>();
-		comboBoxQuery7Dahilan.setModel(new DefaultComboBoxModel<String>(new String[] {"[SELECT]", "Increase in cost", "Affected by drought", "Affected by typhoon", "Affected by flood", "Affected by pests", "Decrease in water from irrigation", "Change in primary occupation", "Others"}));
-		GridBagConstraints gbc_comboBoxQuery7Dahilan = new GridBagConstraints();
-		gbc_comboBoxQuery7Dahilan.gridwidth = 4;
-		gbc_comboBoxQuery7Dahilan.insets = new Insets(0, 0, 5, 5);
-		gbc_comboBoxQuery7Dahilan.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxQuery7Dahilan.gridx = 2;
-		gbc_comboBoxQuery7Dahilan.gridy = 12;
-		panel_query7.add(comboBoxQuery7Dahilan, gbc_comboBoxQuery7Dahilan);
-		
-		buttonQuery7Query = new JButton("Query");
-		GridBagConstraints gbc_buttonQuery7Query = new GridBagConstraints();
-		gbc_buttonQuery7Query.fill = GridBagConstraints.BOTH;
-		gbc_buttonQuery7Query.insets = new Insets(0, 0, 5, 0);
-		gbc_buttonQuery7Query.gridx = 10;
-		gbc_buttonQuery7Query.gridy = 12;
-		panel_query7.add(buttonQuery7Query, gbc_buttonQuery7Query);
 		
 		scrollPaneQuery7ResultTable = new JScrollPane();
 		GridBagConstraints gbc_scrollPaneQuery7ResultTable = new GridBagConstraints();
@@ -3454,7 +3417,7 @@ public class View extends JFrame {
 		gbc_scrollPaneQuery7ResultTable.gridwidth = 11;
 		gbc_scrollPaneQuery7ResultTable.insets = new Insets(0, 0, 5, 0);
 		gbc_scrollPaneQuery7ResultTable.gridx = 0;
-		gbc_scrollPaneQuery7ResultTable.gridy = 13;
+		gbc_scrollPaneQuery7ResultTable.gridy = 12;
 		panel_query7.add(scrollPaneQuery7ResultTable, gbc_scrollPaneQuery7ResultTable);
 		
 		tableQuery7ResultTable = new JTable();
@@ -3465,13 +3428,9 @@ public class View extends JFrame {
 		gbc_labelQuery7Status.anchor = GridBagConstraints.SOUTHWEST;
 		gbc_labelQuery7Status.gridwidth = 11;
 		gbc_labelQuery7Status.gridx = 0;
-		gbc_labelQuery7Status.gridy = 14;
+		gbc_labelQuery7Status.gridy = 13;
 		panel_query7.add(labelQuery7Status, gbc_labelQuery7Status);
 		
-	}
-
-	public JButton getButtonQuery7Query() {
-		return buttonQuery7Query;
 	}
 
 	public static long getSerialversionuid() {
@@ -4560,293 +4519,5 @@ public class View extends JFrame {
 
 	public JScrollPane getScrollPaneQuery6ResultTable() {
 		return scrollPaneQuery6ResultTable;
-	}
-
-	public JPanel getPanel_query7() {
-		return panel_query7;
-	}
-
-	public JButton getButtonQuery7Back() {
-		return buttonQuery7Back;
-	}
-
-	public JLabel getLabelQuery7() {
-		return labelQuery7;
-	}
-
-	public JCheckBox getCheckBoxQuery7Municipality() {
-		return checkBoxQuery7Municipality;
-	}
-
-	public JLabel getLabelQuery7Municipality() {
-		return labelQuery7Municipality;
-	}
-
-	public JComboBox<String> getComboBoxQuery7Municipality() {
-		return comboBoxQuery7Municipality;
-	}
-
-	public JCheckBox getCheckBoxQuery7Zone() {
-		return checkBoxQuery7Zone;
-	}
-
-	public JLabel getLabelQuery7Zone() {
-		return labelQuery7Zone;
-	}
-
-	public JComboBox<String> getComboBoxQuery7Zone() {
-		return comboBoxQuery7Zone;
-	}
-
-	public JCheckBox getCheckBoxQuery7Barangay() {
-		return checkBoxQuery7Barangay;
-	}
-
-	public JLabel getLabelQuery7Barangay() {
-		return labelQuery7Barangay;
-	}
-
-	public JComboBox<String> getComboBoxQuery7Barangay() {
-		return comboBoxQuery7Barangay;
-	}
-
-	public JCheckBox getCheckBoxQuery7Purok() {
-		return checkBoxQuery7Purok;
-	}
-
-	public JLabel getLabelQuery7Purok() {
-		return labelQuery7Purok;
-	}
-
-	public JComboBox<String> getComboBoxQuery7Purok() {
-		return comboBoxQuery7Purok;
-	}
-
-	public JCheckBox getCheckBoxQuery7CropType() {
-		return checkBoxQuery7CropType;
-	}
-
-	public JLabel getLabelQuery7CropType() {
-		return labelQuery7CropType;
-	}
-
-	public JComboBox<String> getComboBoxQuery7CropType() {
-		return comboBoxQuery7CropType;
-	}
-
-	public JLabel getLabelQuery7Status() {
-		return labelQuery7Status;
-	}
-
-	public JLabel getLabelQuery7AgriculturalRecord() {
-		return labelQuery7AgriculturalRecord;
-	}
-
-	public JLabel getLabelQuery7BeastOfBurden() {
-		return labelQuery7BeastOfBurden;
-	}
-
-	public JComboBox<String> getComboBoxQuery7BeastOfBurden() {
-		return comboBoxQuery7BeastOfBurden;
-	}
-
-	public JComboBox<String> getComboBoxQuery7Plow() {
-		return comboBoxQuery7Plow;
-	}
-
-	public JComboBox<String> getComboBoxQuery7Harrow() {
-		return comboBoxQuery7Harrow;
-	}
-
-	public JLabel getLabelQuery7Plow() {
-		return labelQuery7Plow;
-	}
-
-	public JLabel getLabelQuery7Harrow() {
-		return labelQuery7Harrow;
-	}
-
-	public JComboBox<String> getComboBoxQuery7Mower() {
-		return comboBoxQuery7Mower;
-	}
-
-	public JComboBox<String> getComboBoxQuery7Thresher() {
-		return comboBoxQuery7Thresher;
-	}
-
-	public JComboBox<String> getComboBoxQuery7InsecticideSprayer() {
-		return comboBoxQuery7InsecticideSprayer;
-	}
-
-	public JLabel getLabelQuery7Mower() {
-		return labelQuery7Mower;
-	}
-
-	public JLabel getLabelQuery7Thresher() {
-		return labelQuery7Thresher;
-	}
-
-	public JLabel getLabelQuery7InsecticideSprayer() {
-		return labelQuery7InsecticideSprayer;
-	}
-
-	public JComboBox<String> getComboBoxQuery7FarmTractor() {
-		return comboBoxQuery7FarmTractor;
-	}
-
-	public JComboBox<String> getComboBoxQuery7HandTractor() {
-		return comboBoxQuery7HandTractor;
-	}
-
-	public JComboBox<String> getComboBoxQuery7Mudboat() {
-		return comboBoxQuery7Mudboat;
-	}
-
-	public JComboBox<String> getComboBoxQuery7PlanterDryer() {
-		return comboBoxQuery7PlanterDryer;
-	}
-
-	public JComboBox<String> getComboBoxQuery7MechanicalDryer() {
-		return comboBoxQuery7MechanicalDryer;
-	}
-
-	public JComboBox<String> getComboBoxQuery7DryingPavement() {
-		return comboBoxQuery7DryingPavement;
-	}
-
-	public JComboBox<String> getComboBoxQuery7FeedMill() {
-		return comboBoxQuery7FeedMill;
-	}
-
-	public JComboBox<String> getComboBoxQuery7Harvester() {
-		return comboBoxQuery7Harvester;
-	}
-
-	public JComboBox<String> getComboBoxQuery7WarehouseGranary() {
-		return comboBoxQuery7WarehouseGranary;
-	}
-
-	public JComboBox<String> getComboBoxQuery7Farmshed() {
-		return comboBoxQuery7Farmshed;
-	}
-
-	public JComboBox<String> getComboBoxQuery7IrrigationPump() {
-		return comboBoxQuery7IrrigationPump;
-	}
-
-	public JComboBox<String> getComboBoxQuery7Others() {
-		return comboBoxQuery7Others;
-	}
-
-	public JLabel getLabelQuery7FarmTractor() {
-		return labelQuery7FarmTractor;
-	}
-
-	public JLabel getLabelQuery7HandTractor() {
-		return labelQuery7HandTractor;
-	}
-
-	public JLabel getLabelQuery7Mudboat() {
-		return labelQuery7Mudboat;
-	}
-
-	public JLabel getLabelQuery7PlanterDryer() {
-		return labelQuery7PlanterDryer;
-	}
-
-	public JLabel getLabelQuery7MechanicalDryer() {
-		return labelQuery7MechanicalDryer;
-	}
-
-	public JLabel getLabelQuery7DryingPavement() {
-		return labelQuery7DryingPavement;
-	}
-
-	public JLabel getLabelQuery7FeedMill() {
-		return labelQuery7FeedMill;
-	}
-
-	public JLabel getLabelQuery7Harvester() {
-		return labelQuery7Harvester;
-	}
-
-	public JLabel getLabelQuery7WarehouseGranary() {
-		return labelQuery7WarehouseGranary;
-	}
-
-	public JLabel getLabelQuery7Farmshed() {
-		return labelQuery7Farmshed;
-	}
-
-	public JLabel getLabelQuery7IrrigationPump() {
-		return labelQuery7IrrigationPump;
-	}
-
-	public JLabel getLabelQuery7Others() {
-		return labelQuery7Others;
-	}
-
-	public JLabel getLabelQuery7Age() {
-		return labelQuery7Age;
-	}
-
-	public JSpinner getSpinnerQuery7AgeLower() {
-		return spinnerQuery7AgeLower;
-	}
-
-	public JSpinner getSpinnerQuery7AgeUpper() {
-		return spinnerQuery7AgeUpper;
-	}
-
-	public JLabel getLabelQuery7YearFarming() {
-		return labelQuery7YearFarming;
-	}
-
-	public JSpinner getSpinnerQuery7YearFarmingLower() {
-		return spinnerQuery7YearFarmingLower;
-	}
-
-	public JSpinner getSpinnerQuery7YearFarmingUpper() {
-		return spinnerQuery7YearFarmingUpper;
-	}
-
-	public JComboBox<String> getComboBoxQuery7ARCDP() {
-		return comboBoxQuery7ARCDP;
-	}
-
-	public JLabel getLabelQuery7ARCDP() {
-		return labelQuery7ARCDP;
-	}
-
-	public JLabel getLabelQuery7Dahilan() {
-		return labelQuery7Dahilan;
-	}
-
-	public JComboBox<String> getComboBoxQuery7Dahilan() {
-		return comboBoxQuery7Dahilan;
-	}
-
-	public JComboBox<String> getComboBoxQuery7CropInsurance() {
-		return comboBoxQuery7CropInsurance;
-	}
-
-	public JComboBox<String> getComboBoxQuery7EquipmentInsurance() {
-		return comboBoxQuery7EquipmentInsurance;
-	}
-
-	public JLabel getLabelQuery7CropInsurance() {
-		return labelQuery7CropInsurance;
-	}
-
-	public JLabel getLabelQuery7EquipmentInsurance() {
-		return labelQuery7EquipmentInsurance;
-	}
-
-	public JTable getTableQuery7ResultTable() {
-		return tableQuery7ResultTable;
-	}
-
-	public JScrollPane getScrollPaneQuery7ResultTable() {
-		return scrollPaneQuery7ResultTable;
 	}
 }

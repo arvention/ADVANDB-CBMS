@@ -6,6 +6,12 @@
 		<item value="111" key="y"/>
 		<item value="506" key="height"/>
 	</section>
+	<section name="org.eclipse.wb.internal.swing.model.layout.gbl.ui.RowEditDialog">
+		<item value="513" key="x"/>
+		<item value="340" key="width"/>
+		<item value="149" key="y"/>
+		<item value="430" key="height"/>
+	</section>
 	<section name="org.eclipse.wb.internal.swing.model.property.editor.border.BorderDialog">
 		<item value="442" key="x"/>
 		<item value="482" key="width"/>
@@ -13,9 +19,9 @@
 		<item value="381" key="height"/>
 	</section>
 	<section name="org.eclipse.wb.internal.swing.model.property.editor.models.combo.ComboBoxModelDialog">
-		<item value="445" key="x"/>
+		<item value="563" key="x"/>
 		<item value="476" key="width"/>
-		<item value="181" key="y"/>
+		<item value="189" key="y"/>
 		<item value="365" key="height"/>
 	</section>
 	<section name="org.eclipse.wb.internal.swing.model.property.editor.icon.IconPropertyEditor$ImageDialog">

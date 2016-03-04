@@ -53,12 +53,10 @@ public class Controller {
 		addListenersBackButtons();
 		addListenersQuery1Spinners();
 		addListenersQuery2Spinners();
-		addListenersQuery7Spinners();
 		addListenersQuery3CheckBox();
 		addListenersQuery4CheckBox();
 		addListenersQuery5CheckBox();
 		addListenersQuery6CheckBox();
-		addListenersQuery7CheckBox();
 
 		addListenersQueryButtons();
 	}

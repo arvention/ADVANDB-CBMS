@@ -495,7 +495,7 @@ public class View extends JFrame {
 		gbc_buttonQuery6.gridy = 4;
 		panel_main.add(buttonQuery6, gbc_buttonQuery6);
 		
-		buttonQuery7 = new JButton("Agricultural Status Area Report");
+		buttonQuery7 = new JButton("Query 7");
 		buttonQuery7.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		GridBagConstraints gbc_buttonQuery7 = new GridBagConstraints();
 		gbc_buttonQuery7.fill = GridBagConstraints.BOTH;

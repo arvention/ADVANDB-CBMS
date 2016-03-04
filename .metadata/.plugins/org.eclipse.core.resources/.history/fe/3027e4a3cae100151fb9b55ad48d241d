@@ -53,12 +53,10 @@ public class Controller {
 		addListenersBackButtons();
 		addListenersQuery1Spinners();
 		addListenersQuery2Spinners();
-		addListenersQuery7Spinners();
 		addListenersQuery3CheckBox();
 		addListenersQuery4CheckBox();
 		addListenersQuery5CheckBox();
 		addListenersQuery6CheckBox();
-		addListenersQuery7CheckBox();
 
 		addListenersQueryButtons();
 	}
@@ -105,13 +103,6 @@ public class Controller {
 				cardLayout.show(view.getContentPane(), "panel_query6");
 			}
 		});
-		
-		view.getButtonQuery7().addMouseListener(new MouseAdapter(){
-			public void mouseClicked(MouseEvent e){
-				CardLayout cardLayout = (CardLayout)view.getContentPane().getLayout();
-				cardLayout.show(view.getContentPane(), "panel_query7");
-			}
-		});
 	}
 
 	public void addListenersBackButtons(){
@@ -151,13 +142,6 @@ public class Controller {
 		});
 
 		view.getButtonQuery6Back().addMouseListener(new MouseAdapter(){
-			public void mouseClicked(MouseEvent e){
-				CardLayout cardLayout = (CardLayout)view.getContentPane().getLayout();
-				cardLayout.show(view.getContentPane(), "panel_main");
-			}
-		});
-		
-		view.getButtonQuery7Back().addMouseListener(new MouseAdapter(){
 			public void mouseClicked(MouseEvent e){
 				CardLayout cardLayout = (CardLayout)view.getContentPane().getLayout();
 				cardLayout.show(view.getContentPane(), "panel_main");
@@ -271,21 +255,6 @@ public class Controller {
 				view.getLabelQuery6Status().setText("Rows returned: " + modelTable.getData().length + " | Running time: " + seconds + " seconds");
 				DefaultTableModel dtm = new DefaultTableModel(modelTable.getData(), modelTable.getColumnName());
 				view.getTableQuery6ResultTable().setModel(dtm);
-			}
-		});
-		
-		view.getButtonQuery7Query().addMouseListener(new MouseAdapter(){
-			public void mouseClicked(MouseEvent e){
-				String sql = query7Builder();
-				System.out.println(sql);
-
-				long startTime = System.nanoTime();
-				facadeDatabase.getResult(sql, modelTable);
-				long endTime = System.nanoTime() - startTime;
-				double seconds = endTime / 1.0E09;
-				view.getLabelQuery7Status().setText("Rows returned: " + modelTable.getData().length + " | Running time: " + seconds + " seconds");
-				DefaultTableModel dtm = new DefaultTableModel(modelTable.getData(), modelTable.getColumnName());
-				view.getTableQuery7ResultTable().setModel(dtm);
 			}
 		});
 	}
@@ -630,36 +599,6 @@ public class Controller {
 		});
 	}
 
-	public void addListenersQuery7Spinners(){
-		view.getSpinnerQuery7AgeLower().addChangeListener(new ChangeListener(){
-			@Override
-			public void stateChanged(ChangeEvent arg0) {
-				changeUpperBound(view.getSpinnerQuery7AgeLower(), view.getSpinnerQuery7AgeUpper());
-			}
-		});
-
-		view.getSpinnerQuery7AgeUpper().addChangeListener(new ChangeListener(){
-			@Override
-			public void stateChanged(ChangeEvent arg0) {
-				changeLowerBound(view.getSpinnerQuery7AgeLower(), view.getSpinnerQuery7AgeLower());
-			}
-		});
-		
-		view.getSpinnerQuery7YearFarmingLower().addChangeListener(new ChangeListener(){
-			@Override
-			public void stateChanged(ChangeEvent arg0) {
-				changeUpperBound(view.getSpinnerQuery7YearFarmingLower(), view.getSpinnerQuery7YearFarmingUpper());
-			}
-		});
-
-		view.getSpinnerQuery7YearFarmingUpper().addChangeListener(new ChangeListener(){
-			@Override
-			public void stateChanged(ChangeEvent arg0) {
-				changeLowerBound(view.getSpinnerQuery7YearFarmingLower(), view.getSpinnerQuery7YearFarmingLower());
-			}
-		});
-	}
-	
 	public void addListenersQuery3CheckBox(){
 		view.getCheckBoxQuery3Municipality().addMouseListener(new MouseAdapter(){
 			public void mouseClicked(MouseEvent e) {
@@ -858,58 +797,6 @@ public class Controller {
 		});
 	}
 
-	public void addListenersQuery7CheckBox(){
-		view.getCheckBoxQuery7Municipality().addMouseListener(new MouseAdapter(){
-			public void mouseClicked(MouseEvent e) {
-				if(view.getCheckBoxQuery7Municipality().isSelected()){
-					view.getComboBoxQuery7Municipality().setEnabled(true);
-				} else{
-					view.getComboBoxQuery7Municipality().setEnabled(false);
-				}
-			}
-		});
-		
-		view.getCheckBoxQuery7Zone().addMouseListener(new MouseAdapter(){
-			public void mouseClicked(MouseEvent e) {
-				if(view.getCheckBoxQuery7Zone().isSelected()){
-					view.getComboBoxQuery7Zone().setEnabled(true);
-				} else{
-					view.getComboBoxQuery7Zone().setEnabled(false);
-				}
-			}
-		});
-		
-		view.getCheckBoxQuery7Barangay().addMouseListener(new MouseAdapter(){
-			public void mouseClicked(MouseEvent e) {
-				if(view.getCheckBoxQuery7Barangay().isSelected()){
-					view.getComboBoxQuery7Barangay().setEnabled(true);
-				} else{
-					view.getComboBoxQuery7Barangay().setEnabled(false);
-				}
-			}
-		});
-		
-		view.getCheckBoxQuery7Purok().addMouseListener(new MouseAdapter(){
-			public void mouseClicked(MouseEvent e) {
-				if(view.getCheckBoxQuery7Purok().isSelected()){
-					view.getComboBoxQuery7Purok().setEnabled(true);
-				} else{
-					view.getComboBoxQuery7Purok().setEnabled(false);
-				}
-			}
-		});
-		
-		view.getCheckBoxQuery7CropType().addMouseListener(new MouseAdapter(){
-			public void mouseClicked(MouseEvent e) {
-				if(view.getCheckBoxQuery7CropType().isSelected()){
-					view.getComboBoxQuery7CropType().setEnabled(true);
-				} else{
-					view.getComboBoxQuery7CropType().setEnabled(false);
-				}
-			}
-		});
-	}
-	
 	public void changeUpperBound(JSpinner lowerSpinner, JSpinner upperSpinner){
 		int lower = Integer.parseInt(lowerSpinner.getValue().toString());
 		int upper = Integer.parseInt(upperSpinner.getValue().toString());
@@ -1930,11 +1817,6 @@ public class Controller {
 		return sql;
 	}
 	
-	public String query7Builder(){
-		String sql = "";
-		return sql;
-	}
-	
 	public void modelTableHouseTypeConverter(){
 		List<String> columnNames = Arrays.asList(modelTable.getColumnName());
 		int columnIndex = columnNames.indexOf("House Type");
@@ -2057,6 +1939,7 @@ public class Controller {
 		}
 	}
 
+	
 	public void modelTableGamitSaPangingisdaConverter(){
 		List<String> columnNames = Arrays.asList(modelTable.getColumnName());
 		int columnIndex = columnNames.indexOf("Gamit sa Pangingisda");

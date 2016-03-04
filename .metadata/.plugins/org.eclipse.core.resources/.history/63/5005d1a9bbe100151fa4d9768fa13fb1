@@ -366,7 +366,7 @@ public class View extends JFrame {
 	private JLabel labelQuery7YearFarming;
 	private JSpinner spinnerQuery7YearFarmingLower;
 	private JSpinner spinnerQuery7YearFarmingUpper;
-	private JComboBox<String> comboBoxQuery7ARCDP;
+	private JComboBox<String> comboBoxQuery7ARCDPRecipient;
 	private JLabel labelQuery7ARCDP;
 	private JLabel labelQuery7Dahilan;
 	private JComboBox<String> comboBoxQuery7Dahilan;
@@ -376,7 +376,6 @@ public class View extends JFrame {
 	private JLabel labelQuery7EquipmentInsurance;
 	private JTable tableQuery7ResultTable;
 	private JScrollPane scrollPaneQuery7ResultTable;
-	private JButton buttonQuery7Query;
 	
 	private View() {
 		setTitle("Community-Based Monitoring System");
@@ -495,7 +494,7 @@ public class View extends JFrame {
 		gbc_buttonQuery6.gridy = 4;
 		panel_main.add(buttonQuery6, gbc_buttonQuery6);
 		
-		buttonQuery7 = new JButton("Agricultural Status Area Report");
+		buttonQuery7 = new JButton("Query 7");
 		buttonQuery7.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		GridBagConstraints gbc_buttonQuery7 = new GridBagConstraints();
 		gbc_buttonQuery7.fill = GridBagConstraints.BOTH;
@@ -3030,14 +3029,14 @@ public class View extends JFrame {
 		gbc_labelQuery7ARCDP.gridy = 3;
 		panel_query7.add(labelQuery7ARCDP, gbc_labelQuery7ARCDP);
 		
-		comboBoxQuery7ARCDP = new JComboBox<String>();
-		comboBoxQuery7ARCDP.setModel(new DefaultComboBoxModel<String>(new String[] {"Nakatanggap", "Hindi Nakatanggap"}));
-		GridBagConstraints gbc_comboBoxQuery7ARCDP = new GridBagConstraints();
-		gbc_comboBoxQuery7ARCDP.insets = new Insets(0, 0, 5, 0);
-		gbc_comboBoxQuery7ARCDP.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxQuery7ARCDP.gridx = 10;
-		gbc_comboBoxQuery7ARCDP.gridy = 3;
-		panel_query7.add(comboBoxQuery7ARCDP, gbc_comboBoxQuery7ARCDP);
+		comboBoxQuery7ARCDPRecipient = new JComboBox<String>();
+		comboBoxQuery7ARCDPRecipient.setModel(new DefaultComboBoxModel<String>(new String[] {"Nakatanggap", "Hindi Nakatanggap"}));
+		GridBagConstraints gbc_comboBoxQuery7ARCDPRecipient = new GridBagConstraints();
+		gbc_comboBoxQuery7ARCDPRecipient.insets = new Insets(0, 0, 5, 0);
+		gbc_comboBoxQuery7ARCDPRecipient.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxQuery7ARCDPRecipient.gridx = 10;
+		gbc_comboBoxQuery7ARCDPRecipient.gridy = 3;
+		panel_query7.add(comboBoxQuery7ARCDPRecipient, gbc_comboBoxQuery7ARCDPRecipient);
 		
 		labelQuery7AgriculturalRecord = new JLabel("Agricultural Record");
 		labelQuery7AgriculturalRecord.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -3440,14 +3439,6 @@ public class View extends JFrame {
 		gbc_comboBoxQuery7Dahilan.gridy = 12;
 		panel_query7.add(comboBoxQuery7Dahilan, gbc_comboBoxQuery7Dahilan);
 		
-		buttonQuery7Query = new JButton("Query");
-		GridBagConstraints gbc_buttonQuery7Query = new GridBagConstraints();
-		gbc_buttonQuery7Query.fill = GridBagConstraints.BOTH;
-		gbc_buttonQuery7Query.insets = new Insets(0, 0, 5, 0);
-		gbc_buttonQuery7Query.gridx = 10;
-		gbc_buttonQuery7Query.gridy = 12;
-		panel_query7.add(buttonQuery7Query, gbc_buttonQuery7Query);
-		
 		scrollPaneQuery7ResultTable = new JScrollPane();
 		GridBagConstraints gbc_scrollPaneQuery7ResultTable = new GridBagConstraints();
 		gbc_scrollPaneQuery7ResultTable.fill = GridBagConstraints.BOTH;
@@ -3468,10 +3459,6 @@ public class View extends JFrame {
 		gbc_labelQuery7Status.gridy = 14;
 		panel_query7.add(labelQuery7Status, gbc_labelQuery7Status);
 		
-	}
-
-	public JButton getButtonQuery7Query() {
-		return buttonQuery7Query;
 	}
 
 	public static long getSerialversionuid() {
@@ -4810,8 +4797,8 @@ public class View extends JFrame {
 		return spinnerQuery7YearFarmingUpper;
 	}
 
-	public JComboBox<String> getComboBoxQuery7ARCDP() {
-		return comboBoxQuery7ARCDP;
+	public JComboBox<String> getComboBoxQuery7ARCDPRecipient() {
+		return comboBoxQuery7ARCDPRecipient;
 	}
 
 	public JLabel getLabelQuery7ARCDP() {
