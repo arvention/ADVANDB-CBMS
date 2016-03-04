@@ -109,8 +109,6 @@ public class View extends JFrame {
 	private JComboBox<String> comboBoxQuery2Barangay;
 	private JLabel labelQuery2Purok;
 	private JComboBox<String> comboBoxQuery2Purok;
-	private JLabel labelQuery2HouseType;
-	private JComboBox<String> comboBoxQuery2HouseType;
 	private JLabel lableQuery2GovernmentServices;
 	private JLabel labelQuery2SLP;
 	private JComboBox<String> comboBoxQuery2SLP;
@@ -1373,23 +1371,6 @@ public class View extends JFrame {
 		gbc_comboBoxQuery2Purok.gridx = 1;
 		gbc_comboBoxQuery2Purok.gridy = 2;
 		panel_query2.add(comboBoxQuery2Purok, gbc_comboBoxQuery2Purok);
-		
-		labelQuery2HouseType = new JLabel("House Type");
-		GridBagConstraints gbc_labelQuery2HouseType = new GridBagConstraints();
-		gbc_labelQuery2HouseType.anchor = GridBagConstraints.EAST;
-		gbc_labelQuery2HouseType.insets = new Insets(0, 0, 5, 5);
-		gbc_labelQuery2HouseType.gridx = 2;
-		gbc_labelQuery2HouseType.gridy = 2;
-		panel_query2.add(labelQuery2HouseType, gbc_labelQuery2HouseType);
-		
-		comboBoxQuery2HouseType = new JComboBox<String>();
-		comboBoxQuery2HouseType.setModel(new DefaultComboBoxModel<String>(new String[] {"[SELECT]", "Single", "Duplex", "Multi-unit", "Commercial", "Others"}));
-		GridBagConstraints gbc_comboBoxQuery2HouseType = new GridBagConstraints();
-		gbc_comboBoxQuery2HouseType.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxQuery2HouseType.insets = new Insets(0, 0, 5, 5);
-		gbc_comboBoxQuery2HouseType.gridx = 3;
-		gbc_comboBoxQuery2HouseType.gridy = 2;
-		panel_query2.add(comboBoxQuery2HouseType, gbc_comboBoxQuery2HouseType);
 		
 		lableQuery2GovernmentServices = new JLabel("Government Services:");
 		lableQuery2GovernmentServices.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -3780,14 +3761,6 @@ public class View extends JFrame {
 
 	public JComboBox<String> getComboBoxQuery2Purok() {
 		return comboBoxQuery2Purok;
-	}
-
-	public JLabel getLabelQuery2HouseType() {
-		return labelQuery2HouseType;
-	}
-
-	public JComboBox<String> getComboBoxQuery2HouseType() {
-		return comboBoxQuery2HouseType;
 	}
 
 	public JLabel getLableQuery2GovernmentServices() {

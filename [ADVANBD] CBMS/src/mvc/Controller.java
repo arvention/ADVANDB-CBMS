@@ -197,11 +197,7 @@ public class Controller {
 				facadeDatabase.getResult(sql, modelTable);
 				long endTime = System.nanoTime() - startTime;
 				double seconds = endTime / 1.0E09;
-				
-				modelTableHouseTypeConverter();
-				modelTableRoofCompositionConverter();
-				modelTableWallCompositionConverter();
-				
+
 				view.getLabelQuery2Status().setText("Rows returned: " + modelTable.getData().length + " | Running time: " + seconds + " seconds");
 				DefaultTableModel dtm = new DefaultTableModel(modelTable.getData(), modelTable.getColumnName());
 				view.getTableQuery2ResultTable().setModel(dtm);
@@ -1272,8 +1268,7 @@ public class Controller {
 
 	public String query2Builder(){
 		String sql = "Select id as ID, mun as Municipality, zone as Zone, brgy as Barangay, purok as Purok, "
-				+ "house_type as 'House Type', nbr as 'Room Count', roof as 'Roof Composition', "
-				+ "wall as 'Wall Composition', nofw as 'Number of OFW', nnucfam as 'Number of Families', "
+				+ "nofw as 'Number of OFW', nnucfam as 'Number of Families', "
 				+ "prog_slp_nmem as 'Bilang ng Nakikinabang sa Sustainable Livelihood Program', "
 				+ "prog_fudforsch_nmem as 'Bilang ng Nakikinabang sa Food for School Program', "
 				+ "prog_fudforwrk_nmem as 'Bilang ng Nakikinabang sa Food for Work Program', "
@@ -1307,20 +1302,6 @@ public class Controller {
 		if(view.getComboBoxQuery2Purok().getSelectedIndex() != 0){
 			sql = appendWhereChecker(sql);
 			sql += "purok = " + view.getComboBoxQuery2Purok().getSelectedItem().toString();
-		}
-
-		if(view.getComboBoxQuery2HouseType().getSelectedIndex() != 0){
-			sql = appendWhereChecker(sql);
-			if(view.getComboBoxQuery2HouseType().getSelectedItem().toString().equals("Single"))
-				sql += "house_type = 1";
-			else if(view.getComboBoxQuery2HouseType().getSelectedItem().toString().equals("Duplex"))
-				sql += "house_type = 2";
-			else if(view.getComboBoxQuery2HouseType().getSelectedItem().toString().equals("Multi-unit"))
-				sql += "house_type = 3";
-			else if(view.getComboBoxQuery2HouseType().getSelectedItem().toString().equals("Commercial"))
-				sql += "house_type = 4";
-			else if(view.getComboBoxQuery2HouseType().getSelectedItem().toString().equals("Others"))
-				sql += "house_type = 5";
 		}
 
 		if(view.getComboBoxQuery2SLP().getSelectedIndex() != 0){
