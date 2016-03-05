@@ -2244,12 +2244,12 @@ public class Controller {
 
 		if (!view.getSpinnerQuery7YearFarmingLower().getValue().toString().equals("-1")) {
 			sql = appendWhereChecker(sql);
-			sql += "age_yr >= " + view.getSpinnerQuery7YearFarmingLower().getValue().toString();
+			sql += "yrs_in_cropind >= " + view.getSpinnerQuery7YearFarmingLower().getValue().toString();
 		}
 
 		if (!view.getSpinnerQuery7YearFarmingUpper().getValue().toString().equals("-1")) {
 			sql = appendWhereChecker(sql);
-			sql += "age_yr <= " + view.getSpinnerQuery7YearFarmingUpper().getValue().toString();
+			sql += "yrs_in_cropind <= " + view.getSpinnerQuery7YearFarmingUpper().getValue().toString();
 		}
 		sql += group;
 
