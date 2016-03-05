@@ -3438,7 +3438,20 @@ public class View extends JFrame {
 		gbc_scrollPaneQuery7ResultTable.gridy = 13;
 		panel_query7.add(scrollPaneQuery7ResultTable, gbc_scrollPaneQuery7ResultTable);
 		
-		tableQuery7ResultTable = new JTable();
+		tableQuery7ResultTable = new JTable(){
+			private static final long serialVersionUID = 1L;
+			@Override
+		       public Component prepareRenderer(TableCellRenderer renderer, int row, int column) {
+		           Component component = super.prepareRenderer(renderer, row, column);
+		           int rendererWidth = component.getPreferredSize().width;
+		           TableColumn tableColumn = getColumnModel().getColumn(column);
+		           tableColumn.setPreferredWidth(Math.max(rendererWidth + getIntercellSpacing().width, tableColumn.getPreferredWidth()));
+		           return component;
+		        }
+		    };
+		tableQuery7ResultTable.setAutoCreateRowSorter(true);
+		tableQuery7ResultTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF); //IMPORTANT
+		tableQuery7ResultTable.setAutoCreateRowSorter(true);
 		scrollPaneQuery7ResultTable.setViewportView(tableQuery7ResultTable);
 		
 		labelQuery7Status = new JLabel("");
