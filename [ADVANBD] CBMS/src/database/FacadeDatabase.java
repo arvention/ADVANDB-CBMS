@@ -19,7 +19,7 @@ public class FacadeDatabase {
 	private FacadeDatabase(){
 		try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
-            String host = "jdbc:mysql://127.0.0.1:3306/poverty_profiling?user=root";
+            String host = "jdbc:mysql://127.0.0.1:3306/poverty_profiling_normalized_indexed?user=root";
             String uUser = "root";
             String uPass = "password";
             con = DriverManager.getConnection(host, uUser, uPass);

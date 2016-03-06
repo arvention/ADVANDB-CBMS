@@ -999,10 +999,11 @@ public class Controller {
 		 * + "calam10_hus_aid_o as 'Tumulong Noong May Digmaan' from hpq_hh ";
 		 */
 
-		String sql = "Select id as ID, mun as Municipality, zone as Zone, brgy as Barangay, "
+		String sql = "Select hpq_address.id as ID, mun as Municipality, zone as Zone, brgy as Barangay, "
 				+ "purok as Purok, house_type as 'House Type', nbr as 'Room Count', "
 				+ "roof as 'Roof Composition', wall as 'Wall Composition', nofw as 'Number of OFW', nnucfam as 'Number of Families' "
-				+ "from hpq_hh ";
+				+ "FROM hpq_address join hpq_house_details on hpq_address.id = hpq_house_details.id "
+				+ "JOIN hpq_calam on hpq_address.id = hpq_calam.id ";
 
 		if (view.getComboBoxQuery1Municipality().getSelectedIndex() != 0) {
 			sql = appendWhereChecker(sql);
@@ -1678,7 +1679,7 @@ public class Controller {
 
 	public String query4Builder() {
 		String sql = "select mdeady as 'Sanhi ng Pagkamatay', COUNT(mdeady) as 'Bilang ng Sanhi ng Pagkamatay' "
-				+ "from hpq_death D JOIN hpq_hh H ON D.`main.id`= H.id ";
+				+ "FROM hpq_death D JOIN hpq_address H ON D.`main.id`= H.id ";
 
 		String group = " group by mdeady";
 
