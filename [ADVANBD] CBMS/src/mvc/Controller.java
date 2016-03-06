@@ -1303,7 +1303,7 @@ public class Controller {
 	}
 
 	public String query2Builder() {
-		String sql = "Select id as ID, mun as Municipality, zone as Zone, brgy as Barangay, purok as Purok, "
+		String sql = "Select A.id as ID, mun as Municipality, zone as Zone, brgy as Barangay, purok as Purok, "
 				+ "nofw as 'Number of OFW', nnucfam as 'Number of Families', "
 				+ "prog_slp_nmem as 'Bilang ng Nakikinabang sa Sustainable Livelihood Program', "
 				+ "prog_fudforsch_nmem as 'Bilang ng Nakikinabang sa Food for School Program', "
@@ -1318,7 +1318,9 @@ public class Controller {
 				+ "prog_phiheal_indiv_nmem as 'Bilang ng Nakikinabang sa Philhealth - Individually Paying', "
 				+ "prog_phiheal_spon_nmem as 'Bilang ng Nakikinabang sa Philhealth - Sponsored', "
 				+ "prog_phiheal_life_nmem as 'Bilang ng Nakikinabang sa Philhealth - Lifetime', "
-				+ "nprog as 'Bilang ng iba pang Programang Nakinabang ang Sambahayan' from hpq_hh ";
+				+ "nprog as 'Bilang ng iba pang Programang Nakinabang ang Sambahayan' "
+				+ "FROM hpq_address A JOIN hpq_program_membership PM ON A.id = PM.id "
+				+ "JOIN hpq_house_details HD ON HD.id = PM.id ";
 
 		if (view.getComboBoxQuery2Municipality().getSelectedIndex() != 0) {
 			sql = appendWhereChecker(sql);
@@ -1794,8 +1796,8 @@ public class Controller {
 
 	public String query5Builder() {
 		String sql = "Select aquaequiptype as 'Gamit sa Pangingisda', "
-				+ "SUM(aquani_vol) as 'Bilang ng Nahuling Isda (Kg)' from hpq_hh "
-				+ "join hpq_aquaequip on hpq_hh.id = hpq_aquaequip.`main.id` "
+				+ "SUM(aquani_vol) as 'Bilang ng Nahuling Isda (Kg)' "
+				+ "FROM hpq_address join hpq_aquaequip on hpq_address.id = hpq_aquaequip.`main.id` "
 				+ "join hpq_aquani on hpq_aquaequip.`main.id` = hpq_aquani.`main.id` ";
 
 		String group = " group by aquaequiptype";
