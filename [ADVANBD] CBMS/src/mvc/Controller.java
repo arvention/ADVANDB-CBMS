@@ -960,7 +960,7 @@ public class Controller {
 	public String appendGroupByChecker(String sql) {
 		String query = sql;
 		if (!query.contains("group by"))
-			query += "group by ";
+			query += " group by ";
 		else
 			query += ", ";
 
@@ -1591,8 +1591,9 @@ public class Controller {
 
 	public String query3Builder() {
 		String sql = "select croptype as 'Uri ng Pananim', COUNT(croptype) as 'Bilang ng Pamilya na Nagtatanim ng Uri ng Tanim' "
-				+ "from hpq_crop C JOIN hpq_hh H ON C.`main.id`= H.id ";
+				+ "from hpq_crop C JOIN hpq_address A ON C.`main.id`= A.id ";
 
+		
 		String group = " group by croptype";
 
 		boolean isMunSelected = view.getCheckBoxQuery3Municipality().isSelected();
@@ -1899,45 +1900,61 @@ public class Controller {
 	public String query6Builder() {
 		String sql = "Select sum(cropincsh) as 'Kabuuang Kita Mula Sa Ani', "
 				+ "sum(crop_vol) as 'Kabuuang Bilang ng Naani', sum(fishincsh) as 'Kabuuang Kita Mula Sa Pangingisda', "
-				+ "sum(aquani_vol) as 'Kabuuang Bilang ng Isdang Nahuli' from hpq_hh "
-				+ "join hpq_crop on hpq_hh.id = hpq_crop.`main.id` "
-				+ "join hpq_aquani on hpq_crop.`main.id` = hpq_aquani.`main.id`";
+				+ "sum(aquani_vol) as 'Kabuuang Bilang ng Isdang Nahuli' FROM hpq_address H JOIN hpq_crop C "
+				+ "ON H.id = C.`main.id` JOIN hpq_aquani A ON C.`main.id` = A.`main.id` JOIN hpq_fishingincome F "
+				+ "ON F.id = A.`main.id` JOIN hpq_farmingincome Z ON Z.id = C.`main.id`";
 
+		String group = " group by mun";
+		
 		boolean isMunSelected = view.getCheckBoxQuery6Municipality().isSelected();
 		boolean isZoneSelected = view.getCheckBoxQuery6Zone().isSelected();
 		boolean isBrgySelected = view.getCheckBoxQuery6Barangay().isSelected();
 		boolean isPurokSelected = view.getCheckBoxQuery6Purok().isSelected();
-
+		
 		if (isMunSelected) {
 			sql = appendColumnEntry(sql, "mun as 'Municipality'", "sum(cropincsh)");
-
-			sql = appendGroupByChecker(sql);
-			sql += "mun";
 		}
 		if (isZoneSelected) {
-			sql = appendColumnEntry(sql, "mun as 'Municipality', zone as 'Zone'", "sum(cropincsh)");
-
-			sql = appendGroupByChecker(sql);
-			sql += "zone";
+			if(!isMunSelected) {
+				sql = appendColumnEntry(sql, "mun as 'Municipality', zone as 'Zone'", "sum(cropincsh)");
+				group += ", zone";
+			} else {
+				sql = appendColumnEntry(sql, "zone as 'Zone'", "sum(cropincsh)");
+				group += ", zone";
+			}
 		}
 		if (isBrgySelected) {
-			sql = appendColumnEntry(sql, "mun as 'Municipality', zone as 'Zone', brgy as 'Barangay'", "sum(cropincsh)");
-
-			sql = appendGroupByChecker(sql);
-			sql += "brgy";
-
+			if (!isMunSelected && !isZoneSelected) {
+				sql = appendColumnEntry(sql, "mun as 'Municipality', zone as 'Zone', brgy as 'Barangay'",
+						"sum(cropincsh)");
+				group += ", zone, brgy";
+			} else if (isMunSelected && !isZoneSelected) {
+				sql = appendColumnEntry(sql, "zone as 'Zone', brgy as 'Barangay'", "sum(cropincsh)");
+				group += ", zone, brgy";
+			} else if (isZoneSelected) {
+				sql = appendColumnEntry(sql, "brgy as 'Barangay'", "sum(cropincsh)");
+				group += ", brgy";
+			}
 		}
 		if (isPurokSelected) {
-			sql = appendColumnEntry(sql, "mun as 'Municipality', zone as 'Zone', brgy as 'Barangay', purok as 'Purok'",
-					"sum(cropincsh)");
-
-			sql = appendGroupByChecker(sql);
-			sql += "purok";
+			if (!isMunSelected && !isZoneSelected && !isBrgySelected) {
+				sql = appendColumnEntry(sql, "mun as 'Municipality', zone as 'Zone', brgy as 'Barangay', purok as 'Purok'", "sum(cropincsh)");
+				group += ", zone, brgy, purok";
+			} else if (isMunSelected && !isZoneSelected && !isBrgySelected) {
+				sql = appendColumnEntry(sql, "zone as 'Zone', brgy as 'Barangay', purok as 'Purok'", "sum(cropincsh)");
+				group += ", zone, brgy, purok";
+			} else if (isZoneSelected && !isBrgySelected) {
+				sql = appendColumnEntry(sql, "brgy as 'Barangay', purok as 'Purok'", "sum(cropincsh)");
+				group += ", brgy, purok";
+			} else if (isBrgySelected) {
+				sql = appendColumnEntry(sql, "purok as 'Purok'", "sum(cropincsh)");
+				group += ", purok";
+			}
 		}
 
 		if (isMunSelected && view.getComboBoxQuery6Municipality().getSelectedIndex() != 0) {
 			sql = appendWhereChecker(sql);
-			sql += "mun = " + view.getComboBoxQuery4Municipality().getSelectedItem().toString();
+			sql += "mun = " + view.getComboBoxQuery6Municipality().getSelectedItem().toString();
 		}
 		if (isZoneSelected && view.getComboBoxQuery6Zone().getSelectedIndex() != 0) {
 			sql = appendWhereChecker(sql);
@@ -1951,7 +1968,9 @@ public class Controller {
 			sql = appendWhereChecker(sql);
 			sql += "purok = " + view.getComboBoxQuery6Purok().getSelectedItem().toString();
 		}
-
+		
+		sql += group;
+		
 		return sql;
 	}
 
@@ -1961,7 +1980,7 @@ public class Controller {
 				+ "agriequip7 as 'Gumagamit ng Farm Tractor', agriequip8 as 'Gumagamit ng Hand Tractor', agriequip9 as 'Gumagamit ng Mudboat', agriequip10 as 'Gumagamit ng Planter', agriequip11 as 'Gumagamit ng Mechanical Dryer', agriequip12 as 'Gumagamit ng Drying Pavement', "
 				+ "agriequip13 as 'Gumagamit ng Feed Mill', agriequip14 as 'Gumagamit ng Harvester', agriequip15 as 'Gumagamit ng Warehouse Granary', agriequip16 as 'Gumagamit ng Farmshed', agriequip17 as 'Gumagamit ng Irrigation Pump', agriequip18 as 'Gumagamit ng iba pang Kagamitan', "
 				+ "u_amt_harv as 'Dami ng Ani Kumpara sa Nakaraang Taon', u_low_harv as 'Dahilan ng Pagbaba ng Ani', croptype AS 'Uri ng Pananim', SUM(crop_vol) AS 'Dami ng Ani ng Uri ng Pananim' "
-				+ "FROM hpq_hh H JOIN hpq_mem M ON H.id = M.`main.id` " + "JOIN hpq_crop C ON H.id = C.`main.id` ";
+				+ "FROM hpq_address A JOIN hpq_memberoccupationrecord O ON A.id = O.`main.id` JOIN hpq_crop C ON A.id = C.`main.id` JOIN hpq_arcdp_mem D ON A.id = D.`main.id` JOIN hpq_memberfarmingoccupationrecord F ON A.id = F.id JOIN hpq_agriequip E ON A.id = E.id AND D.arcdp_mem_refno = O.memno";
 
 		String group = " group by id, memno, croptype";
 
