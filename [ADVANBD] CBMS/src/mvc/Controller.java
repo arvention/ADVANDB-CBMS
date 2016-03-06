@@ -1793,9 +1793,9 @@ public class Controller {
 
 	public String query5Builder() {
 		String sql = "Select aquaequiptype as 'Gamit sa Pangingisda', "
-				+ "aquani_vol as 'Bilang ng Nahuling Isda (Kg)' from hpq_hh "
+				+ "SUM(aquani_vol) as 'Bilang ng Nahuling Isda (Kg)' from hpq_hh "
 				+ "join hpq_aquaequip on hpq_hh.id = hpq_aquaequip.`main.id` "
-				+ "join hpq_aquani on hpq_aquaequip.`main.id` = hpq_aquani.`main.id`";
+				+ "join hpq_aquani on hpq_aquaequip.`main.id` = hpq_aquani.`main.id` ";
 
 		String group = " group by aquaequiptype";
 
@@ -1866,6 +1866,7 @@ public class Controller {
 		}
 		if (isKagamitanSelected && view.getComboBoxQuery5Kagamitan().getSelectedIndex() != 0) {
 			sql = appendWhereChecker(sql);
+			/*
 			if (view.getComboBoxQuery5Kagamitan().getSelectedItem().equals("Fish Net")) {
 				sql += "aquaequiptype = 1";
 			} else if (view.getComboBoxQuery5Kagamitan().getSelectedItem().equals("Electricity")) {
@@ -1883,6 +1884,8 @@ public class Controller {
 			} else if (view.getComboBoxQuery5Kagamitan().getSelectedItem().equals("Others")) {
 				sql += "aquaequiptype = 8";
 			}
+			*/
+			sql += "aquaequiptype = " + view.getComboBoxQuery5Kagamitan().getSelectedIndex();
 		}
 
 		sql += group;
