@@ -1982,13 +1982,13 @@ public class Controller {
 				+ "u_amt_harv as 'Dami ng Ani Kumpara sa Nakaraang Taon', u_low_harv as 'Dahilan ng Pagbaba ng Ani', croptype AS 'Uri ng Pananim', SUM(crop_vol) AS 'Dami ng Ani ng Uri ng Pananim' "
 				+ "FROM hpq_address A JOIN hpq_memberoccupationrecord O ON A.id = O.`main.id` JOIN hpq_crop C ON A.id = C.`main.id` JOIN hpq_arcdp_mem D ON A.id = D.`main.id` JOIN hpq_memberfarmingoccupationrecord F ON A.id = F.id JOIN hpq_agriequip E ON A.id = E.id AND D.arcdp_mem_refno = O.memno ";
 
-		String group = " group by A.id, memno, croptype";
+		String group = " group by id, memno, croptype";
 
 		String hasARCDP = view.getComboBoxQuery7ARCDP().getSelectedItem().toString();
 		if (hasARCDP.equals("Nakatanggap")) {
-			sql += "JOIN hpq_arcdp_mem AM ON F.id = AM.`main.id` AND AM.arcdp_mem_refno = O.memno where F.prog_arcdp = 1";
+			sql += "JOIN hpq_arcdp_mem AM ON H.id = AM.`main.id` AND AM.arcdp_mem_refno = M.memno where H.prog_arcdp = 1";
 		} else if (hasARCDP.equals("Hindi Nakatanggap")) {
-			sql += "LEFT JOIN hpq_arcdp_mem AM ON F.id = AM.`main.id` AND AM.arcdp_mem_refno = O.memno where A.`main.id` IS NULL";
+			sql += "LEFT JOIN hpq_arcdp_mem AM ON H.id = AM.`main.id` AND AM.arcdp_mem_refno = M.memno where A.`main.id` IS NULL";
 		}
 		boolean isMunSelected = view.getCheckBoxQuery7Municipality().isSelected();
 		boolean isZoneSelected = view.getCheckBoxQuery7Zone().isSelected();

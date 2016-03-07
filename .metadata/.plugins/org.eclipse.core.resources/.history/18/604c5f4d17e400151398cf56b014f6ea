@@ -1975,20 +1975,20 @@ public class Controller {
 	}
 
 	public String query7Builder() {
-		String sql = "SELECT A.id as 'Numero ng Sambahayan', memno as 'Numero ng Miyembro', age_yr as 'Edad', occup as 'Trabaho', yrs_in_cropind as 'Bilang ng Taon sa Pagsasaka', nalp as 'Bilang ng Parcela ng Lupa na Sinasaka', ncrop as 'Bilang ng Uri ng Pananim noong Isang Taon', wagcshm as 'Kabuuang Sweldo', "
+		String sql = "SELECT id as 'Numero ng Sambahayan', memno as 'Numero ng Miyembro', age_yr as 'Edad', occup as 'Trabaho', yrs_in_cropind as 'Bilang ng Taon sa Pagsasaka', nalp as 'Bilang ng Parcela ng Lupa na Sinasaka', ncrop as 'Bilang ng Uri ng Pananim noong Isang Taon', wagcshm as 'Kabuuang Sweldo', "
 				+ "agriequip1 as 'Gumagamit ng Beast of Burden', agriequip2 as 'Gumagamit ng Plow', agriequip3 as 'Gumagamit ng Harrow', agriequip4 as 'Gumagamit ng Mower', agriequip5 as 'Gumagamit ng Thresher', agriequip6 as 'Gumagamit ng Insecticide Sprayer', "
 				+ "agriequip7 as 'Gumagamit ng Farm Tractor', agriequip8 as 'Gumagamit ng Hand Tractor', agriequip9 as 'Gumagamit ng Mudboat', agriequip10 as 'Gumagamit ng Planter', agriequip11 as 'Gumagamit ng Mechanical Dryer', agriequip12 as 'Gumagamit ng Drying Pavement', "
 				+ "agriequip13 as 'Gumagamit ng Feed Mill', agriequip14 as 'Gumagamit ng Harvester', agriequip15 as 'Gumagamit ng Warehouse Granary', agriequip16 as 'Gumagamit ng Farmshed', agriequip17 as 'Gumagamit ng Irrigation Pump', agriequip18 as 'Gumagamit ng iba pang Kagamitan', "
 				+ "u_amt_harv as 'Dami ng Ani Kumpara sa Nakaraang Taon', u_low_harv as 'Dahilan ng Pagbaba ng Ani', croptype AS 'Uri ng Pananim', SUM(crop_vol) AS 'Dami ng Ani ng Uri ng Pananim' "
-				+ "FROM hpq_address A JOIN hpq_memberoccupationrecord O ON A.id = O.`main.id` JOIN hpq_crop C ON A.id = C.`main.id` JOIN hpq_arcdp_mem D ON A.id = D.`main.id` JOIN hpq_memberfarmingoccupationrecord F ON A.id = F.id JOIN hpq_agriequip E ON A.id = E.id AND D.arcdp_mem_refno = O.memno ";
+				+ "FROM hpq_address A JOIN hpq_memberoccupationrecord O ON A.id = O.`main.id` JOIN hpq_crop C ON A.id = C.`main.id` JOIN hpq_arcdp_mem D ON A.id = D.`main.id` JOIN hpq_memberfarmingoccupationrecord F ON A.id = F.id JOIN hpq_agriequip E ON A.id = E.id AND D.arcdp_mem_refno = O.memno";
 
-		String group = " group by A.id, memno, croptype";
+		String group = " group by id, memno, croptype";
 
 		String hasARCDP = view.getComboBoxQuery7ARCDP().getSelectedItem().toString();
 		if (hasARCDP.equals("Nakatanggap")) {
-			sql += "JOIN hpq_arcdp_mem AM ON F.id = AM.`main.id` AND AM.arcdp_mem_refno = O.memno where F.prog_arcdp = 1";
+			sql += "JOIN hpq_arcdp_mem A ON H.id = A.`main.id` AND A.arcdp_mem_refno = M.memno where H.prog_arcdp = 1";
 		} else if (hasARCDP.equals("Hindi Nakatanggap")) {
-			sql += "LEFT JOIN hpq_arcdp_mem AM ON F.id = AM.`main.id` AND AM.arcdp_mem_refno = O.memno where A.`main.id` IS NULL";
+			sql += "LEFT JOIN hpq_arcdp_mem A ON H.id = A.`main.id` AND A.arcdp_mem_refno = M.memno where A.`main.id` IS NULL";
 		}
 		boolean isMunSelected = view.getCheckBoxQuery7Municipality().isSelected();
 		boolean isZoneSelected = view.getCheckBoxQuery7Zone().isSelected();
