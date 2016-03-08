@@ -2794,7 +2794,7 @@ public class View extends JFrame {
 		contentPane.add(panel_query7, "panel_query7");
 		GridBagLayout gbl_panel_query7 = new GridBagLayout();
 		gbl_panel_query7.columnWidths = new int[]{35, 85, 40, 30, 10, 60, 30, 30, 10, 64, 98, 0};
-		gbl_panel_query7.rowHeights = new int[]{50, 0, 0, 15, 0, 0, 0, 0, 0, 0, 0, 0, 0, 300, -63, 0};
+		gbl_panel_query7.rowHeights = new int[]{50, 0, 0, 15, 0, 0, 0, 0, 0, 0, 0, 0, 0, 295, -63, 0};
 		gbl_panel_query7.columnWeights = new double[]{1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		gbl_panel_query7.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		panel_query7.setLayout(gbl_panel_query7);
