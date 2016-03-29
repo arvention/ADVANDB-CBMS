@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move element &apos;FacadeDatabase.java&apos; to &apos;[ADVANDB] MCO2/src/database&apos;&#x0D;&#x0A;- Original project: &apos;[ADVANDB] MCO2&apos;&#x0D;&#x0A;- Destination element: &apos;[ADVANDB] MCO2/src/database&apos;&#x0D;&#x0A;- Original element: &apos;main.FacadeDatabase.java&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move compilation unit" destination="/src&lt;database" element1="/src&lt;main{FacadeDatabase.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" patterns="*" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1459270944081" units="1" version="1.0"/>
+</session>

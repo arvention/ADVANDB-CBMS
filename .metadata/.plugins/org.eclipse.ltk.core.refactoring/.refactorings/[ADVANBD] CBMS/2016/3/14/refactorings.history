@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;ModelTable.java&apos; to &apos;[ADVANDB] MCO2/src/mvc&apos;&#x0D;&#x0A;- Original project: &apos;[ADVANBD] CBMS&apos;&#x0D;&#x0A;- Destination element: &apos;[ADVANDB] MCO2/src/mvc&apos;&#x0D;&#x0A;- Original element: &apos;mvc.ModelTable.java&apos;" description="Copy compilation unit" destination="=\[ADVANDB\] MCO2/src&lt;mvc" element1="/src&lt;mvc{ModelTable.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1459270665077" units="1" version="1.0"/>
+</session>
