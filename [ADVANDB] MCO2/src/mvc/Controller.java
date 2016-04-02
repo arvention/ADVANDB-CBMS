@@ -6,8 +6,8 @@ public class Controller {
 	private static final Controller controller = new Controller(View.getInstance(), ModelTable.getInstance(),
 			FacadeDatabase.getInstance());
 	
-	private final String TRUE = "1";
-	private final String FALSE = "2";
+	//private final String TRUE = "1";
+	//private final String FALSE = "2";
 
 	private final View view;
 	private final ModelTable modelTable;

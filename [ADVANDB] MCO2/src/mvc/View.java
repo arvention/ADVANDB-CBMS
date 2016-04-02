@@ -1,25 +1,40 @@
 package mvc;
 
-import java.awt.CardLayout;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.border.EmptyBorder;
+import java.awt.GridBagLayout;
+import javax.swing.JTable;
+import java.awt.GridBagConstraints;
+import javax.swing.JScrollPane;
+import java.awt.Insets;
 
 public class View extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	private static final View view = new View();
+	private static final View view = new View(new InteractivePanel());
 	
 	private JPanel contentPane;
+	private InteractivePanel interactivePanel;
+	private JTable table;
 
-	private View() {
-		setTitle("Community-Based Monitoring System");
+	private View(InteractivePanel interactivePanel) {
 		setResizable(false);
+		setTitle("AGRISYS - Agricultural Geo Resource Inference System");
+		
+		this.interactivePanel = interactivePanel;
 		
 		initializeComponents();
+		
+		GridBagConstraints gbc_interactivePanel = new GridBagConstraints();
+		gbc_interactivePanel.insets = new Insets(0, 0, 0, 5);
+		gbc_interactivePanel.fill = GridBagConstraints.BOTH;
+		gbc_interactivePanel.gridx = 0;
+		gbc_interactivePanel.gridy = 0;
+		contentPane.add(this.interactivePanel, gbc_interactivePanel);
 	}
 
 	public static View getInstance(){
@@ -35,11 +50,27 @@ public class View extends JFrame {
 		} 
 		// frame
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 600, 700);
+		setBounds(100, 100, 1200, 620);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(new CardLayout(0, 0));
+		GridBagLayout gbl_contentPane = new GridBagLayout();
+		gbl_contentPane.columnWidths = new int[] {600, 600, 0};
+		gbl_contentPane.rowHeights = new int[]{580, 0};
+		gbl_contentPane.columnWeights = new double[]{0.0, 1.0, Double.MIN_VALUE};
+		gbl_contentPane.rowWeights = new double[]{1.0, Double.MIN_VALUE};
+		contentPane.setLayout(gbl_contentPane);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
+		gbc_scrollPane.insets = new Insets(0, 0, 0, 5);
+		gbc_scrollPane.fill = GridBagConstraints.BOTH;
+		gbc_scrollPane.gridx = 1;
+		gbc_scrollPane.gridy = 0;
+		contentPane.add(scrollPane, gbc_scrollPane);
+		
+		table = new JTable();
+		scrollPane.setViewportView(table);
 	}
 
 }

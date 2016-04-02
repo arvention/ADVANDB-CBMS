@@ -8,6 +8,7 @@
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="&lt;String&gt;"/>
 			<item value="query7Builder"/>
 			<item value="query1Builder"/>
 			<item value="Query1Builder"/>
@@ -15,7 +16,6 @@
 			<item value="Age"/>
 			<item value="ARCDPRecipient"/>
 			<item value="FALSE"/>
-			<item value="= 1"/>
 		</list>
 		<list key="replacehistory">
 			<item value="Query7"/>

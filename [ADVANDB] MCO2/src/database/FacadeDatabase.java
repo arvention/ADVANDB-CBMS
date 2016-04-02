@@ -3,10 +3,14 @@ package database;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
 import java.sql.Statement;
 
+import mvc.ModelTable;
+
 public class FacadeDatabase {
-	private static final FacadeDatabase facadeDatabase = new FacadeDatabase();
+	private static FacadeDatabase facadeDatabase = new FacadeDatabase();
 	
 	private Connection con;
 	private Statement stmt;
@@ -34,4 +38,34 @@ public class FacadeDatabase {
 		return con;
 	}
 	
+	public ModelTable getResult(String query, ModelTable modelTable){
+		
+		try{
+			rs = stmt.executeQuery(query);
+			ResultSetMetaData rsmd = rs.getMetaData();
+			
+			rs.last();
+			modelTable.setColumnName(new String[rsmd.getColumnCount()]);
+			modelTable.setData(new String[rs.getRow()][rsmd.getColumnCount()]);
+			
+			rs.beforeFirst();
+			for(int i = 0; i < rsmd.getColumnCount(); i++){
+				modelTable.getColumnName()[i] = rsmd.getColumnLabel(i+1);
+			}
+			
+			for(int i = 0; rs.next(); i++){
+				for(int j = 0; j < rsmd.getColumnCount(); j++){
+					Object object = rs.getObject(j+1);
+					String value = (object == null ? "" : object.toString());
+					modelTable.getData()[i][j] = value;
+				}
+			}
+			
+			
+		}catch(SQLException e){
+			e.printStackTrace();
+			
+		}
+		return modelTable;
+	}
 }
