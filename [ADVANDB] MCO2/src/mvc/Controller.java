@@ -332,26 +332,12 @@ public class Controller {
 	}
 	
 	private String queryBuilder(){
-		return selectBuilder() + fromBuilder() + whereBuilder() + groupByBuilder();
-	}
-	
-	// implement later
-	private String selectBuilder(){
-		String select = "";
-		
-		return select;
-	}
-	
-	// implement later
-	private String fromBuilder(){
-		String from = "";
-		
-		return from;
-	}
-	
-	private String whereBuilder(){
+		String select = "select id";
+		String from = " from "; // add fact table later
 		String where = "";
+		String groupby = "";
 		
+		// WHERE CLAUSE
 		if(view.getInteractivePanel().getComboBoxProvince().getSelectedIndex() != 0){
 			where = appendWhereChecker(where);
 			where += "prov = " + view.getInteractivePanel().getComboBoxProvince().getSelectedItem().toString();
@@ -889,207 +875,362 @@ public class Controller {
 			where += "agriequip18_nown <= " + view.getInteractivePanel().getSpinnerCountOthersUpper().getValue().toString();
 		}
 		
-		return where;
-	}
-	
-	private String groupByBuilder(){
-		String groupby = "";
-		
-		if(view.getInteractivePanel().getCheckBoxProvince().isSelected()){
-			groupby = appendGroupByChecker(groupby);
-			groupby += "province";
-		}
+		// GROUP BY CLAUSE
 		
 		if(view.getInteractivePanel().getCheckBoxProvince().isSelected()){
 			groupby = appendGroupByChecker(groupby);
 			groupby += "prov";
+			
+			select += ", prov";
 		}
 		
 		if(view.getInteractivePanel().getCheckBoxMunicipality().isSelected()){
 			groupby = appendGroupByChecker(groupby);
 			groupby += "mun";
+			
+			select += ", mun";
 		}
 		
 		if(view.getInteractivePanel().getCheckBoxZone().isSelected()){
 			groupby = appendGroupByChecker(groupby);
 			groupby += "zone";
+			
+			select += ", zone";
 		}
 		
 		if(view.getInteractivePanel().getCheckBoxBarangay().isSelected()){
 			groupby = appendGroupByChecker(groupby);
 			groupby += "brgy";
+			
+			select += ", brgy";
 		}
 		
 		if(view.getInteractivePanel().getCheckBoxPurok().isSelected()){
 			groupby = appendGroupByChecker(groupby);
 			groupby += "purok";
+			
+			select += ", purok";
 		}
 		
 		if(view.getInteractivePanel().getCheckBoxIndustry().isSelected()){
 			groupby = appendGroupByChecker(groupby);
 			groupby += "cropind";
+			
+			select += ", cropind";
 		}
 		
 		if(view.getInteractivePanel().getCheckBoxARCDP().isSelected()){
 			groupby = appendGroupByChecker(groupby);
 			groupby += "prog_arcdp";
+			
+			select += ", prog_arcdp";
 		}
 		
 		if(view.getInteractivePanel().getCheckBoxCropInsurance().isSelected()){
 			groupby = appendGroupByChecker(groupby);
 			groupby += "irfa_crop";
+			
+			select += ", irfa_crop";
 		}
 		
 		if(view.getInteractivePanel().getCheckBoxAgriculturalInsurance().isSelected()){
 			groupby = appendGroupByChecker(groupby);
 			groupby += "irfa_agriequip";
+			
+			select += ", irfa_agriequip";
 		}
 		
 		if(view.getInteractivePanel().getCheckBoxChangePrimaryCrop().isSelected()){
 			groupby = appendGroupByChecker(groupby);
 			groupby += "u_chng_pcrop";
+			
+			select += ", u_chng_pcrop";
 		}
 		
 		if(view.getInteractivePanel().getCheckBoxReasonChangePrimaryCrop().isSelected()){
 			groupby = appendGroupByChecker(groupby);
 			groupby += "u_chng_pcrop_y";
+			
+			select += ", u_chng_pcrop_y";
 		}
 		
 		if(view.getInteractivePanel().getCheckBoxChangeSameCrop().isSelected()){
 			groupby = appendGroupByChecker(groupby);
 			groupby += "u_chng_scrop";
+			
+			select += ", u_chng_scrop";
 		}
 		
 		if(view.getInteractivePanel().getCheckBoxReasonChangeSameCrop().isSelected()){
 			groupby = appendGroupByChecker(groupby);
 			groupby += "u_chng_scrop_y";
+			
+			select += ", u_chng_scrop_y";
 		}
 		
 		if(view.getInteractivePanel().getCheckBoxLowHarvest().isSelected()){
 			groupby = appendGroupByChecker(groupby);
 			groupby += "u_low_harv";
+			
+			select += ", u_low_harv";
 		}
 		
 		if(view.getInteractivePanel().getCheckBoxWaterSupply().isSelected()){
 			groupby = appendGroupByChecker(groupby);
 			groupby += "low_wsupp";
+			
+			select += ", low_wsupp";
 		}
 		
 		if(view.getInteractivePanel().getCheckBoxDrought().isSelected()){
 			groupby = appendGroupByChecker(groupby);
 			groupby += "drought";
+			
+			select += ", drought";
 		}
 		
 		if(view.getInteractivePanel().getCheckBoxDuration().isSelected()){
 			groupby = appendGroupByChecker(groupby);
 			groupby += "drought_duration";
+			
+			select += ", drought_duration";
 		}
 		
 		if(view.getInteractivePanel().getCheckBoxFlood().isSelected()){
 			groupby = appendGroupByChecker(groupby);
 			groupby += "flood_freq";
+			
+			select += ", flood_freq";
 		}
 		
 		if(view.getInteractivePanel().getCheckBoxCropType().isSelected()){
 			groupby = appendGroupByChecker(groupby);
 			groupby += "croptype";
+			
+			select += ", croptype";
 		}
 		
 		if(view.getInteractivePanel().getCheckBoxBeastOfBurden().isSelected()){
 			groupby = appendGroupByChecker(groupby);
 			groupby += "agriequip1";
+			
+			select += ", agriequip1";
+		}
+		
+		if(!view.getInteractivePanel().getSpinnerCountBeastOfBurdenLower().getValue().toString().equals("-1")
+				|| !view.getInteractivePanel().getSpinnerCountBeastOfBurdenUpper().getValue().toString().equals("-1")){
+				select += ", agriequip1_nown";
 		}
 		
 		if(view.getInteractivePanel().getCheckBoxPlow().isSelected()){
 			groupby = appendGroupByChecker(groupby);
 			groupby += "agriequip2";
+			
+			select += ", agriequip2";
+		}
+		
+		if(!view.getInteractivePanel().getSpinnerCountPlowLower().getValue().toString().equals("-1")
+				|| !view.getInteractivePanel().getSpinnerCountPlowUpper().getValue().toString().equals("-1")){
+				select += ", agriequip2_nown";
 		}
 		
 		if(view.getInteractivePanel().getCheckBoxHarrow().isSelected()){
 			groupby = appendGroupByChecker(groupby);
 			groupby += "agriequip3";
+			
+			select += ", agriequip3";
+		}
+		
+		if(!view.getInteractivePanel().getSpinnerCountHarrowLower().getValue().toString().equals("-1")
+				|| !view.getInteractivePanel().getSpinnerCountHarrowUpper().getValue().toString().equals("-1")){
+				select += ", agriequip3_nown";
 		}
 		
 		if(view.getInteractivePanel().getCheckBoxMower().isSelected()){
 			groupby = appendGroupByChecker(groupby);
 			groupby += "agriequip4";
+			
+			select += ", agriequip4";
+		}
+		
+		if(!view.getInteractivePanel().getSpinnerCountMowerLower().getValue().toString().equals("-1")
+				|| !view.getInteractivePanel().getSpinnerCountMowerUpper().getValue().toString().equals("-1")){
+				select += ", agriequip4_nown";
 		}
 		
 		if(view.getInteractivePanel().getCheckBoxThresher().isSelected()){
 			groupby = appendGroupByChecker(groupby);
 			groupby += "agriequip5";
+			
+			select += ", agriequip5";
+		}
+		
+		if(!view.getInteractivePanel().getSpinnerCountThresherLower().getValue().toString().equals("-1")
+				|| !view.getInteractivePanel().getSpinnerCountThresherUpper().getValue().toString().equals("-1")){
+				select += ", agriequip5_nown";
 		}
 		
 		if(view.getInteractivePanel().getCheckBoxSprayer().isSelected()){
 			groupby = appendGroupByChecker(groupby);
 			groupby += "agriequip6";
+			
+			select += ", agriequip6";
+		}
+		
+		if(!view.getInteractivePanel().getSpinnerCountSprayerLower().getValue().toString().equals("-1")
+				|| !view.getInteractivePanel().getSpinnerCountSprayerUpper().getValue().toString().equals("-1")){
+				select += ", agriequip6_nown";
 		}
 		
 		if(view.getInteractivePanel().getCheckBoxFarmTractor().isSelected()){
 			groupby = appendGroupByChecker(groupby);
 			groupby += "agriequip7";
+			
+			select += ", agriequip7";
+		}
+		
+		if(!view.getInteractivePanel().getSpinnerCountFarmTractorLower().getValue().toString().equals("-1")
+				|| !view.getInteractivePanel().getSpinnerCountFarmTractorUpper().getValue().toString().equals("-1")){
+				select += ", agriequip7_nown";
 		}
 		
 		if(view.getInteractivePanel().getCheckBoxHandTractor().isSelected()){
 			groupby = appendGroupByChecker(groupby);
 			groupby += "agriequip8";
+			
+			select += ", agriequip8";
+		}
+		
+		if(!view.getInteractivePanel().getSpinnerCountHandTractorLower().getValue().toString().equals("-1")
+				|| !view.getInteractivePanel().getSpinnerCountHandTractorUpper().getValue().toString().equals("-1")){
+				select += ", agriequip8_nown";
 		}
 		
 		if(view.getInteractivePanel().getCheckBoxMudboat().isSelected()){
 			groupby = appendGroupByChecker(groupby);
 			groupby += "agriequip9";
+			
+			select += ", agriequip9";
+		}
+		
+		if(!view.getInteractivePanel().getSpinnerCountMudboatLower().getValue().toString().equals("-1")
+				|| !view.getInteractivePanel().getSpinnerCountMudboatUpper().getValue().toString().equals("-1")){
+				select += ", agriequip9_nown";
 		}
 		
 		if(view.getInteractivePanel().getCheckBoxPlanter().isSelected()){
 			groupby = appendGroupByChecker(groupby);
 			groupby += "agriequip10";
+			
+			select += ", agriequip10";
+		}
+		
+		if(!view.getInteractivePanel().getSpinnerCountPlanterLower().getValue().toString().equals("-1")
+				|| !view.getInteractivePanel().getSpinnerCountPlanterUpper().getValue().toString().equals("-1")){
+				select += ", agriequip10_nown";
 		}
 		
 		if(view.getInteractivePanel().getCheckBoxMechanicalDryer().isSelected()){
 			groupby = appendGroupByChecker(groupby);
 			groupby += "agriequip11";
+			
+			select += ", agriequip11";
+		}
+		
+		if(!view.getInteractivePanel().getSpinnerCountMechanicalDryerLower().getValue().toString().equals("-1")
+				|| !view.getInteractivePanel().getSpinnerCountMechanicalDryerUpper().getValue().toString().equals("-1")){
+				select += ", agriequip11_nown";
 		}
 		
 		if(view.getInteractivePanel().getCheckBoxDryingPavement().isSelected()){
 			groupby = appendGroupByChecker(groupby);
 			groupby += "agriequip12";
+			
+			select += ", agriequip12";
+		}
+		
+		if(!view.getInteractivePanel().getSpinnerCountDryingPavementLower().getValue().toString().equals("-1")
+				|| !view.getInteractivePanel().getSpinnerCountDryingPavementUpper().getValue().toString().equals("-1")){
+				select += ", agriequip12_nown";
 		}
 		
 		if(view.getInteractivePanel().getCheckBoxFeedMill().isSelected()){
 			groupby = appendGroupByChecker(groupby);
 			groupby += "agriequip13";
+			
+			select += ", agriequip13";
+		}
+		
+		if(!view.getInteractivePanel().getSpinnerCountFeedMillLower().getValue().toString().equals("-1")
+				|| !view.getInteractivePanel().getSpinnerCountFeedMillUpper().getValue().toString().equals("-1")){
+				select += ", agriequip13_nown";
 		}
 		
 		if(view.getInteractivePanel().getCheckBoxHarvester().isSelected()){
 			groupby = appendGroupByChecker(groupby);
 			groupby += "agriequip14";
+			
+			select += ", agriequip14";
+		}
+		
+		if(!view.getInteractivePanel().getSpinnerCountHarvesterLower().getValue().toString().equals("-1")
+				|| !view.getInteractivePanel().getSpinnerCountHarvesterUpper().getValue().toString().equals("-1")){
+				select += ", agriequip14_nown";
 		}
 		
 		if(view.getInteractivePanel().getCheckBoxGranary().isSelected()){
 			groupby = appendGroupByChecker(groupby);
 			groupby += "agriequip15";
+			
+			select += ", agriequip15";
+		}
+		
+		if(!view.getInteractivePanel().getSpinnerCountGranaryLower().getValue().toString().equals("-1")
+				|| !view.getInteractivePanel().getSpinnerCountGranaryUpper().getValue().toString().equals("-1")){
+				select += ", agriequip15_nown";
 		}
 		
 		if(view.getInteractivePanel().getCheckBoxFarmshed().isSelected()){
 			groupby = appendGroupByChecker(groupby);
 			groupby += "agriequip16";
+			
+			select += ", agriequip16";
+		}
+		
+		if(!view.getInteractivePanel().getSpinnerCountFarmshedLower().getValue().toString().equals("-1")
+				|| !view.getInteractivePanel().getSpinnerCountFarmshedUpper().getValue().toString().equals("-1")){
+				select += ", agriequip16_nown";
 		}
 		
 		if(view.getInteractivePanel().getCheckBoxIrrigationPump().isSelected()){
 			groupby = appendGroupByChecker(groupby);
 			groupby += "agriequip17";
+			
+			select += ", agriequip17";
+		}
+		
+		if(!view.getInteractivePanel().getSpinnerCountIrrigationPumpLower().getValue().toString().equals("-1")
+				|| !view.getInteractivePanel().getSpinnerCountIrrigationPumpUpper().getValue().toString().equals("-1")){
+				select += ", agriequip17_nown";
 		}
 		
 		if(view.getInteractivePanel().getCheckBoxOthers().isSelected()){
 			groupby = appendGroupByChecker(groupby);
 			groupby += "agriequip18";
+			
+			select += ", agriequip18";
+		}
+		
+		if(!view.getInteractivePanel().getSpinnerCountOthersLower().getValue().toString().equals("-1")
+				|| !view.getInteractivePanel().getSpinnerCountOthersUpper().getValue().toString().equals("-1")){
+				select += ", agriequip18_nown";
 		}
 		
 		if(view.getInteractivePanel().getComboBoxOLAP().getSelectedIndex() != 0){
 			groupby += " with rollup";
 		}
 		
-		return groupby;
+		return select + from + where + groupby;
 	}
 	
 	private void changeUpperBound(JSpinner lowerSpinner, JSpinner upperSpinner) {
