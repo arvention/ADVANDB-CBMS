@@ -15,7 +15,7 @@ import java.awt.Insets;
 public class View extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	private static final View view = new View(new InteractivePanel());
+	private static final View view = new View(InteractivePanel.getInstance());
 	
 	private JPanel contentPane;
 	private InteractivePanel interactivePanel;
@@ -71,6 +71,14 @@ public class View extends JFrame {
 		
 		table = new JTable();
 		scrollPane.setViewportView(table);
+	}
+
+	public InteractivePanel getInteractivePanel() {
+		return interactivePanel;
+	}
+
+	public JTable getTable() {
+		return table;
 	}
 
 }
