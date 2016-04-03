@@ -15,26 +15,19 @@ import java.awt.Insets;
 public class View extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	private static final View view = new View(InteractivePanel.getInstance());
+	private static final View view = new View();
 	
 	private JPanel contentPane;
 	private InteractivePanel interactivePanel;
 	private JTable table;
 
-	private View(InteractivePanel interactivePanel) {
-		setResizable(false);
+	private View() {
+		setResizable(true);
 		setTitle("AGRISYS - Agricultural Geo Resource Inference System");
 		
-		this.interactivePanel = interactivePanel;
+		interactivePanel = new InteractivePanel();
 		
 		initializeComponents();
-		
-		GridBagConstraints gbc_interactivePanel = new GridBagConstraints();
-		gbc_interactivePanel.insets = new Insets(0, 0, 0, 5);
-		gbc_interactivePanel.fill = GridBagConstraints.BOTH;
-		gbc_interactivePanel.gridx = 0;
-		gbc_interactivePanel.gridy = 0;
-		contentPane.add(this.interactivePanel, gbc_interactivePanel);
 	}
 
 	public static View getInstance(){
@@ -50,12 +43,12 @@ public class View extends JFrame {
 		} 
 		// frame
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1200, 620);
+		setBounds(10, 10, 1100, 630);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		GridBagLayout gbl_contentPane = new GridBagLayout();
-		gbl_contentPane.columnWidths = new int[] {600, 600, 0};
+		gbl_contentPane.columnWidths = new int[] {700, 400, 0};
 		gbl_contentPane.rowHeights = new int[]{580, 0};
 		gbl_contentPane.columnWeights = new double[]{0.0, 1.0, Double.MIN_VALUE};
 		gbl_contentPane.rowWeights = new double[]{1.0, Double.MIN_VALUE};
@@ -71,6 +64,13 @@ public class View extends JFrame {
 		
 		table = new JTable();
 		scrollPane.setViewportView(table);
+		
+		GridBagConstraints gbc_interactivePanel = new GridBagConstraints();
+		gbc_interactivePanel.insets = new Insets(0, 0, 0, 5);
+		gbc_interactivePanel.fill = GridBagConstraints.BOTH;
+		gbc_interactivePanel.gridx = 0;
+		gbc_interactivePanel.gridy = 0;
+		contentPane.add(this.interactivePanel, gbc_interactivePanel);
 	}
 
 	public InteractivePanel getInteractivePanel() {

@@ -332,546 +332,764 @@ public class Controller {
 	}
 	
 	private String queryBuilder(){
-		String query = "";
+		return selectBuilder() + fromBuilder() + whereBuilder() + groupByBuilder();
+	}
+	
+	// implement later
+	private String selectBuilder(){
+		String select = "";
+		
+		return select;
+	}
+	
+	// implement later
+	private String fromBuilder(){
+		String from = "";
+		
+		return from;
+	}
+	
+	private String whereBuilder(){
+		String where = "";
 		
 		if(view.getInteractivePanel().getComboBoxProvince().getSelectedIndex() != 0){
-			query = appendWhereChecker(query);
-			query += "prov = " + view.getInteractivePanel().getComboBoxProvince().getSelectedItem().toString();
+			where = appendWhereChecker(where);
+			where += "prov = " + view.getInteractivePanel().getComboBoxProvince().getSelectedItem().toString();
 		}
 		
 		if(view.getInteractivePanel().getComboBoxMunicipality().getSelectedIndex() != 0){
-			query = appendWhereChecker(query);
-			query += "mun = " + view.getInteractivePanel().getComboBoxProvince().getSelectedItem().toString();
+			where = appendWhereChecker(where);
+			where += "mun = " + view.getInteractivePanel().getComboBoxProvince().getSelectedItem().toString();
 		}
 		
 		if(view.getInteractivePanel().getComboBoxZone().getSelectedIndex() != 0){
-			query = appendWhereChecker(query);
-			query += "zone = " + view.getInteractivePanel().getComboBoxZone().getSelectedItem().toString();
+			where = appendWhereChecker(where);
+			where += "zone = " + view.getInteractivePanel().getComboBoxZone().getSelectedItem().toString();
 		}
 		
 		if(view.getInteractivePanel().getComboBoxBarangay().getSelectedIndex() != 0){
-			query = appendWhereChecker(query);
-			query += "brgy = " + view.getInteractivePanel().getComboBoxBarangay().getSelectedItem().toString();
+			where = appendWhereChecker(where);
+			where += "brgy = " + view.getInteractivePanel().getComboBoxBarangay().getSelectedItem().toString();
 		}
 		
 		if(view.getInteractivePanel().getComboBoxPurok().getSelectedIndex() != 0){
-			query = appendWhereChecker(query);
-			query += "purok = " + view.getInteractivePanel().getComboBoxPurok().getSelectedItem().toString();
+			where = appendWhereChecker(where);
+			where += "purok = " + view.getInteractivePanel().getComboBoxPurok().getSelectedItem().toString();
 		}
 		
 		if(view.getInteractivePanel().getComboBoxIndustry().getSelectedIndex() != 0){
-			query = appendWhereChecker(query);
+			where = appendWhereChecker(where);
 			if(view.getInteractivePanel().getComboBoxIndustry().getSelectedItem().toString().equals("Yes"))
-				query += "cropind = " + TRUE;
+				where += "cropind = " + TRUE;
 			else if(view.getInteractivePanel().getComboBoxIndustry().getSelectedItem().toString().equals("No"))
-				query += "cropind = " + FALSE;
+				where += "cropind = " + FALSE;
 		}
 		
 		if(view.getInteractivePanel().getComboBoxARCDP().getSelectedIndex() != 0){
-			query = appendWhereChecker(query);
+			where = appendWhereChecker(where);
 			if(view.getInteractivePanel().getComboBoxARCDP().getSelectedItem().toString().equals("Yes"))
-				query += "prog_arcdp = " + TRUE;
+				where += "prog_arcdp = " + TRUE;
 			else if(view.getInteractivePanel().getComboBoxARCDP().getSelectedItem().toString().equals("No"))
-				query += "prog_arcdp = " + FALSE;
+				where += "prog_arcdp = " + FALSE;
 		}
 		
 		if(view.getInteractivePanel().getComboBoxCropInsurance().getSelectedIndex() != 0){
-			query = appendWhereChecker(query);
+			where = appendWhereChecker(where);
 			if(view.getInteractivePanel().getComboBoxCropInsurance().getSelectedItem().toString().equals("Yes"))
-				query += "irfa_crop = " + TRUE;
+				where += "irfa_crop = " + TRUE;
 			else if(view.getInteractivePanel().getComboBoxCropInsurance().getSelectedItem().toString().equals("No"))
-				query += "irfa_crop = " + FALSE;
+				where += "irfa_crop = " + FALSE;
 		}
 		
 		if(view.getInteractivePanel().getComboBoxAgriculturalInsurance().getSelectedIndex() != 0){
-			query = appendWhereChecker(query);
+			where = appendWhereChecker(where);
 			if(view.getInteractivePanel().getComboBoxAgriculturalInsurance().getSelectedItem().toString().equals("Yes"))
-				query += "irfa_agriequip = " + TRUE;
+				where += "irfa_agriequip = " + TRUE;
 			else if(view.getInteractivePanel().getComboBoxAgriculturalInsurance().getSelectedItem().toString().equals("No"))
-				query += "irfa_agriequip = " + FALSE;
+				where += "irfa_agriequip = " + FALSE;
 		}
 		
 		if(view.getInteractivePanel().getComboBoxChangePrimaryCrop().getSelectedIndex() != 0){
-			query = appendWhereChecker(query);
+			where = appendWhereChecker(where);
 			if(view.getInteractivePanel().getComboBoxChangePrimaryCrop().getSelectedItem().toString().equals("Yes"))
-				query += "u_chng_pcrop = " + TRUE;
+				where += "u_chng_pcrop = " + TRUE;
 			else if(view.getInteractivePanel().getComboBoxChangePrimaryCrop().getSelectedItem().toString().equals("No"))
-				query += "u_chng_pcrop = " + FALSE;
+				where += "u_chng_pcrop = " + FALSE;
 		}
 		
 		if(view.getInteractivePanel().getComboBoxReasonChangePrimaryCrop().getSelectedIndex() != 0){
-			query = appendWhereChecker(query);
+			where = appendWhereChecker(where);
 			if(view.getInteractivePanel().getComboBoxChangePrimaryCrop().getSelectedItem().toString().equals("Cheaper")){
-				query += "u_chng_pcrop_y = 1";
+				where += "u_chng_pcrop_y = 1";
 			} else if(view.getInteractivePanel().getComboBoxChangePrimaryCrop().getSelectedItem().toString().equals("More resistant to pest")){
-				query += "u_chng_pcrop_y = 2";
+				where += "u_chng_pcrop_y = 2";
 			} else if(view.getInteractivePanel().getComboBoxChangePrimaryCrop().getSelectedItem().toString().equals("Less water")){
-				query += "u_chng_pcrop_y = 3";
+				where += "u_chng_pcrop_y = 3";
 			} else if(view.getInteractivePanel().getComboBoxChangePrimaryCrop().getSelectedItem().toString().equals("More profitable")){
-				query += "u_chng_pcrop_y = 4";
+				where += "u_chng_pcrop_y = 4";
 			} else if(view.getInteractivePanel().getComboBoxChangePrimaryCrop().getSelectedItem().toString().equals("Availability")){
-				query += "u_chng_pcrop_y = 5";
+				where += "u_chng_pcrop_y = 5";
 			} else if(view.getInteractivePanel().getComboBoxChangePrimaryCrop().getSelectedItem().toString().equals("Others")){
-				query += "u_chng_pcrop_y = 6";
+				where += "u_chng_pcrop_y = 6";
 			}
 		}
 		
 		if(view.getInteractivePanel().getComboBoxChangeSameCrop().getSelectedIndex() != 0){
-			query = appendWhereChecker(query);
+			where = appendWhereChecker(where);
 			if(view.getInteractivePanel().getComboBoxChangeSameCrop().getSelectedItem().toString().equals("Yes"))
-				query += "u_chng_scrop = " + TRUE;
+				where += "u_chng_scrop = " + TRUE;
 			else if(view.getInteractivePanel().getComboBoxChangeSameCrop().getSelectedItem().toString().equals("No"))
-				query += "u_chng_scrop = " + FALSE;
+				where += "u_chng_scrop = " + FALSE;
 		}
 		
 		if(view.getInteractivePanel().getComboBoxReasonChangeSameCrop().getSelectedIndex() != 0){
-			query = appendWhereChecker(query);
+			where = appendWhereChecker(where);
 			if(view.getInteractivePanel().getComboBoxChangeSameCrop().getSelectedItem().toString().equals("Cheaper")){
-				query += "u_chng_scrop_y = 1";
+				where += "u_chng_scrop_y = 1";
 			} else if(view.getInteractivePanel().getComboBoxChangeSameCrop().getSelectedItem().toString().equals("More resistant to pest")){
-				query += "u_chng_scrop_y = 2";
+				where += "u_chng_scrop_y = 2";
 			} else if(view.getInteractivePanel().getComboBoxChangeSameCrop().getSelectedItem().toString().equals("Less water")){
-				query += "u_chng_scrop_y = 3";
+				where += "u_chng_scrop_y = 3";
 			} else if(view.getInteractivePanel().getComboBoxChangeSameCrop().getSelectedItem().toString().equals("More profitable")){
-				query += "u_chng_scrop_y = 4";
+				where += "u_chng_scrop_y = 4";
 			} else if(view.getInteractivePanel().getComboBoxChangeSameCrop().getSelectedItem().toString().equals("Availability")){
-				query += "u_chng_scrop_y = 5";
+				where += "u_chng_scrop_y = 5";
 			} else if(view.getInteractivePanel().getComboBoxChangeSameCrop().getSelectedItem().toString().equals("Others")){
-				query += "u_chng_scrop_y = 6";
+				where += "u_chng_scrop_y = 6";
 			}
 		}
 		
 		if(view.getInteractivePanel().getComboBoxLowHarvest().getSelectedIndex() != 0){
-			query = appendWhereChecker(query);
+			where = appendWhereChecker(where);
 			if(view.getInteractivePanel().getComboBoxLowHarvest().getSelectedItem().toString().equals("Price increase on inputs")){
-				query += "u_low_harv = 1";
+				where += "u_low_harv = 1";
 			} else if(view.getInteractivePanel().getComboBoxLowHarvest().getSelectedItem().toString().equals("Drought")){
-				query += "u_low_harv = 2";
+				where += "u_low_harv = 2";
 			} else if(view.getInteractivePanel().getComboBoxLowHarvest().getSelectedItem().toString().equals("Typhoon")){
-				query += "u_low_harv = 3";
+				where += "u_low_harv = 3";
 			} else if(view.getInteractivePanel().getComboBoxLowHarvest().getSelectedItem().toString().equals("Flood")){
-				query += "u_low_harv = 4";
+				where += "u_low_harv = 4";
 			} else if(view.getInteractivePanel().getComboBoxLowHarvest().getSelectedItem().toString().equals("Pests")){
-				query += "u_low_harv = 5";
+				where += "u_low_harv = 5";
 			} else if(view.getInteractivePanel().getComboBoxLowHarvest().getSelectedItem().toString().equals("Decrease in water supply")){
-				query += "u_low_harv = 6";
+				where += "u_low_harv = 6";
 			} else if(view.getInteractivePanel().getComboBoxLowHarvest().getSelectedItem().toString().equals("Change in occupation")){
-				query += "u_low_harv = 7";
+				where += "u_low_harv = 7";
 			} else if(view.getInteractivePanel().getComboBoxLowHarvest().getSelectedItem().toString().equals("Others")){
-				query += "u_low_harv = 8";
+				where += "u_low_harv = 8";
 			}
 		}
 		
 		if(view.getInteractivePanel().getComboBoxWaterSupply().getSelectedIndex() != 0){
-			query = appendWhereChecker(query);
+			where = appendWhereChecker(where);
 			if(view.getInteractivePanel().getComboBoxWaterSupply().getSelectedItem().toString().equals("Drought")){
-				query += "low_wsupp = 1";
+				where += "low_wsupp = 1";
 			} else if(view.getInteractivePanel().getComboBoxWaterSupply().getSelectedItem().toString().equals("Broken pump")){
-				query += "low_wsupp = 2";
+				where += "low_wsupp = 2";
 			} else if(view.getInteractivePanel().getComboBoxWaterSupply().getSelectedItem().toString().equals("Dam water level")){
-				query += "low_wsupp = 3";
+				where += "low_wsupp = 3";
 			} else if(view.getInteractivePanel().getComboBoxWaterSupply().getSelectedItem().toString().equals("Tanker truck")){
-				query += "low_wsupp = 4";
+				where += "low_wsupp = 4";
 			} else if(view.getInteractivePanel().getComboBoxWaterSupply().getSelectedItem().toString().equals("Increase in customers")){
-				query += "low_wsupp = 5";
+				where += "low_wsupp = 5";
 			} else if(view.getInteractivePanel().getComboBoxWaterSupply().getSelectedItem().toString().equals("Others")){
-				query += "low_wsupp = 6";
+				where += "low_wsupp = 6";
 			}
 		}
 		
 		if(view.getInteractivePanel().getComboBoxDrought().getSelectedIndex() != 0){
-			query = appendWhereChecker(query);
+			where = appendWhereChecker(where);
 			if(view.getInteractivePanel().getComboBoxDrought().getSelectedItem().toString().equals("Yes")){
-				query += "drought = " + TRUE;
+				where += "drought = " + TRUE;
 			} else if(view.getInteractivePanel().getComboBoxDrought().getSelectedItem().toString().equals("No")){
-				query += "drought = " + FALSE;
+				where += "drought = " + FALSE;
 			}
 		}
 		
 		if(view.getInteractivePanel().getComboBoxDuration().getSelectedIndex() != 0){
-			query = appendWhereChecker(query);
+			where = appendWhereChecker(where);
 			if(view.getInteractivePanel().getComboBoxDuration().getSelectedItem().toString().equals("< 1 Month")){
-				query += "drought_duration = 1";
+				where += "drought_duration = 1";
 			} else if(view.getInteractivePanel().getComboBoxDuration().getSelectedItem().toString().equals("1 Month < 2 Months")){
-				query += "drought_duration = 2";
+				where += "drought_duration = 2";
 			} else if(view.getInteractivePanel().getComboBoxDuration().getSelectedItem().toString().equals("2 Months < 3 Months")){
-				query += "drought_duration = 3";
+				where += "drought_duration = 3";
 			} else if(view.getInteractivePanel().getComboBoxDuration().getSelectedItem().toString().equals("3 Months < 4 Months")){
-				query += "drought_duration = 4";
+				where += "drought_duration = 4";
 			} else if(view.getInteractivePanel().getComboBoxDuration().getSelectedItem().toString().equals("4 Months < 5 Months")){
-				query += "drought_duration = 5";
+				where += "drought_duration = 5";
 			} else if(view.getInteractivePanel().getComboBoxDuration().getSelectedItem().toString().equals("5 Months or more")){
-				query += "drought_duration = 6";
+				where += "drought_duration = 6";
 			}
 		}
 		
 		if(view.getInteractivePanel().getComboBoxFlood().getSelectedIndex() != 0){
-			query = appendWhereChecker(query);
+			where = appendWhereChecker(where);
 			if(view.getInteractivePanel().getComboBoxFlood().getSelectedItem().toString().equals("Yes")){
-				query += "flood_freq = " + TRUE;
+				where += "flood_freq = " + TRUE;
 			} else if(view.getInteractivePanel().getComboBoxFlood().getSelectedItem().toString().equals("No")){
-				query += "flod_freq = " + FALSE;
+				where += "flood_freq = " + FALSE;
 			}
 		}
 		
 		if(view.getInteractivePanel().getComboBoxCropType().getSelectedIndex() != 0){
-			query = appendWhereChecker(query);
+			where = appendWhereChecker(where);
 			if(view.getInteractivePanel().getComboBoxCropType().getSelectedItem().toString().equals("Sugar Cane")){
-				query += "croptype = 1";
+				where += "croptype = 1";
 			} else if(view.getInteractivePanel().getComboBoxCropType().getSelectedItem().toString().equals("Palay")){
-				query += "croptype = 2";
+				where += "croptype = 2";
 			} else if(view.getInteractivePanel().getComboBoxCropType().getSelectedItem().toString().equals("Corn")){
-				query += "croptype = 3";
+				where += "croptype = 3";
 			} else if(view.getInteractivePanel().getComboBoxCropType().getSelectedItem().toString().equals("Coffee")){
-				query += "croptype = 4";
+				where += "croptype = 4";
 			} else if(view.getInteractivePanel().getComboBoxCropType().getSelectedItem().toString().equals("Other")){
-				query += "croptype = 5";
+				where += "croptype = 5";
 			}
 		}
 		
 		if(view.getInteractivePanel().getComboBoxBeastOfBurden().getSelectedIndex() != 0){
-			query = appendWhereChecker(query);
+			where = appendWhereChecker(where);
 			if(view.getInteractivePanel().getComboBoxBeastOfBurden().getSelectedItem().toString().equals("Owned")){
-				query += "agriequip1 = " + TRUE;
+				where += "agriequip1 = " + TRUE;
 			} else if(view.getInteractivePanel().getComboBoxBeastOfBurden().getSelectedItem().toString().equals("Not Owned")){
-				query += "agriequip1 = " + FALSE;
+				where += "agriequip1 = " + FALSE;
 			}
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountBeastOfBurdenLower().getValue().toString().equals("-1")){
-			query = appendWhereChecker(query);
-			query += "agriequip1_nown > " + view.getInteractivePanel().getSpinnerCountBeastOfBurdenLower().getValue().toString();
+			where = appendWhereChecker(where);
+			where += "agriequip1_nown > " + view.getInteractivePanel().getSpinnerCountBeastOfBurdenLower().getValue().toString();
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountBeastOfBurdenUpper().getValue().toString().equals("-1")){
-			query = appendWhereChecker(query);
-			query += "agriequip1_nown <= " + view.getInteractivePanel().getSpinnerCountBeastOfBurdenUpper().getValue().toString();
+			where = appendWhereChecker(where);
+			where += "agriequip1_nown <= " + view.getInteractivePanel().getSpinnerCountBeastOfBurdenUpper().getValue().toString();
 		}
 		
 		if(view.getInteractivePanel().getComboBoxPlow().getSelectedIndex() != 0){
-			query = appendWhereChecker(query);
+			where = appendWhereChecker(where);
 			if(view.getInteractivePanel().getComboBoxPlow().getSelectedItem().toString().equals("Owned")){
-				query += "agriequip2 = " + TRUE;
+				where += "agriequip2 = " + TRUE;
 			} else if(view.getInteractivePanel().getComboBoxPlow().getSelectedItem().toString().equals("Not Owned")){
-				query += "agriequip2 = " + FALSE;
+				where += "agriequip2 = " + FALSE;
 			}
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountPlowLower().getValue().toString().equals("-1")){
-			query = appendWhereChecker(query);
-			query += "agriequip2_nown > " + view.getInteractivePanel().getSpinnerCountPlowLower().getValue().toString();
+			where = appendWhereChecker(where);
+			where += "agriequip2_nown > " + view.getInteractivePanel().getSpinnerCountPlowLower().getValue().toString();
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountPlowUpper().getValue().toString().equals("-1")){
-			query = appendWhereChecker(query);
-			query += "agriequip2_nown <= " + view.getInteractivePanel().getSpinnerCountPlowUpper().getValue().toString();
+			where = appendWhereChecker(where);
+			where += "agriequip2_nown <= " + view.getInteractivePanel().getSpinnerCountPlowUpper().getValue().toString();
 		}
 		
 		if(view.getInteractivePanel().getComboBoxHarrow().getSelectedIndex() != 0){
-			query = appendWhereChecker(query);
+			where = appendWhereChecker(where);
 			if(view.getInteractivePanel().getComboBoxHarrow().getSelectedItem().toString().equals("Owned")){
-				query += "agriequip3 = " + TRUE;
+				where += "agriequip3 = " + TRUE;
 			} else if(view.getInteractivePanel().getComboBoxHarrow().getSelectedItem().toString().equals("Not Owned")){
-				query += "agriequip3 = " + FALSE;
+				where += "agriequip3 = " + FALSE;
 			}
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountHarrowLower().getValue().toString().equals("-1")){
-			query = appendWhereChecker(query);
-			query += "agriequip3_nown > " + view.getInteractivePanel().getSpinnerCountHarrowLower().getValue().toString();
+			where = appendWhereChecker(where);
+			where += "agriequip3_nown > " + view.getInteractivePanel().getSpinnerCountHarrowLower().getValue().toString();
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountHarrowUpper().getValue().toString().equals("-1")){
-			query = appendWhereChecker(query);
-			query += "agriequip3_nown <= " + view.getInteractivePanel().getSpinnerCountHarrowUpper().getValue().toString();
+			where = appendWhereChecker(where);
+			where += "agriequip3_nown <= " + view.getInteractivePanel().getSpinnerCountHarrowUpper().getValue().toString();
 		}
 		
 		if(view.getInteractivePanel().getComboBoxMower().getSelectedIndex() != 0){
-			query = appendWhereChecker(query);
+			where = appendWhereChecker(where);
 			if(view.getInteractivePanel().getComboBoxMower().getSelectedItem().toString().equals("Owned")){
-				query += "agriequip4 = " + TRUE;
+				where += "agriequip4 = " + TRUE;
 			} else if(view.getInteractivePanel().getComboBoxMower().getSelectedItem().toString().equals("Not Owned")){
-				query += "agriequip4 = " + FALSE;
+				where += "agriequip4 = " + FALSE;
 			}
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountMowerLower().getValue().toString().equals("-1")){
-			query = appendWhereChecker(query);
-			query += "agriequip4_nown > " + view.getInteractivePanel().getSpinnerCountMowerLower().getValue().toString();
+			where = appendWhereChecker(where);
+			where += "agriequip4_nown > " + view.getInteractivePanel().getSpinnerCountMowerLower().getValue().toString();
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountMowerUpper().getValue().toString().equals("-1")){
-			query = appendWhereChecker(query);
-			query += "agriequip4_nown <= " + view.getInteractivePanel().getSpinnerCountMowerUpper().getValue().toString();
+			where = appendWhereChecker(where);
+			where += "agriequip4_nown <= " + view.getInteractivePanel().getSpinnerCountMowerUpper().getValue().toString();
 		}
 		
 		if(view.getInteractivePanel().getComboBoxThresher().getSelectedIndex() != 0){
-			query = appendWhereChecker(query);
+			where = appendWhereChecker(where);
 			if(view.getInteractivePanel().getComboBoxThresher().getSelectedItem().toString().equals("Owned")){
-				query += "agriequip5 = " + TRUE;
+				where += "agriequip5 = " + TRUE;
 			} else if(view.getInteractivePanel().getComboBoxThresher().getSelectedItem().toString().equals("Not Owned")){
-				query += "agriequip5 = " + FALSE;
+				where += "agriequip5 = " + FALSE;
 			}
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountThresherLower().getValue().toString().equals("-1")){
-			query = appendWhereChecker(query);
-			query += "agriequip5_nown > " + view.getInteractivePanel().getSpinnerCountThresherLower().getValue().toString();
+			where = appendWhereChecker(where);
+			where += "agriequip5_nown > " + view.getInteractivePanel().getSpinnerCountThresherLower().getValue().toString();
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountThresherUpper().getValue().toString().equals("-1")){
-			query = appendWhereChecker(query);
-			query += "agriequip5_nown <= " + view.getInteractivePanel().getSpinnerCountThresherUpper().getValue().toString();
+			where = appendWhereChecker(where);
+			where += "agriequip5_nown <= " + view.getInteractivePanel().getSpinnerCountThresherUpper().getValue().toString();
 		}
 		
 		if(view.getInteractivePanel().getComboBoxSprayer().getSelectedIndex() != 0){
-			query = appendWhereChecker(query);
+			where = appendWhereChecker(where);
 			if(view.getInteractivePanel().getComboBoxSprayer().getSelectedItem().toString().equals("Owned")){
-				query += "agriequip6 = " + TRUE;
+				where += "agriequip6 = " + TRUE;
 			} else if(view.getInteractivePanel().getComboBoxSprayer().getSelectedItem().toString().equals("Not Owned")){
-				query += "agriequip6 = " + FALSE;
+				where += "agriequip6 = " + FALSE;
 			}
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountSprayerLower().getValue().toString().equals("-1")){
-			query = appendWhereChecker(query);
-			query += "agriequip6_nown > " + view.getInteractivePanel().getSpinnerCountSprayerLower().getValue().toString();
+			where = appendWhereChecker(where);
+			where += "agriequip6_nown > " + view.getInteractivePanel().getSpinnerCountSprayerLower().getValue().toString();
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountSprayerUpper().getValue().toString().equals("-1")){
-			query = appendWhereChecker(query);
-			query += "agriequip6_nown <= " + view.getInteractivePanel().getSpinnerCountSprayerUpper().getValue().toString();
+			where = appendWhereChecker(where);
+			where += "agriequip6_nown <= " + view.getInteractivePanel().getSpinnerCountSprayerUpper().getValue().toString();
 		}
 		
 		if(view.getInteractivePanel().getComboBoxFarmTractor().getSelectedIndex() != 0){
-			query = appendWhereChecker(query);
+			where = appendWhereChecker(where);
 			if(view.getInteractivePanel().getComboBoxFarmTractor().getSelectedItem().toString().equals("Owned")){
-				query += "agriequip7 = " + TRUE;
+				where += "agriequip7 = " + TRUE;
 			} else if(view.getInteractivePanel().getComboBoxFarmTractor().getSelectedItem().toString().equals("Not Owned")){
-				query += "agriequip7 = " + FALSE;
+				where += "agriequip7 = " + FALSE;
 			}
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountFarmTractorLower().getValue().toString().equals("-1")){
-			query = appendWhereChecker(query);
-			query += "agriequip7_nown > " + view.getInteractivePanel().getSpinnerCountFarmTractorLower().getValue().toString();
+			where = appendWhereChecker(where);
+			where += "agriequip7_nown > " + view.getInteractivePanel().getSpinnerCountFarmTractorLower().getValue().toString();
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountFarmTractorUpper().getValue().toString().equals("-1")){
-			query = appendWhereChecker(query);
-			query += "agriequip7_nown <= " + view.getInteractivePanel().getSpinnerCountFarmTractorUpper().getValue().toString();
+			where = appendWhereChecker(where);
+			where += "agriequip7_nown <= " + view.getInteractivePanel().getSpinnerCountFarmTractorUpper().getValue().toString();
 		}
 		
 		if(view.getInteractivePanel().getComboBoxHandTractor().getSelectedIndex() != 0){
-			query = appendWhereChecker(query);
+			where = appendWhereChecker(where);
 			if(view.getInteractivePanel().getComboBoxHandTractor().getSelectedItem().toString().equals("Owned")){
-				query += "agriequip8 = " + TRUE;
+				where += "agriequip8 = " + TRUE;
 			} else if(view.getInteractivePanel().getComboBoxHandTractor().getSelectedItem().toString().equals("Not Owned")){
-				query += "agriequip8 = " + FALSE;
+				where += "agriequip8 = " + FALSE;
 			}
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountHandTractorLower().getValue().toString().equals("-1")){
-			query = appendWhereChecker(query);
-			query += "agriequip8_nown > " + view.getInteractivePanel().getSpinnerCountHandTractorLower().getValue().toString();
+			where = appendWhereChecker(where);
+			where += "agriequip8_nown > " + view.getInteractivePanel().getSpinnerCountHandTractorLower().getValue().toString();
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountHandTractorUpper().getValue().toString().equals("-1")){
-			query = appendWhereChecker(query);
-			query += "agriequip8_nown <= " + view.getInteractivePanel().getSpinnerCountHandTractorUpper().getValue().toString();
+			where = appendWhereChecker(where);
+			where += "agriequip8_nown <= " + view.getInteractivePanel().getSpinnerCountHandTractorUpper().getValue().toString();
 		}
 		
 		if(view.getInteractivePanel().getComboBoxMudboat().getSelectedIndex() != 0){
-			query = appendWhereChecker(query);
+			where = appendWhereChecker(where);
 			if(view.getInteractivePanel().getComboBoxMudboat().getSelectedItem().toString().equals("Owned")){
-				query += "agriequip9 = " + TRUE;
+				where += "agriequip9 = " + TRUE;
 			} else if(view.getInteractivePanel().getComboBoxMudboat().getSelectedItem().toString().equals("Not Owned")){
-				query += "agriequip9 = " + FALSE;
+				where += "agriequip9 = " + FALSE;
 			}
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountMudboatLower().getValue().toString().equals("-1")){
-			query = appendWhereChecker(query);
-			query += "agriequip9_nown > " + view.getInteractivePanel().getSpinnerCountMudboatLower().getValue().toString();
+			where = appendWhereChecker(where);
+			where += "agriequip9_nown > " + view.getInteractivePanel().getSpinnerCountMudboatLower().getValue().toString();
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountMudboatUpper().getValue().toString().equals("-1")){
-			query = appendWhereChecker(query);
-			query += "agriequip9_nown <= " + view.getInteractivePanel().getSpinnerCountMudboatUpper().getValue().toString();	
+			where = appendWhereChecker(where);
+			where += "agriequip9_nown <= " + view.getInteractivePanel().getSpinnerCountMudboatUpper().getValue().toString();	
 		}
 		
 		if(view.getInteractivePanel().getComboBoxPlanter().getSelectedIndex() != 0){
-			query = appendWhereChecker(query);
+			where = appendWhereChecker(where);
 			if(view.getInteractivePanel().getComboBoxPlanter().getSelectedItem().toString().equals("Owned")){
-				query += "agriequip10 = " + TRUE;
+				where += "agriequip10 = " + TRUE;
 			} else if(view.getInteractivePanel().getComboBoxPlanter().getSelectedItem().toString().equals("Not Owned")){
-				query += "agriequip10 = " + FALSE;
+				where += "agriequip10 = " + FALSE;
 			}
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountPlanterLower().getValue().toString().equals("-1")){
-			query = appendWhereChecker(query);
-			query += "agriequip10_nown > " + view.getInteractivePanel().getSpinnerCountPlanterLower().getValue().toString();
+			where = appendWhereChecker(where);
+			where += "agriequip10_nown > " + view.getInteractivePanel().getSpinnerCountPlanterLower().getValue().toString();
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountPlanterUpper().getValue().toString().equals("-1")){
-			query = appendWhereChecker(query);
-			query += "agriequip10_nown <= " + view.getInteractivePanel().getSpinnerCountPlanterUpper().getValue().toString();
+			where = appendWhereChecker(where);
+			where += "agriequip10_nown <= " + view.getInteractivePanel().getSpinnerCountPlanterUpper().getValue().toString();
 		}
 		
 		if(view.getInteractivePanel().getComboBoxMechanicalDryer().getSelectedIndex() != 0){
-			query = appendWhereChecker(query);
+			where = appendWhereChecker(where);
 			if(view.getInteractivePanel().getComboBoxMechanicalDryer().getSelectedItem().toString().equals("Owned")){
-				query += "agriequip11 = " + TRUE;
+				where += "agriequip11 = " + TRUE;
 			} else if(view.getInteractivePanel().getComboBoxMechanicalDryer().getSelectedItem().toString().equals("Not Owned")){
-				query += "agriequip11 = " + FALSE;
+				where += "agriequip11 = " + FALSE;
 			}
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountMechanicalDryerLower().getValue().toString().equals("-1")){
-			query = appendWhereChecker(query);
-			query += "agriequip11_nown > " + view.getInteractivePanel().getSpinnerCountMechanicalDryerLower().getValue().toString();
+			where = appendWhereChecker(where);
+			where += "agriequip11_nown > " + view.getInteractivePanel().getSpinnerCountMechanicalDryerLower().getValue().toString();
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountMechanicalDryerUpper().getValue().toString().equals("-1")){
-			query = appendWhereChecker(query);
-			query += "agriequip11_nown <= " + view.getInteractivePanel().getSpinnerCountMechanicalDryerUpper().getValue().toString();
+			where = appendWhereChecker(where);
+			where += "agriequip11_nown <= " + view.getInteractivePanel().getSpinnerCountMechanicalDryerUpper().getValue().toString();
 		}
 		
 		if(view.getInteractivePanel().getComboBoxDryingPavement().getSelectedIndex() != 0){
-			query = appendWhereChecker(query);
+			where = appendWhereChecker(where);
 			if(view.getInteractivePanel().getComboBoxDryingPavement().getSelectedItem().toString().equals("Owned")){
-				query += "agriequip12 = " + TRUE;
+				where += "agriequip12 = " + TRUE;
 			} else if(view.getInteractivePanel().getComboBoxDryingPavement().getSelectedItem().toString().equals("Not Owned")){
-				query += "agriequip12 = " + FALSE;
+				where += "agriequip12 = " + FALSE;
 			}
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountDryingPavementLower().getValue().toString().equals("-1")){
-			query = appendWhereChecker(query);
-			query += "agriequip12_nown > " + view.getInteractivePanel().getSpinnerCountDryingPavementLower().getValue().toString();
+			where = appendWhereChecker(where);
+			where += "agriequip12_nown > " + view.getInteractivePanel().getSpinnerCountDryingPavementLower().getValue().toString();
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountDryingPavementUpper().getValue().toString().equals("-1")){
-			query = appendWhereChecker(query);
-			query += "agriequip12_nown <= " + view.getInteractivePanel().getSpinnerCountDryingPavementUpper().getValue().toString();
+			where = appendWhereChecker(where);
+			where += "agriequip12_nown <= " + view.getInteractivePanel().getSpinnerCountDryingPavementUpper().getValue().toString();
 		}
 		
 		if(view.getInteractivePanel().getComboBoxFeedMill().getSelectedIndex() != 0){
-			query = appendWhereChecker(query);
+			where = appendWhereChecker(where);
 			if(view.getInteractivePanel().getComboBoxFeedMill().getSelectedItem().toString().equals("Owned")){
-				query += "agriequip13 = " + TRUE;
+				where += "agriequip13 = " + TRUE;
 			} else if(view.getInteractivePanel().getComboBoxFeedMill().getSelectedItem().toString().equals("Not Owned")){
-				query += "agriequip13 = " + FALSE;
+				where += "agriequip13 = " + FALSE;
 			}
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountFeedMillLower().getValue().toString().equals("-1")){
-			query = appendWhereChecker(query);
-			query += "agriequip13_nown > " + view.getInteractivePanel().getSpinnerCountFeedMillLower().getValue().toString();
+			where = appendWhereChecker(where);
+			where += "agriequip13_nown > " + view.getInteractivePanel().getSpinnerCountFeedMillLower().getValue().toString();
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountFeedMillUpper().getValue().toString().equals("-1")){
-			query = appendWhereChecker(query);
-			query += "agriequip13_nown <= " + view.getInteractivePanel().getSpinnerCountFeedMillUpper().getValue().toString();
+			where = appendWhereChecker(where);
+			where += "agriequip13_nown <= " + view.getInteractivePanel().getSpinnerCountFeedMillUpper().getValue().toString();
 		}
 		
 		if(view.getInteractivePanel().getComboBoxHarvester().getSelectedIndex() != 0){
-			query = appendWhereChecker(query);
+			where = appendWhereChecker(where);
 			if(view.getInteractivePanel().getComboBoxHarvester().getSelectedItem().toString().equals("Owned")){
-				query += "agriequip14 = " + TRUE;
+				where += "agriequip14 = " + TRUE;
 			} else if(view.getInteractivePanel().getComboBoxHarvester().getSelectedItem().toString().equals("Not Owned")){
-				query += "agriequip14 = " + FALSE;
+				where += "agriequip14 = " + FALSE;
 			}
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountHarvesterLower().getValue().toString().equals("-1")){
-			query = appendWhereChecker(query);
-			query += "agriequip14_nown > " + view.getInteractivePanel().getSpinnerCountHarvesterLower().getValue().toString();
+			where = appendWhereChecker(where);
+			where += "agriequip14_nown > " + view.getInteractivePanel().getSpinnerCountHarvesterLower().getValue().toString();
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountHarvesterUpper().getValue().toString().equals("-1")){
-			query = appendWhereChecker(query);
-			query += "agriequip14_nown <= " + view.getInteractivePanel().getSpinnerCountHarvesterUpper().getValue().toString();
+			where = appendWhereChecker(where);
+			where += "agriequip14_nown <= " + view.getInteractivePanel().getSpinnerCountHarvesterUpper().getValue().toString();
 		}
 		
 		if(view.getInteractivePanel().getComboBoxGranary().getSelectedIndex() != 0){
-			query = appendWhereChecker(query);
+			where = appendWhereChecker(where);
 			if(view.getInteractivePanel().getComboBoxGranary().getSelectedItem().toString().equals("Owned")){
-				query += "agriequip15 = " + TRUE;
+				where += "agriequip15 = " + TRUE;
 			} else if(view.getInteractivePanel().getComboBoxGranary().getSelectedItem().toString().equals("Not Owned")){
-				query += "agriequip15 = " + FALSE;
+				where += "agriequip15 = " + FALSE;
 			}
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountGranaryLower().getValue().toString().equals("-1")){
-			query = appendWhereChecker(query);
-			query += "agriequip15_nown > " + view.getInteractivePanel().getSpinnerCountGranaryLower().getValue().toString();
+			where = appendWhereChecker(where);
+			where += "agriequip15_nown > " + view.getInteractivePanel().getSpinnerCountGranaryLower().getValue().toString();
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountGranaryUpper().getValue().toString().equals("-1")){
-			query = appendWhereChecker(query);
-			query += "agriequip15_nown <= " + view.getInteractivePanel().getSpinnerCountGranaryUpper().getValue().toString();
+			where = appendWhereChecker(where);
+			where += "agriequip15_nown <= " + view.getInteractivePanel().getSpinnerCountGranaryUpper().getValue().toString();
 		}
 		
 		if(view.getInteractivePanel().getComboBoxFarmshed().getSelectedIndex() != 0){
-			query = appendWhereChecker(query);
+			where = appendWhereChecker(where);
 			if(view.getInteractivePanel().getComboBoxFarmshed().getSelectedItem().toString().equals("Owned")){
-				query += "agriequip16 = " + TRUE;
+				where += "agriequip16 = " + TRUE;
 			} else if(view.getInteractivePanel().getComboBoxFarmshed().getSelectedItem().toString().equals("Not Owned")){
-				query += "agriequip16 = " + FALSE;
+				where += "agriequip16 = " + FALSE;
 			}
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountFarmshedLower().getValue().toString().equals("-1")){
-			query = appendWhereChecker(query);
-			query += "agriequip16_nown > " + view.getInteractivePanel().getSpinnerCountFarmshedLower().getValue().toString();
+			where = appendWhereChecker(where);
+			where += "agriequip16_nown > " + view.getInteractivePanel().getSpinnerCountFarmshedLower().getValue().toString();
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountFarmshedUpper().getValue().toString().equals("-1")){
-			query = appendWhereChecker(query);
-			query += "agriequip16_nown <= " + view.getInteractivePanel().getSpinnerCountFarmshedUpper().getValue().toString();
+			where = appendWhereChecker(where);
+			where += "agriequip16_nown <= " + view.getInteractivePanel().getSpinnerCountFarmshedUpper().getValue().toString();
 		}
 		
 		if(view.getInteractivePanel().getComboBoxIrrigationPump().getSelectedIndex() != 0){
-			query = appendWhereChecker(query);
+			where = appendWhereChecker(where);
 			if(view.getInteractivePanel().getComboBoxIrrigationPump().getSelectedItem().toString().equals("Owned")){
-				query += "agriequip17 = " + TRUE;
+				where += "agriequip17 = " + TRUE;
 			} else if(view.getInteractivePanel().getComboBoxIrrigationPump().getSelectedItem().toString().equals("Not Owned")){
-				query += "agriequip17 = " + FALSE;
+				where += "agriequip17 = " + FALSE;
 			}
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountIrrigationPumpLower().getValue().toString().equals("-1")){
-			query = appendWhereChecker(query);
-			query += "agriequip17_nown > " + view.getInteractivePanel().getSpinnerCountIrrigationPumpLower().getValue().toString();
+			where = appendWhereChecker(where);
+			where += "agriequip17_nown > " + view.getInteractivePanel().getSpinnerCountIrrigationPumpLower().getValue().toString();
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountIrrigationPumpUpper().getValue().toString().equals("-1")){
-			query = appendWhereChecker(query);
-			query += "agriequip17_nown <= " + view.getInteractivePanel().getSpinnerCountIrrigationPumpUpper().getValue().toString();
+			where = appendWhereChecker(where);
+			where += "agriequip17_nown <= " + view.getInteractivePanel().getSpinnerCountIrrigationPumpUpper().getValue().toString();
 		}
 		
 		if(view.getInteractivePanel().getComboBoxOthers().getSelectedIndex() != 0){
-			query = appendWhereChecker(query);
+			where = appendWhereChecker(where);
 			if(view.getInteractivePanel().getComboBoxOthers().getSelectedItem().toString().equals("Owned")){
-				query += "agriequip18 = " + TRUE;
+				where += "agriequip18 = " + TRUE;
 			} else if(view.getInteractivePanel().getComboBoxOthers().getSelectedItem().toString().equals("Not Owned")){
-				query += "agriequip18 = " + FALSE;
+				where += "agriequip18 = " + FALSE;
 			}
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountOthersLower().getValue().toString().equals("-1")){
-			query = appendWhereChecker(query);
-			query += "agriequip18_nown > " + view.getInteractivePanel().getSpinnerCountOthersLower().getValue().toString();
+			where = appendWhereChecker(where);
+			where += "agriequip18_nown > " + view.getInteractivePanel().getSpinnerCountOthersLower().getValue().toString();
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountOthersUpper().getValue().toString().equals("-1")){
-			query = appendWhereChecker(query);
-			query += "agriequip18_nown <= " + view.getInteractivePanel().getSpinnerCountOthersUpper().getValue().toString();
+			where = appendWhereChecker(where);
+			where += "agriequip18_nown <= " + view.getInteractivePanel().getSpinnerCountOthersUpper().getValue().toString();
 		}
 		
-		return query;
+		return where;
+	}
+	
+	private String groupByBuilder(){
+		String groupby = "";
+		
+		if(view.getInteractivePanel().getCheckBoxProvince().isSelected()){
+			groupby = appendGroupByChecker(groupby);
+			groupby += "province";
+		}
+		
+		if(view.getInteractivePanel().getCheckBoxProvince().isSelected()){
+			groupby = appendGroupByChecker(groupby);
+			groupby += "prov";
+		}
+		
+		if(view.getInteractivePanel().getCheckBoxMunicipality().isSelected()){
+			groupby = appendGroupByChecker(groupby);
+			groupby += "mun";
+		}
+		
+		if(view.getInteractivePanel().getCheckBoxZone().isSelected()){
+			groupby = appendGroupByChecker(groupby);
+			groupby += "zone";
+		}
+		
+		if(view.getInteractivePanel().getCheckBoxBarangay().isSelected()){
+			groupby = appendGroupByChecker(groupby);
+			groupby += "brgy";
+		}
+		
+		if(view.getInteractivePanel().getCheckBoxPurok().isSelected()){
+			groupby = appendGroupByChecker(groupby);
+			groupby += "purok";
+		}
+		
+		if(view.getInteractivePanel().getCheckBoxIndustry().isSelected()){
+			groupby = appendGroupByChecker(groupby);
+			groupby += "cropind";
+		}
+		
+		if(view.getInteractivePanel().getCheckBoxARCDP().isSelected()){
+			groupby = appendGroupByChecker(groupby);
+			groupby += "prog_arcdp";
+		}
+		
+		if(view.getInteractivePanel().getCheckBoxCropInsurance().isSelected()){
+			groupby = appendGroupByChecker(groupby);
+			groupby += "irfa_crop";
+		}
+		
+		if(view.getInteractivePanel().getCheckBoxAgriculturalInsurance().isSelected()){
+			groupby = appendGroupByChecker(groupby);
+			groupby += "irfa_agriequip";
+		}
+		
+		if(view.getInteractivePanel().getCheckBoxChangePrimaryCrop().isSelected()){
+			groupby = appendGroupByChecker(groupby);
+			groupby += "u_chng_pcrop";
+		}
+		
+		if(view.getInteractivePanel().getCheckBoxReasonChangePrimaryCrop().isSelected()){
+			groupby = appendGroupByChecker(groupby);
+			groupby += "u_chng_pcrop_y";
+		}
+		
+		if(view.getInteractivePanel().getCheckBoxChangeSameCrop().isSelected()){
+			groupby = appendGroupByChecker(groupby);
+			groupby += "u_chng_scrop";
+		}
+		
+		if(view.getInteractivePanel().getCheckBoxReasonChangeSameCrop().isSelected()){
+			groupby = appendGroupByChecker(groupby);
+			groupby += "u_chng_scrop_y";
+		}
+		
+		if(view.getInteractivePanel().getCheckBoxLowHarvest().isSelected()){
+			groupby = appendGroupByChecker(groupby);
+			groupby += "u_low_harv";
+		}
+		
+		if(view.getInteractivePanel().getCheckBoxWaterSupply().isSelected()){
+			groupby = appendGroupByChecker(groupby);
+			groupby += "low_wsupp";
+		}
+		
+		if(view.getInteractivePanel().getCheckBoxDrought().isSelected()){
+			groupby = appendGroupByChecker(groupby);
+			groupby += "drought";
+		}
+		
+		if(view.getInteractivePanel().getCheckBoxDuration().isSelected()){
+			groupby = appendGroupByChecker(groupby);
+			groupby += "drought_duration";
+		}
+		
+		if(view.getInteractivePanel().getCheckBoxFlood().isSelected()){
+			groupby = appendGroupByChecker(groupby);
+			groupby += "flood_freq";
+		}
+		
+		if(view.getInteractivePanel().getCheckBoxCropType().isSelected()){
+			groupby = appendGroupByChecker(groupby);
+			groupby += "croptype";
+		}
+		
+		if(view.getInteractivePanel().getCheckBoxBeastOfBurden().isSelected()){
+			groupby = appendGroupByChecker(groupby);
+			groupby += "agriequip1";
+		}
+		
+		if(view.getInteractivePanel().getCheckBoxPlow().isSelected()){
+			groupby = appendGroupByChecker(groupby);
+			groupby += "agriequip2";
+		}
+		
+		if(view.getInteractivePanel().getCheckBoxHarrow().isSelected()){
+			groupby = appendGroupByChecker(groupby);
+			groupby += "agriequip3";
+		}
+		
+		if(view.getInteractivePanel().getCheckBoxMower().isSelected()){
+			groupby = appendGroupByChecker(groupby);
+			groupby += "agriequip4";
+		}
+		
+		if(view.getInteractivePanel().getCheckBoxThresher().isSelected()){
+			groupby = appendGroupByChecker(groupby);
+			groupby += "agriequip5";
+		}
+		
+		if(view.getInteractivePanel().getCheckBoxSprayer().isSelected()){
+			groupby = appendGroupByChecker(groupby);
+			groupby += "agriequip6";
+		}
+		
+		if(view.getInteractivePanel().getCheckBoxFarmTractor().isSelected()){
+			groupby = appendGroupByChecker(groupby);
+			groupby += "agriequip7";
+		}
+		
+		if(view.getInteractivePanel().getCheckBoxHandTractor().isSelected()){
+			groupby = appendGroupByChecker(groupby);
+			groupby += "agriequip8";
+		}
+		
+		if(view.getInteractivePanel().getCheckBoxMudboat().isSelected()){
+			groupby = appendGroupByChecker(groupby);
+			groupby += "agriequip9";
+		}
+		
+		if(view.getInteractivePanel().getCheckBoxPlanter().isSelected()){
+			groupby = appendGroupByChecker(groupby);
+			groupby += "agriequip10";
+		}
+		
+		if(view.getInteractivePanel().getCheckBoxMechanicalDryer().isSelected()){
+			groupby = appendGroupByChecker(groupby);
+			groupby += "agriequip11";
+		}
+		
+		if(view.getInteractivePanel().getCheckBoxDryingPavement().isSelected()){
+			groupby = appendGroupByChecker(groupby);
+			groupby += "agriequip12";
+		}
+		
+		if(view.getInteractivePanel().getCheckBoxFeedMill().isSelected()){
+			groupby = appendGroupByChecker(groupby);
+			groupby += "agriequip13";
+		}
+		
+		if(view.getInteractivePanel().getCheckBoxHarvester().isSelected()){
+			groupby = appendGroupByChecker(groupby);
+			groupby += "agriequip14";
+		}
+		
+		if(view.getInteractivePanel().getCheckBoxGranary().isSelected()){
+			groupby = appendGroupByChecker(groupby);
+			groupby += "agriequip15";
+		}
+		
+		if(view.getInteractivePanel().getCheckBoxFarmshed().isSelected()){
+			groupby = appendGroupByChecker(groupby);
+			groupby += "agriequip16";
+		}
+		
+		if(view.getInteractivePanel().getCheckBoxIrrigationPump().isSelected()){
+			groupby = appendGroupByChecker(groupby);
+			groupby += "agriequip17";
+		}
+		
+		if(view.getInteractivePanel().getCheckBoxOthers().isSelected()){
+			groupby = appendGroupByChecker(groupby);
+			groupby += "agriequip18";
+		}
+		
+		if(view.getInteractivePanel().getComboBoxOLAP().getSelectedIndex() != 0){
+			groupby += " with rollup";
+		}
+		
+		return groupby;
 	}
 	
 	private void changeUpperBound(JSpinner lowerSpinner, JSpinner upperSpinner) {
@@ -891,13 +1109,13 @@ public class Controller {
 	private String appendWhereChecker(String sql) {
 		String query = sql;
 		if (!query.contains("where"))
-			query += "where ";
+			query += " where ";
 		else
 			query += " and ";
 		return query;
 	}
 
-	/*private String appendGroupByChecker(String sql) {
+	private String appendGroupByChecker(String sql) {
 		String query = sql;
 		if (!query.contains("group by"))
 			query += " group by ";
@@ -906,5 +1124,4 @@ public class Controller {
 
 		return query;
 	}
-	*/
 }

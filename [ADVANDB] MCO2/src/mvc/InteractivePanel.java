@@ -14,10 +14,10 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.JCheckBox;
 
 public class InteractivePanel extends JPanel {
 
-	private static InteractivePanel interactivePanel = new InteractivePanel();
 	private static final long serialVersionUID = 1L;
 	private JLabel labelAGRISYS;
 	private JPanel panelGeo;
@@ -153,12 +153,46 @@ public class InteractivePanel extends JPanel {
 	private JSpinner spinnerCountOthersUpper;
 	private JLabel labelStatus;
 	private JButton buttonInfer;
-
-	public static InteractivePanel getInstance(){
-		return interactivePanel;
-	}
+	private JCheckBox checkBoxProvince;
+	private JCheckBox checkBoxMunicipality;
+	private JCheckBox checkBoxZone;
+	private JCheckBox checkBoxBarangay;
+	private JCheckBox checkBoxPurok;
+	private JCheckBox checkBoxIndustry;
+	private JCheckBox checkBoxCropInsurance;
+	private JCheckBox checkBoxChangePrimaryCrop;
+	private JCheckBox checkBoxChangeSameCrop;
+	private JCheckBox checkBoxLowHarvest;
+	private JCheckBox checkBoxDrought;
+	private JCheckBox checkBoxFlood;
+	private JCheckBox checkBoxARCDP;
+	private JCheckBox checkBoxAgriculturalInsurance;
+	private JCheckBox checkBoxReasonChangePrimaryCrop;
+	private JCheckBox checkBoxReasonChangeSameCrop;
+	private JCheckBox checkBoxWaterSupply;
+	private JCheckBox checkBoxDuration;
+	private JCheckBox checkBoxCropType;
+	private JCheckBox checkBoxBeastOfBurden;
+	private JCheckBox checkBoxHarrow;
+	private JCheckBox checkBoxThresher;
+	private JCheckBox checkBoxFarmTractor;
+	private JCheckBox checkBoxMudboat;
+	private JCheckBox checkBoxMechanicalDryer;
+	private JCheckBox checkBoxFeedMill;
+	private JCheckBox checkBoxGranary;
+	private JCheckBox checkBoxIrrigationPump;
+	private JCheckBox checkBoxPlow;
+	private JCheckBox checkBoxMower;
+	private JCheckBox checkBoxSprayer;
+	private JCheckBox checkBoxHandTractor;
+	private JCheckBox checkBoxPlanter;
+	private JCheckBox checkBoxDryingPavement;
+	private JCheckBox checkBoxHarvester;
+	private JCheckBox checkBoxFarmshed;
+	private JCheckBox checkBoxOthers;
+	private JComboBox<String> comboBoxOLAP;
 	
-	private InteractivePanel() {
+	public InteractivePanel() {
 		
 		try {
 			UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
@@ -168,16 +202,16 @@ public class InteractivePanel extends JPanel {
 		} 
 		
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[] {520, 80};
+		gridBagLayout.columnWidths = new int[] {453, 110, 80};
 		gridBagLayout.rowHeights = new int[]{40, 50, 50, 260, 20, 0};
-		gridBagLayout.columnWeights = new double[]{0.0, 1.0};
+		gridBagLayout.columnWeights = new double[]{0.0, 1.0, 1.0};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
 		labelAGRISYS = new JLabel("AGRISYS - Agricultural Geo Resource Inference System");
 		labelAGRISYS.setFont(new Font("Rockwell", Font.PLAIN, 22));
 		GridBagConstraints gbc_labelAGRISYS = new GridBagConstraints();
-		gbc_labelAGRISYS.gridwidth = 2;
+		gbc_labelAGRISYS.gridwidth = 3;
 		gbc_labelAGRISYS.insets = new Insets(0, 0, 5, 0);
 		gbc_labelAGRISYS.gridx = 0;
 		gbc_labelAGRISYS.gridy = 0;
@@ -186,24 +220,31 @@ public class InteractivePanel extends JPanel {
 		panelGeo = new JPanel();
 		panelGeo.setBorder(new TitledBorder(null, "Geographic Location", TitledBorder.LEFT, TitledBorder.TOP, null, null));
 		GridBagConstraints gbc_panelGeo = new GridBagConstraints();
-		gbc_panelGeo.gridwidth = 2;
+		gbc_panelGeo.gridwidth = 3;
 		gbc_panelGeo.fill = GridBagConstraints.BOTH;
 		gbc_panelGeo.insets = new Insets(0, 0, 5, 0);
 		gbc_panelGeo.gridx = 0;
 		gbc_panelGeo.gridy = 1;
 		add(panelGeo, gbc_panelGeo);
 		GridBagLayout gbl_panelGeo = new GridBagLayout();
-		gbl_panelGeo.columnWidths = new int[]{58, 58, 58, 58, 40, 58, 58, 58, 40, 58};
+		gbl_panelGeo.columnWidths = new int[]{0, 45, 58, 0, 58, 58, 0, 30, 58, 0, 58, 58, 0, 40, 58};
 		gbl_panelGeo.rowHeights = new int[]{0, 0};
-		gbl_panelGeo.columnWeights = new double[]{0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0};
+		gbl_panelGeo.columnWeights = new double[]{0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0};
 		gbl_panelGeo.rowWeights = new double[]{0.0, Double.MIN_VALUE};
 		panelGeo.setLayout(gbl_panelGeo);
+		
+		checkBoxProvince = new JCheckBox("");
+		GridBagConstraints gbc_checkBoxProvince = new GridBagConstraints();
+		gbc_checkBoxProvince.insets = new Insets(0, 0, 0, 5);
+		gbc_checkBoxProvince.gridx = 0;
+		gbc_checkBoxProvince.gridy = 0;
+		panelGeo.add(checkBoxProvince, gbc_checkBoxProvince);
 		
 		labelProvince = new JLabel("Province");
 		GridBagConstraints gbc_labelProvince = new GridBagConstraints();
 		gbc_labelProvince.anchor = GridBagConstraints.EAST;
 		gbc_labelProvince.insets = new Insets(0, 0, 0, 5);
-		gbc_labelProvince.gridx = 0;
+		gbc_labelProvince.gridx = 1;
 		gbc_labelProvince.gridy = 0;
 		panelGeo.add(labelProvince, gbc_labelProvince);
 		
@@ -212,15 +253,22 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_comboBoxProvince = new GridBagConstraints();
 		gbc_comboBoxProvince.insets = new Insets(0, 0, 0, 5);
 		gbc_comboBoxProvince.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxProvince.gridx = 1;
+		gbc_comboBoxProvince.gridx = 2;
 		gbc_comboBoxProvince.gridy = 0;
 		panelGeo.add(comboBoxProvince, gbc_comboBoxProvince);
+		
+		checkBoxMunicipality = new JCheckBox("");
+		GridBagConstraints gbc_checkBoxMunicipality = new GridBagConstraints();
+		gbc_checkBoxMunicipality.insets = new Insets(0, 0, 0, 5);
+		gbc_checkBoxMunicipality.gridx = 3;
+		gbc_checkBoxMunicipality.gridy = 0;
+		panelGeo.add(checkBoxMunicipality, gbc_checkBoxMunicipality);
 		
 		labelMunicipality = new JLabel("Municipality");
 		GridBagConstraints gbc_labelMunicipality = new GridBagConstraints();
 		gbc_labelMunicipality.insets = new Insets(0, 0, 0, 5);
 		gbc_labelMunicipality.anchor = GridBagConstraints.EAST;
-		gbc_labelMunicipality.gridx = 2;
+		gbc_labelMunicipality.gridx = 4;
 		gbc_labelMunicipality.gridy = 0;
 		panelGeo.add(labelMunicipality, gbc_labelMunicipality);
 		
@@ -229,15 +277,22 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_comboBoxMunicipality = new GridBagConstraints();
 		gbc_comboBoxMunicipality.insets = new Insets(0, 0, 0, 5);
 		gbc_comboBoxMunicipality.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxMunicipality.gridx = 3;
+		gbc_comboBoxMunicipality.gridx = 5;
 		gbc_comboBoxMunicipality.gridy = 0;
 		panelGeo.add(comboBoxMunicipality, gbc_comboBoxMunicipality);
+		
+		checkBoxZone = new JCheckBox("");
+		GridBagConstraints gbc_checkBoxZone = new GridBagConstraints();
+		gbc_checkBoxZone.insets = new Insets(0, 0, 0, 5);
+		gbc_checkBoxZone.gridx = 6;
+		gbc_checkBoxZone.gridy = 0;
+		panelGeo.add(checkBoxZone, gbc_checkBoxZone);
 		
 		labelZone = new JLabel("Zone");
 		GridBagConstraints gbc_labelZone = new GridBagConstraints();
 		gbc_labelZone.insets = new Insets(0, 0, 0, 5);
 		gbc_labelZone.anchor = GridBagConstraints.EAST;
-		gbc_labelZone.gridx = 4;
+		gbc_labelZone.gridx = 7;
 		gbc_labelZone.gridy = 0;
 		panelGeo.add(labelZone, gbc_labelZone);
 		
@@ -246,15 +301,22 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_comboBoxZone = new GridBagConstraints();
 		gbc_comboBoxZone.insets = new Insets(0, 0, 0, 5);
 		gbc_comboBoxZone.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxZone.gridx = 5;
+		gbc_comboBoxZone.gridx = 8;
 		gbc_comboBoxZone.gridy = 0;
 		panelGeo.add(comboBoxZone, gbc_comboBoxZone);
+		
+		checkBoxBarangay = new JCheckBox("");
+		GridBagConstraints gbc_checkBoxBarangay = new GridBagConstraints();
+		gbc_checkBoxBarangay.insets = new Insets(0, 0, 0, 5);
+		gbc_checkBoxBarangay.gridx = 9;
+		gbc_checkBoxBarangay.gridy = 0;
+		panelGeo.add(checkBoxBarangay, gbc_checkBoxBarangay);
 		
 		labelBarangay = new JLabel("Barangay");
 		GridBagConstraints gbc_labelBarangay = new GridBagConstraints();
 		gbc_labelBarangay.insets = new Insets(0, 0, 0, 5);
 		gbc_labelBarangay.anchor = GridBagConstraints.EAST;
-		gbc_labelBarangay.gridx = 6;
+		gbc_labelBarangay.gridx = 10;
 		gbc_labelBarangay.gridy = 0;
 		panelGeo.add(labelBarangay, gbc_labelBarangay);
 		
@@ -263,15 +325,22 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_comboBoxBarangay = new GridBagConstraints();
 		gbc_comboBoxBarangay.insets = new Insets(0, 0, 0, 5);
 		gbc_comboBoxBarangay.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxBarangay.gridx = 7;
+		gbc_comboBoxBarangay.gridx = 11;
 		gbc_comboBoxBarangay.gridy = 0;
 		panelGeo.add(comboBoxBarangay, gbc_comboBoxBarangay);
+		
+		checkBoxPurok = new JCheckBox("");
+		GridBagConstraints gbc_checkBoxPurok = new GridBagConstraints();
+		gbc_checkBoxPurok.insets = new Insets(0, 0, 0, 5);
+		gbc_checkBoxPurok.gridx = 12;
+		gbc_checkBoxPurok.gridy = 0;
+		panelGeo.add(checkBoxPurok, gbc_checkBoxPurok);
 		
 		labelPurok = new JLabel("Purok");
 		GridBagConstraints gbc_labelPurok = new GridBagConstraints();
 		gbc_labelPurok.insets = new Insets(0, 0, 0, 5);
 		gbc_labelPurok.anchor = GridBagConstraints.EAST;
-		gbc_labelPurok.gridx = 8;
+		gbc_labelPurok.gridx = 13;
 		gbc_labelPurok.gridy = 0;
 		panelGeo.add(labelPurok, gbc_labelPurok);
 		
@@ -279,31 +348,38 @@ public class InteractivePanel extends JPanel {
 		comboBoxPurok.setModel(new DefaultComboBoxModel<String>(new String[] {"SELECT", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "26", "99"}));
 		GridBagConstraints gbc_comboBoxPurok = new GridBagConstraints();
 		gbc_comboBoxPurok.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxPurok.gridx = 9;
+		gbc_comboBoxPurok.gridx = 14;
 		gbc_comboBoxPurok.gridy = 0;
 		panelGeo.add(comboBoxPurok, gbc_comboBoxPurok);
 		
 		panelAgri = new JPanel();
 		panelAgri.setBorder(new TitledBorder(null, "Agricultural Status", TitledBorder.LEFT, TitledBorder.TOP, null, null));
 		GridBagConstraints gbc_panelAgri = new GridBagConstraints();
-		gbc_panelAgri.gridwidth = 2;
+		gbc_panelAgri.gridwidth = 3;
 		gbc_panelAgri.insets = new Insets(0, 0, 5, 0);
 		gbc_panelAgri.fill = GridBagConstraints.BOTH;
 		gbc_panelAgri.gridx = 0;
 		gbc_panelAgri.gridy = 2;
 		add(panelAgri, gbc_panelAgri);
 		GridBagLayout gbl_panelAgri = new GridBagLayout();
-		gbl_panelAgri.columnWidths = new int[]{135, 135, 135, 135, 0};
+		gbl_panelAgri.columnWidths = new int[]{0, 135, 135, 0, 135, 135, 0};
 		gbl_panelAgri.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
-		gbl_panelAgri.columnWeights = new double[]{0.0, 1.0, 0.0, 1.0, Double.MIN_VALUE};
+		gbl_panelAgri.columnWeights = new double[]{0.0, 0.0, 1.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		gbl_panelAgri.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		panelAgri.setLayout(gbl_panelAgri);
+		
+		checkBoxIndustry = new JCheckBox("");
+		GridBagConstraints gbc_checkBoxIndustry = new GridBagConstraints();
+		gbc_checkBoxIndustry.insets = new Insets(0, 0, 5, 5);
+		gbc_checkBoxIndustry.gridx = 0;
+		gbc_checkBoxIndustry.gridy = 0;
+		panelAgri.add(checkBoxIndustry, gbc_checkBoxIndustry);
 		
 		labelIndustry = new JLabel("Part of the Crop Industry");
 		GridBagConstraints gbc_labelIndustry = new GridBagConstraints();
 		gbc_labelIndustry.insets = new Insets(0, 0, 5, 5);
 		gbc_labelIndustry.anchor = GridBagConstraints.EAST;
-		gbc_labelIndustry.gridx = 0;
+		gbc_labelIndustry.gridx = 1;
 		gbc_labelIndustry.gridy = 0;
 		panelAgri.add(labelIndustry, gbc_labelIndustry);
 		
@@ -312,15 +388,22 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_comboBoxIndustry = new GridBagConstraints();
 		gbc_comboBoxIndustry.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBoxIndustry.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxIndustry.gridx = 1;
+		gbc_comboBoxIndustry.gridx = 2;
 		gbc_comboBoxIndustry.gridy = 0;
 		panelAgri.add(comboBoxIndustry, gbc_comboBoxIndustry);
+		
+		checkBoxARCDP = new JCheckBox("");
+		GridBagConstraints gbc_checkBoxARCDP = new GridBagConstraints();
+		gbc_checkBoxARCDP.insets = new Insets(0, 0, 5, 5);
+		gbc_checkBoxARCDP.gridx = 3;
+		gbc_checkBoxARCDP.gridy = 0;
+		panelAgri.add(checkBoxARCDP, gbc_checkBoxARCDP);
 		
 		labelARCDP = new JLabel("ARCDP Recipient");
 		GridBagConstraints gbc_labelARCDP = new GridBagConstraints();
 		gbc_labelARCDP.anchor = GridBagConstraints.EAST;
 		gbc_labelARCDP.insets = new Insets(0, 0, 5, 5);
-		gbc_labelARCDP.gridx = 2;
+		gbc_labelARCDP.gridx = 4;
 		gbc_labelARCDP.gridy = 0;
 		panelAgri.add(labelARCDP, gbc_labelARCDP);
 		
@@ -329,15 +412,22 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_comboBoxARCDP = new GridBagConstraints();
 		gbc_comboBoxARCDP.insets = new Insets(0, 0, 5, 0);
 		gbc_comboBoxARCDP.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxARCDP.gridx = 3;
+		gbc_comboBoxARCDP.gridx = 5;
 		gbc_comboBoxARCDP.gridy = 0;
 		panelAgri.add(comboBoxARCDP, gbc_comboBoxARCDP);
+		
+		checkBoxCropInsurance = new JCheckBox("");
+		GridBagConstraints gbc_checkBoxCropInsurance = new GridBagConstraints();
+		gbc_checkBoxCropInsurance.insets = new Insets(0, 0, 5, 5);
+		gbc_checkBoxCropInsurance.gridx = 0;
+		gbc_checkBoxCropInsurance.gridy = 1;
+		panelAgri.add(checkBoxCropInsurance, gbc_checkBoxCropInsurance);
 		
 		labelCropInsurance = new JLabel("Crop Insurance");
 		GridBagConstraints gbc_labelCropInsurance = new GridBagConstraints();
 		gbc_labelCropInsurance.anchor = GridBagConstraints.EAST;
 		gbc_labelCropInsurance.insets = new Insets(0, 0, 5, 5);
-		gbc_labelCropInsurance.gridx = 0;
+		gbc_labelCropInsurance.gridx = 1;
 		gbc_labelCropInsurance.gridy = 1;
 		panelAgri.add(labelCropInsurance, gbc_labelCropInsurance);
 		
@@ -346,15 +436,22 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_comboBoxCropInsurance = new GridBagConstraints();
 		gbc_comboBoxCropInsurance.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBoxCropInsurance.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxCropInsurance.gridx = 1;
+		gbc_comboBoxCropInsurance.gridx = 2;
 		gbc_comboBoxCropInsurance.gridy = 1;
 		panelAgri.add(comboBoxCropInsurance, gbc_comboBoxCropInsurance);
+		
+		checkBoxAgriculturalInsurance = new JCheckBox("");
+		GridBagConstraints gbc_checkBoxAgriculturalInsurance = new GridBagConstraints();
+		gbc_checkBoxAgriculturalInsurance.insets = new Insets(0, 0, 5, 5);
+		gbc_checkBoxAgriculturalInsurance.gridx = 3;
+		gbc_checkBoxAgriculturalInsurance.gridy = 1;
+		panelAgri.add(checkBoxAgriculturalInsurance, gbc_checkBoxAgriculturalInsurance);
 		
 		labelAgriculturalInsurance = new JLabel("Agricultural Equipment Insurance");
 		GridBagConstraints gbc_labelAgriculturalInsurance = new GridBagConstraints();
 		gbc_labelAgriculturalInsurance.anchor = GridBagConstraints.EAST;
 		gbc_labelAgriculturalInsurance.insets = new Insets(0, 0, 5, 5);
-		gbc_labelAgriculturalInsurance.gridx = 2;
+		gbc_labelAgriculturalInsurance.gridx = 4;
 		gbc_labelAgriculturalInsurance.gridy = 1;
 		panelAgri.add(labelAgriculturalInsurance, gbc_labelAgriculturalInsurance);
 		
@@ -363,15 +460,22 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_comboBoxAgriculturalInsurance = new GridBagConstraints();
 		gbc_comboBoxAgriculturalInsurance.insets = new Insets(0, 0, 5, 0);
 		gbc_comboBoxAgriculturalInsurance.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxAgriculturalInsurance.gridx = 3;
+		gbc_comboBoxAgriculturalInsurance.gridx = 5;
 		gbc_comboBoxAgriculturalInsurance.gridy = 1;
 		panelAgri.add(comboBoxAgriculturalInsurance, gbc_comboBoxAgriculturalInsurance);
+		
+		checkBoxChangePrimaryCrop = new JCheckBox("");
+		GridBagConstraints gbc_checkBoxChangePrimaryCrop = new GridBagConstraints();
+		gbc_checkBoxChangePrimaryCrop.insets = new Insets(0, 0, 5, 5);
+		gbc_checkBoxChangePrimaryCrop.gridx = 0;
+		gbc_checkBoxChangePrimaryCrop.gridy = 2;
+		panelAgri.add(checkBoxChangePrimaryCrop, gbc_checkBoxChangePrimaryCrop);
 		
 		labelChangePrimaryCrop = new JLabel("Change Primary Crop");
 		GridBagConstraints gbc_labelChangePrimaryCrop = new GridBagConstraints();
 		gbc_labelChangePrimaryCrop.anchor = GridBagConstraints.EAST;
 		gbc_labelChangePrimaryCrop.insets = new Insets(0, 0, 5, 5);
-		gbc_labelChangePrimaryCrop.gridx = 0;
+		gbc_labelChangePrimaryCrop.gridx = 1;
 		gbc_labelChangePrimaryCrop.gridy = 2;
 		panelAgri.add(labelChangePrimaryCrop, gbc_labelChangePrimaryCrop);
 		
@@ -380,15 +484,22 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_comboBoxChangePrimaryCrop = new GridBagConstraints();
 		gbc_comboBoxChangePrimaryCrop.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBoxChangePrimaryCrop.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxChangePrimaryCrop.gridx = 1;
+		gbc_comboBoxChangePrimaryCrop.gridx = 2;
 		gbc_comboBoxChangePrimaryCrop.gridy = 2;
 		panelAgri.add(comboBoxChangePrimaryCrop, gbc_comboBoxChangePrimaryCrop);
 		
-		labelReasonChangePrimaryCrop = new JLabel("Reason");
+		checkBoxReasonChangePrimaryCrop = new JCheckBox("");
+		GridBagConstraints gbc_checkBoxReasonChangePrimaryCrop = new GridBagConstraints();
+		gbc_checkBoxReasonChangePrimaryCrop.insets = new Insets(0, 0, 5, 5);
+		gbc_checkBoxReasonChangePrimaryCrop.gridx = 3;
+		gbc_checkBoxReasonChangePrimaryCrop.gridy = 2;
+		panelAgri.add(checkBoxReasonChangePrimaryCrop, gbc_checkBoxReasonChangePrimaryCrop);
+		
+		labelReasonChangePrimaryCrop = new JLabel("Reason for Changing Primary Crop");
 		GridBagConstraints gbc_labelReasonChangePrimaryCrop = new GridBagConstraints();
 		gbc_labelReasonChangePrimaryCrop.anchor = GridBagConstraints.EAST;
 		gbc_labelReasonChangePrimaryCrop.insets = new Insets(0, 0, 5, 5);
-		gbc_labelReasonChangePrimaryCrop.gridx = 2;
+		gbc_labelReasonChangePrimaryCrop.gridx = 4;
 		gbc_labelReasonChangePrimaryCrop.gridy = 2;
 		panelAgri.add(labelReasonChangePrimaryCrop, gbc_labelReasonChangePrimaryCrop);
 		
@@ -397,15 +508,22 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_comboBoxReasonChangePrimaryCrop = new GridBagConstraints();
 		gbc_comboBoxReasonChangePrimaryCrop.insets = new Insets(0, 0, 5, 0);
 		gbc_comboBoxReasonChangePrimaryCrop.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxReasonChangePrimaryCrop.gridx = 3;
+		gbc_comboBoxReasonChangePrimaryCrop.gridx = 5;
 		gbc_comboBoxReasonChangePrimaryCrop.gridy = 2;
 		panelAgri.add(comboBoxReasonChangePrimaryCrop, gbc_comboBoxReasonChangePrimaryCrop);
+		
+		checkBoxChangeSameCrop = new JCheckBox("");
+		GridBagConstraints gbc_checkBoxChangeSameCrop = new GridBagConstraints();
+		gbc_checkBoxChangeSameCrop.insets = new Insets(0, 0, 5, 5);
+		gbc_checkBoxChangeSameCrop.gridx = 0;
+		gbc_checkBoxChangeSameCrop.gridy = 3;
+		panelAgri.add(checkBoxChangeSameCrop, gbc_checkBoxChangeSameCrop);
 		
 		labelChangeSameCrop = new JLabel("Change Same Crop");
 		GridBagConstraints gbc_labelChangeSameCrop = new GridBagConstraints();
 		gbc_labelChangeSameCrop.anchor = GridBagConstraints.EAST;
 		gbc_labelChangeSameCrop.insets = new Insets(0, 0, 5, 5);
-		gbc_labelChangeSameCrop.gridx = 0;
+		gbc_labelChangeSameCrop.gridx = 1;
 		gbc_labelChangeSameCrop.gridy = 3;
 		panelAgri.add(labelChangeSameCrop, gbc_labelChangeSameCrop);
 		
@@ -414,15 +532,22 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_comboBoxChangeSameCrop = new GridBagConstraints();
 		gbc_comboBoxChangeSameCrop.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBoxChangeSameCrop.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxChangeSameCrop.gridx = 1;
+		gbc_comboBoxChangeSameCrop.gridx = 2;
 		gbc_comboBoxChangeSameCrop.gridy = 3;
 		panelAgri.add(comboBoxChangeSameCrop, gbc_comboBoxChangeSameCrop);
 		
-		labelReasonChangeSameCrop = new JLabel("Reason");
+		checkBoxReasonChangeSameCrop = new JCheckBox("");
+		GridBagConstraints gbc_checkBoxReasonChangeSameCrop = new GridBagConstraints();
+		gbc_checkBoxReasonChangeSameCrop.insets = new Insets(0, 0, 5, 5);
+		gbc_checkBoxReasonChangeSameCrop.gridx = 3;
+		gbc_checkBoxReasonChangeSameCrop.gridy = 3;
+		panelAgri.add(checkBoxReasonChangeSameCrop, gbc_checkBoxReasonChangeSameCrop);
+		
+		labelReasonChangeSameCrop = new JLabel("Reason for Changing Same Crop");
 		GridBagConstraints gbc_labelReasonChangeSameCrop = new GridBagConstraints();
 		gbc_labelReasonChangeSameCrop.anchor = GridBagConstraints.EAST;
 		gbc_labelReasonChangeSameCrop.insets = new Insets(0, 0, 5, 5);
-		gbc_labelReasonChangeSameCrop.gridx = 2;
+		gbc_labelReasonChangeSameCrop.gridx = 4;
 		gbc_labelReasonChangeSameCrop.gridy = 3;
 		panelAgri.add(labelReasonChangeSameCrop, gbc_labelReasonChangeSameCrop);
 		
@@ -431,15 +556,22 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_comboBoxReasonChangeSameCrop = new GridBagConstraints();
 		gbc_comboBoxReasonChangeSameCrop.insets = new Insets(0, 0, 5, 0);
 		gbc_comboBoxReasonChangeSameCrop.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxReasonChangeSameCrop.gridx = 3;
+		gbc_comboBoxReasonChangeSameCrop.gridx = 5;
 		gbc_comboBoxReasonChangeSameCrop.gridy = 3;
 		panelAgri.add(comboBoxReasonChangeSameCrop, gbc_comboBoxReasonChangeSameCrop);
+		
+		checkBoxLowHarvest = new JCheckBox("");
+		GridBagConstraints gbc_checkBoxLowHarvest = new GridBagConstraints();
+		gbc_checkBoxLowHarvest.insets = new Insets(0, 0, 5, 5);
+		gbc_checkBoxLowHarvest.gridx = 0;
+		gbc_checkBoxLowHarvest.gridy = 4;
+		panelAgri.add(checkBoxLowHarvest, gbc_checkBoxLowHarvest);
 		
 		labelLowHarvest = new JLabel("Reason for Low Harvest");
 		GridBagConstraints gbc_labelLowHarvest = new GridBagConstraints();
 		gbc_labelLowHarvest.anchor = GridBagConstraints.EAST;
 		gbc_labelLowHarvest.insets = new Insets(0, 0, 5, 5);
-		gbc_labelLowHarvest.gridx = 0;
+		gbc_labelLowHarvest.gridx = 1;
 		gbc_labelLowHarvest.gridy = 4;
 		panelAgri.add(labelLowHarvest, gbc_labelLowHarvest);
 		
@@ -448,15 +580,22 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_comboBoxLowHarvest = new GridBagConstraints();
 		gbc_comboBoxLowHarvest.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBoxLowHarvest.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxLowHarvest.gridx = 1;
+		gbc_comboBoxLowHarvest.gridx = 2;
 		gbc_comboBoxLowHarvest.gridy = 4;
 		panelAgri.add(comboBoxLowHarvest, gbc_comboBoxLowHarvest);
+		
+		checkBoxWaterSupply = new JCheckBox("");
+		GridBagConstraints gbc_checkBoxWaterSupply = new GridBagConstraints();
+		gbc_checkBoxWaterSupply.insets = new Insets(0, 0, 5, 5);
+		gbc_checkBoxWaterSupply.gridx = 3;
+		gbc_checkBoxWaterSupply.gridy = 4;
+		panelAgri.add(checkBoxWaterSupply, gbc_checkBoxWaterSupply);
 		
 		labelWaterSupply = new JLabel("Reason for Low Water Supply");
 		GridBagConstraints gbc_labelWaterSupply = new GridBagConstraints();
 		gbc_labelWaterSupply.anchor = GridBagConstraints.EAST;
 		gbc_labelWaterSupply.insets = new Insets(0, 0, 5, 5);
-		gbc_labelWaterSupply.gridx = 2;
+		gbc_labelWaterSupply.gridx = 4;
 		gbc_labelWaterSupply.gridy = 4;
 		panelAgri.add(labelWaterSupply, gbc_labelWaterSupply);
 		
@@ -465,15 +604,22 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_comboBoxWaterSupply = new GridBagConstraints();
 		gbc_comboBoxWaterSupply.insets = new Insets(0, 0, 5, 0);
 		gbc_comboBoxWaterSupply.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxWaterSupply.gridx = 3;
+		gbc_comboBoxWaterSupply.gridx = 5;
 		gbc_comboBoxWaterSupply.gridy = 4;
 		panelAgri.add(comboBoxWaterSupply, gbc_comboBoxWaterSupply);
+		
+		checkBoxDrought = new JCheckBox("");
+		GridBagConstraints gbc_checkBoxDrought = new GridBagConstraints();
+		gbc_checkBoxDrought.insets = new Insets(0, 0, 5, 5);
+		gbc_checkBoxDrought.gridx = 0;
+		gbc_checkBoxDrought.gridy = 5;
+		panelAgri.add(checkBoxDrought, gbc_checkBoxDrought);
 		
 		labelDrought = new JLabel("Experienced Drought");
 		GridBagConstraints gbc_labelDrought = new GridBagConstraints();
 		gbc_labelDrought.anchor = GridBagConstraints.EAST;
 		gbc_labelDrought.insets = new Insets(0, 0, 5, 5);
-		gbc_labelDrought.gridx = 0;
+		gbc_labelDrought.gridx = 1;
 		gbc_labelDrought.gridy = 5;
 		panelAgri.add(labelDrought, gbc_labelDrought);
 		
@@ -482,15 +628,22 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_comboBoxDrought = new GridBagConstraints();
 		gbc_comboBoxDrought.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBoxDrought.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxDrought.gridx = 1;
+		gbc_comboBoxDrought.gridx = 2;
 		gbc_comboBoxDrought.gridy = 5;
 		panelAgri.add(comboBoxDrought, gbc_comboBoxDrought);
+		
+		checkBoxDuration = new JCheckBox("");
+		GridBagConstraints gbc_checkBoxDuration = new GridBagConstraints();
+		gbc_checkBoxDuration.insets = new Insets(0, 0, 5, 5);
+		gbc_checkBoxDuration.gridx = 3;
+		gbc_checkBoxDuration.gridy = 5;
+		panelAgri.add(checkBoxDuration, gbc_checkBoxDuration);
 		
 		labelDuration = new JLabel("Duration");
 		GridBagConstraints gbc_labelDuration = new GridBagConstraints();
 		gbc_labelDuration.anchor = GridBagConstraints.EAST;
 		gbc_labelDuration.insets = new Insets(0, 0, 5, 5);
-		gbc_labelDuration.gridx = 2;
+		gbc_labelDuration.gridx = 4;
 		gbc_labelDuration.gridy = 5;
 		panelAgri.add(labelDuration, gbc_labelDuration);
 		
@@ -499,15 +652,22 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_comboBoxDuration = new GridBagConstraints();
 		gbc_comboBoxDuration.insets = new Insets(0, 0, 5, 0);
 		gbc_comboBoxDuration.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxDuration.gridx = 3;
+		gbc_comboBoxDuration.gridx = 5;
 		gbc_comboBoxDuration.gridy = 5;
 		panelAgri.add(comboBoxDuration, gbc_comboBoxDuration);
+		
+		checkBoxFlood = new JCheckBox("");
+		GridBagConstraints gbc_checkBoxFlood = new GridBagConstraints();
+		gbc_checkBoxFlood.insets = new Insets(0, 0, 0, 5);
+		gbc_checkBoxFlood.gridx = 0;
+		gbc_checkBoxFlood.gridy = 6;
+		panelAgri.add(checkBoxFlood, gbc_checkBoxFlood);
 		
 		labelFlood = new JLabel("Experienced Flood");
 		GridBagConstraints gbc_labelFlood = new GridBagConstraints();
 		gbc_labelFlood.anchor = GridBagConstraints.EAST;
 		gbc_labelFlood.insets = new Insets(0, 0, 0, 5);
-		gbc_labelFlood.gridx = 0;
+		gbc_labelFlood.gridx = 1;
 		gbc_labelFlood.gridy = 6;
 		panelAgri.add(labelFlood, gbc_labelFlood);
 		
@@ -516,15 +676,22 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_comboBoxFlood = new GridBagConstraints();
 		gbc_comboBoxFlood.insets = new Insets(0, 0, 0, 5);
 		gbc_comboBoxFlood.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxFlood.gridx = 1;
+		gbc_comboBoxFlood.gridx = 2;
 		gbc_comboBoxFlood.gridy = 6;
 		panelAgri.add(comboBoxFlood, gbc_comboBoxFlood);
+		
+		checkBoxCropType = new JCheckBox("");
+		GridBagConstraints gbc_checkBoxCropType = new GridBagConstraints();
+		gbc_checkBoxCropType.insets = new Insets(0, 0, 0, 5);
+		gbc_checkBoxCropType.gridx = 3;
+		gbc_checkBoxCropType.gridy = 6;
+		panelAgri.add(checkBoxCropType, gbc_checkBoxCropType);
 		
 		labelCropType = new JLabel("Crop Type");
 		GridBagConstraints gbc_labelCropType = new GridBagConstraints();
 		gbc_labelCropType.anchor = GridBagConstraints.EAST;
 		gbc_labelCropType.insets = new Insets(0, 0, 0, 5);
-		gbc_labelCropType.gridx = 2;
+		gbc_labelCropType.gridx = 4;
 		gbc_labelCropType.gridy = 6;
 		panelAgri.add(labelCropType, gbc_labelCropType);
 		
@@ -532,31 +699,38 @@ public class InteractivePanel extends JPanel {
 		comboBoxCropType.setModel(new DefaultComboBoxModel<String>(new String[] {"SELECT", "Sugar Cane", "Palay", "Corn", "Coffee", "Others"}));
 		GridBagConstraints gbc_comboBoxCropType = new GridBagConstraints();
 		gbc_comboBoxCropType.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxCropType.gridx = 3;
+		gbc_comboBoxCropType.gridx = 5;
 		gbc_comboBoxCropType.gridy = 6;
 		panelAgri.add(comboBoxCropType, gbc_comboBoxCropType);
 		
 		panelResources = new JPanel();
 		panelResources.setBorder(new TitledBorder(null, "Resources", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		GridBagConstraints gbc_panelResources = new GridBagConstraints();
-		gbc_panelResources.gridwidth = 2;
+		gbc_panelResources.gridwidth = 3;
 		gbc_panelResources.insets = new Insets(0, 0, 5, 0);
 		gbc_panelResources.fill = GridBagConstraints.BOTH;
 		gbc_panelResources.gridx = 0;
 		gbc_panelResources.gridy = 3;
 		add(panelResources, gbc_panelResources);
 		GridBagLayout gbl_panelResources = new GridBagLayout();
-		gbl_panelResources.columnWidths = new int[]{70, 70, 35, 35, 35, 70, 70, 35, 35, 35, 0};
+		gbl_panelResources.columnWidths = new int[]{0, 70, 70, 35, 35, 35, 0, 70, 70, 35, 35, 35, 0};
 		gbl_panelResources.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-		gbl_panelResources.columnWeights = new double[]{0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, Double.MIN_VALUE};
+		gbl_panelResources.columnWeights = new double[]{0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, Double.MIN_VALUE};
 		gbl_panelResources.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		panelResources.setLayout(gbl_panelResources);
+		
+		checkBoxBeastOfBurden = new JCheckBox("");
+		GridBagConstraints gbc_checkBoxBeastOfBurden = new GridBagConstraints();
+		gbc_checkBoxBeastOfBurden.insets = new Insets(0, 0, 5, 5);
+		gbc_checkBoxBeastOfBurden.gridx = 0;
+		gbc_checkBoxBeastOfBurden.gridy = 0;
+		panelResources.add(checkBoxBeastOfBurden, gbc_checkBoxBeastOfBurden);
 		
 		labelBeastOfBurden = new JLabel("Beast of Burden");
 		GridBagConstraints gbc_labelBeastOfBurden = new GridBagConstraints();
 		gbc_labelBeastOfBurden.insets = new Insets(0, 0, 5, 5);
 		gbc_labelBeastOfBurden.anchor = GridBagConstraints.EAST;
-		gbc_labelBeastOfBurden.gridx = 0;
+		gbc_labelBeastOfBurden.gridx = 1;
 		gbc_labelBeastOfBurden.gridy = 0;
 		panelResources.add(labelBeastOfBurden, gbc_labelBeastOfBurden);
 		
@@ -565,7 +739,7 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_comboBoxBeastOfBurden = new GridBagConstraints();
 		gbc_comboBoxBeastOfBurden.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBoxBeastOfBurden.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxBeastOfBurden.gridx = 1;
+		gbc_comboBoxBeastOfBurden.gridx = 2;
 		gbc_comboBoxBeastOfBurden.gridy = 0;
 		panelResources.add(comboBoxBeastOfBurden, gbc_comboBoxBeastOfBurden);
 		
@@ -573,7 +747,7 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_labelCountBeastOfBurden = new GridBagConstraints();
 		gbc_labelCountBeastOfBurden.insets = new Insets(0, 0, 5, 5);
 		gbc_labelCountBeastOfBurden.anchor = GridBagConstraints.EAST;
-		gbc_labelCountBeastOfBurden.gridx = 2;
+		gbc_labelCountBeastOfBurden.gridx = 3;
 		gbc_labelCountBeastOfBurden.gridy = 0;
 		panelResources.add(labelCountBeastOfBurden, gbc_labelCountBeastOfBurden);
 		
@@ -582,7 +756,7 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_spinnerCountBeastOfBurdenLower = new GridBagConstraints();
 		gbc_spinnerCountBeastOfBurdenLower.fill = GridBagConstraints.BOTH;
 		gbc_spinnerCountBeastOfBurdenLower.insets = new Insets(0, 0, 5, 5);
-		gbc_spinnerCountBeastOfBurdenLower.gridx = 3;
+		gbc_spinnerCountBeastOfBurdenLower.gridx = 4;
 		gbc_spinnerCountBeastOfBurdenLower.gridy = 0;
 		panelResources.add(spinnerCountBeastOfBurdenLower, gbc_spinnerCountBeastOfBurdenLower);
 		
@@ -591,15 +765,22 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_spinnerCountBeastOfBurdenUpper = new GridBagConstraints();
 		gbc_spinnerCountBeastOfBurdenUpper.fill = GridBagConstraints.BOTH;
 		gbc_spinnerCountBeastOfBurdenUpper.insets = new Insets(0, 0, 5, 5);
-		gbc_spinnerCountBeastOfBurdenUpper.gridx = 4;
+		gbc_spinnerCountBeastOfBurdenUpper.gridx = 5;
 		gbc_spinnerCountBeastOfBurdenUpper.gridy = 0;
 		panelResources.add(spinnerCountBeastOfBurdenUpper, gbc_spinnerCountBeastOfBurdenUpper);
+		
+		checkBoxPlow = new JCheckBox("");
+		GridBagConstraints gbc_checkBoxPlow = new GridBagConstraints();
+		gbc_checkBoxPlow.insets = new Insets(0, 0, 5, 5);
+		gbc_checkBoxPlow.gridx = 6;
+		gbc_checkBoxPlow.gridy = 0;
+		panelResources.add(checkBoxPlow, gbc_checkBoxPlow);
 		
 		labelPlow = new JLabel("Plow");
 		GridBagConstraints gbc_labelPlow = new GridBagConstraints();
 		gbc_labelPlow.insets = new Insets(0, 0, 5, 5);
 		gbc_labelPlow.anchor = GridBagConstraints.EAST;
-		gbc_labelPlow.gridx = 5;
+		gbc_labelPlow.gridx = 7;
 		gbc_labelPlow.gridy = 0;
 		panelResources.add(labelPlow, gbc_labelPlow);
 		
@@ -608,7 +789,7 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_comboBoxPlow = new GridBagConstraints();
 		gbc_comboBoxPlow.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBoxPlow.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxPlow.gridx = 6;
+		gbc_comboBoxPlow.gridx = 8;
 		gbc_comboBoxPlow.gridy = 0;
 		panelResources.add(comboBoxPlow, gbc_comboBoxPlow);
 		
@@ -616,7 +797,7 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_labelCountPlow = new GridBagConstraints();
 		gbc_labelCountPlow.insets = new Insets(0, 0, 5, 5);
 		gbc_labelCountPlow.anchor = GridBagConstraints.EAST;
-		gbc_labelCountPlow.gridx = 7;
+		gbc_labelCountPlow.gridx = 9;
 		gbc_labelCountPlow.gridy = 0;
 		panelResources.add(labelCountPlow, gbc_labelCountPlow);
 		
@@ -625,7 +806,7 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_spinnerCountPlowLower = new GridBagConstraints();
 		gbc_spinnerCountPlowLower.fill = GridBagConstraints.BOTH;
 		gbc_spinnerCountPlowLower.insets = new Insets(0, 0, 5, 5);
-		gbc_spinnerCountPlowLower.gridx = 8;
+		gbc_spinnerCountPlowLower.gridx = 10;
 		gbc_spinnerCountPlowLower.gridy = 0;
 		panelResources.add(spinnerCountPlowLower, gbc_spinnerCountPlowLower);
 		
@@ -634,15 +815,22 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_spinnerCountPlowUpper = new GridBagConstraints();
 		gbc_spinnerCountPlowUpper.fill = GridBagConstraints.BOTH;
 		gbc_spinnerCountPlowUpper.insets = new Insets(0, 0, 5, 0);
-		gbc_spinnerCountPlowUpper.gridx = 9;
+		gbc_spinnerCountPlowUpper.gridx = 11;
 		gbc_spinnerCountPlowUpper.gridy = 0;
 		panelResources.add(spinnerCountPlowUpper, gbc_spinnerCountPlowUpper);
+		
+		checkBoxHarrow = new JCheckBox("");
+		GridBagConstraints gbc_checkBoxHarrow = new GridBagConstraints();
+		gbc_checkBoxHarrow.insets = new Insets(0, 0, 5, 5);
+		gbc_checkBoxHarrow.gridx = 0;
+		gbc_checkBoxHarrow.gridy = 1;
+		panelResources.add(checkBoxHarrow, gbc_checkBoxHarrow);
 		
 		labelHarrow = new JLabel("Harrow");
 		GridBagConstraints gbc_labelHarrow = new GridBagConstraints();
 		gbc_labelHarrow.anchor = GridBagConstraints.EAST;
 		gbc_labelHarrow.insets = new Insets(0, 0, 5, 5);
-		gbc_labelHarrow.gridx = 0;
+		gbc_labelHarrow.gridx = 1;
 		gbc_labelHarrow.gridy = 1;
 		panelResources.add(labelHarrow, gbc_labelHarrow);
 		
@@ -651,7 +839,7 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_comboBoxHarrow = new GridBagConstraints();
 		gbc_comboBoxHarrow.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBoxHarrow.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxHarrow.gridx = 1;
+		gbc_comboBoxHarrow.gridx = 2;
 		gbc_comboBoxHarrow.gridy = 1;
 		panelResources.add(comboBoxHarrow, gbc_comboBoxHarrow);
 		
@@ -659,7 +847,7 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_labelCountHarrow = new GridBagConstraints();
 		gbc_labelCountHarrow.anchor = GridBagConstraints.EAST;
 		gbc_labelCountHarrow.insets = new Insets(0, 0, 5, 5);
-		gbc_labelCountHarrow.gridx = 2;
+		gbc_labelCountHarrow.gridx = 3;
 		gbc_labelCountHarrow.gridy = 1;
 		panelResources.add(labelCountHarrow, gbc_labelCountHarrow);
 		
@@ -668,7 +856,7 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_spinnerCountHarrowLower = new GridBagConstraints();
 		gbc_spinnerCountHarrowLower.fill = GridBagConstraints.BOTH;
 		gbc_spinnerCountHarrowLower.insets = new Insets(0, 0, 5, 5);
-		gbc_spinnerCountHarrowLower.gridx = 3;
+		gbc_spinnerCountHarrowLower.gridx = 4;
 		gbc_spinnerCountHarrowLower.gridy = 1;
 		panelResources.add(spinnerCountHarrowLower, gbc_spinnerCountHarrowLower);
 		
@@ -677,15 +865,22 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_spinnerCountHarrowUpper = new GridBagConstraints();
 		gbc_spinnerCountHarrowUpper.fill = GridBagConstraints.BOTH;
 		gbc_spinnerCountHarrowUpper.insets = new Insets(0, 0, 5, 5);
-		gbc_spinnerCountHarrowUpper.gridx = 4;
+		gbc_spinnerCountHarrowUpper.gridx = 5;
 		gbc_spinnerCountHarrowUpper.gridy = 1;
 		panelResources.add(spinnerCountHarrowUpper, gbc_spinnerCountHarrowUpper);
+		
+		checkBoxMower = new JCheckBox("");
+		GridBagConstraints gbc_checkBoxMower = new GridBagConstraints();
+		gbc_checkBoxMower.insets = new Insets(0, 0, 5, 5);
+		gbc_checkBoxMower.gridx = 6;
+		gbc_checkBoxMower.gridy = 1;
+		panelResources.add(checkBoxMower, gbc_checkBoxMower);
 		
 		labelMower = new JLabel("Mower");
 		GridBagConstraints gbc_labelMower = new GridBagConstraints();
 		gbc_labelMower.anchor = GridBagConstraints.EAST;
 		gbc_labelMower.insets = new Insets(0, 0, 5, 5);
-		gbc_labelMower.gridx = 5;
+		gbc_labelMower.gridx = 7;
 		gbc_labelMower.gridy = 1;
 		panelResources.add(labelMower, gbc_labelMower);
 		
@@ -694,7 +889,7 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_comboBoxMower = new GridBagConstraints();
 		gbc_comboBoxMower.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBoxMower.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxMower.gridx = 6;
+		gbc_comboBoxMower.gridx = 8;
 		gbc_comboBoxMower.gridy = 1;
 		panelResources.add(comboBoxMower, gbc_comboBoxMower);
 		
@@ -702,7 +897,7 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_labelCountMower = new GridBagConstraints();
 		gbc_labelCountMower.anchor = GridBagConstraints.EAST;
 		gbc_labelCountMower.insets = new Insets(0, 0, 5, 5);
-		gbc_labelCountMower.gridx = 7;
+		gbc_labelCountMower.gridx = 9;
 		gbc_labelCountMower.gridy = 1;
 		panelResources.add(labelCountMower, gbc_labelCountMower);
 		
@@ -711,7 +906,7 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_spinnerCountMowerLower = new GridBagConstraints();
 		gbc_spinnerCountMowerLower.fill = GridBagConstraints.BOTH;
 		gbc_spinnerCountMowerLower.insets = new Insets(0, 0, 5, 5);
-		gbc_spinnerCountMowerLower.gridx = 8;
+		gbc_spinnerCountMowerLower.gridx = 10;
 		gbc_spinnerCountMowerLower.gridy = 1;
 		panelResources.add(spinnerCountMowerLower, gbc_spinnerCountMowerLower);
 		
@@ -720,15 +915,22 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_spinnerCountMowerUpper = new GridBagConstraints();
 		gbc_spinnerCountMowerUpper.fill = GridBagConstraints.BOTH;
 		gbc_spinnerCountMowerUpper.insets = new Insets(0, 0, 5, 0);
-		gbc_spinnerCountMowerUpper.gridx = 9;
+		gbc_spinnerCountMowerUpper.gridx = 11;
 		gbc_spinnerCountMowerUpper.gridy = 1;
 		panelResources.add(spinnerCountMowerUpper, gbc_spinnerCountMowerUpper);
+		
+		checkBoxThresher = new JCheckBox("");
+		GridBagConstraints gbc_checkBoxThresher = new GridBagConstraints();
+		gbc_checkBoxThresher.insets = new Insets(0, 0, 5, 5);
+		gbc_checkBoxThresher.gridx = 0;
+		gbc_checkBoxThresher.gridy = 2;
+		panelResources.add(checkBoxThresher, gbc_checkBoxThresher);
 		
 		labelThresher = new JLabel("Thresher");
 		GridBagConstraints gbc_labelThresher = new GridBagConstraints();
 		gbc_labelThresher.anchor = GridBagConstraints.EAST;
 		gbc_labelThresher.insets = new Insets(0, 0, 5, 5);
-		gbc_labelThresher.gridx = 0;
+		gbc_labelThresher.gridx = 1;
 		gbc_labelThresher.gridy = 2;
 		panelResources.add(labelThresher, gbc_labelThresher);
 		
@@ -737,7 +939,7 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_comboBoxThresher = new GridBagConstraints();
 		gbc_comboBoxThresher.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBoxThresher.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxThresher.gridx = 1;
+		gbc_comboBoxThresher.gridx = 2;
 		gbc_comboBoxThresher.gridy = 2;
 		panelResources.add(comboBoxThresher, gbc_comboBoxThresher);
 		
@@ -745,7 +947,7 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_labelCountThresher = new GridBagConstraints();
 		gbc_labelCountThresher.anchor = GridBagConstraints.EAST;
 		gbc_labelCountThresher.insets = new Insets(0, 0, 5, 5);
-		gbc_labelCountThresher.gridx = 2;
+		gbc_labelCountThresher.gridx = 3;
 		gbc_labelCountThresher.gridy = 2;
 		panelResources.add(labelCountThresher, gbc_labelCountThresher);
 		
@@ -754,7 +956,7 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_spinnerCountThresherLower = new GridBagConstraints();
 		gbc_spinnerCountThresherLower.fill = GridBagConstraints.BOTH;
 		gbc_spinnerCountThresherLower.insets = new Insets(0, 0, 5, 5);
-		gbc_spinnerCountThresherLower.gridx = 3;
+		gbc_spinnerCountThresherLower.gridx = 4;
 		gbc_spinnerCountThresherLower.gridy = 2;
 		panelResources.add(spinnerCountThresherLower, gbc_spinnerCountThresherLower);
 		
@@ -763,15 +965,22 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_spinnerCountThresherUpper = new GridBagConstraints();
 		gbc_spinnerCountThresherUpper.fill = GridBagConstraints.BOTH;
 		gbc_spinnerCountThresherUpper.insets = new Insets(0, 0, 5, 5);
-		gbc_spinnerCountThresherUpper.gridx = 4;
+		gbc_spinnerCountThresherUpper.gridx = 5;
 		gbc_spinnerCountThresherUpper.gridy = 2;
 		panelResources.add(spinnerCountThresherUpper, gbc_spinnerCountThresherUpper);
+		
+		checkBoxSprayer = new JCheckBox("");
+		GridBagConstraints gbc_checkBoxSprayer = new GridBagConstraints();
+		gbc_checkBoxSprayer.insets = new Insets(0, 0, 5, 5);
+		gbc_checkBoxSprayer.gridx = 6;
+		gbc_checkBoxSprayer.gridy = 2;
+		panelResources.add(checkBoxSprayer, gbc_checkBoxSprayer);
 		
 		labelSprayer = new JLabel("Sprayer");
 		GridBagConstraints gbc_labelSprayer = new GridBagConstraints();
 		gbc_labelSprayer.anchor = GridBagConstraints.EAST;
 		gbc_labelSprayer.insets = new Insets(0, 0, 5, 5);
-		gbc_labelSprayer.gridx = 5;
+		gbc_labelSprayer.gridx = 7;
 		gbc_labelSprayer.gridy = 2;
 		panelResources.add(labelSprayer, gbc_labelSprayer);
 		
@@ -780,7 +989,7 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_comboBoxSprayer = new GridBagConstraints();
 		gbc_comboBoxSprayer.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBoxSprayer.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxSprayer.gridx = 6;
+		gbc_comboBoxSprayer.gridx = 8;
 		gbc_comboBoxSprayer.gridy = 2;
 		panelResources.add(comboBoxSprayer, gbc_comboBoxSprayer);
 		
@@ -788,7 +997,7 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_labelCountSprayer = new GridBagConstraints();
 		gbc_labelCountSprayer.anchor = GridBagConstraints.EAST;
 		gbc_labelCountSprayer.insets = new Insets(0, 0, 5, 5);
-		gbc_labelCountSprayer.gridx = 7;
+		gbc_labelCountSprayer.gridx = 9;
 		gbc_labelCountSprayer.gridy = 2;
 		panelResources.add(labelCountSprayer, gbc_labelCountSprayer);
 		
@@ -797,7 +1006,7 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_spinnerCountSprayerLower = new GridBagConstraints();
 		gbc_spinnerCountSprayerLower.fill = GridBagConstraints.BOTH;
 		gbc_spinnerCountSprayerLower.insets = new Insets(0, 0, 5, 5);
-		gbc_spinnerCountSprayerLower.gridx = 8;
+		gbc_spinnerCountSprayerLower.gridx = 10;
 		gbc_spinnerCountSprayerLower.gridy = 2;
 		panelResources.add(spinnerCountSprayerLower, gbc_spinnerCountSprayerLower);
 		
@@ -806,15 +1015,22 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_spinnerCountSprayerUpper = new GridBagConstraints();
 		gbc_spinnerCountSprayerUpper.fill = GridBagConstraints.BOTH;
 		gbc_spinnerCountSprayerUpper.insets = new Insets(0, 0, 5, 0);
-		gbc_spinnerCountSprayerUpper.gridx = 9;
+		gbc_spinnerCountSprayerUpper.gridx = 11;
 		gbc_spinnerCountSprayerUpper.gridy = 2;
 		panelResources.add(spinnerCountSprayerUpper, gbc_spinnerCountSprayerUpper);
+		
+		checkBoxFarmTractor = new JCheckBox("");
+		GridBagConstraints gbc_checkBoxFarmTractor = new GridBagConstraints();
+		gbc_checkBoxFarmTractor.insets = new Insets(0, 0, 5, 5);
+		gbc_checkBoxFarmTractor.gridx = 0;
+		gbc_checkBoxFarmTractor.gridy = 3;
+		panelResources.add(checkBoxFarmTractor, gbc_checkBoxFarmTractor);
 		
 		labelFarmTractor = new JLabel("Farm Tractor");
 		GridBagConstraints gbc_labelFarmTractor = new GridBagConstraints();
 		gbc_labelFarmTractor.anchor = GridBagConstraints.EAST;
 		gbc_labelFarmTractor.insets = new Insets(0, 0, 5, 5);
-		gbc_labelFarmTractor.gridx = 0;
+		gbc_labelFarmTractor.gridx = 1;
 		gbc_labelFarmTractor.gridy = 3;
 		panelResources.add(labelFarmTractor, gbc_labelFarmTractor);
 		
@@ -823,7 +1039,7 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_comboBoxFarmTractor = new GridBagConstraints();
 		gbc_comboBoxFarmTractor.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBoxFarmTractor.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxFarmTractor.gridx = 1;
+		gbc_comboBoxFarmTractor.gridx = 2;
 		gbc_comboBoxFarmTractor.gridy = 3;
 		panelResources.add(comboBoxFarmTractor, gbc_comboBoxFarmTractor);
 		
@@ -831,7 +1047,7 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_labelCountFarmTractor = new GridBagConstraints();
 		gbc_labelCountFarmTractor.anchor = GridBagConstraints.EAST;
 		gbc_labelCountFarmTractor.insets = new Insets(0, 0, 5, 5);
-		gbc_labelCountFarmTractor.gridx = 2;
+		gbc_labelCountFarmTractor.gridx = 3;
 		gbc_labelCountFarmTractor.gridy = 3;
 		panelResources.add(labelCountFarmTractor, gbc_labelCountFarmTractor);
 		
@@ -840,7 +1056,7 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_spinnerCountFarmTractorLower = new GridBagConstraints();
 		gbc_spinnerCountFarmTractorLower.fill = GridBagConstraints.BOTH;
 		gbc_spinnerCountFarmTractorLower.insets = new Insets(0, 0, 5, 5);
-		gbc_spinnerCountFarmTractorLower.gridx = 3;
+		gbc_spinnerCountFarmTractorLower.gridx = 4;
 		gbc_spinnerCountFarmTractorLower.gridy = 3;
 		panelResources.add(spinnerCountFarmTractorLower, gbc_spinnerCountFarmTractorLower);
 		
@@ -849,15 +1065,22 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_spinnerCountFarmTractorUpper = new GridBagConstraints();
 		gbc_spinnerCountFarmTractorUpper.fill = GridBagConstraints.BOTH;
 		gbc_spinnerCountFarmTractorUpper.insets = new Insets(0, 0, 5, 5);
-		gbc_spinnerCountFarmTractorUpper.gridx = 4;
+		gbc_spinnerCountFarmTractorUpper.gridx = 5;
 		gbc_spinnerCountFarmTractorUpper.gridy = 3;
 		panelResources.add(spinnerCountFarmTractorUpper, gbc_spinnerCountFarmTractorUpper);
+		
+		checkBoxHandTractor = new JCheckBox("");
+		GridBagConstraints gbc_checkBoxHandTractor = new GridBagConstraints();
+		gbc_checkBoxHandTractor.insets = new Insets(0, 0, 5, 5);
+		gbc_checkBoxHandTractor.gridx = 6;
+		gbc_checkBoxHandTractor.gridy = 3;
+		panelResources.add(checkBoxHandTractor, gbc_checkBoxHandTractor);
 		
 		labelHandTractor = new JLabel("Hand Tractor");
 		GridBagConstraints gbc_labelHandTractor = new GridBagConstraints();
 		gbc_labelHandTractor.anchor = GridBagConstraints.EAST;
 		gbc_labelHandTractor.insets = new Insets(0, 0, 5, 5);
-		gbc_labelHandTractor.gridx = 5;
+		gbc_labelHandTractor.gridx = 7;
 		gbc_labelHandTractor.gridy = 3;
 		panelResources.add(labelHandTractor, gbc_labelHandTractor);
 		
@@ -866,7 +1089,7 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_comboBoxHandTractor = new GridBagConstraints();
 		gbc_comboBoxHandTractor.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBoxHandTractor.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxHandTractor.gridx = 6;
+		gbc_comboBoxHandTractor.gridx = 8;
 		gbc_comboBoxHandTractor.gridy = 3;
 		panelResources.add(comboBoxHandTractor, gbc_comboBoxHandTractor);
 		
@@ -874,7 +1097,7 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_labelCountHandTractor = new GridBagConstraints();
 		gbc_labelCountHandTractor.anchor = GridBagConstraints.EAST;
 		gbc_labelCountHandTractor.insets = new Insets(0, 0, 5, 5);
-		gbc_labelCountHandTractor.gridx = 7;
+		gbc_labelCountHandTractor.gridx = 9;
 		gbc_labelCountHandTractor.gridy = 3;
 		panelResources.add(labelCountHandTractor, gbc_labelCountHandTractor);
 		
@@ -883,7 +1106,7 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_spinnerCountHandTractorLower = new GridBagConstraints();
 		gbc_spinnerCountHandTractorLower.fill = GridBagConstraints.BOTH;
 		gbc_spinnerCountHandTractorLower.insets = new Insets(0, 0, 5, 5);
-		gbc_spinnerCountHandTractorLower.gridx = 8;
+		gbc_spinnerCountHandTractorLower.gridx = 10;
 		gbc_spinnerCountHandTractorLower.gridy = 3;
 		panelResources.add(spinnerCountHandTractorLower, gbc_spinnerCountHandTractorLower);
 		
@@ -892,15 +1115,22 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_spinnerCountHandTractorUpper = new GridBagConstraints();
 		gbc_spinnerCountHandTractorUpper.fill = GridBagConstraints.BOTH;
 		gbc_spinnerCountHandTractorUpper.insets = new Insets(0, 0, 5, 0);
-		gbc_spinnerCountHandTractorUpper.gridx = 9;
+		gbc_spinnerCountHandTractorUpper.gridx = 11;
 		gbc_spinnerCountHandTractorUpper.gridy = 3;
 		panelResources.add(spinnerCountHandTractorUpper, gbc_spinnerCountHandTractorUpper);
+		
+		checkBoxMudboat = new JCheckBox("");
+		GridBagConstraints gbc_checkBoxMudboat = new GridBagConstraints();
+		gbc_checkBoxMudboat.insets = new Insets(0, 0, 5, 5);
+		gbc_checkBoxMudboat.gridx = 0;
+		gbc_checkBoxMudboat.gridy = 4;
+		panelResources.add(checkBoxMudboat, gbc_checkBoxMudboat);
 		
 		labelMudboat = new JLabel("Mudboat");
 		GridBagConstraints gbc_labelMudboat = new GridBagConstraints();
 		gbc_labelMudboat.anchor = GridBagConstraints.EAST;
 		gbc_labelMudboat.insets = new Insets(0, 0, 5, 5);
-		gbc_labelMudboat.gridx = 0;
+		gbc_labelMudboat.gridx = 1;
 		gbc_labelMudboat.gridy = 4;
 		panelResources.add(labelMudboat, gbc_labelMudboat);
 		
@@ -909,7 +1139,7 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_comboBoxMudboat = new GridBagConstraints();
 		gbc_comboBoxMudboat.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBoxMudboat.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxMudboat.gridx = 1;
+		gbc_comboBoxMudboat.gridx = 2;
 		gbc_comboBoxMudboat.gridy = 4;
 		panelResources.add(comboBoxMudboat, gbc_comboBoxMudboat);
 		
@@ -917,7 +1147,7 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_labelCountMudboat = new GridBagConstraints();
 		gbc_labelCountMudboat.anchor = GridBagConstraints.EAST;
 		gbc_labelCountMudboat.insets = new Insets(0, 0, 5, 5);
-		gbc_labelCountMudboat.gridx = 2;
+		gbc_labelCountMudboat.gridx = 3;
 		gbc_labelCountMudboat.gridy = 4;
 		panelResources.add(labelCountMudboat, gbc_labelCountMudboat);
 		
@@ -926,7 +1156,7 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_spinnerCountMudboatLower = new GridBagConstraints();
 		gbc_spinnerCountMudboatLower.fill = GridBagConstraints.BOTH;
 		gbc_spinnerCountMudboatLower.insets = new Insets(0, 0, 5, 5);
-		gbc_spinnerCountMudboatLower.gridx = 3;
+		gbc_spinnerCountMudboatLower.gridx = 4;
 		gbc_spinnerCountMudboatLower.gridy = 4;
 		panelResources.add(spinnerCountMudboatLower, gbc_spinnerCountMudboatLower);
 		
@@ -935,15 +1165,22 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_spinnerCountMudboatUpper = new GridBagConstraints();
 		gbc_spinnerCountMudboatUpper.fill = GridBagConstraints.BOTH;
 		gbc_spinnerCountMudboatUpper.insets = new Insets(0, 0, 5, 5);
-		gbc_spinnerCountMudboatUpper.gridx = 4;
+		gbc_spinnerCountMudboatUpper.gridx = 5;
 		gbc_spinnerCountMudboatUpper.gridy = 4;
 		panelResources.add(spinnerCountMudboatUpper, gbc_spinnerCountMudboatUpper);
+		
+		checkBoxPlanter = new JCheckBox("");
+		GridBagConstraints gbc_checkBoxPlanter = new GridBagConstraints();
+		gbc_checkBoxPlanter.insets = new Insets(0, 0, 5, 5);
+		gbc_checkBoxPlanter.gridx = 6;
+		gbc_checkBoxPlanter.gridy = 4;
+		panelResources.add(checkBoxPlanter, gbc_checkBoxPlanter);
 		
 		labelPlanter = new JLabel("Planter");
 		GridBagConstraints gbc_labelPlanter = new GridBagConstraints();
 		gbc_labelPlanter.anchor = GridBagConstraints.EAST;
 		gbc_labelPlanter.insets = new Insets(0, 0, 5, 5);
-		gbc_labelPlanter.gridx = 5;
+		gbc_labelPlanter.gridx = 7;
 		gbc_labelPlanter.gridy = 4;
 		panelResources.add(labelPlanter, gbc_labelPlanter);
 		
@@ -952,7 +1189,7 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_comboBoxPlanter = new GridBagConstraints();
 		gbc_comboBoxPlanter.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBoxPlanter.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxPlanter.gridx = 6;
+		gbc_comboBoxPlanter.gridx = 8;
 		gbc_comboBoxPlanter.gridy = 4;
 		panelResources.add(comboBoxPlanter, gbc_comboBoxPlanter);
 		
@@ -960,7 +1197,7 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_labelCountPlanter = new GridBagConstraints();
 		gbc_labelCountPlanter.anchor = GridBagConstraints.EAST;
 		gbc_labelCountPlanter.insets = new Insets(0, 0, 5, 5);
-		gbc_labelCountPlanter.gridx = 7;
+		gbc_labelCountPlanter.gridx = 9;
 		gbc_labelCountPlanter.gridy = 4;
 		panelResources.add(labelCountPlanter, gbc_labelCountPlanter);
 		
@@ -969,7 +1206,7 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_spinnerCountPlanterLower = new GridBagConstraints();
 		gbc_spinnerCountPlanterLower.fill = GridBagConstraints.BOTH;
 		gbc_spinnerCountPlanterLower.insets = new Insets(0, 0, 5, 5);
-		gbc_spinnerCountPlanterLower.gridx = 8;
+		gbc_spinnerCountPlanterLower.gridx = 10;
 		gbc_spinnerCountPlanterLower.gridy = 4;
 		panelResources.add(spinnerCountPlanterLower, gbc_spinnerCountPlanterLower);
 		
@@ -978,15 +1215,22 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_spinnerCountPlanterUpper = new GridBagConstraints();
 		gbc_spinnerCountPlanterUpper.fill = GridBagConstraints.BOTH;
 		gbc_spinnerCountPlanterUpper.insets = new Insets(0, 0, 5, 0);
-		gbc_spinnerCountPlanterUpper.gridx = 9;
+		gbc_spinnerCountPlanterUpper.gridx = 11;
 		gbc_spinnerCountPlanterUpper.gridy = 4;
 		panelResources.add(spinnerCountPlanterUpper, gbc_spinnerCountPlanterUpper);
+		
+		checkBoxMechanicalDryer = new JCheckBox("");
+		GridBagConstraints gbc_checkBoxMechanicalDryer = new GridBagConstraints();
+		gbc_checkBoxMechanicalDryer.insets = new Insets(0, 0, 5, 5);
+		gbc_checkBoxMechanicalDryer.gridx = 0;
+		gbc_checkBoxMechanicalDryer.gridy = 5;
+		panelResources.add(checkBoxMechanicalDryer, gbc_checkBoxMechanicalDryer);
 		
 		labelMechanicalDryer = new JLabel("Mechanical Dryer");
 		GridBagConstraints gbc_labelMechanicalDryer = new GridBagConstraints();
 		gbc_labelMechanicalDryer.anchor = GridBagConstraints.EAST;
 		gbc_labelMechanicalDryer.insets = new Insets(0, 0, 5, 5);
-		gbc_labelMechanicalDryer.gridx = 0;
+		gbc_labelMechanicalDryer.gridx = 1;
 		gbc_labelMechanicalDryer.gridy = 5;
 		panelResources.add(labelMechanicalDryer, gbc_labelMechanicalDryer);
 		
@@ -995,7 +1239,7 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_comboBoxMechanicalDryer = new GridBagConstraints();
 		gbc_comboBoxMechanicalDryer.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBoxMechanicalDryer.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxMechanicalDryer.gridx = 1;
+		gbc_comboBoxMechanicalDryer.gridx = 2;
 		gbc_comboBoxMechanicalDryer.gridy = 5;
 		panelResources.add(comboBoxMechanicalDryer, gbc_comboBoxMechanicalDryer);
 		
@@ -1003,7 +1247,7 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_labelCountMechanicalDryer = new GridBagConstraints();
 		gbc_labelCountMechanicalDryer.anchor = GridBagConstraints.EAST;
 		gbc_labelCountMechanicalDryer.insets = new Insets(0, 0, 5, 5);
-		gbc_labelCountMechanicalDryer.gridx = 2;
+		gbc_labelCountMechanicalDryer.gridx = 3;
 		gbc_labelCountMechanicalDryer.gridy = 5;
 		panelResources.add(labelCountMechanicalDryer, gbc_labelCountMechanicalDryer);
 		
@@ -1012,7 +1256,7 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_spinnerCountMechanicalDryerLower = new GridBagConstraints();
 		gbc_spinnerCountMechanicalDryerLower.fill = GridBagConstraints.BOTH;
 		gbc_spinnerCountMechanicalDryerLower.insets = new Insets(0, 0, 5, 5);
-		gbc_spinnerCountMechanicalDryerLower.gridx = 3;
+		gbc_spinnerCountMechanicalDryerLower.gridx = 4;
 		gbc_spinnerCountMechanicalDryerLower.gridy = 5;
 		panelResources.add(spinnerCountMechanicalDryerLower, gbc_spinnerCountMechanicalDryerLower);
 		
@@ -1021,15 +1265,22 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_spinnerCountMechanicalDryerUpper = new GridBagConstraints();
 		gbc_spinnerCountMechanicalDryerUpper.fill = GridBagConstraints.BOTH;
 		gbc_spinnerCountMechanicalDryerUpper.insets = new Insets(0, 0, 5, 5);
-		gbc_spinnerCountMechanicalDryerUpper.gridx = 4;
+		gbc_spinnerCountMechanicalDryerUpper.gridx = 5;
 		gbc_spinnerCountMechanicalDryerUpper.gridy = 5;
 		panelResources.add(spinnerCountMechanicalDryerUpper, gbc_spinnerCountMechanicalDryerUpper);
+		
+		checkBoxDryingPavement = new JCheckBox("");
+		GridBagConstraints gbc_checkBoxDryingPavement = new GridBagConstraints();
+		gbc_checkBoxDryingPavement.insets = new Insets(0, 0, 5, 5);
+		gbc_checkBoxDryingPavement.gridx = 6;
+		gbc_checkBoxDryingPavement.gridy = 5;
+		panelResources.add(checkBoxDryingPavement, gbc_checkBoxDryingPavement);
 		
 		labelDryingPavement = new JLabel("Drying Pavement");
 		GridBagConstraints gbc_labelDryingPavement = new GridBagConstraints();
 		gbc_labelDryingPavement.anchor = GridBagConstraints.EAST;
 		gbc_labelDryingPavement.insets = new Insets(0, 0, 5, 5);
-		gbc_labelDryingPavement.gridx = 5;
+		gbc_labelDryingPavement.gridx = 7;
 		gbc_labelDryingPavement.gridy = 5;
 		panelResources.add(labelDryingPavement, gbc_labelDryingPavement);
 		
@@ -1038,7 +1289,7 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_comboBoxDryingPavement = new GridBagConstraints();
 		gbc_comboBoxDryingPavement.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBoxDryingPavement.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxDryingPavement.gridx = 6;
+		gbc_comboBoxDryingPavement.gridx = 8;
 		gbc_comboBoxDryingPavement.gridy = 5;
 		panelResources.add(comboBoxDryingPavement, gbc_comboBoxDryingPavement);
 		
@@ -1046,7 +1297,7 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_labelCountDryingPavement = new GridBagConstraints();
 		gbc_labelCountDryingPavement.anchor = GridBagConstraints.EAST;
 		gbc_labelCountDryingPavement.insets = new Insets(0, 0, 5, 5);
-		gbc_labelCountDryingPavement.gridx = 7;
+		gbc_labelCountDryingPavement.gridx = 9;
 		gbc_labelCountDryingPavement.gridy = 5;
 		panelResources.add(labelCountDryingPavement, gbc_labelCountDryingPavement);
 		
@@ -1055,7 +1306,7 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_spinnerCountDryingPavementLower = new GridBagConstraints();
 		gbc_spinnerCountDryingPavementLower.fill = GridBagConstraints.BOTH;
 		gbc_spinnerCountDryingPavementLower.insets = new Insets(0, 0, 5, 5);
-		gbc_spinnerCountDryingPavementLower.gridx = 8;
+		gbc_spinnerCountDryingPavementLower.gridx = 10;
 		gbc_spinnerCountDryingPavementLower.gridy = 5;
 		panelResources.add(spinnerCountDryingPavementLower, gbc_spinnerCountDryingPavementLower);
 		
@@ -1064,15 +1315,22 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_spinnerCountDryingPavementUpper = new GridBagConstraints();
 		gbc_spinnerCountDryingPavementUpper.fill = GridBagConstraints.BOTH;
 		gbc_spinnerCountDryingPavementUpper.insets = new Insets(0, 0, 5, 0);
-		gbc_spinnerCountDryingPavementUpper.gridx = 9;
+		gbc_spinnerCountDryingPavementUpper.gridx = 11;
 		gbc_spinnerCountDryingPavementUpper.gridy = 5;
 		panelResources.add(spinnerCountDryingPavementUpper, gbc_spinnerCountDryingPavementUpper);
+		
+		checkBoxFeedMill = new JCheckBox("");
+		GridBagConstraints gbc_checkBoxFeedMill = new GridBagConstraints();
+		gbc_checkBoxFeedMill.insets = new Insets(0, 0, 5, 5);
+		gbc_checkBoxFeedMill.gridx = 0;
+		gbc_checkBoxFeedMill.gridy = 6;
+		panelResources.add(checkBoxFeedMill, gbc_checkBoxFeedMill);
 		
 		labelFeedMill = new JLabel("Feed Mill");
 		GridBagConstraints gbc_labelFeedMill = new GridBagConstraints();
 		gbc_labelFeedMill.anchor = GridBagConstraints.EAST;
 		gbc_labelFeedMill.insets = new Insets(0, 0, 5, 5);
-		gbc_labelFeedMill.gridx = 0;
+		gbc_labelFeedMill.gridx = 1;
 		gbc_labelFeedMill.gridy = 6;
 		panelResources.add(labelFeedMill, gbc_labelFeedMill);
 		
@@ -1081,7 +1339,7 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_comboBoxFeedMill = new GridBagConstraints();
 		gbc_comboBoxFeedMill.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBoxFeedMill.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxFeedMill.gridx = 1;
+		gbc_comboBoxFeedMill.gridx = 2;
 		gbc_comboBoxFeedMill.gridy = 6;
 		panelResources.add(comboBoxFeedMill, gbc_comboBoxFeedMill);
 		
@@ -1089,7 +1347,7 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_labelCountFeedMill = new GridBagConstraints();
 		gbc_labelCountFeedMill.anchor = GridBagConstraints.EAST;
 		gbc_labelCountFeedMill.insets = new Insets(0, 0, 5, 5);
-		gbc_labelCountFeedMill.gridx = 2;
+		gbc_labelCountFeedMill.gridx = 3;
 		gbc_labelCountFeedMill.gridy = 6;
 		panelResources.add(labelCountFeedMill, gbc_labelCountFeedMill);
 		
@@ -1098,7 +1356,7 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_spinnerCountFeedMillLower = new GridBagConstraints();
 		gbc_spinnerCountFeedMillLower.fill = GridBagConstraints.BOTH;
 		gbc_spinnerCountFeedMillLower.insets = new Insets(0, 0, 5, 5);
-		gbc_spinnerCountFeedMillLower.gridx = 3;
+		gbc_spinnerCountFeedMillLower.gridx = 4;
 		gbc_spinnerCountFeedMillLower.gridy = 6;
 		panelResources.add(spinnerCountFeedMillLower, gbc_spinnerCountFeedMillLower);
 		
@@ -1107,15 +1365,22 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_spinnerCountFeedMillUpper = new GridBagConstraints();
 		gbc_spinnerCountFeedMillUpper.fill = GridBagConstraints.BOTH;
 		gbc_spinnerCountFeedMillUpper.insets = new Insets(0, 0, 5, 5);
-		gbc_spinnerCountFeedMillUpper.gridx = 4;
+		gbc_spinnerCountFeedMillUpper.gridx = 5;
 		gbc_spinnerCountFeedMillUpper.gridy = 6;
 		panelResources.add(spinnerCountFeedMillUpper, gbc_spinnerCountFeedMillUpper);
+		
+		checkBoxHarvester = new JCheckBox("");
+		GridBagConstraints gbc_checkBoxHarvester = new GridBagConstraints();
+		gbc_checkBoxHarvester.insets = new Insets(0, 0, 5, 5);
+		gbc_checkBoxHarvester.gridx = 6;
+		gbc_checkBoxHarvester.gridy = 6;
+		panelResources.add(checkBoxHarvester, gbc_checkBoxHarvester);
 		
 		labelHarvester = new JLabel("Harvester");
 		GridBagConstraints gbc_labelHarvester = new GridBagConstraints();
 		gbc_labelHarvester.anchor = GridBagConstraints.EAST;
 		gbc_labelHarvester.insets = new Insets(0, 0, 5, 5);
-		gbc_labelHarvester.gridx = 5;
+		gbc_labelHarvester.gridx = 7;
 		gbc_labelHarvester.gridy = 6;
 		panelResources.add(labelHarvester, gbc_labelHarvester);
 		
@@ -1124,7 +1389,7 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_comboBoxHarvester = new GridBagConstraints();
 		gbc_comboBoxHarvester.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBoxHarvester.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxHarvester.gridx = 6;
+		gbc_comboBoxHarvester.gridx = 8;
 		gbc_comboBoxHarvester.gridy = 6;
 		panelResources.add(comboBoxHarvester, gbc_comboBoxHarvester);
 		
@@ -1132,7 +1397,7 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_labelCountHarvester = new GridBagConstraints();
 		gbc_labelCountHarvester.anchor = GridBagConstraints.EAST;
 		gbc_labelCountHarvester.insets = new Insets(0, 0, 5, 5);
-		gbc_labelCountHarvester.gridx = 7;
+		gbc_labelCountHarvester.gridx = 9;
 		gbc_labelCountHarvester.gridy = 6;
 		panelResources.add(labelCountHarvester, gbc_labelCountHarvester);
 		
@@ -1141,7 +1406,7 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_spinnerCountHarvesterLower = new GridBagConstraints();
 		gbc_spinnerCountHarvesterLower.fill = GridBagConstraints.BOTH;
 		gbc_spinnerCountHarvesterLower.insets = new Insets(0, 0, 5, 5);
-		gbc_spinnerCountHarvesterLower.gridx = 8;
+		gbc_spinnerCountHarvesterLower.gridx = 10;
 		gbc_spinnerCountHarvesterLower.gridy = 6;
 		panelResources.add(spinnerCountHarvesterLower, gbc_spinnerCountHarvesterLower);
 		
@@ -1150,15 +1415,22 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_spinnerCountHarvesterUpper = new GridBagConstraints();
 		gbc_spinnerCountHarvesterUpper.fill = GridBagConstraints.BOTH;
 		gbc_spinnerCountHarvesterUpper.insets = new Insets(0, 0, 5, 0);
-		gbc_spinnerCountHarvesterUpper.gridx = 9;
+		gbc_spinnerCountHarvesterUpper.gridx = 11;
 		gbc_spinnerCountHarvesterUpper.gridy = 6;
 		panelResources.add(spinnerCountHarvesterUpper, gbc_spinnerCountHarvesterUpper);
+		
+		checkBoxGranary = new JCheckBox("");
+		GridBagConstraints gbc_checkBoxGranary = new GridBagConstraints();
+		gbc_checkBoxGranary.insets = new Insets(0, 0, 5, 5);
+		gbc_checkBoxGranary.gridx = 0;
+		gbc_checkBoxGranary.gridy = 7;
+		panelResources.add(checkBoxGranary, gbc_checkBoxGranary);
 		
 		labelGranary = new JLabel("Granary");
 		GridBagConstraints gbc_labelGranary = new GridBagConstraints();
 		gbc_labelGranary.anchor = GridBagConstraints.EAST;
 		gbc_labelGranary.insets = new Insets(0, 0, 5, 5);
-		gbc_labelGranary.gridx = 0;
+		gbc_labelGranary.gridx = 1;
 		gbc_labelGranary.gridy = 7;
 		panelResources.add(labelGranary, gbc_labelGranary);
 		
@@ -1167,7 +1439,7 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_comboBoxGranary = new GridBagConstraints();
 		gbc_comboBoxGranary.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBoxGranary.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxGranary.gridx = 1;
+		gbc_comboBoxGranary.gridx = 2;
 		gbc_comboBoxGranary.gridy = 7;
 		panelResources.add(comboBoxGranary, gbc_comboBoxGranary);
 		
@@ -1175,7 +1447,7 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_labelCountGranary = new GridBagConstraints();
 		gbc_labelCountGranary.anchor = GridBagConstraints.EAST;
 		gbc_labelCountGranary.insets = new Insets(0, 0, 5, 5);
-		gbc_labelCountGranary.gridx = 2;
+		gbc_labelCountGranary.gridx = 3;
 		gbc_labelCountGranary.gridy = 7;
 		panelResources.add(labelCountGranary, gbc_labelCountGranary);
 		
@@ -1184,7 +1456,7 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_spinnerCountGranaryLower = new GridBagConstraints();
 		gbc_spinnerCountGranaryLower.fill = GridBagConstraints.BOTH;
 		gbc_spinnerCountGranaryLower.insets = new Insets(0, 0, 5, 5);
-		gbc_spinnerCountGranaryLower.gridx = 3;
+		gbc_spinnerCountGranaryLower.gridx = 4;
 		gbc_spinnerCountGranaryLower.gridy = 7;
 		panelResources.add(spinnerCountGranaryLower, gbc_spinnerCountGranaryLower);
 		
@@ -1193,15 +1465,22 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_spinnerCountGranaryUpper = new GridBagConstraints();
 		gbc_spinnerCountGranaryUpper.fill = GridBagConstraints.BOTH;
 		gbc_spinnerCountGranaryUpper.insets = new Insets(0, 0, 5, 5);
-		gbc_spinnerCountGranaryUpper.gridx = 4;
+		gbc_spinnerCountGranaryUpper.gridx = 5;
 		gbc_spinnerCountGranaryUpper.gridy = 7;
 		panelResources.add(spinnerCountGranaryUpper, gbc_spinnerCountGranaryUpper);
+		
+		checkBoxFarmshed = new JCheckBox("");
+		GridBagConstraints gbc_checkBoxFarmshed = new GridBagConstraints();
+		gbc_checkBoxFarmshed.insets = new Insets(0, 0, 5, 5);
+		gbc_checkBoxFarmshed.gridx = 6;
+		gbc_checkBoxFarmshed.gridy = 7;
+		panelResources.add(checkBoxFarmshed, gbc_checkBoxFarmshed);
 		
 		labelFarmshed = new JLabel("Farmshed");
 		GridBagConstraints gbc_labelFarmshed = new GridBagConstraints();
 		gbc_labelFarmshed.anchor = GridBagConstraints.EAST;
 		gbc_labelFarmshed.insets = new Insets(0, 0, 5, 5);
-		gbc_labelFarmshed.gridx = 5;
+		gbc_labelFarmshed.gridx = 7;
 		gbc_labelFarmshed.gridy = 7;
 		panelResources.add(labelFarmshed, gbc_labelFarmshed);
 		
@@ -1210,7 +1489,7 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_comboBoxFarmshed = new GridBagConstraints();
 		gbc_comboBoxFarmshed.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBoxFarmshed.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxFarmshed.gridx = 6;
+		gbc_comboBoxFarmshed.gridx = 8;
 		gbc_comboBoxFarmshed.gridy = 7;
 		panelResources.add(comboBoxFarmshed, gbc_comboBoxFarmshed);
 		
@@ -1218,7 +1497,7 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_labelCountFarmshed = new GridBagConstraints();
 		gbc_labelCountFarmshed.anchor = GridBagConstraints.EAST;
 		gbc_labelCountFarmshed.insets = new Insets(0, 0, 5, 5);
-		gbc_labelCountFarmshed.gridx = 7;
+		gbc_labelCountFarmshed.gridx = 9;
 		gbc_labelCountFarmshed.gridy = 7;
 		panelResources.add(labelCountFarmshed, gbc_labelCountFarmshed);
 		
@@ -1227,7 +1506,7 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_spinnerCountFarmshedLower = new GridBagConstraints();
 		gbc_spinnerCountFarmshedLower.fill = GridBagConstraints.BOTH;
 		gbc_spinnerCountFarmshedLower.insets = new Insets(0, 0, 5, 5);
-		gbc_spinnerCountFarmshedLower.gridx = 8;
+		gbc_spinnerCountFarmshedLower.gridx = 10;
 		gbc_spinnerCountFarmshedLower.gridy = 7;
 		panelResources.add(spinnerCountFarmshedLower, gbc_spinnerCountFarmshedLower);
 		
@@ -1236,15 +1515,22 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_spinnerCountFarmshedUpper = new GridBagConstraints();
 		gbc_spinnerCountFarmshedUpper.fill = GridBagConstraints.BOTH;
 		gbc_spinnerCountFarmshedUpper.insets = new Insets(0, 0, 5, 0);
-		gbc_spinnerCountFarmshedUpper.gridx = 9;
+		gbc_spinnerCountFarmshedUpper.gridx = 11;
 		gbc_spinnerCountFarmshedUpper.gridy = 7;
 		panelResources.add(spinnerCountFarmshedUpper, gbc_spinnerCountFarmshedUpper);
+		
+		checkBoxIrrigationPump = new JCheckBox("");
+		GridBagConstraints gbc_checkBoxIrrigationPump = new GridBagConstraints();
+		gbc_checkBoxIrrigationPump.insets = new Insets(0, 0, 0, 5);
+		gbc_checkBoxIrrigationPump.gridx = 0;
+		gbc_checkBoxIrrigationPump.gridy = 8;
+		panelResources.add(checkBoxIrrigationPump, gbc_checkBoxIrrigationPump);
 		
 		labelIrrigationPump = new JLabel("Irrigation Pump");
 		GridBagConstraints gbc_labelIrrigationPump = new GridBagConstraints();
 		gbc_labelIrrigationPump.anchor = GridBagConstraints.EAST;
 		gbc_labelIrrigationPump.insets = new Insets(0, 0, 0, 5);
-		gbc_labelIrrigationPump.gridx = 0;
+		gbc_labelIrrigationPump.gridx = 1;
 		gbc_labelIrrigationPump.gridy = 8;
 		panelResources.add(labelIrrigationPump, gbc_labelIrrigationPump);
 		
@@ -1253,7 +1539,7 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_comboBoxIrrigationPump = new GridBagConstraints();
 		gbc_comboBoxIrrigationPump.insets = new Insets(0, 0, 0, 5);
 		gbc_comboBoxIrrigationPump.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxIrrigationPump.gridx = 1;
+		gbc_comboBoxIrrigationPump.gridx = 2;
 		gbc_comboBoxIrrigationPump.gridy = 8;
 		panelResources.add(comboBoxIrrigationPump, gbc_comboBoxIrrigationPump);
 		
@@ -1261,7 +1547,7 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_labelCountIrrigationPump = new GridBagConstraints();
 		gbc_labelCountIrrigationPump.anchor = GridBagConstraints.EAST;
 		gbc_labelCountIrrigationPump.insets = new Insets(0, 0, 0, 5);
-		gbc_labelCountIrrigationPump.gridx = 2;
+		gbc_labelCountIrrigationPump.gridx = 3;
 		gbc_labelCountIrrigationPump.gridy = 8;
 		panelResources.add(labelCountIrrigationPump, gbc_labelCountIrrigationPump);
 		
@@ -1270,7 +1556,7 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_spinnerCountIrrigationPumpLower = new GridBagConstraints();
 		gbc_spinnerCountIrrigationPumpLower.fill = GridBagConstraints.BOTH;
 		gbc_spinnerCountIrrigationPumpLower.insets = new Insets(0, 0, 0, 5);
-		gbc_spinnerCountIrrigationPumpLower.gridx = 3;
+		gbc_spinnerCountIrrigationPumpLower.gridx = 4;
 		gbc_spinnerCountIrrigationPumpLower.gridy = 8;
 		panelResources.add(spinnerCountIrrigationPumpLower, gbc_spinnerCountIrrigationPumpLower);
 		
@@ -1279,15 +1565,22 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_spinnerCountIrrigationPumpUpper = new GridBagConstraints();
 		gbc_spinnerCountIrrigationPumpUpper.fill = GridBagConstraints.BOTH;
 		gbc_spinnerCountIrrigationPumpUpper.insets = new Insets(0, 0, 0, 5);
-		gbc_spinnerCountIrrigationPumpUpper.gridx = 4;
+		gbc_spinnerCountIrrigationPumpUpper.gridx = 5;
 		gbc_spinnerCountIrrigationPumpUpper.gridy = 8;
 		panelResources.add(spinnerCountIrrigationPumpUpper, gbc_spinnerCountIrrigationPumpUpper);
+		
+		checkBoxOthers = new JCheckBox("");
+		GridBagConstraints gbc_checkBoxOthers = new GridBagConstraints();
+		gbc_checkBoxOthers.insets = new Insets(0, 0, 0, 5);
+		gbc_checkBoxOthers.gridx = 6;
+		gbc_checkBoxOthers.gridy = 8;
+		panelResources.add(checkBoxOthers, gbc_checkBoxOthers);
 		
 		labelOthers = new JLabel("Others");
 		GridBagConstraints gbc_labelOthers = new GridBagConstraints();
 		gbc_labelOthers.anchor = GridBagConstraints.EAST;
 		gbc_labelOthers.insets = new Insets(0, 0, 0, 5);
-		gbc_labelOthers.gridx = 5;
+		gbc_labelOthers.gridx = 7;
 		gbc_labelOthers.gridy = 8;
 		panelResources.add(labelOthers, gbc_labelOthers);
 		
@@ -1296,7 +1589,7 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_comboBoxOthers = new GridBagConstraints();
 		gbc_comboBoxOthers.insets = new Insets(0, 0, 0, 5);
 		gbc_comboBoxOthers.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxOthers.gridx = 6;
+		gbc_comboBoxOthers.gridx = 8;
 		gbc_comboBoxOthers.gridy = 8;
 		panelResources.add(comboBoxOthers, gbc_comboBoxOthers);
 		
@@ -1304,7 +1597,7 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_labelCountOthers = new GridBagConstraints();
 		gbc_labelCountOthers.anchor = GridBagConstraints.EAST;
 		gbc_labelCountOthers.insets = new Insets(0, 0, 0, 5);
-		gbc_labelCountOthers.gridx = 7;
+		gbc_labelCountOthers.gridx = 9;
 		gbc_labelCountOthers.gridy = 8;
 		panelResources.add(labelCountOthers, gbc_labelCountOthers);
 		
@@ -1313,7 +1606,7 @@ public class InteractivePanel extends JPanel {
 		GridBagConstraints gbc_spinnerCountOthersLower = new GridBagConstraints();
 		gbc_spinnerCountOthersLower.fill = GridBagConstraints.BOTH;
 		gbc_spinnerCountOthersLower.insets = new Insets(0, 0, 0, 5);
-		gbc_spinnerCountOthersLower.gridx = 8;
+		gbc_spinnerCountOthersLower.gridx = 10;
 		gbc_spinnerCountOthersLower.gridy = 8;
 		panelResources.add(spinnerCountOthersLower, gbc_spinnerCountOthersLower);
 		
@@ -1321,29 +1614,34 @@ public class InteractivePanel extends JPanel {
 		spinnerCountOthersUpper.setModel(new SpinnerNumberModel(new Integer(-1), new Integer(-1), null, new Integer(1)));
 		GridBagConstraints gbc_spinnerCountOthersUpper = new GridBagConstraints();
 		gbc_spinnerCountOthersUpper.fill = GridBagConstraints.BOTH;
-		gbc_spinnerCountOthersUpper.gridx = 9;
+		gbc_spinnerCountOthersUpper.gridx = 11;
 		gbc_spinnerCountOthersUpper.gridy = 8;
 		panelResources.add(spinnerCountOthersUpper, gbc_spinnerCountOthersUpper);
 		
 		labelStatus = new JLabel("");
 		GridBagConstraints gbc_labelStatus = new GridBagConstraints();
-		gbc_labelStatus.anchor = GridBagConstraints.WEST;
+		gbc_labelStatus.anchor = GridBagConstraints.EAST;
 		gbc_labelStatus.insets = new Insets(0, 0, 0, 5);
 		gbc_labelStatus.gridx = 0;
 		gbc_labelStatus.gridy = 4;
 		add(labelStatus, gbc_labelStatus);
 		
+		comboBoxOLAP = new JComboBox<String>();
+		comboBoxOLAP.setModel(new DefaultComboBoxModel<String>(new String[] {"SELECT", "Drilldown", "Rollup"}));
+		GridBagConstraints gbc_comboBoxOLAP = new GridBagConstraints();
+		gbc_comboBoxOLAP.insets = new Insets(0, 0, 0, 5);
+		gbc_comboBoxOLAP.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxOLAP.gridx = 1;
+		gbc_comboBoxOLAP.gridy = 4;
+		add(comboBoxOLAP, gbc_comboBoxOLAP);
+		
 		buttonInfer = new JButton("Infer");
 		GridBagConstraints gbc_buttonInfer = new GridBagConstraints();
 		gbc_buttonInfer.fill = GridBagConstraints.BOTH;
-		gbc_buttonInfer.gridx = 1;
+		gbc_buttonInfer.gridx = 2;
 		gbc_buttonInfer.gridy = 4;
 		add(buttonInfer, gbc_buttonInfer);
 
-	}
-
-	public static InteractivePanel getInteractivePanel() {
-		return interactivePanel;
 	}
 
 	public JLabel getLabelAGRISYS() {
@@ -1880,6 +2178,158 @@ public class InteractivePanel extends JPanel {
 
 	public JButton getButtonInfer() {
 		return buttonInfer;
+	}
+
+	public JCheckBox getCheckBoxProvince() {
+		return checkBoxProvince;
+	}
+
+	public JCheckBox getCheckBoxMunicipality() {
+		return checkBoxMunicipality;
+	}
+
+	public JCheckBox getCheckBoxZone() {
+		return checkBoxZone;
+	}
+
+	public JCheckBox getCheckBoxBarangay() {
+		return checkBoxBarangay;
+	}
+
+	public JCheckBox getCheckBoxPurok() {
+		return checkBoxPurok;
+	}
+
+	public JCheckBox getCheckBoxIndustry() {
+		return checkBoxIndustry;
+	}
+
+	public JCheckBox getCheckBoxCropInsurance() {
+		return checkBoxCropInsurance;
+	}
+
+	public JCheckBox getCheckBoxChangePrimaryCrop() {
+		return checkBoxChangePrimaryCrop;
+	}
+
+	public JCheckBox getCheckBoxChangeSameCrop() {
+		return checkBoxChangeSameCrop;
+	}
+
+	public JCheckBox getCheckBoxLowHarvest() {
+		return checkBoxLowHarvest;
+	}
+
+	public JCheckBox getCheckBoxDrought() {
+		return checkBoxDrought;
+	}
+
+	public JCheckBox getCheckBoxFlood() {
+		return checkBoxFlood;
+	}
+
+	public JCheckBox getCheckBoxARCDP() {
+		return checkBoxARCDP;
+	}
+
+	public JCheckBox getCheckBoxAgriculturalInsurance() {
+		return checkBoxAgriculturalInsurance;
+	}
+
+	public JCheckBox getCheckBoxReasonChangePrimaryCrop() {
+		return checkBoxReasonChangePrimaryCrop;
+	}
+
+	public JCheckBox getCheckBoxReasonChangeSameCrop() {
+		return checkBoxReasonChangeSameCrop;
+	}
+
+	public JCheckBox getCheckBoxWaterSupply() {
+		return checkBoxWaterSupply;
+	}
+
+	public JCheckBox getCheckBoxDuration() {
+		return checkBoxDuration;
+	}
+
+	public JCheckBox getCheckBoxCropType() {
+		return checkBoxCropType;
+	}
+
+	public JCheckBox getCheckBoxBeastOfBurden() {
+		return checkBoxBeastOfBurden;
+	}
+
+	public JCheckBox getCheckBoxHarrow() {
+		return checkBoxHarrow;
+	}
+
+	public JCheckBox getCheckBoxThresher() {
+		return checkBoxThresher;
+	}
+
+	public JCheckBox getCheckBoxFarmTractor() {
+		return checkBoxFarmTractor;
+	}
+
+	public JCheckBox getCheckBoxMudboat() {
+		return checkBoxMudboat;
+	}
+
+	public JCheckBox getCheckBoxMechanicalDryer() {
+		return checkBoxMechanicalDryer;
+	}
+
+	public JCheckBox getCheckBoxFeedMill() {
+		return checkBoxFeedMill;
+	}
+
+	public JCheckBox getCheckBoxGranary() {
+		return checkBoxGranary;
+	}
+
+	public JCheckBox getCheckBoxIrrigationPump() {
+		return checkBoxIrrigationPump;
+	}
+
+	public JCheckBox getCheckBoxPlow() {
+		return checkBoxPlow;
+	}
+
+	public JCheckBox getCheckBoxMower() {
+		return checkBoxMower;
+	}
+
+	public JCheckBox getCheckBoxSprayer() {
+		return checkBoxSprayer;
+	}
+
+	public JCheckBox getCheckBoxHandTractor() {
+		return checkBoxHandTractor;
+	}
+
+	public JCheckBox getCheckBoxPlanter() {
+		return checkBoxPlanter;
+	}
+
+	public JCheckBox getCheckBoxDryingPavement() {
+		return checkBoxDryingPavement;
+	}
+
+	public JCheckBox getCheckBoxHarvester() {
+		return checkBoxHarvester;
+	}
+
+	public JCheckBox getCheckBoxFarmshed() {
+		return checkBoxFarmshed;
+	}
+
+	public JCheckBox getCheckBoxOthers() {
+		return checkBoxOthers;
+	}
+
+	public JComboBox<String> getComboBoxOLAP() {
+		return comboBoxOLAP;
 	}
 
 }
