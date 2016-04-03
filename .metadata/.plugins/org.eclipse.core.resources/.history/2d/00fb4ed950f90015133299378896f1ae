@@ -554,75 +554,15 @@ public class Controller {
 			
 		}
 		
-		if(view.getInteractivePanel().getComboBoxFeedMill().getSelectedIndex() != 0){
+		if(view.getInteractivePanel().getComboBoxBeastOfBurden().getSelectedIndex() != 0){
 			
 		}
 		
-		if(!view.getInteractivePanel().getSpinnerCountFeedMillLower().getValue().toString().equals("-1")){
+		if(!view.getInteractivePanel().getSpinnerCountBeastOfBurdenLower().getValue().toString().equals("-1")){
 			
 		}
 		
-		if(!view.getInteractivePanel().getSpinnerCountFeedMillUpper().getValue().toString().equals("-1")){
-			
-		}
-		
-		if(view.getInteractivePanel().getComboBoxHarvester().getSelectedIndex() != 0){
-			
-		}
-		
-		if(!view.getInteractivePanel().getSpinnerCountHarvesterLower().getValue().toString().equals("-1")){
-			
-		}
-		
-		if(!view.getInteractivePanel().getSpinnerCountHarvesterUpper().getValue().toString().equals("-1")){
-			
-		}
-		
-		if(view.getInteractivePanel().getComboBoxGranary().getSelectedIndex() != 0){
-			
-		}
-		
-		if(!view.getInteractivePanel().getSpinnerCountGranaryLower().getValue().toString().equals("-1")){
-			
-		}
-		
-		if(!view.getInteractivePanel().getSpinnerCountGranaryUpper().getValue().toString().equals("-1")){
-			
-		}
-		
-		if(view.getInteractivePanel().getComboBoxFarmshed().getSelectedIndex() != 0){
-			
-		}
-		
-		if(!view.getInteractivePanel().getSpinnerCountFarmshedLower().getValue().toString().equals("-1")){
-			
-		}
-		
-		if(!view.getInteractivePanel().getSpinnerCountFarmshedUpper().getValue().toString().equals("-1")){
-			
-		}
-		
-		if(view.getInteractivePanel().getComboBoxIrrigationPump().getSelectedIndex() != 0){
-			
-		}
-		
-		if(!view.getInteractivePanel().getSpinnerCountIrrigationPumpLower().getValue().toString().equals("-1")){
-			
-		}
-		
-		if(!view.getInteractivePanel().getSpinnerCountIrrigationPumpUpper().getValue().toString().equals("-1")){
-			
-		}
-		
-		if(view.getInteractivePanel().getComboBoxOthers().getSelectedIndex() != 0){
-			
-		}
-		
-		if(!view.getInteractivePanel().getSpinnerCountOthersLower().getValue().toString().equals("-1")){
-			
-		}
-		
-		if(!view.getInteractivePanel().getSpinnerCountOthersUpper().getValue().toString().equals("-1")){
+		if(!view.getInteractivePanel().getSpinnerCountBeastOfBurdenUpper().getValue().toString().equals("-1")){
 			
 		}
 		return query;
