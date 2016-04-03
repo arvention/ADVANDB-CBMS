@@ -669,7 +669,7 @@ public class Controller {
 		if(view.getInteractivePanel().getComboBoxIrrigationPump().getSelectedIndex() != 0){
 			if(view.getInteractivePanel().getComboBoxIrrigationPump().getSelectedItem().toString().equals("Owned")){
 				
-			} else if(view.getInteractivePanel().getComboBoxIrrigationPump().getSelectedItem().toString().equals("Not Owned")){
+			} else if(view.getInteractivePanel().getComboBoxBeastOfBurden().getSelectedItem().toString().equals("Not Owned")){
 				
 			}
 		}
@@ -683,11 +683,7 @@ public class Controller {
 		}
 		
 		if(view.getInteractivePanel().getComboBoxOthers().getSelectedIndex() != 0){
-			if(view.getInteractivePanel().getComboBoxOthers().getSelectedItem().toString().equals("Owned")){
-				
-			} else if(view.getInteractivePanel().getComboBoxOthers().getSelectedItem().toString().equals("Not Owned")){
-				
-			}
+			
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountOthersLower().getValue().toString().equals("-1")){
@@ -697,7 +693,6 @@ public class Controller {
 		if(!view.getInteractivePanel().getSpinnerCountOthersUpper().getValue().toString().equals("-1")){
 			
 		}
-		
 		return query;
 	}
 	

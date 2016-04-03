@@ -697,7 +697,6 @@ public class Controller {
 		if(!view.getInteractivePanel().getSpinnerCountOthersUpper().getValue().toString().equals("-1")){
 			
 		}
-		
 		return query;
 	}
 	

@@ -571,11 +571,7 @@ public class Controller {
 		}
 		
 		if(view.getInteractivePanel().getComboBoxMechanicalDryer().getSelectedIndex() != 0){
-			if(view.getInteractivePanel().getComboBoxMechanicalDryer().getSelectedItem().toString().equals("Owned")){
-				
-			} else if(view.getInteractivePanel().getComboBoxMechanicalDryer().getSelectedItem().toString().equals("Not Owned")){
-				
-			}
+			
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountMechanicalDryerLower().getValue().toString().equals("-1")){
@@ -587,11 +583,7 @@ public class Controller {
 		}
 		
 		if(view.getInteractivePanel().getComboBoxDryingPavement().getSelectedIndex() != 0){
-			if(view.getInteractivePanel().getComboBoxDryingPavement().getSelectedItem().toString().equals("Owned")){
-				
-			} else if(view.getInteractivePanel().getComboBoxDryingPavement().getSelectedItem().toString().equals("Not Owned")){
-				
-			}
+			
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountDryingPavementLower().getValue().toString().equals("-1")){
@@ -603,11 +595,7 @@ public class Controller {
 		}
 		
 		if(view.getInteractivePanel().getComboBoxFeedMill().getSelectedIndex() != 0){
-			if(view.getInteractivePanel().getComboBoxFeedMill().getSelectedItem().toString().equals("Owned")){
-				
-			} else if(view.getInteractivePanel().getComboBoxFeedMill().getSelectedItem().toString().equals("Not Owned")){
-				
-			}
+			
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountFeedMillLower().getValue().toString().equals("-1")){
@@ -619,11 +607,7 @@ public class Controller {
 		}
 		
 		if(view.getInteractivePanel().getComboBoxHarvester().getSelectedIndex() != 0){
-			if(view.getInteractivePanel().getComboBoxHarvester().getSelectedItem().toString().equals("Owned")){
-				
-			} else if(view.getInteractivePanel().getComboBoxHarvester().getSelectedItem().toString().equals("Not Owned")){
-				
-			}
+			
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountHarvesterLower().getValue().toString().equals("-1")){
@@ -635,11 +619,7 @@ public class Controller {
 		}
 		
 		if(view.getInteractivePanel().getComboBoxGranary().getSelectedIndex() != 0){
-			if(view.getInteractivePanel().getComboBoxGranary().getSelectedItem().toString().equals("Owned")){
-				
-			} else if(view.getInteractivePanel().getComboBoxGranary().getSelectedItem().toString().equals("Not Owned")){
-				
-			}
+			
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountGranaryLower().getValue().toString().equals("-1")){
@@ -651,11 +631,7 @@ public class Controller {
 		}
 		
 		if(view.getInteractivePanel().getComboBoxFarmshed().getSelectedIndex() != 0){
-			if(view.getInteractivePanel().getComboBoxFarmshed().getSelectedItem().toString().equals("Owned")){
-				
-			} else if(view.getInteractivePanel().getComboBoxFarmshed().getSelectedItem().toString().equals("Not Owned")){
-				
-			}
+			
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountFarmshedLower().getValue().toString().equals("-1")){
@@ -667,11 +643,7 @@ public class Controller {
 		}
 		
 		if(view.getInteractivePanel().getComboBoxIrrigationPump().getSelectedIndex() != 0){
-			if(view.getInteractivePanel().getComboBoxIrrigationPump().getSelectedItem().toString().equals("Owned")){
-				
-			} else if(view.getInteractivePanel().getComboBoxIrrigationPump().getSelectedItem().toString().equals("Not Owned")){
-				
-			}
+			
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountIrrigationPumpLower().getValue().toString().equals("-1")){
@@ -683,11 +655,7 @@ public class Controller {
 		}
 		
 		if(view.getInteractivePanel().getComboBoxOthers().getSelectedIndex() != 0){
-			if(view.getInteractivePanel().getComboBoxOthers().getSelectedItem().toString().equals("Owned")){
-				
-			} else if(view.getInteractivePanel().getComboBoxOthers().getSelectedItem().toString().equals("Not Owned")){
-				
-			}
+			
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountOthersLower().getValue().toString().equals("-1")){
@@ -697,7 +665,6 @@ public class Controller {
 		if(!view.getInteractivePanel().getSpinnerCountOthersUpper().getValue().toString().equals("-1")){
 			
 		}
-		
 		return query;
 	}
 	

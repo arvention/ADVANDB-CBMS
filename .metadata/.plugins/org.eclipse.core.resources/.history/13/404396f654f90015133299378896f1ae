@@ -411,9 +411,9 @@ public class Controller {
 		}
 		
 		if(view.getInteractivePanel().getComboBoxBeastOfBurden().getSelectedIndex() != 0){
-			if(view.getInteractivePanel().getComboBoxBeastOfBurden().getSelectedItem().toString().equals("Owned")){
+			if(view.getInteractivePanel().getComboBoxBeastOfBurden().getSelectedItem().toString().equals("Yes")){
 				
-			} else if(view.getInteractivePanel().getComboBoxBeastOfBurden().getSelectedItem().toString().equals("Not Owned")){
+			} else if(view.getInteractivePanel().getComboBoxBeastOfBurden().getSelectedItem().toString().equals("No")){
 				
 			}
 		}
@@ -427,11 +427,7 @@ public class Controller {
 		}
 		
 		if(view.getInteractivePanel().getComboBoxPlow().getSelectedIndex() != 0){
-			if(view.getInteractivePanel().getComboBoxPlow().getSelectedItem().toString().equals("Owned")){
-				
-			} else if(view.getInteractivePanel().getComboBoxPlow().getSelectedItem().toString().equals("Not Owned")){
-				
-			}
+			
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountPlowLower().getValue().toString().equals("-1")){
@@ -443,11 +439,7 @@ public class Controller {
 		}
 		
 		if(view.getInteractivePanel().getComboBoxHarrow().getSelectedIndex() != 0){
-			if(view.getInteractivePanel().getComboBoxHarrow().getSelectedItem().toString().equals("Owned")){
-				
-			} else if(view.getInteractivePanel().getComboBoxHarrow().getSelectedItem().toString().equals("Not Owned")){
-				
-			}
+			
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountHarrowLower().getValue().toString().equals("-1")){
@@ -459,11 +451,7 @@ public class Controller {
 		}
 		
 		if(view.getInteractivePanel().getComboBoxMower().getSelectedIndex() != 0){
-			if(view.getInteractivePanel().getComboBoxMower().getSelectedItem().toString().equals("Owned")){
-				
-			} else if(view.getInteractivePanel().getComboBoxMower().getSelectedItem().toString().equals("Not Owned")){
-				
-			}
+			
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountMowerLower().getValue().toString().equals("-1")){
@@ -475,11 +463,7 @@ public class Controller {
 		}
 		
 		if(view.getInteractivePanel().getComboBoxThresher().getSelectedIndex() != 0){
-			if(view.getInteractivePanel().getComboBoxThresher().getSelectedItem().toString().equals("Owned")){
-				
-			} else if(view.getInteractivePanel().getComboBoxThresher().getSelectedItem().toString().equals("Not Owned")){
-				
-			}
+			
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountThresherLower().getValue().toString().equals("-1")){
@@ -491,11 +475,7 @@ public class Controller {
 		}
 		
 		if(view.getInteractivePanel().getComboBoxSprayer().getSelectedIndex() != 0){
-			if(view.getInteractivePanel().getComboBoxSprayer().getSelectedItem().toString().equals("Owned")){
-				
-			} else if(view.getInteractivePanel().getComboBoxSprayer().getSelectedItem().toString().equals("Not Owned")){
-				
-			}
+			
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountSprayerLower().getValue().toString().equals("-1")){
@@ -507,11 +487,7 @@ public class Controller {
 		}
 		
 		if(view.getInteractivePanel().getComboBoxFarmTractor().getSelectedIndex() != 0){
-			if(view.getInteractivePanel().getComboBoxFarmTractor().getSelectedItem().toString().equals("Owned")){
-				
-			} else if(view.getInteractivePanel().getComboBoxFarmTractor().getSelectedItem().toString().equals("Not Owned")){
-				
-			}
+			
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountFarmTractorLower().getValue().toString().equals("-1")){
@@ -523,11 +499,7 @@ public class Controller {
 		}
 		
 		if(view.getInteractivePanel().getComboBoxHandTractor().getSelectedIndex() != 0){
-			if(view.getInteractivePanel().getComboBoxHandTractor().getSelectedItem().toString().equals("Owned")){
-				
-			} else if(view.getInteractivePanel().getComboBoxHandTractor().getSelectedItem().toString().equals("Not Owned")){
-				
-			}
+			
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountHandTractorLower().getValue().toString().equals("-1")){
@@ -539,11 +511,7 @@ public class Controller {
 		}
 		
 		if(view.getInteractivePanel().getComboBoxMudboat().getSelectedIndex() != 0){
-			if(view.getInteractivePanel().getComboBoxMudboat().getSelectedItem().toString().equals("Owned")){
-				
-			} else if(view.getInteractivePanel().getComboBoxMudboat().getSelectedItem().toString().equals("Not Owned")){
-				
-			}
+			
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountMudboatLower().getValue().toString().equals("-1")){
@@ -555,11 +523,7 @@ public class Controller {
 		}
 		
 		if(view.getInteractivePanel().getComboBoxPlanter().getSelectedIndex() != 0){
-			if(view.getInteractivePanel().getComboBoxPlanter().getSelectedItem().toString().equals("Owned")){
-				
-			} else if(view.getInteractivePanel().getComboBoxPlanter().getSelectedItem().toString().equals("Not Owned")){
-				
-			}
+			
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountPlanterLower().getValue().toString().equals("-1")){
@@ -571,11 +535,7 @@ public class Controller {
 		}
 		
 		if(view.getInteractivePanel().getComboBoxMechanicalDryer().getSelectedIndex() != 0){
-			if(view.getInteractivePanel().getComboBoxMechanicalDryer().getSelectedItem().toString().equals("Owned")){
-				
-			} else if(view.getInteractivePanel().getComboBoxMechanicalDryer().getSelectedItem().toString().equals("Not Owned")){
-				
-			}
+			
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountMechanicalDryerLower().getValue().toString().equals("-1")){
@@ -587,11 +547,7 @@ public class Controller {
 		}
 		
 		if(view.getInteractivePanel().getComboBoxDryingPavement().getSelectedIndex() != 0){
-			if(view.getInteractivePanel().getComboBoxDryingPavement().getSelectedItem().toString().equals("Owned")){
-				
-			} else if(view.getInteractivePanel().getComboBoxDryingPavement().getSelectedItem().toString().equals("Not Owned")){
-				
-			}
+			
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountDryingPavementLower().getValue().toString().equals("-1")){
@@ -603,11 +559,7 @@ public class Controller {
 		}
 		
 		if(view.getInteractivePanel().getComboBoxFeedMill().getSelectedIndex() != 0){
-			if(view.getInteractivePanel().getComboBoxFeedMill().getSelectedItem().toString().equals("Owned")){
-				
-			} else if(view.getInteractivePanel().getComboBoxFeedMill().getSelectedItem().toString().equals("Not Owned")){
-				
-			}
+			
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountFeedMillLower().getValue().toString().equals("-1")){
@@ -619,11 +571,7 @@ public class Controller {
 		}
 		
 		if(view.getInteractivePanel().getComboBoxHarvester().getSelectedIndex() != 0){
-			if(view.getInteractivePanel().getComboBoxHarvester().getSelectedItem().toString().equals("Owned")){
-				
-			} else if(view.getInteractivePanel().getComboBoxHarvester().getSelectedItem().toString().equals("Not Owned")){
-				
-			}
+			
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountHarvesterLower().getValue().toString().equals("-1")){
@@ -635,11 +583,7 @@ public class Controller {
 		}
 		
 		if(view.getInteractivePanel().getComboBoxGranary().getSelectedIndex() != 0){
-			if(view.getInteractivePanel().getComboBoxGranary().getSelectedItem().toString().equals("Owned")){
-				
-			} else if(view.getInteractivePanel().getComboBoxGranary().getSelectedItem().toString().equals("Not Owned")){
-				
-			}
+			
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountGranaryLower().getValue().toString().equals("-1")){
@@ -651,11 +595,7 @@ public class Controller {
 		}
 		
 		if(view.getInteractivePanel().getComboBoxFarmshed().getSelectedIndex() != 0){
-			if(view.getInteractivePanel().getComboBoxFarmshed().getSelectedItem().toString().equals("Owned")){
-				
-			} else if(view.getInteractivePanel().getComboBoxFarmshed().getSelectedItem().toString().equals("Not Owned")){
-				
-			}
+			
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountFarmshedLower().getValue().toString().equals("-1")){
@@ -667,11 +607,7 @@ public class Controller {
 		}
 		
 		if(view.getInteractivePanel().getComboBoxIrrigationPump().getSelectedIndex() != 0){
-			if(view.getInteractivePanel().getComboBoxIrrigationPump().getSelectedItem().toString().equals("Owned")){
-				
-			} else if(view.getInteractivePanel().getComboBoxIrrigationPump().getSelectedItem().toString().equals("Not Owned")){
-				
-			}
+			
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountIrrigationPumpLower().getValue().toString().equals("-1")){
@@ -683,11 +619,7 @@ public class Controller {
 		}
 		
 		if(view.getInteractivePanel().getComboBoxOthers().getSelectedIndex() != 0){
-			if(view.getInteractivePanel().getComboBoxOthers().getSelectedItem().toString().equals("Owned")){
-				
-			} else if(view.getInteractivePanel().getComboBoxOthers().getSelectedItem().toString().equals("Not Owned")){
-				
-			}
+			
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountOthersLower().getValue().toString().equals("-1")){
@@ -697,7 +629,6 @@ public class Controller {
 		if(!view.getInteractivePanel().getSpinnerCountOthersUpper().getValue().toString().equals("-1")){
 			
 		}
-		
 		return query;
 	}
 	
