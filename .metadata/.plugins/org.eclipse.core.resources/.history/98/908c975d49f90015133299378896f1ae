@@ -309,8 +309,7 @@ public class Controller {
 
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				String query = queryBuilder();
-				System.out.println(query);
+				queryBuilder();
 			}
 
 			@Override

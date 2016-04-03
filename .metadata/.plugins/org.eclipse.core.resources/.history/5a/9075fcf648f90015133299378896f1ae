@@ -47,7 +47,6 @@ public class Controller {
 	
 	private void addListeners(){
 		addSpinnerListeners();
-		addButtonListener();
 	}
 	
 	private void addSpinnerListeners(){
@@ -309,8 +308,8 @@ public class Controller {
 
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				String query = queryBuilder();
-				System.out.println(query);
+				// TODO Auto-generated method stub
+				
 			}
 
 			@Override
@@ -329,11 +328,6 @@ public class Controller {
 			public void mouseReleased(MouseEvent arg0) {
 			}
 		});
-	}
-	
-	private String queryBuilder(){
-		String query = "";
-		return query;
 	}
 	
 	private void changeUpperBound(JSpinner lowerSpinner, JSpinner upperSpinner) {
