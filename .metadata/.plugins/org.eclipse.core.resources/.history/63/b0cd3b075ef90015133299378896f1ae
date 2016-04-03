@@ -749,7 +749,7 @@ public class Controller {
 		
 		if(!view.getInteractivePanel().getSpinnerCountOthersUpper().getValue().toString().equals("-1")){
 			query = appendWhereChecker(query);
-			query += "agriequip18_nown <= " + view.getInteractivePanel().getSpinnerCountOthersUpper().getValue().toString();
+			query += "agriequip18_nown <= " + view.getInteractivePanel().getSpinnerCountBeastOfBurdenLower().getValue().toString();
 		}
 		
 		return query;

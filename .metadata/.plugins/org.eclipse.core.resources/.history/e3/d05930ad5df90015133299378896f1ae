@@ -667,13 +667,11 @@ public class Controller {
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountHarvesterLower().getValue().toString().equals("-1")){
-			query = appendWhereChecker(query);
-			query += "agriequip14_nown > " + view.getInteractivePanel().getSpinnerCountHarvesterLower().getValue().toString();
+			
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountHarvesterUpper().getValue().toString().equals("-1")){
-			query = appendWhereChecker(query);
-			query += "agriequip14_nown <= " + view.getInteractivePanel().getSpinnerCountHarvesterUpper().getValue().toString();
+			
 		}
 		
 		if(view.getInteractivePanel().getComboBoxGranary().getSelectedIndex() != 0){
@@ -686,13 +684,11 @@ public class Controller {
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountGranaryLower().getValue().toString().equals("-1")){
-			query = appendWhereChecker(query);
-			query += "agriequip15_nown > " + view.getInteractivePanel().getSpinnerCountGranaryLower().getValue().toString();
+			
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountGranaryUpper().getValue().toString().equals("-1")){
-			query = appendWhereChecker(query);
-			query += "agriequip15_nown <= " + view.getInteractivePanel().getSpinnerCountGranaryUpper().getValue().toString();
+			
 		}
 		
 		if(view.getInteractivePanel().getComboBoxFarmshed().getSelectedIndex() != 0){
@@ -705,13 +701,11 @@ public class Controller {
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountFarmshedLower().getValue().toString().equals("-1")){
-			query = appendWhereChecker(query);
-			query += "agriequip16_nown > " + view.getInteractivePanel().getSpinnerCountFarmshedLower().getValue().toString();
+			
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountFarmshedUpper().getValue().toString().equals("-1")){
-			query = appendWhereChecker(query);
-			query += "agriequip16_nown <= " + view.getInteractivePanel().getSpinnerCountFarmshedUpper().getValue().toString();
+			
 		}
 		
 		if(view.getInteractivePanel().getComboBoxIrrigationPump().getSelectedIndex() != 0){
@@ -724,13 +718,11 @@ public class Controller {
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountIrrigationPumpLower().getValue().toString().equals("-1")){
-			query = appendWhereChecker(query);
-			query += "agriequip17_nown > " + view.getInteractivePanel().getSpinnerCountIrrigationPumpLower().getValue().toString();
+			
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountIrrigationPumpUpper().getValue().toString().equals("-1")){
-			query = appendWhereChecker(query);
-			query += "agriequip17_nown <= " + view.getInteractivePanel().getSpinnerCountIrrigationPumpUpper().getValue().toString();
+			
 		}
 		
 		if(view.getInteractivePanel().getComboBoxOthers().getSelectedIndex() != 0){
@@ -743,13 +735,11 @@ public class Controller {
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountOthersLower().getValue().toString().equals("-1")){
-			query = appendWhereChecker(query);
-			query += "agriequip18_nown > " + view.getInteractivePanel().getSpinnerCountOthersLower().getValue().toString();
+			
 		}
 		
 		if(!view.getInteractivePanel().getSpinnerCountOthersUpper().getValue().toString().equals("-1")){
-			query = appendWhereChecker(query);
-			query += "agriequip18_nown <= " + view.getInteractivePanel().getSpinnerCountOthersUpper().getValue().toString();
+			
 		}
 		
 		return query;
