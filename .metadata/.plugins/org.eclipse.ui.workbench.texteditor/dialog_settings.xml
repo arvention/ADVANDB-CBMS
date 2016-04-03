@@ -2,30 +2,30 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="query7Builder" key="selection"/>
+		<item value="Same" key="selection"/>
 		<item value="true" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="Primary"/>
+			<item value="Upper"/>
+			<item value="BeastOfBurden"/>
+			<item value="changeUpper"/>
+			<item value="getIn"/>
 			<item value="&lt;String&gt;"/>
 			<item value="query7Builder"/>
 			<item value="query1Builder"/>
-			<item value="Query1Builder"/>
-			<item value="Query6"/>
-			<item value="Age"/>
-			<item value="ARCDPRecipient"/>
-			<item value="FALSE"/>
 		</list>
 		<list key="replacehistory">
-			<item value="Query7"/>
-			<item value="YearFarming"/>
-			<item value="YearsFarming"/>
-			<item value="ARCDP"/>
-			<item value="Query6"/>
-			<item value="Kagamitan"/>
-			<item value="Query5"/>
-			<item value="Pagkamatay"/>
+			<item value="Same"/>
+			<item value=""/>
+			<item value="Others"/>
+			<item value="IrrigationPump"/>
+			<item value="Farmshed"/>
+			<item value="Granary"/>
+			<item value="Harvester"/>
+			<item value="FeedMill"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">

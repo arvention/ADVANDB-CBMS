@@ -14,7 +14,6 @@
 <fullyQualifiedTypeName name="mvc.ModelTable"/>
 <fullyQualifiedTypeName name="java.awt.event.FocusListener"/>
 <fullyQualifiedTypeName name="javax.swing.event.CaretListener"/>
-<fullyQualifiedTypeName name="java.awt.event.MouseListener"/>
 <fullyQualifiedTypeName name="javax.swing.table.AbstractTableModel"/>
 <fullyQualifiedTypeName name="mvc.ModelTable2"/>
 <fullyQualifiedTypeName name="javax.swing.table.TableModel"/>
@@ -25,9 +24,10 @@
 <fullyQualifiedTypeName name="java.awt.Component"/>
 <fullyQualifiedTypeName name="javax.swing.table.TableCellRenderer"/>
 <fullyQualifiedTypeName name="javax.swing.table.TableColumn"/>
-<fullyQualifiedTypeName name="javax.swing.event.ChangeListener"/>
-<fullyQualifiedTypeName name="mvc.Controller"/>
 <fullyQualifiedTypeName name="java.util.Arrays"/>
 <fullyQualifiedTypeName name="java.awt.List"/>
 <fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="javax.swing.event.ChangeListener"/>
+<fullyQualifiedTypeName name="java.awt.event.MouseListener"/>
+<fullyQualifiedTypeName name="mvc.Controller"/>
 </qualifiedTypeNameHistroy>

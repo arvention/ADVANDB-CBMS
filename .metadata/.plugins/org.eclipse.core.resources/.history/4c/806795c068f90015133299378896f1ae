@@ -482,27 +482,14 @@ public class Controller {
 		if(view.getInteractivePanel().getComboBoxDrought().getSelectedIndex() != 0){
 			query = appendWhereChecker(query);
 			if(view.getInteractivePanel().getComboBoxDrought().getSelectedItem().toString().equals("Yes")){
-				query += "drought = " + TRUE;
+				
 			} else if(view.getInteractivePanel().getComboBoxDrought().getSelectedItem().toString().equals("No")){
-				query += "drought = " + FALSE;
+				
 			}
 		}
 		
 		if(view.getInteractivePanel().getComboBoxDuration().getSelectedIndex() != 0){
-			query = appendWhereChecker(query);
-			if(view.getInteractivePanel().getComboBoxDuration().getSelectedItem().toString().equals("< 1 Month")){
-				query += "drought_duration = 1";
-			} else if(view.getInteractivePanel().getComboBoxDuration().getSelectedItem().toString().equals("1 Month < 2 Months")){
-				query += "drought_duration = 2";
-			} else if(view.getInteractivePanel().getComboBoxDuration().getSelectedItem().toString().equals("2 Months < 3 Months")){
-				query += "drought_duration = 3";
-			} else if(view.getInteractivePanel().getComboBoxDuration().getSelectedItem().toString().equals("3 Months < 4 Months")){
-				query += "drought_duration = 4";
-			} else if(view.getInteractivePanel().getComboBoxDuration().getSelectedItem().toString().equals("4 Months < 5 Months")){
-				query += "drought_duration = 5";
-			} else if(view.getInteractivePanel().getComboBoxDuration().getSelectedItem().toString().equals("5 Months or more")){
-				query += "drought_duration = 6";
-			}
+			
 		}
 		
 		if(view.getInteractivePanel().getComboBoxFlood().getSelectedIndex() != 0){

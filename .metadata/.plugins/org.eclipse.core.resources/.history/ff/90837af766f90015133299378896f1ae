@@ -461,7 +461,7 @@ public class InteractivePanel extends JPanel {
 		panelAgri.add(labelWaterSupply, gbc_labelWaterSupply);
 		
 		comboBoxWaterSupply = new JComboBox<>();
-		comboBoxWaterSupply.setModel(new DefaultComboBoxModel<String>(new String[] {"SELECT", "Drought", "Broken pump", "Dam water level", "Tanker truck", "Increase of customers", "Others"}));
+		comboBoxWaterSupply.setModel(new DefaultComboBoxModel(new String[] {"SELECT", "Drought", "Broken pump", "Dam water level", "Tanker truck", "Increase of customers"}));
 		GridBagConstraints gbc_comboBoxWaterSupply = new GridBagConstraints();
 		gbc_comboBoxWaterSupply.insets = new Insets(0, 0, 5, 0);
 		gbc_comboBoxWaterSupply.fill = GridBagConstraints.HORIZONTAL;
