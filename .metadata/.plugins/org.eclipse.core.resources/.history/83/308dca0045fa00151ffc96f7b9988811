@@ -1760,7 +1760,6 @@ public class Controller {
 				if(tables.contains(SAMECROP)){
 					from += "join " + SAMECROP + " on " + CROPCHANGE + ".SameCropID = " + SAMECROP + ".SameCropID ";
 				}
-				
 				if(tables.contains(PRIMARYCROP)){
 					from += "join " + PRIMARYCROP + " on " + CROPCHANGE + ".PrimaryCropID = " + PRIMARYCROP + ".PrimaryCropID ";
 				}
@@ -1772,16 +1771,8 @@ public class Controller {
 					from += "join " + DROUGHT + " on " + COMPLICATIONS + ".DroughtID = " + DROUGHT + ".DroughtID ";
 				}
 				
-				if(tables.contains(FLOOD)){
-					from += "join " + FLOOD + " on " + COMPLICATIONS + ".FloodID = " + FLOOD + ".FloodID ";
-				}
-				
-				if(tables.contains(LOWWATER)){
-					from += "join " + LOWWATER + " on " + COMPLICATIONS + ".LowWaterID = " + LOWWATER + ".LowWaterID ";
-				}
-				
-				if(tables.contains(LOWHARVEST)){
-					from += "join " + LOWHARVEST + " on " + COMPLICATIONS + ".LowHarvestID = " + LOWHARVEST + ".LowHarvestID ";
+				if(tables.contains(DROUGHT)){
+					from += "join " + DROUGHT + " on " + COMPLICATIONS + ".DroughtID = " + DROUGHT + ".DroughtID ";
 				}
 			}
 		}

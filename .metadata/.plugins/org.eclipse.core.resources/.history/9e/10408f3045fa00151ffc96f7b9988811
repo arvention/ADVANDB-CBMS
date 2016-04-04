@@ -1777,11 +1777,7 @@ public class Controller {
 				}
 				
 				if(tables.contains(LOWWATER)){
-					from += "join " + LOWWATER + " on " + COMPLICATIONS + ".LowWaterID = " + LOWWATER + ".LowWaterID ";
-				}
-				
-				if(tables.contains(LOWHARVEST)){
-					from += "join " + LOWHARVEST + " on " + COMPLICATIONS + ".LowHarvestID = " + LOWHARVEST + ".LowHarvestID ";
+					from += "join " + LOWWATER + " on " + COMPLICATIONS + ".LowWaterID = " + DROUGHT + ".DroughtID ";
 				}
 			}
 		}
