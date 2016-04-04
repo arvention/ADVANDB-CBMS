@@ -1822,8 +1822,6 @@ public class Controller {
 			if(tables.contains(HANDTRACTOR)){
 				from += "join " + HANDTRACTOR + " on " + EQUIPMENTS + ".HandTractorID = " + HANDTRACTOR + ".HandTractorID ";
 			}
-			
-			
 		}
 	}
 }

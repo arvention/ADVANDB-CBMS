@@ -1810,20 +1810,6 @@ public class Controller {
 			if(tables.contains(THRESHER)){
 				from += "join " + THRESHER + " on " + EQUIPMENTS + ".ThresherID = " + THRESHER + ".ThresherID ";
 			}
-			
-			if(tables.contains(INSECTICIDE)){
-				from += "join " + INSECTICIDE + " on " + EQUIPMENTS + ".InsecticideID = " + INSECTICIDE + ".InsecticideID ";
-			}
-			
-			if(tables.contains(FARMTRACTOR)){
-				from += "join " + FARMTRACTOR + " on " + EQUIPMENTS + ".FarmTractorID = " + FARMTRACTOR + ".FarmTractorID ";
-			}
-			
-			if(tables.contains(HANDTRACTOR)){
-				from += "join " + HANDTRACTOR + " on " + EQUIPMENTS + ".HandTractorID = " + HANDTRACTOR + ".HandTractorID ";
-			}
-			
-			
 		}
 	}
 }

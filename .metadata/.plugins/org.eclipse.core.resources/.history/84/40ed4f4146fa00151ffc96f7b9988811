@@ -1789,41 +1789,7 @@ public class Controller {
 	
 	private void buildEquipment(ArrayList<String> tables, String from){
 		if(!tables.isEmpty()){
-			from += "join " + EQUIPMENTS + " on " + HOUSEHOLDAGRICULTURALLIVELIHOOD + ".EquipmentID = " + EQUIPMENTS + ".EquipmentID ";
-			
-			if(tables.contains(BEASTOFBURDEN)){
-				from += "join " + BEASTOFBURDEN + " on " + EQUIPMENTS + ".BeastOfBurdenID = " + BEASTOFBURDEN + ".BeastOfBurdenID ";
-			}
-			
-			if(tables.contains(PLOW)){
-				from += "join " + PLOW + " on " + EQUIPMENTS + ".PlowID = " + PLOW + ".PlowID ";
-			}
-			
-			if(tables.contains(HARROW)){
-				from += "join " + HARROW + " on " + EQUIPMENTS + ".HarrowID = " + HARROW + ".HarrowID ";
-			}
-			
-			if(tables.contains(MOWER)){
-				from += "join " + MOWER + " on " + EQUIPMENTS + ".MowerID = " + MOWER + ".MowerID ";
-			}
-			
-			if(tables.contains(THRESHER)){
-				from += "join " + THRESHER + " on " + EQUIPMENTS + ".ThresherID = " + THRESHER + ".ThresherID ";
-			}
-			
-			if(tables.contains(INSECTICIDE)){
-				from += "join " + INSECTICIDE + " on " + EQUIPMENTS + ".InsecticideID = " + INSECTICIDE + ".InsecticideID ";
-			}
-			
-			if(tables.contains(FARMTRACTOR)){
-				from += "join " + FARMTRACTOR + " on " + EQUIPMENTS + ".FarmTractorID = " + FARMTRACTOR + ".FarmTractorID ";
-			}
-			
-			if(tables.contains(HANDTRACTOR)){
-				from += "join " + HANDTRACTOR + " on " + EQUIPMENTS + ".HandTractorID = " + HANDTRACTOR + ".HandTractorID ";
-			}
-			
-			
+			from += "join " + EQUIPMENT + " on " + HOUSEHOLDAGRICULTURALLIVELIHOOD + ".AgriculturalStatusID = " + AGRICULTURALSTATUS + ".AgriculturalStatusID ";
 		}
 	}
 }
