@@ -1497,10 +1497,9 @@ public class Controller {
 			groupby += " with rollup";
 		}
 		
-		from = buildAgriculturalStatus(tablesAgriculturalStatus, from);
-		from = buildEquipment(tablesEquipment, from);
-		from = buildCrops(tablesCrop, from);
-		
+		buildAgriculturalStatus(tablesAgriculturalStatus, from);
+		buildEquipment(tablesEquipment, from);
+		buildCrops(tablesCrop, from);
 		if(view.getInteractivePanel().getComboBoxOLAP().getSelectedItem().toString().equals("SELECT")){
 			select += ", sum(crop_vol), sum(cropincsh), yrs_in_cropind ";
 		}
@@ -1768,10 +1767,11 @@ public class Controller {
 		return from;
 	}
 	
-	private String buildAgriculturalStatus(ArrayList<String> tables, String fromClause){
+	private void buildAgriculturalStatus(ArrayList<String> tables, String fromClause){
 		String from = fromClause;
 		if(!tables.isEmpty()){
 			from += "join " + AGRICULTURALSTATUS + " on " + HOUSEHOLDAGRICULTURALLIVELIHOOD + ".AgriculturalStatusID = " + AGRICULTURALSTATUS + ".AgriculturalStatusID ";
+			System.out.println("HAHA: " + from);
 			if(tables.contains(SAMECROP) || tables.contains(PRIMARYCROP)){
 				from += "join " + CROPCHANGE + " on " + AGRICULTURALSTATUS + ".CropChangeID = " + CROPCHANGE + ".CropChangeID ";
 				if(tables.contains(SAMECROP)){
@@ -1802,11 +1802,9 @@ public class Controller {
 				}
 			}
 		}
-		return from;
 	}
 	
-	private String buildEquipment(ArrayList<String> tables, String fromClause){
-		String from = fromClause;
+	private void buildEquipment(ArrayList<String> tables, String from){
 		if(!tables.isEmpty()){
 			from += "join " + EQUIPMENTS + " on " + HOUSEHOLDAGRICULTURALLIVELIHOOD + ".EquipmentID = " + EQUIPMENTS + ".EquipmentID ";
 			
@@ -1882,6 +1880,5 @@ public class Controller {
 				from += "join " + OTHERS + " on " + EQUIPMENTS + ".OthersID = " + OTHERS + ".OthersID ";
 			}
 		}
-		return from;
 	}
 }

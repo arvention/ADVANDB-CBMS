@@ -1772,6 +1772,7 @@ public class Controller {
 		String from = fromClause;
 		if(!tables.isEmpty()){
 			from += "join " + AGRICULTURALSTATUS + " on " + HOUSEHOLDAGRICULTURALLIVELIHOOD + ".AgriculturalStatusID = " + AGRICULTURALSTATUS + ".AgriculturalStatusID ";
+			System.out.println("HAHA: " + from);
 			if(tables.contains(SAMECROP) || tables.contains(PRIMARYCROP)){
 				from += "join " + CROPCHANGE + " on " + AGRICULTURALSTATUS + ".CropChangeID = " + CROPCHANGE + ".CropChangeID ";
 				if(tables.contains(SAMECROP)){
