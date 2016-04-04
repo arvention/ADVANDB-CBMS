@@ -1753,17 +1753,7 @@ public class Controller {
 	
 	private void buildAgriculturalStatus(ArrayList<String> tables, String from){
 		if(!tables.isEmpty()){
-			from += "join " + AGRICULTURALSTATUS + " on " + HOUSEHOLDAGRICULTURALLIVELIHOOD + ".AgriculturalStatusID = " + AGRICULTURALSTATUS + ".AgriculturalStatusID ";
 			
-			if(tables.contains(SAMECROP) || tables.contains(PRIMARYCROP)){
-				from += "join " + CROPCHANGE + " on " + AGRICULTURALSTATUS + ".CropChangeID = " + CROPCHANGE + ".CropChangeID ";
-				if(tables.contains(SAMECROP)){
-					from += "join " + SAMECROP + " on " + CROPCHANGE + ".SameCropID = " + SAMECROP + ".SameCropID ";
-				}
-				if(tables.contains(PRIMARYCROP)){
-					from += "join " + PRIMARYCROP + " on " + CROPCHANGE + ".PrimaryCropID = " + PRIMARYCROP + ".PrimaryCropID ";
-				}
-			}
 		}
 	}
 	
