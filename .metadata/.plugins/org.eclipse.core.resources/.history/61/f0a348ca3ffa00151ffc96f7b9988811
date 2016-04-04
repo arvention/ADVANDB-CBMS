@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import javax.swing.JSpinner;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-import javax.swing.table.DefaultTableModel;
 
 import database.FacadeDatabase;
 
@@ -365,13 +364,9 @@ public class Controller {
 				System.out.println(query);
 				
 				long startTime = System.nanoTime();
-				facadeDatabase.getResult(query, modelTable);
+				facadeDatabase.getResult(sql, modelTable);
 				long endTime = System.nanoTime() - startTime;
 				double seconds = endTime / 1.0E09;
-				
-				view.getInteractivePanel().getLabelStatus().setText("Rows returned: " + modelTable.getData().length + " | Running time: " + seconds + " seconds");;
-				DefaultTableModel dtm = new DefaultTableModel(modelTable.getData(), modelTable.getColumnName());
-				view.getTable().setModel(dtm);
 			}
 
 			@Override
@@ -397,12 +392,6 @@ public class Controller {
 		String from = " from " + HOUSEHOLDAGRICULTURALLIVELIHOOD + " "; 
 		String where = "";
 		String groupby = "";
-		
-		from += "join " + PUROK + " on " + HOUSEHOLDAGRICULTURALLIVELIHOOD + ".PurokID = " + PUROK + ".PurokID ";
-		from += "join " + BARANGAY + " on " + PUROK + ".BarangayID = " + BARANGAY + ".BarangayID ";
-		from += "join " + ZONE + " on " + BARANGAY + ".ZoneID = " + ZONE + ".ZoneID ";
-		from += "join " + MUNICIPALITY + " on " + ZONE + ".MunicipalityID = " + MUNICIPALITY + ".MunicipalityID ";
-		from += "join " + PROVINCE + " on " + MUNICIPALITY + ".ProvinceID = " + PROVINCE + ".ProvinceID";
 		
 		// WHERE CLAUSE
 		if(view.getInteractivePanel().getComboBoxProvince().getSelectedIndex() != 0){

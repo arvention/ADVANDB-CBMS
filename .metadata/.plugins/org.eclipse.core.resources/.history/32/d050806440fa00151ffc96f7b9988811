@@ -369,7 +369,6 @@ public class Controller {
 				long endTime = System.nanoTime() - startTime;
 				double seconds = endTime / 1.0E09;
 				
-				view.getInteractivePanel().getLabelStatus().setText("Rows returned: " + modelTable.getData().length + " | Running time: " + seconds + " seconds");;
 				DefaultTableModel dtm = new DefaultTableModel(modelTable.getData(), modelTable.getColumnName());
 				view.getTable().setModel(dtm);
 			}
@@ -397,12 +396,6 @@ public class Controller {
 		String from = " from " + HOUSEHOLDAGRICULTURALLIVELIHOOD + " "; 
 		String where = "";
 		String groupby = "";
-		
-		from += "join " + PUROK + " on " + HOUSEHOLDAGRICULTURALLIVELIHOOD + ".PurokID = " + PUROK + ".PurokID ";
-		from += "join " + BARANGAY + " on " + PUROK + ".BarangayID = " + BARANGAY + ".BarangayID ";
-		from += "join " + ZONE + " on " + BARANGAY + ".ZoneID = " + ZONE + ".ZoneID ";
-		from += "join " + MUNICIPALITY + " on " + ZONE + ".MunicipalityID = " + MUNICIPALITY + ".MunicipalityID ";
-		from += "join " + PROVINCE + " on " + MUNICIPALITY + ".ProvinceID = " + PROVINCE + ".ProvinceID";
 		
 		// WHERE CLAUSE
 		if(view.getInteractivePanel().getComboBoxProvince().getSelectedIndex() != 0){
