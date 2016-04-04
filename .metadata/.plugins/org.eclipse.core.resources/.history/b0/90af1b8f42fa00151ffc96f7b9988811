@@ -1498,7 +1498,6 @@ public class Controller {
 		}
 		
 		buildAgriculturalStatus(tablesAgriculturalStatus, from);
-		buildEquipment(tablesEquipment, from);
 		
 		return select + from + where + groupby;
 	}

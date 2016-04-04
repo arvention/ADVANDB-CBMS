@@ -1497,9 +1497,6 @@ public class Controller {
 			groupby += " with rollup";
 		}
 		
-		buildAgriculturalStatus(tablesAgriculturalStatus, from);
-		buildEquipment(tablesEquipment, from);
-		
 		return select + from + where + groupby;
 	}
 	
@@ -1751,11 +1748,7 @@ public class Controller {
 		}
 	}
 	
-	private void buildAgriculturalStatus(ArrayList<String> tables, String from){
-		
-	}
-	
-	private void buildEquipment(ArrayList<String> tables, String from){
+	private void buildAgriculturalStatus(){
 		
 	}
 }

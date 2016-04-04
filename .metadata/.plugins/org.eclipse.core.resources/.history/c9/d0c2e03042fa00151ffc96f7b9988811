@@ -402,7 +402,7 @@ public class Controller {
 		from += "join " + BARANGAY + " on " + PUROK + ".BarangayID = " + BARANGAY + ".BarangayID ";
 		from += "join " + ZONE + " on " + BARANGAY + ".ZoneID = " + ZONE + ".ZoneID ";
 		from += "join " + MUNICIPALITY + " on " + ZONE + ".MunicipalityID = " + MUNICIPALITY + ".MunicipalityID ";
-		from += "join " + PROVINCE + " on " + MUNICIPALITY + ".ProvinceID = " + PROVINCE + ".ProvinceID ";
+		from += "join " + PROVINCE + " on " + MUNICIPALITY + ".ProvinceID = " + PROVINCE + ".ProvinceID";
 		
 		// WHERE CLAUSE
 		if(view.getInteractivePanel().getComboBoxProvince().getSelectedIndex() != 0){
@@ -1497,9 +1497,6 @@ public class Controller {
 			groupby += " with rollup";
 		}
 		
-		buildAgriculturalStatus(tablesAgriculturalStatus, from);
-		buildEquipment(tablesEquipment, from);
-		
 		return select + from + where + groupby;
 	}
 	
@@ -1749,13 +1746,5 @@ public class Controller {
 			if(!tables.contains(EQUIPMENTS))
 				tables.add(EQUIPMENTS);
 		}
-	}
-	
-	private void buildAgriculturalStatus(ArrayList<String> tables, String from){
-		
-	}
-	
-	private void buildEquipment(ArrayList<String> tables, String from){
-		
 	}
 }
