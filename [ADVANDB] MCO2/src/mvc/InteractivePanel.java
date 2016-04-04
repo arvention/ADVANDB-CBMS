@@ -1627,7 +1627,7 @@ public class InteractivePanel extends JPanel {
 		add(labelStatus, gbc_labelStatus);
 		
 		comboBoxOLAP = new JComboBox<String>();
-		comboBoxOLAP.setModel(new DefaultComboBoxModel<String>(new String[] {"SELECT", "Drilldown", "Rollup"}));
+		comboBoxOLAP.setModel(new DefaultComboBoxModel<String>(new String[] {"Slice/Dice", "Drilldown", "Rollup"}));
 		GridBagConstraints gbc_comboBoxOLAP = new GridBagConstraints();
 		gbc_comboBoxOLAP.insets = new Insets(0, 0, 0, 5);
 		gbc_comboBoxOLAP.fill = GridBagConstraints.HORIZONTAL;

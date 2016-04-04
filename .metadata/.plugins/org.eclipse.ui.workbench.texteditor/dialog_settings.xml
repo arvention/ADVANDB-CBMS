@@ -2,28 +2,28 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="getValue" key="selection"/>
+		<item value="System.out" key="selection"/>
 		<item value="true" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
-			<item value="getValue"/>
-			<item value="BeastOfBurden"/>
-			<item value="groupby"/>
-			<item value="group by"/>
-			<item value="flood_freq"/>
-			<item value="cropind"/>
-			<item value="query"/>
-			<item value="Primary"/>
+			<item value="System.out"/>
+			<item value="HAHAHA"/>
+			<item value="void agriculturalStatusTableAdder"/>
+			<item value="agriculturalStatusTableAdder"/>
+			<item value="prog_arcdp"/>
+			<item value="CROPS"/>
+			<item value="croptype"/>
+			<item value="table"/>
 		</list>
 		<list key="replacehistory">
+			<item value=""/>
 			<item value="Mower"/>
 			<item value="Harrow"/>
 			<item value="Plow"/>
 			<item value="where"/>
 			<item value="Same"/>
-			<item value=""/>
 			<item value="Others"/>
 			<item value="IrrigationPump"/>
 		</list>
@@ -32,7 +32,7 @@
 		<item value="257" key="DIALOG_WIDTH"/>
 		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
 		<item value="381" key="DIALOG_HEIGHT"/>
-		<item value="963" key="DIALOG_X_ORIGIN"/>
-		<item value="342" key="DIALOG_Y_ORIGIN"/>
+		<item value="1116" key="DIALOG_X_ORIGIN"/>
+		<item value="250" key="DIALOG_Y_ORIGIN"/>
 	</section>
 </section>
