@@ -1504,7 +1504,7 @@ public class Controller {
 			select += ", sum(crop_vol), sum(cropincsh), yrs_in_cropind ";
 		}
 		else{
-			select = "select " + select.substring(11);
+			select = "select " + select.substring(9);
 			select += ", sum(crop_vol), sum(cropincsh) ";
 		}
 		

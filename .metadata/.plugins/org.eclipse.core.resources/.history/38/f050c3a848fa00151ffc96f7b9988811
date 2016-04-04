@@ -56,7 +56,7 @@ public class Controller {
 	private final String WAREHOUSEGRANARY = "warehouse_granary";
 	private final String FARMSHED = "farmshed";
 	private final String IRRIGATIONPUMP = "irrigation_pump";
-	private final String OTHERS = "other_equipment";
+	private final String OTHERS = "others";
 	
 	private ArrayList<String> tablesGeo;
 	private ArrayList<String> tablesEquipment;
@@ -1499,14 +1499,6 @@ public class Controller {
 		
 		buildAgriculturalStatus(tablesAgriculturalStatus, from);
 		buildEquipment(tablesEquipment, from);
-		buildCrops(tablesCrop, from);
-		if(view.getInteractivePanel().getComboBoxOLAP().getSelectedItem().toString().equals("SELECT")){
-			select += ", sum(crop_vol), sum(cropincsh), yrs_in_cropind ";
-		}
-		else{
-			select = "select " + select.substring(11);
-			select += ", sum(crop_vol), sum(cropincsh) ";
-		}
 		
 		return select + from + where + groupby;
 	}
@@ -1759,12 +1751,6 @@ public class Controller {
 		}
 	}
 	
-	private void buildCrops(ArrayList<String> tables, String from){
-		if(tables.contains(CROPS)){
-			from += "join " + CROPS + " on " + HOUSEHOLDAGRICULTURALLIVELIHOOD + ".CropID = " + CROPS + ".CropID ";
-		}
-	}
-	
 	private void buildAgriculturalStatus(ArrayList<String> tables, String from){
 		if(!tables.isEmpty()){
 			from += "join " + AGRICULTURALSTATUS + " on " + HOUSEHOLDAGRICULTURALLIVELIHOOD + ".AgriculturalStatusID = " + AGRICULTURALSTATUS + ".AgriculturalStatusID ";
@@ -1871,10 +1857,6 @@ public class Controller {
 			
 			if(tables.contains(IRRIGATIONPUMP)){
 				from += "join " + IRRIGATIONPUMP + " on " + EQUIPMENTS + ".IrrigationPumpID = " + IRRIGATIONPUMP + ".IrrigationPumpID ";
-			}
-			
-			if(tables.contains(OTHERS)){
-				from += "join " + OTHERS + " on " + EQUIPMENTS + ".OthersID = " + OTHERS + ".OthersID ";
 			}
 		}
 	}

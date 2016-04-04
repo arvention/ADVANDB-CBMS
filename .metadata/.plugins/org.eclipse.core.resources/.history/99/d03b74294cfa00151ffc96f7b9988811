@@ -1500,12 +1500,11 @@ public class Controller {
 		buildAgriculturalStatus(tablesAgriculturalStatus, from);
 		buildEquipment(tablesEquipment, from);
 		buildCrops(tablesCrop, from);
-		if(view.getInteractivePanel().getComboBoxOLAP().getSelectedItem().toString().equals("SELECT")){
+		if(view.getInteractivePanel().getComboBoxOLAP().getSelectedIndex() != 0){
 			select += ", sum(crop_vol), sum(cropincsh), yrs_in_cropind ";
 		}
 		else{
-			select = "select " + select.substring(11);
-			select += ", sum(crop_vol), sum(cropincsh) ";
+			select = "select " + select.substring(9);
 		}
 		
 		return select + from + where + groupby;

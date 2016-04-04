@@ -1499,14 +1499,6 @@ public class Controller {
 		
 		buildAgriculturalStatus(tablesAgriculturalStatus, from);
 		buildEquipment(tablesEquipment, from);
-		buildCrops(tablesCrop, from);
-		if(view.getInteractivePanel().getComboBoxOLAP().getSelectedItem().toString().equals("SELECT")){
-			select += ", sum(crop_vol), sum(cropincsh), yrs_in_cropind ";
-		}
-		else{
-			select = "select " + select.substring(11);
-			select += ", sum(crop_vol), sum(cropincsh) ";
-		}
 		
 		return select + from + where + groupby;
 	}
@@ -1756,12 +1748,6 @@ public class Controller {
 				tables.add(OTHERS);
 			if(!tables.contains(EQUIPMENTS))
 				tables.add(EQUIPMENTS);
-		}
-	}
-	
-	private void buildCrops(ArrayList<String> tables, String from){
-		if(tables.contains(CROPS)){
-			from += "join " + CROPS + " on " + HOUSEHOLDAGRICULTURALLIVELIHOOD + ".CropID = " + CROPS + ".CropID ";
 		}
 	}
 	
