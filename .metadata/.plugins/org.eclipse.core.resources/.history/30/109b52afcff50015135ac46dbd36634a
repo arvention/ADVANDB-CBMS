@@ -1,6 +1,0 @@
-package main;
-
-public class FacadeDatabase {
-	private static final FacadeDatabase facadeDatabase = new FacadeDatabase();
-	
-}

@@ -16,16 +16,16 @@ public class Request extends Thread {
 
 		Socket s;
 		PrintWriter sender;
-		BufferedReader br;
+		//BufferedReader br;
 		@SuppressWarnings("unused")
 		String line;
 		
 		try {
 			s = new Socket(address, port);
 			sender = new PrintWriter(s.getOutputStream(), true);
-			br = new BufferedReader(new InputStreamReader(s.getInputStream()));
+			//br = new BufferedReader(new InputStreamReader(s.getInputStream()));
 			
-			sender.println("SELECT * from hpq_hh;");
+			sender.println("SELECT * from hpq_hh");
 			
 			//while ((line = br.readLine()) != null) {
 				//System.out.println(line);

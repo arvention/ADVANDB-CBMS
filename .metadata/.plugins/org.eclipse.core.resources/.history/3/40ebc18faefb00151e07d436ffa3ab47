@@ -45,9 +45,6 @@ public class QueryProcessor implements Runnable{
 				
 				request.add(message);
 				System.out.println(message);
-				if(message.contains(";")){
-					flag = false;
-				}
 				
 			} catch (IOException e) {
 				e.printStackTrace();
