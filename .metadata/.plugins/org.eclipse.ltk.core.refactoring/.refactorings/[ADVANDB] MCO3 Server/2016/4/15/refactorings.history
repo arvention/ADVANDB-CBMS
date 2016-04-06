@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;server.FileRetriever&apos; to &apos;QueryProcessor&apos;&#x0D;&#x0A;- Original project: &apos;[ADVANDB] MCO3 Server&apos;&#x0D;&#x0A;- Original element: &apos;server.FileRetriever&apos;&#x0D;&#x0A;- Renamed element: &apos;server.QueryProcessor&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;FileRetriever&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;server{FileRetriever.java[FileRetriever" matchStrategy="1" name="QueryProcessor" qualified="false" references="true" similarDeclarations="false" stamp="1459915150144" textual="false" version="1.0"/>
+</session>

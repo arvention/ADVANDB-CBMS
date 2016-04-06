@@ -29,7 +29,7 @@ public class Accepter implements Runnable{
 				System.out.println("Waiting");
 				Socket socket = serverSocket.accept();
 				System.out.println("Accepted");
-				pool.submit(new QueryProcessor(socket));
+				pool.submit(new FileRetriever(socket));
 				//Thread thread = new Thread(new FileRetriever(socket));
 				//thread.start();
 			} 
