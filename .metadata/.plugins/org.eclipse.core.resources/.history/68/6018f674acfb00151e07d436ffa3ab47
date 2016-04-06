@@ -42,6 +42,7 @@ public class QueryProcessor implements Runnable{
 		while(flag){
 			try {
 				message = bufferedReader.readLine();
+				//System.out.println(message);
 				if(message.isEmpty()){
 					flag = false;
 				}else{
