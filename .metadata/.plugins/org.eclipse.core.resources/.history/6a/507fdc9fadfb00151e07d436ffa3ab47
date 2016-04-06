@@ -21,5 +21,6 @@ public class Requester {
 				e.printStackTrace();
 			}
 		}
+		System.out.println("Average Response Time: " + avgResponseTime / threadCount);
 	}
 }

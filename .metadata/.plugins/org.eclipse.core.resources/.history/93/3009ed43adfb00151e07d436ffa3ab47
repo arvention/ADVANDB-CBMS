@@ -1,0 +1,57 @@
+package requester;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.Socket;
+
+public class Request extends Thread {
+	//private final String address = "192.168.254.6";
+	
+	private final String address = "localhost";
+	private final int port = 1234;
+
+	String file;
+
+	public Request(String file) {
+		this.file = file;
+	}
+
+	public void run() {
+
+		Socket s;
+		PrintWriter sender;
+		BufferedReader br;
+		@SuppressWarnings("unused")
+		String line;
+		
+		try {
+			s = new Socket(address, port);
+			sender = new PrintWriter(s.getOutputStream(), true);
+			br = new BufferedReader(new InputStreamReader(s.getInputStream()));
+			
+			sender.println("GET /" + file + " HTTP/1.1");
+			sender.println("Host: " + address + ":" + port);
+			sender.println("Connection: keep-alive");
+			sender.println("Cache-Control: max-age=0\r\n");
+			sender.println("Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8\n");
+			sender.println("Upgrade-Insecure-Requests: 1\n");
+			sender.println("User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36\n");
+			sender.println("Accept-Encoding: gzip, deflate, sdch\n");
+			sender.println("Accept-Language: en-US,en;q=0.8,fil;q=0.6\r\n");
+			
+			long startTime = System.currentTimeMillis();
+			while ((line = br.readLine()) != null) {
+				//System.out.println(line);
+			}
+			s.close();
+			long endTime = System.currentTimeMillis();
+			Requester.addTime(endTime - startTime);
+			//System.out.println("Finished running. Time: " + (endTime-startTime)+ " millisecs");
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		}
+	}
+
+}

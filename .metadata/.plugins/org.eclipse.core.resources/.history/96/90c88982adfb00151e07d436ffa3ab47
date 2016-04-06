@@ -4,11 +4,12 @@ package requester;
 import java.util.ArrayList;
 
 public class Requester {
+	public static ArrayList<Long> responseTime = new ArrayList<>();
 	
 	public static void main(String[] args) {
 		ArrayList<Request> requests = new ArrayList<>();
 		
-		int threadCount = 10;
+		int threadCount = 1;
 		for(int i = 0; i < threadCount; i++){
 			requests.add(new Request());
 			requests.get(i).start();
@@ -21,5 +22,14 @@ public class Requester {
 				e.printStackTrace();
 			}
 		}
+		long avgResponseTime = 0;
+		for(Long l : responseTime){
+			avgResponseTime += l;
+		}
+		System.out.println("Average Response Time: " + avgResponseTime / threadCount);
 	}
+
+	public static synchronized void addTime(long time){
+        responseTime.add(time);
+    }
 }

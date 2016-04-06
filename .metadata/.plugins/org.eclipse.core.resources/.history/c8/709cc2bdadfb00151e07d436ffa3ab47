@@ -27,10 +27,13 @@ public class Request extends Thread {
 			
 			sender.println("SELECT * from hpq_hh");
 			
+			long startTime = System.currentTimeMillis();
 			//while ((line = br.readLine()) != null) {
 				//System.out.println(line);
 			//}
 			s.close();
+			long endTime = System.currentTimeMillis();
+			Requester.addTime(endTime - startTime);
 			//System.out.println("Finished running. Time: " + (endTime-startTime)+ " millisecs");
 		} catch (IOException ex) {
 			ex.printStackTrace();

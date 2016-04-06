@@ -25,12 +25,15 @@ public class Request extends Thread {
 			sender = new PrintWriter(s.getOutputStream(), true);
 			br = new BufferedReader(new InputStreamReader(s.getInputStream()));
 			
-			sender.println("SELECT * from hpq_hh");
+			sender.println("GET /" + file + " HTTP/1.1")
 			
-			//while ((line = br.readLine()) != null) {
+			long startTime = System.currentTimeMillis();
+			while ((line = br.readLine()) != null) {
 				//System.out.println(line);
-			//}
+			}
 			s.close();
+			long endTime = System.currentTimeMillis();
+			Requester.addTime(endTime - startTime);
 			//System.out.println("Finished running. Time: " + (endTime-startTime)+ " millisecs");
 		} catch (IOException ex) {
 			ex.printStackTrace();
