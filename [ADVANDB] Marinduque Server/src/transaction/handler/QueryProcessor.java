@@ -1,5 +1,6 @@
 package transaction.handler;
 
+import database.Database;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -11,15 +12,18 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class QueryProcessor implements Runnable {
+
     private Socket socket;
     private BufferedReader bufferedReader;
     private PrintWriter pw;
+    private Database db;
 
     private ArrayList<String> request;
 
     public QueryProcessor(Socket socket) {
         this.socket = socket;
 
+        this.db = Database.getInstance();
         request = new ArrayList<>();
 
         try {
@@ -33,23 +37,27 @@ public class QueryProcessor implements Runnable {
 
     @Override
     public void run() {
-        String message;
-        boolean flag = true;
+        String requests = "";
 
+        String received;
         // get request from client
-        while (flag) {
-            try {
-                message = bufferedReader.readLine();
-
-                request.add(message);
-                System.out.println(message);
-                if (message.contains(";")) {
-                    flag = false;
-                }
-
-            } catch (IOException e) {
-                e.printStackTrace();
+        try {
+            while ((received = bufferedReader.readLine()) != null) {
+                requests += received;
             }
+            String[] requestList = requests.split(";");
+
+            for (int i = 0; i < requestList.length; i++) {
+                System.out.println(i + " " + requestList[i]);
+            }
+
+            // request.add(message);
+            //              System.out.println(message);
+            //            if (message.contains(";")) {
+            //              flag = false;
+            //        }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
         System.out.println("Finished");

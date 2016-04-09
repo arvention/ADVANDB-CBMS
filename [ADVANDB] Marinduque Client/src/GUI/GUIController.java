@@ -69,7 +69,6 @@ public class GUIController {
     // -- SEND QUERIES --------------
     public void sendQuery(String sql, int times) {
         for (int i = 0; i < times; i++) {
-            System.out.println(i + " " + sql);
             pw.println(sql);
         }
     }
