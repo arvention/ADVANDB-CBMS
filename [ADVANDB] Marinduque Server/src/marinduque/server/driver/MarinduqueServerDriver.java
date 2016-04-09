@@ -6,17 +6,12 @@
 
 package marinduque.server.driver;
 
-/**
- *
- * @author Arces
- */
+import transaction.handler.TransactionHandler;
+
 public class MarinduqueServerDriver {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        
+        new TransactionHandler();
     }
     
 }

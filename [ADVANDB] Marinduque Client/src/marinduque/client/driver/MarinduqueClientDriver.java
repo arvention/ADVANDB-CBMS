@@ -7,6 +7,7 @@
 package marinduque.client.driver;
 
 import GUI.ClientGUI;
+import GUI.GUIController;
 
 /**
  *
@@ -18,7 +19,7 @@ public class MarinduqueClientDriver {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        new ClientGUI().setVisible(true);
+        new GUIController();
     }
     
 }

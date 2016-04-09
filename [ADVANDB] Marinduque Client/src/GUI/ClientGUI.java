@@ -6,15 +6,15 @@
 
 package GUI;
 
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 /**
  *
  * @author Arces
  */
 public class ClientGUI extends javax.swing.JFrame {
-
-    /**
-     * Creates new form ClientGUI
-     */
+    
     public ClientGUI() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -547,6 +547,12 @@ public class ClientGUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public String getRead1Query(){
+        String sql = "select * from hpq_hh";
+        
+        return sql;
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox delete1CheckBox;
     private javax.swing.JSpinner delete1Spinner;
@@ -604,4 +610,606 @@ public class ClientGUI extends javax.swing.JFrame {
     private javax.swing.JLabel updateQueryLabel;
     private javax.swing.JLabel updateTimeLabel;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * @return the delete1CheckBox
+     */
+    public javax.swing.JCheckBox getDelete1CheckBox() {
+        return delete1CheckBox;
+    }
+
+    /**
+     * @param delete1CheckBox the delete1CheckBox to set
+     */
+    public void setDelete1CheckBox(javax.swing.JCheckBox delete1CheckBox) {
+        this.delete1CheckBox = delete1CheckBox;
+    }
+
+    /**
+     * @return the delete1Spinner
+     */
+    public javax.swing.JSpinner getDelete1Spinner() {
+        return delete1Spinner;
+    }
+
+    /**
+     * @param delete1Spinner the delete1Spinner to set
+     */
+    public void setDelete1Spinner(javax.swing.JSpinner delete1Spinner) {
+        this.delete1Spinner = delete1Spinner;
+    }
+
+    /**
+     * @return the delete2CheckBox
+     */
+    public javax.swing.JCheckBox getDelete2CheckBox() {
+        return delete2CheckBox;
+    }
+
+    /**
+     * @param delete2CheckBox the delete2CheckBox to set
+     */
+    public void setDelete2CheckBox(javax.swing.JCheckBox delete2CheckBox) {
+        this.delete2CheckBox = delete2CheckBox;
+    }
+
+    /**
+     * @return the delete2Spinner
+     */
+    public javax.swing.JSpinner getDelete2Spinner() {
+        return delete2Spinner;
+    }
+
+    /**
+     * @param delete2Spinner the delete2Spinner to set
+     */
+    public void setDelete2Spinner(javax.swing.JSpinner delete2Spinner) {
+        this.delete2Spinner = delete2Spinner;
+    }
+
+    /**
+     * @return the delete3CheckBox
+     */
+    public javax.swing.JCheckBox getDelete3CheckBox() {
+        return delete3CheckBox;
+    }
+
+    /**
+     * @param delete3CheckBox the delete3CheckBox to set
+     */
+    public void setDelete3CheckBox(javax.swing.JCheckBox delete3CheckBox) {
+        this.delete3CheckBox = delete3CheckBox;
+    }
+
+    /**
+     * @return the delete3Spinner
+     */
+    public javax.swing.JSpinner getDelete3Spinner() {
+        return delete3Spinner;
+    }
+
+    /**
+     * @param delete3Spinner the delete3Spinner to set
+     */
+    public void setDelete3Spinner(javax.swing.JSpinner delete3Spinner) {
+        this.delete3Spinner = delete3Spinner;
+    }
+
+    /**
+     * @return the delete4CheckBox
+     */
+    public javax.swing.JCheckBox getDelete4CheckBox() {
+        return delete4CheckBox;
+    }
+
+    /**
+     * @param delete4CheckBox the delete4CheckBox to set
+     */
+    public void setDelete4CheckBox(javax.swing.JCheckBox delete4CheckBox) {
+        this.delete4CheckBox = delete4CheckBox;
+    }
+
+    /**
+     * @return the delete4Spinner
+     */
+    public javax.swing.JSpinner getDelete4Spinner() {
+        return delete4Spinner;
+    }
+
+    /**
+     * @param delete4Spinner the delete4Spinner to set
+     */
+    public void setDelete4Spinner(javax.swing.JSpinner delete4Spinner) {
+        this.delete4Spinner = delete4Spinner;
+    }
+
+    /**
+     * @return the delete5CheckBox
+     */
+    public javax.swing.JCheckBox getDelete5CheckBox() {
+        return delete5CheckBox;
+    }
+
+    /**
+     * @param delete5CheckBox the delete5CheckBox to set
+     */
+    public void setDelete5CheckBox(javax.swing.JCheckBox delete5CheckBox) {
+        this.delete5CheckBox = delete5CheckBox;
+    }
+
+    /**
+     * @return the delete5Spinner
+     */
+    public javax.swing.JSpinner getDelete5Spinner() {
+        return delete5Spinner;
+    }
+
+    /**
+     * @param delete5Spinner the delete5Spinner to set
+     */
+    public void setDelete5Spinner(javax.swing.JSpinner delete5Spinner) {
+        this.delete5Spinner = delete5Spinner;
+    }
+
+    /**
+     * @return the delete6CheckBox
+     */
+    public javax.swing.JCheckBox getDelete6CheckBox() {
+        return delete6CheckBox;
+    }
+
+    /**
+     * @param delete6CheckBox the delete6CheckBox to set
+     */
+    public void setDelete6CheckBox(javax.swing.JCheckBox delete6CheckBox) {
+        this.delete6CheckBox = delete6CheckBox;
+    }
+
+    /**
+     * @return the delete6Spinner
+     */
+    public javax.swing.JSpinner getDelete6Spinner() {
+        return delete6Spinner;
+    }
+
+    /**
+     * @param delete6Spinner the delete6Spinner to set
+     */
+    public void setDelete6Spinner(javax.swing.JSpinner delete6Spinner) {
+        this.delete6Spinner = delete6Spinner;
+    }
+
+    /**
+     * @return the delete7CheckBox
+     */
+    public javax.swing.JCheckBox getDelete7CheckBox() {
+        return delete7CheckBox;
+    }
+
+    /**
+     * @param delete7CheckBox the delete7CheckBox to set
+     */
+    public void setDelete7CheckBox(javax.swing.JCheckBox delete7CheckBox) {
+        this.delete7CheckBox = delete7CheckBox;
+    }
+
+    /**
+     * @return the delete7Spinner
+     */
+    public javax.swing.JSpinner getDelete7Spinner() {
+        return delete7Spinner;
+    }
+
+    /**
+     * @param delete7Spinner the delete7Spinner to set
+     */
+    public void setDelete7Spinner(javax.swing.JSpinner delete7Spinner) {
+        this.delete7Spinner = delete7Spinner;
+    }
+
+    /**
+     * @return the read1CheckBox
+     */
+    public javax.swing.JCheckBox getRead1CheckBox() {
+        return read1CheckBox;
+    }
+
+    /**
+     * @param read1CheckBox the read1CheckBox to set
+     */
+    public void setRead1CheckBox(javax.swing.JCheckBox read1CheckBox) {
+        this.read1CheckBox = read1CheckBox;
+    }
+
+    /**
+     * @return the read1Spinner
+     */
+    public javax.swing.JSpinner getRead1Spinner() {
+        return read1Spinner;
+    }
+
+    /**
+     * @param read1Spinner the read1Spinner to set
+     */
+    public void setRead1Spinner(javax.swing.JSpinner read1Spinner) {
+        this.read1Spinner = read1Spinner;
+    }
+
+    /**
+     * @return the read2CheckBox
+     */
+    public javax.swing.JCheckBox getRead2CheckBox() {
+        return read2CheckBox;
+    }
+
+    /**
+     * @param read2CheckBox the read2CheckBox to set
+     */
+    public void setRead2CheckBox(javax.swing.JCheckBox read2CheckBox) {
+        this.read2CheckBox = read2CheckBox;
+    }
+
+    /**
+     * @return the read2Spinner
+     */
+    public javax.swing.JSpinner getRead2Spinner() {
+        return read2Spinner;
+    }
+
+    /**
+     * @param read2Spinner the read2Spinner to set
+     */
+    public void setRead2Spinner(javax.swing.JSpinner read2Spinner) {
+        this.read2Spinner = read2Spinner;
+    }
+
+    /**
+     * @return the read3CheckBox
+     */
+    public javax.swing.JCheckBox getRead3CheckBox() {
+        return read3CheckBox;
+    }
+
+    /**
+     * @param read3CheckBox the read3CheckBox to set
+     */
+    public void setRead3CheckBox(javax.swing.JCheckBox read3CheckBox) {
+        this.read3CheckBox = read3CheckBox;
+    }
+
+    /**
+     * @return the read3Spinner
+     */
+    public javax.swing.JSpinner getRead3Spinner() {
+        return read3Spinner;
+    }
+
+    /**
+     * @param read3Spinner the read3Spinner to set
+     */
+    public void setRead3Spinner(javax.swing.JSpinner read3Spinner) {
+        this.read3Spinner = read3Spinner;
+    }
+
+    /**
+     * @return the read4CheckBox
+     */
+    public javax.swing.JCheckBox getRead4CheckBox() {
+        return read4CheckBox;
+    }
+
+    /**
+     * @param read4CheckBox the read4CheckBox to set
+     */
+    public void setRead4CheckBox(javax.swing.JCheckBox read4CheckBox) {
+        this.read4CheckBox = read4CheckBox;
+    }
+
+    /**
+     * @return the read4Spinner
+     */
+    public javax.swing.JSpinner getRead4Spinner() {
+        return read4Spinner;
+    }
+
+    /**
+     * @param read4Spinner the read4Spinner to set
+     */
+    public void setRead4Spinner(javax.swing.JSpinner read4Spinner) {
+        this.read4Spinner = read4Spinner;
+    }
+
+    /**
+     * @return the read5CheckBox
+     */
+    public javax.swing.JCheckBox getRead5CheckBox() {
+        return read5CheckBox;
+    }
+
+    /**
+     * @param read5CheckBox the read5CheckBox to set
+     */
+    public void setRead5CheckBox(javax.swing.JCheckBox read5CheckBox) {
+        this.read5CheckBox = read5CheckBox;
+    }
+
+    /**
+     * @return the read5Spinner
+     */
+    public javax.swing.JSpinner getRead5Spinner() {
+        return read5Spinner;
+    }
+
+    /**
+     * @param read5Spinner the read5Spinner to set
+     */
+    public void setRead5Spinner(javax.swing.JSpinner read5Spinner) {
+        this.read5Spinner = read5Spinner;
+    }
+
+    /**
+     * @return the read6CheckBox
+     */
+    public javax.swing.JCheckBox getRead6CheckBox() {
+        return read6CheckBox;
+    }
+
+    /**
+     * @param read6CheckBox the read6CheckBox to set
+     */
+    public void setRead6CheckBox(javax.swing.JCheckBox read6CheckBox) {
+        this.read6CheckBox = read6CheckBox;
+    }
+
+    /**
+     * @return the read6Spinner
+     */
+    public javax.swing.JSpinner getRead6Spinner() {
+        return read6Spinner;
+    }
+
+    /**
+     * @param read6Spinner the read6Spinner to set
+     */
+    public void setRead6Spinner(javax.swing.JSpinner read6Spinner) {
+        this.read6Spinner = read6Spinner;
+    }
+
+    /**
+     * @return the read7CheckBox
+     */
+    public javax.swing.JCheckBox getRead7CheckBox() {
+        return read7CheckBox;
+    }
+
+    /**
+     * @param read7CheckBox the read7CheckBox to set
+     */
+    public void setRead7CheckBox(javax.swing.JCheckBox read7CheckBox) {
+        this.read7CheckBox = read7CheckBox;
+    }
+
+    /**
+     * @return the read7Spinner
+     */
+    public javax.swing.JSpinner getRead7Spinner() {
+        return read7Spinner;
+    }
+
+    /**
+     * @param read7Spinner the read7Spinner to set
+     */
+    public void setRead7Spinner(javax.swing.JSpinner read7Spinner) {
+        this.read7Spinner = read7Spinner;
+    }
+
+    /**
+     * @return the startTransactionBtn
+     */
+    public javax.swing.JButton getStartTransactionBtn() {
+        return startTransactionBtn;
+    }
+
+    /**
+     * @param startTransactionBtn the startTransactionBtn to set
+     */
+    public void setStartTransactionBtn(javax.swing.JButton startTransactionBtn) {
+        this.startTransactionBtn = startTransactionBtn;
+    }
+
+    /**
+     * @return the update1CheckBox
+     */
+    public javax.swing.JCheckBox getUpdate1CheckBox() {
+        return update1CheckBox;
+    }
+
+    /**
+     * @param update1CheckBox the update1CheckBox to set
+     */
+    public void setUpdate1CheckBox(javax.swing.JCheckBox update1CheckBox) {
+        this.update1CheckBox = update1CheckBox;
+    }
+
+    /**
+     * @return the update1Spinner
+     */
+    public javax.swing.JSpinner getUpdate1Spinner() {
+        return update1Spinner;
+    }
+
+    /**
+     * @param update1Spinner the update1Spinner to set
+     */
+    public void setUpdate1Spinner(javax.swing.JSpinner update1Spinner) {
+        this.update1Spinner = update1Spinner;
+    }
+
+    /**
+     * @return the update2CheckBox
+     */
+    public javax.swing.JCheckBox getUpdate2CheckBox() {
+        return update2CheckBox;
+    }
+
+    /**
+     * @param update2CheckBox the update2CheckBox to set
+     */
+    public void setUpdate2CheckBox(javax.swing.JCheckBox update2CheckBox) {
+        this.update2CheckBox = update2CheckBox;
+    }
+
+    /**
+     * @return the update2Spinner
+     */
+    public javax.swing.JSpinner getUpdate2Spinner() {
+        return update2Spinner;
+    }
+
+    /**
+     * @param update2Spinner the update2Spinner to set
+     */
+    public void setUpdate2Spinner(javax.swing.JSpinner update2Spinner) {
+        this.update2Spinner = update2Spinner;
+    }
+
+    /**
+     * @return the update3CheckBox
+     */
+    public javax.swing.JCheckBox getUpdate3CheckBox() {
+        return update3CheckBox;
+    }
+
+    /**
+     * @param update3CheckBox the update3CheckBox to set
+     */
+    public void setUpdate3CheckBox(javax.swing.JCheckBox update3CheckBox) {
+        this.update3CheckBox = update3CheckBox;
+    }
+
+    /**
+     * @return the update3Spinner
+     */
+    public javax.swing.JSpinner getUpdate3Spinner() {
+        return update3Spinner;
+    }
+
+    /**
+     * @param update3Spinner the update3Spinner to set
+     */
+    public void setUpdate3Spinner(javax.swing.JSpinner update3Spinner) {
+        this.update3Spinner = update3Spinner;
+    }
+
+    /**
+     * @return the update4CheckBox
+     */
+    public javax.swing.JCheckBox getUpdate4CheckBox() {
+        return update4CheckBox;
+    }
+
+    /**
+     * @param update4CheckBox the update4CheckBox to set
+     */
+    public void setUpdate4CheckBox(javax.swing.JCheckBox update4CheckBox) {
+        this.update4CheckBox = update4CheckBox;
+    }
+
+    /**
+     * @return the update4Spinner
+     */
+    public javax.swing.JSpinner getUpdate4Spinner() {
+        return update4Spinner;
+    }
+
+    /**
+     * @param update4Spinner the update4Spinner to set
+     */
+    public void setUpdate4Spinner(javax.swing.JSpinner update4Spinner) {
+        this.update4Spinner = update4Spinner;
+    }
+
+    /**
+     * @return the update5CheckBox
+     */
+    public javax.swing.JCheckBox getUpdate5CheckBox() {
+        return update5CheckBox;
+    }
+
+    /**
+     * @param update5CheckBox the update5CheckBox to set
+     */
+    public void setUpdate5CheckBox(javax.swing.JCheckBox update5CheckBox) {
+        this.update5CheckBox = update5CheckBox;
+    }
+
+    /**
+     * @return the update5Spinner
+     */
+    public javax.swing.JSpinner getUpdate5Spinner() {
+        return update5Spinner;
+    }
+
+    /**
+     * @param update5Spinner the update5Spinner to set
+     */
+    public void setUpdate5Spinner(javax.swing.JSpinner update5Spinner) {
+        this.update5Spinner = update5Spinner;
+    }
+
+    /**
+     * @return the update6CheckBox
+     */
+    public javax.swing.JCheckBox getUpdate6CheckBox() {
+        return update6CheckBox;
+    }
+
+    /**
+     * @param update6CheckBox the update6CheckBox to set
+     */
+    public void setUpdate6CheckBox(javax.swing.JCheckBox update6CheckBox) {
+        this.update6CheckBox = update6CheckBox;
+    }
+
+    /**
+     * @return the update6Spinner
+     */
+    public javax.swing.JSpinner getUpdate6Spinner() {
+        return update6Spinner;
+    }
+
+    /**
+     * @param update6Spinner the update6Spinner to set
+     */
+    public void setUpdate6Spinner(javax.swing.JSpinner update6Spinner) {
+        this.update6Spinner = update6Spinner;
+    }
+
+    /**
+     * @return the update7CheckBox
+     */
+    public javax.swing.JCheckBox getUpdate7CheckBox() {
+        return update7CheckBox;
+    }
+
+    /**
+     * @param update7CheckBox the update7CheckBox to set
+     */
+    public void setUpdate7CheckBox(javax.swing.JCheckBox update7CheckBox) {
+        this.update7CheckBox = update7CheckBox;
+    }
+
+    /**
+     * @return the update7Spinner
+     */
+    public javax.swing.JSpinner getUpdate7Spinner() {
+        return update7Spinner;
+    }
+
+    /**
+     * @param update7Spinner the update7Spinner to set
+     */
+    public void setUpdate7Spinner(javax.swing.JSpinner update7Spinner) {
+        this.update7Spinner = update7Spinner;
+    }
 }
