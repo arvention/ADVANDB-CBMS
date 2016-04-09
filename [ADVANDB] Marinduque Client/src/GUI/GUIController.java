@@ -242,43 +242,92 @@ public class GUIController {
     // -- GET QUERIES --------------
     // --- READ QUERIES --------------------------------------------------
     public String getRead1Query() {
-        String sql = "SELECT * FROM hpq_hh;";
+        String sql = "SELECT id AS ID, mun AS 'Municipality', zone AS 'Zone', brgy AS 'Barangay',"
+                + " purok AS 'Purok', house_type AS 'House Type', nbr AS 'Room Count',"
+                + " roof AS 'Roof Composition', wall AS 'Wall Composition', nofw AS 'Number of OFW',"
+                + " nnucfam AS 'Number of Families' FROM hpq_hh GROUP BY mun, zone, brgy, purok;";
 
         return sql;
     }
 
     public String getRead2Query() {
-        String sql = "SELECT * FROM hpq_crop;";
+        String sql = "SELECT id AS 'ID', mun AS 'Municipality', zone AS 'Zone', brgy AS 'Barangay',"
+                + " purok AS 'Purok', nofw AS 'Number of OFW', nnucfam AS 'Number of Families',"
+                + " prog_slp_nmem AS 'Number of Beneficiaries of Sustainable Livelihood Program',"
+                + " prog_fudforsch_nmem AS 'Number of Beneficiaries of Food for School Program',"
+                + " prog_fudforwrk_nmem AS 'Number of Beneficiaries of Food for Work Program',"
+                + " prog_cshforwrk_nmem AS 'Number of Beneficiaries of Cash for Work Program',"
+                + " prog_spisc_nmem AS 'Number of Beneficiaries of Social Pension for the Indigent Senior Citizen',"
+                + " prog_cct_nmem AS 'Number of Beneficiaries of Pantawid Pamilyang Pilipino Program',"
+                + " prog_arcdp_nmem AS 'Number of Beneficiaries of Agrarian Reform Community Development Program',"
+                + " prog_cbep_nmem AS 'Number of Beneficiaries of Community-Based Employment Program',"
+                + " prog_phiheal_ofw_nmem AS 'Number of Beneficiaries of Philhealth - OFW',"
+                + " prog_phiheal_empl_nmem AS 'Number of Beneficiaries of Philhealth - Employed',"
+                + " prog_phiheal_indiv_nmem AS 'Number of Beneficiaries of Philhealth - Individually Paying',"
+                + " prog_phiheal_spon_nmem AS 'Number of Beneficiaries of Philhealth - Sponsored',"
+                + " prog_phiheal_life_nmem AS 'Number of Beneficiaries of Philhealth - Lifetime',"
+                + " nprog AS 'Number of Other Programs Where the Household Benefits From' FROM hpq_hh GROUP BY"
+                + " mun, zone, brgy, purok;";
 
         return sql;
     }
 
     public String getRead3Query() {
-        String sql = "SELECT * FROM hpq_hh;";
+        String sql = "SELECT mun AS 'Municipality', zone AS 'Zone', brgy AS 'Barangay',"
+                + " purok AS 'Purok', croptype AS 'Different Types of Crop',"
+                + " COUNT(croptype) AS 'Number of Household That Plants This Type of Crop' FROM hpq_crop"
+                + " JOIN hpq_hh ON hpq_crop.`main.id` = hpq_hh.id GROUP BY mun, zone, brgy, purok;";
 
         return sql;
     }
 
     public String getRead4Query() {
-        String sql = "SELECT * FROM hpq_crop;";
+        String sql = "SELECT mun AS 'Municipality', zone AS 'Zone', brgy AS 'Barangay',"
+                + " purok AS 'Purok', mdeady AS 'Cause of Death', COUNT(mdeady) AS 'Total Number of Death'"
+                + " FROM hpq_death JOIN hpq_hh ON hpq_death.`main.id` = hpq_hh.id GROUP BY"
+                + " mun, zone, brgy, purok, mdeady;";
 
         return sql;
     }
 
     public String getRead5Query() {
-        String sql = "SELECT * FROM hpq_hh;";
+        String sql = "SELECT mun AS 'Municipality', zone AS 'Zone', brgy AS 'Barangay',"
+                + " purok AS 'Purok', aquaequiptype AS 'Equipment for Fishing',"
+                + " SUM(aquani_vol) AS 'Number of Fish Caught' FROM hpq_hh JOIN hpq_aquaequip"
+                + " ON hpq_hh.id = hpq_aquaequip.`main.id` JOIN hpq_aquani ON hpq_aquaequip.`main.id` ="
+                + " hpq_aquani.`main.id` GROUP BY mun, zone, brgy, purok, aquaequiptype;";
 
         return sql;
     }
 
     public String getRead6Query() {
-        String sql = "SELECT * FROM hpq_crop;";
+        String sql = "SELECT mun AS 'Municipality', zone AS 'Zone', brgy AS 'Barangay',"
+                + " purok AS 'Purok', SUM(cropincsh) AS 'Total Income From Farming',"
+                + " SUM(crop_vol) AS 'Total Volume of Crop Harvested',"
+                + " SUM(fishincsh) AS 'Total Income from Fishing',"
+                + " SUM(aquani_vol) AS 'Total Volume of Fish Caught' FROM hpq_crop GROUP BY"
+                + " mun, zone, brgy, purok;";
 
         return sql;
     }
 
     public String getRead7Query() {
-        String sql = "SELECT * FROM hpq_hh;";
+        String sql = "SELECT id AS 'ID of Household', memno AS 'ID of Member',"
+                + " mun AS 'Municipality', zone AS 'Zone', brgy AS 'Barangay', purok AS 'Purok',"
+                + " age_yr AS 'Age', occup AS 'Work', yrs_in_cropind AS 'Number of Years in the Farming Industry',"
+                + " nalp AS 'Number of Parcel Farm Land', ncrop AS 'Number of Crops Planted Last Year',"
+                + " wagcshm AS 'Total Salary', agriequip1 AS 'Uses Beast of Burden',"
+                + " agriequip2 AS 'Uses Plow', agriequip3 AS 'Uses Harrow', agriequip4 AS 'Uses Mower',"
+                + " agriequip5 AS 'Thresher', agriequip6 AS 'Uses Insecticide Sprayer', agriequip7 AS 'Uses Farm Tractor',"
+                + " agriequip8 AS 'Uses Hand Tractor', agriequip9 AS 'Uses Mudboat', agriequip10 AS 'Uses Planter',"
+                + " agriequip11 AS 'Uses Mechanical Dryer', agriequip12 AS 'Uses Drying Pavement',"
+                + " agriequip13 AS 'Uses Feed Mill', agriequip14 AS 'Uses Harvester', agriequip15 AS 'Uses Warehouse Granary',"
+                + " agriequip16 AS 'Uses Farmshed', agriequip17 AS 'Uses Irrigation Pump',"
+                + " agriequip18 AS 'Uses Other Tools', u_amt_harv AS 'Total Volume of Crop Harvested Last Year',"
+                + " u_low_harv AS 'Cause of Low Yield', croptype AS 'Type of Crop', SUM(crop_vol) AS 'Total Volume of Crop Harvested'"
+                + " FROM hpq_hh JOIN hpq_mem ON hpq_hh.id = hpq_mem.`main.id` JOIN hpq_crop on hpq_hh.id = hpq_crop.`main.id`"
+                + " JOIN hpq_arcdp_mem ON hpq_hh.id = hpq_arcdp_mem.`main.id` AND hpq_arcdp_mem.arcdp_mem_refno ="
+                + " hpq_mem.memno GROUP BY id, mun, zone, brgy, purok, memno, croptype;";
 
         return sql;
     }
