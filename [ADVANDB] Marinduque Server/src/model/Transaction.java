@@ -11,11 +11,12 @@ package model;
  * @author Arces
  */
 public class Transaction {
+    private int id;
     private String query;
     private int source;
     private int destination;
     
-    public Transaction(int source, String query, int destination){
+    public Transaction(int id, int source, String query, int destination){
         this.source = source;
         this.query = query;
         this.destination = destination;
