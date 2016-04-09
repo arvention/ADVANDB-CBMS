@@ -9,12 +9,16 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import model.Transaction;
 
 public class Listener implements Runnable{
     private Controller observer;
 
     private final int port = 123;
     private final int numThreads = 8;
+    private final int MARINDUQUEID = 1;
+    private final int PALAWANID = 2;
+    private final int CENTRALID = 3;
     
     private ServerSocket serverSocket;
     private ExecutorService pool;
@@ -22,17 +26,23 @@ public class Listener implements Runnable{
     private BufferedReader bufferedReader;
     private PrintWriter printWriter;
     
-    private String line;
+    private String request;
+    
+    private TransactionMonitor tmMarinduque;
+    private TransactionMonitor tmCentral;
+    private TransactionMonitor tmPalawan;
     
     public void addObserver(Controller observer){
         this.observer = observer;
         try {
             serverSocket = new ServerSocket(port);
             pool = Executors.newFixedThreadPool(numThreads);
-            
         } catch (IOException e) {
             e.printStackTrace();
         }
+        tmMarinduque = new TransactionMonitor();
+        tmCentral = new TransactionMonitor();
+        tmPalawan = new TransactionMonitor();
     }
     
     @Override
@@ -45,16 +55,31 @@ public class Listener implements Runnable{
                 
                 bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                 
-                while ((line = bufferedReader.readLine()) != null) {
-                    System.out.println(line);
+                request = bufferedReader.readLine();
+                System.out.println(request);
+                
+                String[] splitRequest = request.split("-");
+                Transaction transaction = new Transaction(Integer.parseInt(splitRequest[0]), Integer.parseInt(splitRequest[1]), 
+                        splitRequest[2], Integer.parseInt(splitRequest[3]));
+                
+                if(Integer.parseInt(splitRequest[3]) == MARINDUQUEID){
+                    tmMarinduque.addTransaction(transaction);
+                    notifyObservers(request, MARINDUQUEID);
+                } else if(Integer.parseInt(splitRequest[3]) == PALAWANID){
+                    tmPalawan.addTransaction(transaction);
+                    notifyObservers(request, PALAWANID);
+                } else if(Integer.parseInt(splitRequest[3]) == CENTRALID){
+                    tmCentral.addTransaction(transaction);
+                    notifyObservers(request, CENTRALID);
                 }
+                
             }
         } catch(IOException e){
             e.printStackTrace();
         }
     }
     
-    private void notifyObservers(){
-        observer.notifyObserver();
+    private void notifyObservers(String query, int location){
+        observer.notifyObserver(query, location);
     }
 }

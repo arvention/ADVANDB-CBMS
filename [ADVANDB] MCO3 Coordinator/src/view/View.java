@@ -3,7 +3,11 @@ package view;
 
 public class View extends javax.swing.JFrame {
 
-    public static View view = new View();
+    private static View view = new View();
+
+    public static View getView() {
+        return view;
+    }
     
     
     private View() {
@@ -156,4 +160,52 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JTable tablePalawan;
     private javax.swing.JTextPane textpaneStatus;
     // End of variables declaration//GEN-END:variables
+
+    public javax.swing.JLabel getLabelCentral() {
+        return labelCentral;
+    }
+
+    public javax.swing.JLabel getLabelCoordinator() {
+        return labelCoordinator;
+    }
+
+    public javax.swing.JLabel getLabelMarinduque() {
+        return labelMarinduque;
+    }
+
+    public javax.swing.JLabel getLabelPalawan() {
+        return labelPalawan;
+    }
+
+    public javax.swing.JScrollPane getScrollpaneCentral() {
+        return scrollpaneCentral;
+    }
+
+    public javax.swing.JScrollPane getScrollpaneMarinduque() {
+        return scrollpaneMarinduque;
+    }
+
+    public javax.swing.JScrollPane getScrollpanePalawan() {
+        return scrollpanePalawan;
+    }
+
+    public javax.swing.JScrollPane getScrollpaneStatus() {
+        return scrollpaneStatus;
+    }
+
+    public javax.swing.JTable getTableCentral() {
+        return tableCentral;
+    }
+
+    public javax.swing.JTable getTableMarinduque() {
+        return tableMarinduque;
+    }
+
+    public javax.swing.JTable getTablePalawan() {
+        return tablePalawan;
+    }
+
+    public javax.swing.JTextPane getTextpaneStatus() {
+        return textpaneStatus;
+    }
 }
