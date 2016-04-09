@@ -61,13 +61,13 @@ public class Listener implements Runnable{
                 Transaction transaction = new Transaction(Integer.parseInt(splitRequest[0]), Integer.parseInt(splitRequest[1]), 
                         Integer.parseInt(splitRequest[2]), splitRequest[3]);
                 
-                if(Integer.parseInt(splitRequest[3]) == MARINDUQUEID){
+                if(Integer.parseInt(splitRequest[2]) == MARINDUQUEID){
                     tmMarinduque.addTransaction(transaction);
                     notifyObservers(request, MARINDUQUEID);
-                } else if(Integer.parseInt(splitRequest[3]) == PALAWANID){
+                } else if(Integer.parseInt(splitRequest[2]) == PALAWANID){
                     tmPalawan.addTransaction(transaction);
                     notifyObservers(request, PALAWANID);
-                } else if(Integer.parseInt(splitRequest[3]) == CENTRALID){
+                } else if(Integer.parseInt(splitRequest[2]) == CENTRALID){
                     tmCentral.addTransaction(transaction);
                     notifyObservers(request, CENTRALID);
                 }
