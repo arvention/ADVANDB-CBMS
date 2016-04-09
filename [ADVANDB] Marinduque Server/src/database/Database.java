@@ -48,32 +48,26 @@ public class Database {
 
         return result;
     }
-
+    
     public String processDeleteQuery(String sql, String table) {
         String result = "";
-        ArrayList<Integer> idList = getIDList(table);
+        int id = getFirstID(table);
 
         if (table.equals("hpq_hh")) {
-            sql += " WHERE id = ";
-            for (int i = 0; i < idList.size(); i++) {
-                sql += idList.get(i);
-                if (i != idList.size() - 1) {
-                    sql += " or id = ";
-                } else {
-                    sql += ";";
-                }
-            }
+            sql += " WHERE id = " + id;
+        }
+        else{
+            sql += " WHERE `main.id` = " + id;
         }
 
         result = sql;
         return result;
     }
 
-    public ArrayList<Integer> getIDList(String table) {
+    public int getFirstID(String table) {
         sql = "";
         ResultSet rs;
-        int id;
-        ArrayList<Integer> idList = new ArrayList<>();
+        int id = 0;
 
         try {
             if (table.equals("hpq_hh")) {
@@ -89,11 +83,10 @@ public class Database {
                 } else {
                     id = rs.getInt("main.id");
                 }
-                idList.add(id);
             }
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return idList;
+        return id;
     }
 }

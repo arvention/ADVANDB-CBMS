@@ -28,35 +28,33 @@ public class QueryProcessor implements Runnable {
     public void run() {
         while (true) {
             Transaction t = tm.dequeueTransaction();
+            String sendQuery = "";
 
             if (t != null) {
                 try {
                     String query = t.getQuery();
 
                     if (query.contains("SELECT")) {
-
+                        
                     } else if (query.contains("UPDATE")) {
-                        //update db
-                        System.out.println("update");
+                        //db.processUpdateQuery(query);
                     } else if (query.contains("DELETE")) {
                         String[] querySplit = query.split(" ");
 
                         String table = querySplit[querySplit.length - 1];
-                        //delete db
-                        String deleteQuery = db.processDeleteQuery(query, table);
-                        System.out.println(deleteQuery);
+                        sendQuery = db.processDeleteQuery(query, table);
                     }
 
-                    System.out.println("client source " + t.getSource());
                     //if source came from client
                     if (t.getSource() == MARINDUQUE_ID) {
-                        System.out.println("client source!");
                         //connect to coordinator
                         socket = new Socket(address, port);
                         pw = new PrintWriter(socket.getOutputStream(), true);
 
                         //send transaction to coordinator
-                        pw.println(t.getSource() + "-" + t.getQuery() + "-" + t.getDestination());
+                        String sendProtocol = t.getId() + "-" + t.getSource() + "-" + sendQuery + "-" + t.getDestination();
+                        System.out.println(sendProtocol);
+                        pw.println(sendProtocol);
 
                         //disconnect to coordinator
                         pw.close();

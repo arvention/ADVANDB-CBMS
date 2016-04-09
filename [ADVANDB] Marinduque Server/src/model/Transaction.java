@@ -16,7 +16,7 @@ public class Transaction {
     private int source;
     private int destination;
     
-    public Transaction(int id, int source, String query, int destination){
+    public Transaction(int source, String query, int destination){
         this.source = source;
         this.query = query;
         this.destination = destination;
@@ -62,6 +62,20 @@ public class Transaction {
      */
     public void setDestination(int destination) {
         this.destination = destination;
+    }
+
+    /**
+     * @return the id
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(int id) {
+        this.id = id;
     }
     
 }

@@ -22,6 +22,7 @@ public class GUIController {
     private int port = 1234;
     private Socket soc;
     private PrintWriter pw;
+    private Random random = new Random();
 
     public GUIController() {
         // -- GUI ---
@@ -366,7 +367,6 @@ public class GUIController {
     }
 
     public String getUpdate6Query() {
-        Random random = new Random();
 
         int number = 1;
 

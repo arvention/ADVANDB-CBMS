@@ -39,6 +39,17 @@ public class TransactionMonitor {
     }
     
     public synchronized void addTransaction(Transaction t){
+        t.setId(generateID());
         transactionList.add(t);
+    }
+    
+    public int generateID(){
+        int id;
+        if(transactionList.isEmpty()){
+            id = 1;
+        }else{
+            id = transactionList.get(transactionList.size() - 1).getId() + 1;
+        }
+        return id;
     }
 }
