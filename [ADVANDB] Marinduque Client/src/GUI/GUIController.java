@@ -40,6 +40,7 @@ public class GUIController {
                     // -- Send Queries ---
                     sendReadingQueries();
                     sendUpdatingQueries();
+                    sendDeletingQueries();
 
                     // -- Disconnect to Server ---
                     pw.close();
@@ -366,14 +367,12 @@ public class GUIController {
 
     public String getUpdate6Query() {
         Random random = new Random();
-        
-        int number;
-        
-        for(int counter = 1; counter <= 1; counter++) {
-            number = 1 + random.nextInt(17);
-        }
-        
-        String sql = "UPDATE hpq_death SET mdeady = number;";
+
+        int number = 1;
+
+        number = 1 + random.nextInt(17);
+
+        String sql = "UPDATE hpq_death SET mdeady = " + number + ";";
 
         return sql;
     }
@@ -386,7 +385,7 @@ public class GUIController {
 
     // --- DELETE QUERIES ---------------------------------------------
     public String getDelete1Query() {
-        String sql = "SELECT * FROM hpq_hh;";
+        String sql = "DELETE FROM hpq_hh;";
 
         return sql;
     }
@@ -422,7 +421,7 @@ public class GUIController {
     }
 
     public String getDelete7Query() {
-        String sql = "SELECT * FROM hpq_arcdp;";
+        String sql = "DELETE FROM hpq_arcdp_mem;";
 
         return sql;
     }

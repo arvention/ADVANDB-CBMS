@@ -87,7 +87,7 @@ public class Database {
                 if (table.equals("hpq_hh")) {
                     id = rs.getInt("id");
                 } else {
-                    id = rs.getInt("`main.id`");
+                    id = rs.getInt("main.id");
                 }
                 idList.add(id);
             }

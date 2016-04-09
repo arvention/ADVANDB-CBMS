@@ -13,7 +13,7 @@ public class QueryProcessor implements Runnable {
 
     private Socket socket;
     private String address = "localhost";
-    private int port = 1235;
+    private int port = 123;
     private PrintWriter pw;
     private Database db;
     private TransactionMonitor tm;
@@ -47,8 +47,10 @@ public class QueryProcessor implements Runnable {
                         System.out.println(deleteQuery);
                     }
 
+                    System.out.println("client source " + t.getSource());
                     //if source came from client
-                    if (t.getSource() != MARINDUQUE_ID) {
+                    if (t.getSource() == MARINDUQUE_ID) {
+                        System.out.println("client source!");
                         //connect to coordinator
                         socket = new Socket(address, port);
                         pw = new PrintWriter(socket.getOutputStream(), true);

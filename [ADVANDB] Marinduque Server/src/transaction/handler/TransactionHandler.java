@@ -15,8 +15,11 @@ import GUI.ServerGUI;
 public class TransactionHandler {
     private QueryReceiver receiver;
     private QueryProcessor processor;
+    private ServerGUI gui;
     
     public TransactionHandler(){
+        this.gui = new ServerGUI();
+        gui.setVisible(true);
         
         this.receiver = new QueryReceiver(8);
         Thread r = new Thread(receiver);
