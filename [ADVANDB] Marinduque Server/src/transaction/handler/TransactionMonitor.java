@@ -17,6 +17,7 @@ import model.Transaction;
 public class TransactionMonitor {
     private ArrayList<Transaction> transactionList;
     private static TransactionMonitor monitorInstance = new TransactionMonitor();
+    private int maxID = -1;
     
     private TransactionMonitor(){
         this.transactionList = new ArrayList<>();
@@ -39,17 +40,16 @@ public class TransactionMonitor {
     }
     
     public synchronized void addTransaction(Transaction t){
-        t.setId(generateID());
+        generateID();
+        t.setId(maxID);
         transactionList.add(t);
     }
     
-    public int generateID(){
-        int id;
-        if(transactionList.isEmpty()){
-            id = 1;
+    public void generateID(){
+        if(transactionList.isEmpty() && maxID == -1){
+            maxID = 1;
         }else{
-            id = transactionList.get(transactionList.size() - 1).getId() + 1;
+            maxID++;
         }
-        return id;
     }
 }

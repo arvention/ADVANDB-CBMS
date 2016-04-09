@@ -56,9 +56,8 @@ public class GUIController {
 
     // -- SEND QUERIES --------------
     public void sendQuery(String sql, int times) {
-        int source = 1; //marinduque id
         for (int i = 0; i < times; i++) {
-            pw.println(source + "-" + sql);
+            pw.println(sql);
         }
     }
 

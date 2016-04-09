@@ -43,9 +43,9 @@ public class QueryReceiver implements Runnable {
 
     @Override
     public void run() {
-        String requests = "";
         try {
             while (true) {
+                String requests = "";
                 System.out.println("Waiting");
                 Socket socket = serverSocket.accept();
                 System.out.println("Accepted");
@@ -60,9 +60,8 @@ public class QueryReceiver implements Runnable {
 
                 //store transaction
                 for (int i = 0; i < requestList.length; i++) {
-                    String[] splitRequest = requestList[i].split("-");
-                    int source = Integer.parseInt(splitRequest[0]);
-                    String query = splitRequest[1];
+                    int source = 1; //change for other areas
+                    String query = requestList[i];
 
                     Transaction transaction = new Transaction(source, query, 3);
 
