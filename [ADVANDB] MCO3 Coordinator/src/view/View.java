@@ -12,6 +12,7 @@ public class View extends javax.swing.JFrame {
     
     private View() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     public static View getInstance(){

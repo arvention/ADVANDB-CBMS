@@ -56,11 +56,14 @@ public class QueryProcessor implements Runnable {
                         logMessage = "[T" + t.getId() + "] " + "PROCESSING: Update Query.";
                         gui.getServerLogArea().append(logMessage + "\n");
 
-                        db.processUpdateQuery(query);
+                        sendQuery = db.processUpdateQuery(query);
                         logMessage = "[T" + t.getId() + "] " + "COMMITTED: Update Query.";
                         gui.getServerLogArea().append(logMessage + "\n");
-
-                        sendQuery = query;
+                        
+                        String[] updateSplit = sendQuery.split(" ");
+                        String updateID = updateSplit[updateSplit.length - 1];
+                        String updatedField = updateSplit[3];
+                        clientMessage += "UPDATING: Updated " + updatedField + " of entry with the ID, " + updateID + ".";
                     } else if (query.contains("DELETE")) {
                         logMessage = "[T" + t.getId() + "] " + "PROCESSING: Delete Query.";
                         gui.getServerLogArea().append(logMessage + "\n");

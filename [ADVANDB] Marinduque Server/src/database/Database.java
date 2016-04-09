@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -24,8 +25,19 @@ public class Database {
     private String sql;
     private Statement stmt;
     private static Database databaseInstance = new Database();
-
+    
+    private ArrayList<Integer> idList;
+    private final int query5ID = 388262;
+    
     private Database() {
+        idList = new ArrayList<>();
+        idList.add(2445351);
+        idList.add(2192989);
+        idList.add(1636555);
+        idList.add(1636423);
+        idList.add(203774);
+        idList.add(150196);
+        
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             String host = "jdbc:mysql://127.0.0.1:3306/poverty_profiling_marinduque?user=root";
@@ -58,9 +70,17 @@ public class Database {
     }
 
     public String processUpdateQuery(String sql) {
-        String result = "";
-
-        return result;
+        sql += " WHERE id = ";
+        if(sql.contains("aquani_vol")){
+            sql += query5ID;
+        } else{
+            Random random = new Random();
+            int id = idList.get(random.nextInt(idList.size() - 1) + 1);
+            
+            sql += id;
+        }
+        
+        return sql;
     }
 
     public String processDeleteQuery(String sql, String table) {

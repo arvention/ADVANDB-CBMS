@@ -246,9 +246,11 @@ public class GUIController {
     // --- READ QUERIES --------------------------------------------------
     public String getRead1Query() {
         String sql = "SELECT id AS ID, mun AS 'Municipality', zone AS 'Zone', brgy AS 'Barangay',"
-                + " purok AS 'Purok', house_type AS 'House Type', nbr AS 'Room Count',"
+                + " purok AS 'Purok', calam1_hwmny AS 'Typhoon Count', house_type AS 'House Type', nbr AS 'Room Count',"
                 + " roof AS 'Roof Composition', wall AS 'Wall Composition', nofw AS 'Number of OFW',"
-                + " nnucfam AS 'Number of Families' FROM hpq_hh GROUP BY mun, zone, brgy, purok;";
+                + " nnucfam AS 'Number of Families' FROM hpq_hh"
+                + " WHERE id = 2445351 or id = 2192989 or id = 1636555 or id = 1636423 or id = 203774"
+                + " GROUP BY mun, zone, brgy, purok;";
 
         return sql;
     }
@@ -269,8 +271,9 @@ public class GUIController {
                 + " prog_phiheal_indiv_nmem AS 'Number of Beneficiaries of Philhealth - Individually Paying',"
                 + " prog_phiheal_spon_nmem AS 'Number of Beneficiaries of Philhealth - Sponsored',"
                 + " prog_phiheal_life_nmem AS 'Number of Beneficiaries of Philhealth - Lifetime',"
-                + " nprog AS 'Number of Other Programs Where the Household Benefits From' FROM hpq_hh GROUP BY"
-                + " mun, zone, brgy, purok;";
+                + " nprog AS 'Number of Other Programs Where the Household Benefits From'"
+                + " FROM hpq_hh WHERE id = 2445351 or id = 2192989 or id = 1636555 or id = 1636423 or id = 203774"
+                + " GROUP BY mun, zone, brgy, purok;";
 
         return sql;
     }
@@ -279,7 +282,9 @@ public class GUIController {
         String sql = "SELECT mun AS 'Municipality', zone AS 'Zone', brgy AS 'Barangay',"
                 + " purok AS 'Purok', croptype AS 'Different Types of Crop',"
                 + " COUNT(croptype) AS 'Number of Household That Plants This Type of Crop' FROM hpq_crop"
-                + " JOIN hpq_hh ON hpq_crop.`main.id` = hpq_hh.id GROUP BY mun, zone, brgy, purok;";
+                + " JOIN hpq_hh ON hpq_crop.`main.id` = hpq_hh.id "
+                + " WHERE id = 2445351 or id = 2192989 or id = 1636555 or id = 1636423 or id = 203774"
+                + " GROUP BY mun, zone, brgy, purok;";
 
         return sql;
     }
@@ -287,7 +292,8 @@ public class GUIController {
     public String getRead4Query() {
         String sql = "SELECT mun AS 'Municipality', zone AS 'Zone', brgy AS 'Barangay',"
                 + " purok AS 'Purok', mdeady AS 'Cause of Death', COUNT(mdeady) AS 'Total Number of Death'"
-                + " FROM hpq_death JOIN hpq_hh ON hpq_death.`main.id` = hpq_hh.id GROUP BY"
+                + " FROM hpq_death JOIN hpq_hh ON hpq_death.`main.id` = hpq_hh.id"
+                + " WHERE id = 2445351 or id = 2192989 or id = 1636555 or id = 1636423 or id = 203774 GROUP BY"
                 + " mun, zone, brgy, purok, mdeady;";
 
         return sql;
@@ -298,7 +304,7 @@ public class GUIController {
                 + " purok AS 'Purok', aquaequiptype AS 'Equipment for Fishing',"
                 + " SUM(aquani_vol) AS 'Number of Fish Caught' FROM hpq_hh JOIN hpq_aquaequip"
                 + " ON hpq_hh.id = hpq_aquaequip.`main.id` JOIN hpq_aquani ON hpq_aquaequip.`main.id` ="
-                + " hpq_aquani.`main.id` GROUP BY mun, zone, brgy, purok, aquaequiptype;";
+                + " hpq_aquani.`main.id` WHERE id = 388262 GROUP BY mun, zone, brgy, purok, aquaequiptype;";
 
         return sql;
     }
@@ -308,8 +314,10 @@ public class GUIController {
                 + " purok AS 'Purok', SUM(cropincsh) AS 'Total Income From Farming',"
                 + " SUM(crop_vol) AS 'Total Volume of Crop Harvested',"
                 + " SUM(fishincsh) AS 'Total Income from Fishing',"
-                + " SUM(aquani_vol) AS 'Total Volume of Fish Caught' FROM hpq_crop GROUP BY"
-                + " mun, zone, brgy, purok;";
+                + " SUM(aquani_vol) AS 'Total Volume of Fish Caught'"
+                + " FROM hpq_hh JOIN hpq_crop ON hpq_hh.id = hpq_crop.`main.id`"
+                + " WHERE id = 2445351 or id = 2192989 or id = 1636555 or id = 1636423 or id = 203774"
+                + " GROUP BY mun, zone, brgy, purok;";
 
         return sql;
     }
@@ -330,7 +338,7 @@ public class GUIController {
                 + " u_low_harv AS 'Cause of Low Yield', croptype AS 'Type of Crop', SUM(crop_vol) AS 'Total Volume of Crop Harvested'"
                 + " FROM hpq_hh JOIN hpq_mem ON hpq_hh.id = hpq_mem.`main.id` JOIN hpq_crop on hpq_hh.id = hpq_crop.`main.id`"
                 + " JOIN hpq_arcdp_mem ON hpq_hh.id = hpq_arcdp_mem.`main.id` AND hpq_arcdp_mem.arcdp_mem_refno ="
-                + " hpq_mem.memno GROUP BY id, mun, zone, brgy, purok, memno, croptype;";
+                + " hpq_mem.memno WHERE id = 150196 GROUP BY id, mun, zone, brgy, purok, memno, croptype;";
 
         return sql;
     }
