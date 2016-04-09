@@ -16,6 +16,13 @@ public class Transaction {
     private int source;
     private int destination;
     
+    public Transaction(int id, int source, String query, int destination){
+        this.id = id;
+        this.source = source;
+        this.query = query;
+        this.destination = destination;
+    }
+    
     public Transaction(int source, String query, int destination){
         this.source = source;
         this.query = query;

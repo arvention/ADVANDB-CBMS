@@ -47,20 +47,24 @@ public class QueryProcessor implements Runnable {
                     }
 
                     //if source came from client
+                    //connect to coordinator
+                    socket = new Socket(address, port);
+                    pw = new PrintWriter(socket.getOutputStream(), true);
                     if (t.getSource() == MARINDUQUE_ID) {
-                        //connect to coordinator
-                        socket = new Socket(address, port);
-                        pw = new PrintWriter(socket.getOutputStream(), true);
-
                         //send transaction to coordinator
-                        String sendProtocol = t.getId() + "-" + t.getSource() + "-" + sendQuery + "-" + t.getDestination();
+                        String sendProtocol = t.getId() + "-" + t.getSource() + "-" + t.getDestination() + "-" + sendQuery;
                         System.out.println(sendProtocol);
                         pw.println(sendProtocol);
 
-                        //disconnect to coordinator
-                        pw.close();
-                        socket.close();
+                    } else {
+                        //send ok message to coordinator
+                        String sendProtocol = "OK-" + t.getId();
+                        System.out.println(sendProtocol);
+                        pw.println(sendProtocol);
                     }
+                    //disconnect to coordinator
+                    pw.close();
+                    socket.close();
                 } catch (IOException ex) {
                     Logger.getLogger(QueryProcessor.class.getName()).log(Level.SEVERE, null, ex);
                 }

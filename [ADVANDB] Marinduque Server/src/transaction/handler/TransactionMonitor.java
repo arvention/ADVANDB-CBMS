@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package transaction.handler;
 
 import java.util.ArrayList;
@@ -15,40 +14,44 @@ import model.Transaction;
  * @author Arces
  */
 public class TransactionMonitor {
+
     private ArrayList<Transaction> transactionList;
     private static TransactionMonitor monitorInstance = new TransactionMonitor();
     private int maxID = -1;
-    
-    private TransactionMonitor(){
+
+    private TransactionMonitor() {
         this.transactionList = new ArrayList<>();
     }
-    
-    public static TransactionMonitor getInstance(){
+
+    public static TransactionMonitor getInstance() {
         return monitorInstance;
     }
-    
-    public synchronized ArrayList<Transaction> getTransactions(){
+
+    public synchronized ArrayList<Transaction> getTransactions() {
         return transactionList;
     }
-    
-    public synchronized Transaction dequeueTransaction(){
+
+    public synchronized Transaction dequeueTransaction() {
         Transaction t = null;
-        if(!transactionList.isEmpty()){
+        if (!transactionList.isEmpty()) {
             t = transactionList.remove(0);
         }
         return t;
     }
-    
-    public synchronized void addTransaction(Transaction t){
-        generateID();
-        t.setId(maxID);
+
+    public synchronized void addTransaction(Transaction t) {
+        if (t.getId() == 0) {
+            generateID();
+
+            t.setId(maxID);
+        }
         transactionList.add(t);
     }
-    
-    public void generateID(){
-        if(transactionList.isEmpty() && maxID == -1){
+
+    public void generateID() {
+        if (transactionList.isEmpty() && maxID == -1) {
             maxID = 1;
-        }else{
+        } else {
             maxID++;
         }
     }

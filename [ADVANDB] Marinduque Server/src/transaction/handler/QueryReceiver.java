@@ -53,17 +53,23 @@ public class QueryReceiver implements Runnable {
                 bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
                 while ((received = bufferedReader.readLine()) != null) {
-                    System.out.println(received);
                     requests += received;
                 }
                 String[] requestList = requests.split(";");
 
-                //store transaction
+                //add transaction
                 for (int i = 0; i < requestList.length; i++) {
-                    int source = 1; //change for other areas
-                    String query = requestList[i];
+                    String[] splitRequest = requestList[i].split("-");
+                    int id = Integer.parseInt(splitRequest[0]);
+                    int source = Integer.parseInt(splitRequest[1]);
+                    int destination = Integer.parseInt(splitRequest[2]);
+                    String query = "";
 
-                    Transaction transaction = new Transaction(source, query, 3);
+                    for (int j = 3; j < splitRequest.length; j++) {
+                        query += "-" + splitRequest[j];
+                    }
+
+                    Transaction transaction = new Transaction(id, source, query, destination);
 
                     tm.addTransaction(transaction);
                 }

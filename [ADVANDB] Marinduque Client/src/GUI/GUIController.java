@@ -15,7 +15,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class GUIController {
-
     private ClientGUI gui;
 
     private String address = "localhost";
@@ -57,7 +56,10 @@ public class GUIController {
     // -- SEND QUERIES --------------
     public void sendQuery(String sql, int times) {
         for (int i = 0; i < times; i++) {
-            pw.println(sql);
+            int id = 0;
+            int source = 1;
+            int destination = 3;
+            pw.println(id + "-" + source + "-" + destination + "-" + sql);
         }
     }
 
