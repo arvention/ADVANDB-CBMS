@@ -2,14 +2,7 @@ package transaction.handler;
 
 import database.Database;
 import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.net.Socket;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
 import model.Transaction;
 
 public class QueryProcessor implements Runnable {
@@ -26,6 +19,22 @@ public class QueryProcessor implements Runnable {
 
     @Override
     public void run() {
+        while (true) {
+            Transaction t = tm.dequeueTransaction();
 
+            if (t != null) {
+                String query = t.getQuery();
+
+                if (query.contains("SELECT")) {
+                    //read from db
+                } else if (query.contains("UPDATE")) {
+                    //update db
+                } else if (query.contains("DELETE")) {
+                    //delete db
+                }
+                
+                System.out.println(query + " " + tm.getTransactions().size());
+            }
+        }
     }
 }

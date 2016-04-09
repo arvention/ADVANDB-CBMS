@@ -30,6 +30,14 @@ public class TransactionMonitor {
         return transactionList;
     }
     
+    public synchronized Transaction dequeueTransaction(){
+        Transaction t = null;
+        if(!transactionList.isEmpty()){
+            t = transactionList.remove(0);
+        }
+        return t;
+    }
+    
     public synchronized void addTransaction(Transaction t){
         transactionList.add(t);
     }

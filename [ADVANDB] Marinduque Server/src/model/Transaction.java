@@ -13,10 +13,12 @@ package model;
 public class Transaction {
     private String query;
     private int source;
+    private int destination;
     
-    public Transaction(int source, String query){
+    public Transaction(int source, String query, int destination){
         this.source = source;
         this.query = query;
+        this.destination = destination;
     }
 
     /**
@@ -45,6 +47,20 @@ public class Transaction {
      */
     public void setSource(int source) {
         this.source = source;
+    }
+
+    /**
+     * @return the destination
+     */
+    public int getDestination() {
+        return destination;
+    }
+
+    /**
+     * @param destination the destination to set
+     */
+    public void setDestination(int destination) {
+        this.destination = destination;
     }
     
 }
