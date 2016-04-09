@@ -10,6 +10,7 @@ import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -334,43 +335,51 @@ public class GUIController {
 
     // --- UPDATE QUERIES ---------------------------------------------
     public String getUpdate1Query() {
-        String sql = "SELECT * FROM hpq_hh;";
+        String sql = "UPDATE hpq_hh SET calam1_hwmny = calam1_hwmny + 1;";
 
         return sql;
     }
 
     public String getUpdate2Query() {
-        String sql = "SELECT * FROM hpq_crop;";
+        String sql = "UPDATE hpq_hh SET calam1_hwmny = calam1_hwmny - 1;";
 
         return sql;
     }
 
     public String getUpdate3Query() {
-        String sql = "SELECT * FROM hpq_hh;";
+        String sql = "UPDATE hpq_hh SET nprog = nprog + 1;";
 
         return sql;
     }
 
     public String getUpdate4Query() {
-        String sql = "SELECT * FROM hpq_crop;";
+        String sql = "UPDATE hpq_crop SET crop_vol = crop_vol + 100;";
 
         return sql;
     }
 
     public String getUpdate5Query() {
-        String sql = "SELECT * FROM hpq_hh;";
+        String sql = "UPDATE hpq_crop SET crop_vol = crop_vol - 100;";
 
         return sql;
     }
 
     public String getUpdate6Query() {
-        String sql = "SELECT * FROM hpq_crop;";
+        Random random = new Random();
+        
+        int number;
+        
+        for(int counter = 1; counter <= 1; counter++) {
+            number = 1 + random.nextInt(17);
+        }
+        
+        String sql = "UPDATE hpq_death SET mdeady = number;";
 
         return sql;
     }
 
     public String getUpdate7Query() {
-        String sql = "SELECT * FROM hpq_hh;";
+        String sql = "UPDATE hpq_aquani SET aquani_vol = aquani_vol + 100;";
 
         return sql;
     }
@@ -383,37 +392,37 @@ public class GUIController {
     }
 
     public String getDelete2Query() {
-        String sql = "SELECT * FROM hpq_crop;";
+        String sql = "DELETE FROM hpq_crop;";
 
         return sql;
     }
 
     public String getDelete3Query() {
-        String sql = "SELECT * FROM hpq_hh;";
+        String sql = "DELETE FROM hpq_death;";
 
         return sql;
     }
 
     public String getDelete4Query() {
-        String sql = "SELECT * FROM hpq_crop;";
+        String sql = "DELETE FROM hpq_aquaequip;";
 
         return sql;
     }
 
     public String getDelete5Query() {
-        String sql = "SELECT * FROM hpq_hh;";
+        String sql = "DELETE FROM hpq_aquani;";
 
         return sql;
     }
 
     public String getDelete6Query() {
-        String sql = "SELECT * FROM hpq_crop;";
+        String sql = "DELETE FROM hpq_mem;";
 
         return sql;
     }
 
     public String getDelete7Query() {
-        String sql = "SELECT * FROM hpq_hh;";
+        String sql = "SELECT * FROM hpq_arcdp;";
 
         return sql;
     }
