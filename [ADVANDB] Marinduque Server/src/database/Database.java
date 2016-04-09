@@ -43,8 +43,34 @@ public class Database {
         return databaseInstance;
     }
 
+    public String processReadQuery(String sql) {
+        String result = "";
+
+        return result;
+    }
+
+    public String processDeleteQuery(String sql, String table) {
+        String result = "";
+        ArrayList<Integer> idList = getIDList(table);
+
+        if (table.equals("hpq_hh")) {
+            sql += " WHERE id = ";
+            for (int i = 0; i < idList.size(); i++) {
+                sql += idList.get(i);
+                if (i != idList.size() - 1) {
+                    sql += " or id = ";
+                } else {
+                    sql += ";";
+                }
+            }
+        }
+
+        result = sql;
+        return result;
+    }
+
     public ArrayList<Integer> getIDList(String table) {
-        String sql = "";
+        sql = "";
         ResultSet rs;
         int id;
         ArrayList<Integer> idList = new ArrayList<>();
@@ -55,10 +81,9 @@ public class Database {
             } else {
                 sql = "SELECT distinct `main.id` FROM " + table;
             }
-            stmt.setFetchSize(5);
             rs = stmt.executeQuery(sql);
 
-            while (rs.next()) {
+            if (rs.next()) {
                 if (table.equals("hpq_hh")) {
                     id = rs.getInt("id");
                 } else {

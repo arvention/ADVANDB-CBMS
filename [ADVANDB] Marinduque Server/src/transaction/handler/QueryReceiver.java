@@ -56,6 +56,7 @@ public class QueryReceiver implements Runnable {
                     System.out.println(received);
                     requests += received;
                 }
+                System.out.println(requests);
                 String[] requestList = requests.split(";");
 
                 //store transaction
@@ -64,7 +65,7 @@ public class QueryReceiver implements Runnable {
                     int source = Integer.parseInt(splitRequest[0]);
                     String query = splitRequest[1];
 
-                    Transaction transaction = new Transaction(source, query);
+                    Transaction transaction = new Transaction(1, source, query, 3);
 
                     tm.addTransaction(transaction);
                 }
