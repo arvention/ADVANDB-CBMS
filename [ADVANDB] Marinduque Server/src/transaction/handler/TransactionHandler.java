@@ -13,16 +13,17 @@ import GUI.ServerGUI;
  * @author Arces
  */
 public class TransactionHandler {
-    private ServerGUI gui;
-    private Accepter accepter;
+    private QueryReceiver receiver;
+    private QueryProcessor processor;
     
     public TransactionHandler(){
-        this.gui = new ServerGUI();
-        gui.setVisible(true);
         
-        this.accepter = new Accepter(8);
-        Thread a = new Thread(accepter);
+        this.receiver = new QueryReceiver(8);
+        Thread r = new Thread(receiver);
+        r.start();
         
-        a.start();
+        this.processor = new QueryProcessor();
+        Thread p = new Thread(processor);
+        p.start();
     }
 }

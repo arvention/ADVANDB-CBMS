@@ -13,5 +13,4 @@ public class MarinduqueServerDriver {
     public static void main(String[] args) {
         new TransactionHandler();
     }
-    
 }

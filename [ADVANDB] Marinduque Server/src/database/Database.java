@@ -7,6 +7,12 @@ package database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -16,6 +22,7 @@ public class Database {
 
     private Connection con;
     private String sql;
+    private Statement stmt;
     private static Database databaseInstance = new Database();
 
     private Database() {
@@ -26,7 +33,7 @@ public class Database {
             String uPass = "admin";
 
             con = DriverManager.getConnection(host, uUser, uPass);
-
+            stmt = con.createStatement();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -34,5 +41,34 @@ public class Database {
 
     public static Database getInstance() {
         return databaseInstance;
+    }
+
+    public ArrayList<Integer> getIDList(String table) {
+        String sql = "";
+        ResultSet rs;
+        int id;
+        ArrayList<Integer> idList = new ArrayList<>();
+
+        try {
+            if (table.equals("hpq_hh")) {
+                sql = "SELECT distinct id FROM " + table;
+            } else {
+                sql = "SELECT distinct `main.id` FROM " + table;
+            }
+            stmt.setFetchSize(5);
+            rs = stmt.executeQuery(sql);
+
+            while (rs.next()) {
+                if (table.equals("hpq_hh")) {
+                    id = rs.getInt("id");
+                } else {
+                    id = rs.getInt("`main.id`");
+                }
+                idList.add(id);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return idList;
     }
 }
