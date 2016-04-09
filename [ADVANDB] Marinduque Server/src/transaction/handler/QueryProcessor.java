@@ -35,9 +35,10 @@ public class QueryProcessor implements Runnable {
                     String query = t.getQuery();
 
                     if (query.contains("SELECT")) {
-                        
+                        sendQuery = query;
                     } else if (query.contains("UPDATE")) {
-                        //db.processUpdateQuery(query);
+                        db.processUpdateQuery(query);
+                        sendQuery = query;
                     } else if (query.contains("DELETE")) {
                         String[] querySplit = query.split(" ");
 

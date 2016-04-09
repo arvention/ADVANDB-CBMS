@@ -49,8 +49,13 @@ public class Database {
         return result;
     }
     
-    public String processDeleteQuery(String sql, String table) {
+    public String processUpdateQuery(String sql) {
         String result = "";
+
+        return result;
+    }
+    
+    public String processDeleteQuery(String sql, String table) {
         int id = getFirstID(table);
 
         if (table.equals("hpq_hh")) {
@@ -60,8 +65,7 @@ public class Database {
             sql += " WHERE `main.id` = " + id;
         }
 
-        result = sql;
-        return result;
+        return sql;
     }
 
     public int getFirstID(String table) {
