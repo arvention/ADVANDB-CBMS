@@ -4,11 +4,8 @@ import controller.Controller;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 import model.Transaction;
 
 public class Listener implements Runnable{
@@ -21,28 +18,30 @@ public class Listener implements Runnable{
     private final int CENTRALID = 3;
     
     private ServerSocket serverSocket;
-    private ExecutorService pool;
+    //private ExecutorService pool;
     
     private BufferedReader bufferedReader;
-    private PrintWriter printWriter;
     
     private String request;
     
-    private TransactionMonitor tmMarinduque;
-    private TransactionMonitor tmCentral;
-    private TransactionMonitor tmPalawan;
+    private final TransactionMonitor tmMarinduque;
+    private final TransactionMonitor tmCentral;
+    private final TransactionMonitor tmPalawan;
     
-    public void addObserver(Controller observer){
-        this.observer = observer;
+    public Listener(){
         try {
             serverSocket = new ServerSocket(port);
-            pool = Executors.newFixedThreadPool(numThreads);
+            //pool = Executors.newFixedThreadPool(numThreads);
         } catch (IOException e) {
             e.printStackTrace();
         }
         tmMarinduque = new TransactionMonitor();
         tmCentral = new TransactionMonitor();
         tmPalawan = new TransactionMonitor();
+    }
+    
+    public void addObserver(Controller observer){
+        this.observer = observer;
     }
     
     @Override
@@ -60,7 +59,7 @@ public class Listener implements Runnable{
                 
                 String[] splitRequest = request.split("-");
                 Transaction transaction = new Transaction(Integer.parseInt(splitRequest[0]), Integer.parseInt(splitRequest[1]), 
-                        splitRequest[2], Integer.parseInt(splitRequest[3]));
+                        Integer.parseInt(splitRequest[2]), splitRequest[3]);
                 
                 if(Integer.parseInt(splitRequest[3]) == MARINDUQUEID){
                     tmMarinduque.addTransaction(transaction);
@@ -81,5 +80,17 @@ public class Listener implements Runnable{
     
     private void notifyObservers(String query, int location){
         observer.notifyObserver(query, location);
+    }
+
+    public TransactionMonitor getTmMarinduque() {
+        return tmMarinduque;
+    }
+
+    public TransactionMonitor getTmCentral() {
+        return tmCentral;
+    }
+
+    public TransactionMonitor getTmPalawan() {
+        return tmPalawan;
     }
 }

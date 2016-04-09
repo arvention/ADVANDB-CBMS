@@ -4,24 +4,24 @@ package model;
 public class Transaction {
     private int id;
     private int source;
-    private String query;
     private int sendTo;
+    private String query;
     
-    public Transaction(int id, int source, String query, int sendTo){
+    public Transaction(int id, int source, int sendTo, String query){
         this.id = id;
         this.source = source;
-        this.query = query;
         this.sendTo = sendTo;
+        this.query = query;
     }
 
-    public int getID(){
+    public int getId() {
         return id;
     }
-    
-    public void setID(int id){
+
+    public void setId(int id) {
         this.id = id;
     }
-    
+
     public int getSource() {
         return source;
     }
@@ -30,19 +30,19 @@ public class Transaction {
         this.source = source;
     }
 
-    public String getQuery() {
-        return query;
-    }
-
-    public void setQuery(String query) {
-        this.query = query;
-    }
-
     public int getSendTo() {
         return sendTo;
     }
 
     public void setSendTo(int sendTo) {
         this.sendTo = sendTo;
+    }
+
+    public String getQuery() {
+        return query;
+    }
+
+    public void setQuery(String query) {
+        this.query = query;
     }
 }
