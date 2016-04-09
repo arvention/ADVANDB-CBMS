@@ -31,6 +31,7 @@ public class QueryReceiver implements Runnable {
 
     public QueryReceiver(int numThreads) {
         port = 1234;
+        this.gui = ServerGUI.getInstance();
         try {
             serverSocket = new ServerSocket(port);
             pool = Executors.newFixedThreadPool(numThreads);
@@ -38,7 +39,6 @@ public class QueryReceiver implements Runnable {
             e.printStackTrace();
         }
         this.tm = TransactionMonitor.getInstance();
-        this.gui = new ServerGUI();
     }
 
     @Override
@@ -66,11 +66,17 @@ public class QueryReceiver implements Runnable {
                     String query = "";
 
                     for (int j = 3; j < splitRequest.length; j++) {
-                        query += "-" + splitRequest[j];
+                        if (j > 3) {
+                            query += " - ";
+                        }
+                        query += splitRequest[j];
                     }
-
+                    
+                    String log = "TRANSACTION RECEIVED: " + query;
+                    System.out.println(log);
+                    gui.getServerLogArea().append(log + "\n");
                     Transaction transaction = new Transaction(id, source, query, destination);
-
+                    
                     tm.addTransaction(transaction);
                 }
             }

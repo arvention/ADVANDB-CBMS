@@ -1,5 +1,6 @@
 package transaction.handler;
 
+import GUI.ServerGUI;
 import database.Database;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -23,9 +24,12 @@ public class QueryProcessor implements Runnable {
     private TransactionMonitor tm;
     private final int MARINDUQUE_ID = 1;
 
+    private ServerGUI gui;
+
     public QueryProcessor() {
         this.db = Database.getInstance();
         this.tm = TransactionMonitor.getInstance();
+        this.gui = ServerGUI.getInstance();
     }
 
     @Override
@@ -34,41 +38,59 @@ public class QueryProcessor implements Runnable {
             Transaction t = tm.dequeueTransaction();
             String sendQuery = "";
             String clientMessage = "";
-            
+            String logMessage = "";
+
             if (t != null) {
                 clientMessage += "[T" + t.getId() + "] ";
-                
+
                 try {
                     String query = t.getQuery();
 
                     if (query.contains("SELECT")) {
+                        logMessage = "[T" + t.getId() + "] " + "PROCESSING: Read Query.";
+                        gui.getServerLogArea().append(logMessage + "\n");
+
                         int row = db.processReadQuery(query);
                         clientMessage += "READING: Query returned " + row + " rows.";
                     } else if (query.contains("UPDATE")) {
+                        logMessage = "[T" + t.getId() + "] " + "PROCESSING: Update Query.";
+                        gui.getServerLogArea().append(logMessage + "\n");
+
                         db.processUpdateQuery(query);
+                        logMessage = "[T" + t.getId() + "] " + "COMMITTED: Update Query.";
+                        gui.getServerLogArea().append(logMessage + "\n");
+
                         sendQuery = query;
                     } else if (query.contains("DELETE")) {
+                        logMessage = "[T" + t.getId() + "] " + "PROCESSING: Delete Query.";
+                        gui.getServerLogArea().append(logMessage + "\n");
                         String[] querySplit = query.split(" ");
 
                         String table = querySplit[querySplit.length - 1];
                         sendQuery = db.processDeleteQuery(query, table);
-                        
+
+                        logMessage = "[T" + t.getId() + "] " + "COMMITTED: Delete Query.";
+                        gui.getServerLogArea().append(logMessage + "\n");
+
                         String[] deleteSplit = sendQuery.split(" ");
                         String deleteID = deleteSplit[deleteSplit.length - 1];
                         clientMessage += "DELETING: Deleted Row with ID, " + deleteID + ", from " + table;
                     }
-
+                    
+                    logMessage = "[T" + t.getId() + "] " + "TRANSACTION COMPLETE.";
+                    gui.getServerLogArea().append(logMessage + "\n");
+                    
                     //connect to client
                     clientSocket = new Socket(clientAddress, clientPort);
                     clientPrintWriter = new PrintWriter(clientSocket.getOutputStream(), true);
-                    
+
                     //send log to client
                     clientPrintWriter.println(clientMessage);
-                    
+
                     //disconnect to client
                     clientPrintWriter.close();
                     clientSocket.close();
-                    
+
                     if (!query.contains("SELECT")) {
                         //connect to coordinator
                         coorSocket = new Socket(coorAddress, coorPort);

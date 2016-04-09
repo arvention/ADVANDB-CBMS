@@ -48,7 +48,9 @@ public class Database {
         try {
             ResultSet rs = stmt.executeQuery(sql);
 
-            row = rs.getRow();
+            while (rs.next()) {
+                row++;
+            }
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }

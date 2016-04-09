@@ -15,10 +15,6 @@ import server.listener.ServerListener;
  * @author Arces
  */
 public class MarinduqueClientDriver {
-
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
         Thread listener = new Thread(new ServerListener());
         listener.start();

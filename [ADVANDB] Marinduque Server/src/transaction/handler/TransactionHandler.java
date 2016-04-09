@@ -18,8 +18,7 @@ public class TransactionHandler {
     private ServerGUI gui;
     
     public TransactionHandler(){
-        this.gui = new ServerGUI();
-        gui.setVisible(true);
+        this.gui = gui.getInstance();
         
         this.receiver = new QueryReceiver(8);
         Thread r = new Thread(receiver);
