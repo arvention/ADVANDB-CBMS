@@ -25,8 +25,7 @@ public class GUIController {
 
     public GUIController() {
         // -- GUI ---
-        this.gui = new ClientGUI();
-        gui.setVisible(true);
+        this.gui = ClientGUI.getInstance();
 
         // -- Transactions ---
         gui.getStartTransactionBtn().addMouseListener(new MouseAdapter() {
@@ -338,7 +337,7 @@ public class GUIController {
 
     // --- UPDATE QUERIES ---------------------------------------------
     public String getUpdate1Query() {
-        String sql = "UPDATE hpq_hh SET calam1_hwmny = calam1_hwmny + 1;";
+        String sql = "UPDATE hpq_hh SET calam1_hwmny = calam1_hwmny + 1 WHERE mun = ;";
 
         return sql;
     }

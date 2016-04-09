@@ -11,10 +11,14 @@ import model.Transaction;
 
 public class QueryProcessor implements Runnable {
 
-    private Socket socket;
-    private String address = "localhost";
-    private int port = 123;
-    private PrintWriter pw;
+    private Socket coorSocket, clientSocket;
+    private String coorAddress = "localhost";
+    private int coorPort = 123;
+
+    private String clientAddress = "localhost";
+    private int clientPort = 1235;
+
+    private PrintWriter coorPrintWriter, clientPrintWriter;
     private Database db;
     private TransactionMonitor tm;
     private final int MARINDUQUE_ID = 1;
@@ -29,13 +33,17 @@ public class QueryProcessor implements Runnable {
         while (true) {
             Transaction t = tm.dequeueTransaction();
             String sendQuery = "";
-
+            String clientMessage = "";
+            
             if (t != null) {
+                clientMessage += "[T" + t.getId() + "] ";
+                
                 try {
                     String query = t.getQuery();
 
                     if (query.contains("SELECT")) {
-                        sendQuery = query;
+                        int row = db.processReadQuery(query);
+                        clientMessage += "READING: Query returned " + row + " rows.";
                     } else if (query.contains("UPDATE")) {
                         db.processUpdateQuery(query);
                         sendQuery = query;
@@ -44,27 +52,45 @@ public class QueryProcessor implements Runnable {
 
                         String table = querySplit[querySplit.length - 1];
                         sendQuery = db.processDeleteQuery(query, table);
+                        
+                        String[] deleteSplit = sendQuery.split(" ");
+                        String deleteID = deleteSplit[deleteSplit.length - 1];
+                        clientMessage += "DELETING: Deleted Row with ID, " + deleteID + ", from " + table;
                     }
 
-                    //if source came from client
-                    //connect to coordinator
-                    socket = new Socket(address, port);
-                    pw = new PrintWriter(socket.getOutputStream(), true);
-                    if (t.getSource() == MARINDUQUE_ID) {
-                        //send transaction to coordinator
-                        String sendProtocol = t.getId() + "-" + t.getSource() + "-" + t.getDestination() + "-" + sendQuery;
-                        System.out.println(sendProtocol);
-                        pw.println(sendProtocol);
+                    //connect to client
+                    clientSocket = new Socket(clientAddress, clientPort);
+                    clientPrintWriter = new PrintWriter(clientSocket.getOutputStream(), true);
+                    
+                    //send log to client
+                    clientPrintWriter.println(clientMessage);
+                    
+                    //disconnect to client
+                    clientPrintWriter.close();
+                    clientSocket.close();
+                    
+                    if (!query.contains("SELECT")) {
+                        //connect to coordinator
+                        coorSocket = new Socket(coorAddress, coorPort);
+                        coorPrintWriter = new PrintWriter(coorSocket.getOutputStream(), true);
 
-                    } else {
-                        //send ok message to coordinator
-                        String sendProtocol = "OK-" + t.getId();
-                        System.out.println(sendProtocol);
-                        pw.println(sendProtocol);
+                        //if source came from client
+                        if (t.getSource() == MARINDUQUE_ID) {
+                            //send transaction to coordinator
+                            String sendProtocol = t.getId() + "-" + t.getSource() + "-" + t.getDestination() + "-" + sendQuery;
+                            System.out.println(sendProtocol);
+                            coorPrintWriter.println(sendProtocol);
+
+                        } else {
+                            //send ok message to coordinator
+                            String sendProtocol = "OK-" + t.getId();
+                            System.out.println(sendProtocol);
+                            coorPrintWriter.println(sendProtocol);
+                        }
+                        //disconnect to coordinator
+                        coorPrintWriter.close();
+                        coorSocket.close();
                     }
-                    //disconnect to coordinator
-                    pw.close();
-                    socket.close();
                 } catch (IOException ex) {
                     Logger.getLogger(QueryProcessor.class.getName()).log(Level.SEVERE, null, ex);
                 }

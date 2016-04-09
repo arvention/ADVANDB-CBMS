@@ -8,6 +8,7 @@ package marinduque.client.driver;
 
 import GUI.ClientGUI;
 import GUI.GUIController;
+import server.listener.ServerListener;
 
 /**
  *
@@ -19,6 +20,9 @@ public class MarinduqueClientDriver {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        Thread listener = new Thread(new ServerListener());
+        listener.start();
+        
         new GUIController();
     }
     

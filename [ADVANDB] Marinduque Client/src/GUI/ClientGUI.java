@@ -14,10 +14,17 @@ import java.awt.event.MouseEvent;
  * @author Arces
  */
 public class ClientGUI extends javax.swing.JFrame {
+    private static ClientGUI guiInstance = new ClientGUI();
     
-    public ClientGUI() {
+    private ClientGUI() {
         initComponents();
         this.setLocationRelativeTo(null);
+        clientLogArea.setEditable(false);
+        this.setVisible(true);
+    }
+    
+    public static ClientGUI getInstance(){
+        return guiInstance;
     }
     
     @SuppressWarnings("unchecked")
@@ -79,6 +86,9 @@ public class ClientGUI extends javax.swing.JFrame {
         delete7Spinner = new javax.swing.JSpinner();
         footerPanel = new javax.swing.JPanel();
         startTransactionBtn = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        clientLogArea = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Marinduque Client");
@@ -153,7 +163,6 @@ public class ClientGUI extends javax.swing.JFrame {
         read7CheckBox.setPreferredSize(new java.awt.Dimension(103, 40));
 
         read1Spinner.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(1)));
-        read1Spinner.setMinimumSize(new java.awt.Dimension(31, 20));
         read1Spinner.setPreferredSize(new java.awt.Dimension(50, 20));
 
         read2Spinner.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(1)));
@@ -515,6 +524,21 @@ public class ClientGUI extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        clientLogArea.setColumns(20);
+        clientLogArea.setRows(5);
+        jScrollPane2.setViewportView(clientLogArea);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -528,7 +552,8 @@ public class ClientGUI extends javax.swing.JFrame {
                         .addGap(0, 0, 0)
                         .addComponent(updatePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
-                        .addComponent(deletePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(deletePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -541,7 +566,10 @@ public class ClientGUI extends javax.swing.JFrame {
                     .addComponent(readPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(deletePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE))
                 .addGap(0, 0, 0)
-                .addComponent(footerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(footerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
         );
 
         pack();
@@ -554,6 +582,7 @@ public class ClientGUI extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea clientLogArea;
     private javax.swing.JCheckBox delete1CheckBox;
     private javax.swing.JSpinner delete1Spinner;
     private javax.swing.JCheckBox delete2CheckBox;
@@ -574,6 +603,8 @@ public class ClientGUI extends javax.swing.JFrame {
     private javax.swing.JPanel footerPanel;
     private javax.swing.JPanel headerPanel;
     private javax.swing.JLabel headerTitleLabel;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JCheckBox read1CheckBox;
     private javax.swing.JSpinner read1Spinner;
     private javax.swing.JCheckBox read2CheckBox;
@@ -1211,5 +1242,19 @@ public class ClientGUI extends javax.swing.JFrame {
      */
     public void setUpdate7Spinner(javax.swing.JSpinner update7Spinner) {
         this.update7Spinner = update7Spinner;
+    }
+
+    /**
+     * @return the clientLogArea
+     */
+    public javax.swing.JTextArea getClientLogArea() {
+        return clientLogArea;
+    }
+
+    /**
+     * @param clientLogArea the clientLogPane to set
+     */
+    public void setClientLogArea(javax.swing.JTextArea clientLogPane) {
+        this.clientLogArea = clientLogPane;
     }
 }

@@ -43,25 +43,30 @@ public class Database {
         return databaseInstance;
     }
 
-    public String processReadQuery(String sql) {
-        String result = "";
+    public int processReadQuery(String sql) {
+        int row = 0;
+        try {
+            ResultSet rs = stmt.executeQuery(sql);
 
-        return result;
+            row = rs.getRow();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return row;
     }
-    
+
     public String processUpdateQuery(String sql) {
         String result = "";
 
         return result;
     }
-    
+
     public String processDeleteQuery(String sql, String table) {
         int id = getFirstID(table);
 
         if (table.equals("hpq_hh")) {
             sql += " WHERE id = " + id;
-        }
-        else{
+        } else {
             sql += " WHERE `main.id` = " + id;
         }
 
