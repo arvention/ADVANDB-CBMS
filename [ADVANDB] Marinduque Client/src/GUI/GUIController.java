@@ -15,13 +15,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class GUIController {
+
     private ClientGUI gui;
 
     private String address = "localhost";
     private int port = 1234;
     private Socket soc;
     private PrintWriter pw;
-    private Random random = new Random();
 
     public GUIController() {
         // -- GUI ---
@@ -345,7 +345,7 @@ public class GUIController {
 
     // --- UPDATE QUERIES ---------------------------------------------
     public String getUpdate1Query() {
-        String sql = "UPDATE hpq_hh SET calam1_hwmny = calam1_hwmny + 1 WHERE mun = ;";
+        String sql = "UPDATE hpq_hh SET calam1_hwmny = calam1_hwmny + 1;";
 
         return sql;
     }
@@ -375,10 +375,8 @@ public class GUIController {
     }
 
     public String getUpdate6Query() {
-
-        int number = 1;
-
-        number = 1 + random.nextInt(17);
+        Random random = new Random();
+        int number = random.nextInt(17) + 1;
 
         String sql = "UPDATE hpq_death SET mdeady = " + number + ";";
 
