@@ -17,7 +17,7 @@ public class QueryProcessor implements Runnable {
     private int coorPort = 123;
 
     private String clientAddress = "localhost";
-    private int clientPort = 1000;
+    private int clientPort = 1001;
 
     private PrintWriter coorPrintWriter, clientPrintWriter;
     private Database db;

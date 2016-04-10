@@ -17,12 +17,12 @@ public class QueryProcessor implements Runnable {
     private int coorPort = 123;
 
     private String clientAddress = "localhost";
-    private int clientPort = 1000;
+    private int clientPort = 1002;
 
     private PrintWriter coorPrintWriter, clientPrintWriter;
     private Database db;
     private TransactionMonitor tm;
-    private final int MARINDUQUE_ID = 1;
+    private final int COMBINED_ID = 3;
 
     private ServerGUI gui;
 
@@ -100,7 +100,7 @@ public class QueryProcessor implements Runnable {
                         coorPrintWriter = new PrintWriter(coorSocket.getOutputStream(), true);
 
                         //if source came from client
-                        if (t.getSource() == MARINDUQUE_ID) {
+                        if (t.getSource() == COMBINED_ID) {
                             //send transaction to coordinator
                             String sendProtocol = t.getId() + "-" + t.getSource() + "-" + t.getDestination() + "-" + sendQuery;
                             System.out.println(sendProtocol);

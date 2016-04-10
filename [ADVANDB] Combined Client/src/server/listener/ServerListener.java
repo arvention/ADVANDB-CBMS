@@ -22,7 +22,7 @@ import java.util.logging.Logger;
 public class ServerListener implements Runnable{
     private ClientGUI gui;
     private ServerSocket listenerSocket;
-    private int port = 1000;
+    private int port = 1002;
     private BufferedReader br;
     
     public ServerListener(){
