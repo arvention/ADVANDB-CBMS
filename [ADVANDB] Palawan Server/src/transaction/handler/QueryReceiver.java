@@ -24,19 +24,17 @@ public class QueryReceiver implements Runnable {
 
     private int port;
     private ServerSocket serverSocket;
-    private ExecutorService pool;
     private BufferedReader bufferedReader;
     private ServerGUI gui;
     private TransactionMonitor tm;
     private PrintWriter pw;
     private int PALAWAN_ID = 1;
 
-    public QueryReceiver(int numThreads) {
+    public QueryReceiver() {
         port = 1236;
         this.gui = ServerGUI.getInstance();
         try {
             serverSocket = new ServerSocket(port);
-            pool = Executors.newFixedThreadPool(numThreads);
         } catch (IOException e) {
             e.printStackTrace();
         }

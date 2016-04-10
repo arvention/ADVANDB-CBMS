@@ -24,19 +24,17 @@ public class QueryReceiver implements Runnable {
 
     private int port;
     private ServerSocket serverSocket;
-    private ExecutorService pool;
     private BufferedReader bufferedReader;
     private ServerGUI gui;
     private TransactionMonitor tm;
     private PrintWriter pw;
     private int COMBINED_ID = 1;
 
-    public QueryReceiver(int numThreads) {
+    public QueryReceiver() {
         port = 1235;
         this.gui = ServerGUI.getInstance();
         try {
             serverSocket = new ServerSocket(port);
-            pool = Executors.newFixedThreadPool(numThreads);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -51,7 +49,6 @@ public class QueryReceiver implements Runnable {
                 Socket socket = serverSocket.accept();
                 
                 System.out.println("Accepted");
-                //pool.submit(new QueryProcessor(socket));
                 bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                 pw = new PrintWriter(socket.getOutputStream(), true);
                 

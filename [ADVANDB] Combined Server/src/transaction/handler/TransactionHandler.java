@@ -25,14 +25,14 @@ public class TransactionHandler {
     public TransactionHandler() {
         this.gui = gui.getInstance();
         
-        this.numProcessor = 8;
+        this.numProcessor = 4;
         this.processors = new ArrayList<>();
         
         startServer();
     }
 
     public void startServer() {
-        this.receiver = new QueryReceiver(8);
+        this.receiver = new QueryReceiver();
         Thread r = new Thread(receiver);
         r.start();
 
