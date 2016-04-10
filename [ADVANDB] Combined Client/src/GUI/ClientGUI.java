@@ -21,6 +21,8 @@ public class ClientGUI extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         clientLogArea.setEditable(false);
         this.setVisible(true);
+        areaBtnGroup.add(palawanRadio);
+        areaBtnGroup.add(marinduqueRadio);
     }
     
     public static ClientGUI getInstance(){
@@ -31,6 +33,7 @@ public class ClientGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        areaBtnGroup = new javax.swing.ButtonGroup();
         headerPanel = new javax.swing.JPanel();
         headerTitleLabel = new javax.swing.JLabel();
         readPanel = new javax.swing.JPanel();
@@ -86,6 +89,8 @@ public class ClientGUI extends javax.swing.JFrame {
         delete7Spinner = new javax.swing.JSpinner();
         footerPanel = new javax.swing.JPanel();
         startTransactionBtn = new javax.swing.JButton();
+        marinduqueRadio = new javax.swing.JRadioButton();
+        palawanRadio = new javax.swing.JRadioButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         clientLogArea = new javax.swing.JTextArea();
@@ -507,20 +512,31 @@ public class ClientGUI extends javax.swing.JFrame {
         startTransactionBtn.setBackground(new java.awt.Color(241, 241, 241));
         startTransactionBtn.setText("Start Transactions");
 
+        marinduqueRadio.setText("Marinduque");
+
+        palawanRadio.setText("Palawan");
+
         javax.swing.GroupLayout footerPanelLayout = new javax.swing.GroupLayout(footerPanel);
         footerPanel.setLayout(footerPanelLayout);
         footerPanelLayout.setHorizontalGroup(
             footerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(footerPanelLayout.createSequentialGroup()
-                .addGap(252, 252, 252)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, footerPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(marinduqueRadio)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(palawanRadio)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(startTransactionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(159, 159, 159))
         );
         footerPanelLayout.setVerticalGroup(
             footerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, footerPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(startTransactionBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(footerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(startTransactionBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(marinduqueRadio)
+                    .addComponent(palawanRadio))
                 .addContainerGap())
         );
 
@@ -574,14 +590,9 @@ public class ClientGUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    public String getRead1Query(){
-        String sql = "select * from hpq_hh";
-        
-        return sql;
-    }
-    
+ 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup areaBtnGroup;
     private javax.swing.JTextArea clientLogArea;
     private javax.swing.JCheckBox delete1CheckBox;
     private javax.swing.JSpinner delete1Spinner;
@@ -605,6 +616,8 @@ public class ClientGUI extends javax.swing.JFrame {
     private javax.swing.JLabel headerTitleLabel;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JRadioButton marinduqueRadio;
+    private javax.swing.JRadioButton palawanRadio;
     private javax.swing.JCheckBox read1CheckBox;
     private javax.swing.JSpinner read1Spinner;
     private javax.swing.JCheckBox read2CheckBox;
@@ -1256,5 +1269,19 @@ public class ClientGUI extends javax.swing.JFrame {
      */
     public void setClientLogArea(javax.swing.JTextArea clientLogPane) {
         this.clientLogArea = clientLogPane;
+    }
+
+    /**
+     * @return the marinduqueRadio
+     */
+    public javax.swing.JRadioButton getMarinduqueRadio() {
+        return marinduqueRadio;
+    }
+
+    /**
+     * @return the palawanRadio
+     */
+    public javax.swing.JRadioButton getPalawanRadio() {
+        return palawanRadio;
     }
 }

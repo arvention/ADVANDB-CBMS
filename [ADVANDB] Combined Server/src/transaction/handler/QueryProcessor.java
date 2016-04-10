@@ -6,6 +6,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Transaction;
@@ -23,13 +24,14 @@ public class QueryProcessor implements Runnable {
     private Database db;
     private TransactionMonitor tm;
     private final int COMBINED_ID = 3;
-
+    
     private ServerGUI gui;
 
     public QueryProcessor() {
         this.db = Database.getInstance();
         this.tm = TransactionMonitor.getInstance();
         this.gui = ServerGUI.getInstance();
+       
     }
 
     @Override
@@ -49,7 +51,7 @@ public class QueryProcessor implements Runnable {
                     if (query.contains("SELECT")) {
                         logMessage = "[T" + t.getId() + "] " + "PROCESSING: Read Query.";
                         gui.getServerLogArea().append(logMessage + "\n");
-
+                        
                         int row = db.processReadQuery(query);
                         clientMessage += "READING: Query returned " + row + " rows.";
                     } else if (query.contains("UPDATE")) {
