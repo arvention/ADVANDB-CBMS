@@ -40,6 +40,7 @@ public class Sender implements Runnable {
 
             if (t != null) {
                 try {
+                    System.out.println(port);
                     socket = new Socket(address, port);
                     socket.setSoTimeout(5000);
                     

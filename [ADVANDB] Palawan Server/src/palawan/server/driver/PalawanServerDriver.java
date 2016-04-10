@@ -8,7 +8,7 @@ package palawan.server.driver;
 
 import transaction.handler.TransactionHandler;
 
-public class MarinduqueServerDriver {
+public class PalawanServerDriver {
 
     public static void main(String[] args) {
         new TransactionHandler();

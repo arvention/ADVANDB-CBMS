@@ -97,7 +97,7 @@ public class ClientGUI extends javax.swing.JFrame {
         clientLogArea = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Marinduque Client");
+        setTitle("Combined Client");
         setResizable(false);
 
         headerPanel.setBackground(new java.awt.Color(255, 255, 255));

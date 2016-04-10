@@ -19,7 +19,7 @@ public class GUIController {
     private ClientGUI gui;
 
     private String address = "localhost";
-    private int port = 1236;
+    private int port = 1235;
     private Socket soc;
     private PrintWriter pw;
 
@@ -31,23 +31,11 @@ public class GUIController {
         gui.getStartTransactionBtn().addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                try {
-                    // -- Connect to Server ---
-                    soc = new Socket(address, port);
-                    pw = new PrintWriter(soc.getOutputStream(), true);
+                // -- Send Queries ---
+                sendReadingQueries();
+                sendUpdatingQueries();
+                sendDeletingQueries();
 
-                    // -- Send Queries ---
-                    sendReadingQueries();
-                    sendUpdatingQueries();
-                    sendDeletingQueries();
-
-                    // -- Disconnect to Server ---
-                    pw.close();
-                    soc.close();
-
-                } catch (IOException ex) {
-                    Logger.getLogger(GUIController.class.getName()).log(Level.SEVERE, null, ex);
-                }
             }
         });
     }
@@ -55,15 +43,28 @@ public class GUIController {
     // -- SEND QUERIES --------------
     public void sendQuery(String sql, int times) {
         for (int i = 0; i < times; i++) {
-            int id = 0;
-            int source = 3;
-            int destination = 0;
-            if (gui.getMarinduqueRadio().isSelected()) {
-                destination = 1;
-            } else if (gui.getPalawanRadio().isSelected()) {
-                destination = 2;
+            try {
+                // -- Connect to Server ---
+                soc = new Socket(address, port);
+
+                pw = new PrintWriter(soc.getOutputStream(), true);
+
+                int id = 0;
+                int source = 3;
+                int destination = 0;
+                if (gui.getMarinduqueRadio().isSelected()) {
+                    destination = 1;
+                } else if (gui.getPalawanRadio().isSelected()) {
+                    destination = 2;
+                }
+                pw.println(id + "-" + source + "-" + destination + "-" + sql);
+
+                // -- Disconnect to Server ---
+                pw.close();
+                soc.close();
+            } catch (IOException ex) {
+                Logger.getLogger(GUIController.class.getName()).log(Level.SEVERE, null, ex);
             }
-            pw.println(id + "-" + source + "-" + destination + "-" + sql);
         }
     }
 
