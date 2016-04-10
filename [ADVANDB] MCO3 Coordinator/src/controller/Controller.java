@@ -53,7 +53,7 @@ public class Controller {
     private void markFinished(DefaultTableModel model, int ID){
         int index = -1;
             for(int i = 0; i < model.getRowCount() && index == -1; i++){
-                if(Integer.parseInt(model.getValueAt(i, 0).toString()) == ID){
+                if(Integer.parseInt(model.getValueAt(i, 0).toString().split("-")[0]) == ID){
                     index = i;
                 }
                 if(index != -1){
