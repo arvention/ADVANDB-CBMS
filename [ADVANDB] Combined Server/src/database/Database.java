@@ -81,26 +81,28 @@ public class Database {
     }
 
     public String processUpdateQuery(String sql, int area) {
-        if (sql.contains("hpq_hh")) {
-            sql += " WHERE id = ";
-        } else {
-            sql += " WHERE `main.id` = ";
-        }
-        if (sql.contains("aquani_vol")) {
-            if (area == 1) {
-                sql += marinduqueQuery5ID;
-            } else if (area == 2) {
-                sql += marinduqueQuery5ID;
+        if (!sql.contains("WHERE")) {
+            if (sql.contains("hpq_hh")) {
+                sql += " WHERE id = ";
+            } else {
+                sql += " WHERE `main.id` = ";
             }
-        } else {
-            Random random = new Random();
-            int id = -1;
-            if (area == 1) {
-                id = marinduqueID.get(random.nextInt(marinduqueID.size() - 1) + 1);
-            } else if (area == 2) {
-                id = palawanID.get(random.nextInt(palawanID.size() - 1) + 1);
+            if (sql.contains("aquani_vol")) {
+                if (area == 1) {
+                    sql += marinduqueQuery5ID;
+                } else if (area == 2) {
+                    sql += marinduqueQuery5ID;
+                }
+            } else {
+                Random random = new Random();
+                int id = -1;
+                if (area == 1) {
+                    id = marinduqueID.get(random.nextInt(marinduqueID.size() - 1) + 1);
+                } else if (area == 2) {
+                    id = palawanID.get(random.nextInt(palawanID.size() - 1) + 1);
+                }
+                sql += id;
             }
-            sql += id;
         }
         try {
             stmt.executeUpdate(sql);
@@ -111,14 +113,15 @@ public class Database {
     }
 
     public String processDeleteQuery(String sql, String table) {
-        int id = getFirstID(table);
+        if (!sql.contains("WHERE")) {
+            int id = getFirstID(table);
 
-        if (table.equals("hpq_hh")) {
-            sql += " WHERE id = " + id;
-        } else {
-            sql += " WHERE `main.id` = " + id;
+            if (table.equals("hpq_hh")) {
+                sql += " WHERE id = " + id;
+            } else {
+                sql += " WHERE `main.id` = " + id;
+            }
         }
-
         try {
             stmt.executeUpdate(sql);
         } catch (SQLException ex) {
