@@ -23,6 +23,7 @@ public class ClientGUI extends javax.swing.JFrame {
         this.setVisible(true);
         areaBtnGroup.add(palawanRadio);
         areaBtnGroup.add(marinduqueRadio);
+        marinduqueRadio.setSelected(true);
     }
     
     public static ClientGUI getInstance(){

@@ -58,7 +58,7 @@ public class QueryProcessor implements Runnable {
                         logMessage = "[T" + t.getId() + "] " + "PROCESSING: Update Query.";
                         gui.getServerLogArea().append(logMessage + "\n");
 
-                        sendQuery = db.processUpdateQuery(query);
+                        sendQuery = db.processUpdateQuery(query, t.getDestination());
                         logMessage = "[T" + t.getId() + "] " + "COMMITTED: Update Query.";
                         gui.getServerLogArea().append(logMessage + "\n");
                         

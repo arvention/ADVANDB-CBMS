@@ -26,17 +26,28 @@ public class Database {
     private Statement stmt;
     private static Database databaseInstance = new Database();
 
-    private ArrayList<Integer> idList;
-    private final int query5ID = 388262;
+    private ArrayList<Integer> marinduqueID, palawanID;
+    private final int marinduqueQuery5ID = 388262;
+    private final int palawanQuery5ID = 21142;
 
     private Database() {
-        idList = new ArrayList<>();
-        idList.add(2445351);
-        idList.add(2192989);
-        idList.add(1636555);
-        idList.add(1636423);
-        idList.add(203774);
-        idList.add(150196);
+        //Marinduque IDs
+        this.marinduqueID = new ArrayList<>();
+        marinduqueID.add(2445351);
+        marinduqueID.add(2192989);
+        marinduqueID.add(1636555);
+        marinduqueID.add(1636423);
+        marinduqueID.add(203774);
+        marinduqueID.add(150196);
+
+        //Palawan IDs
+        this.palawanID = new ArrayList<>();
+        palawanID.add(2041075);
+        palawanID.add(1844468);
+        palawanID.add(1979123);
+        palawanID.add(443737);
+        palawanID.add(448751);
+        palawanID.add(258375);
 
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
@@ -69,18 +80,26 @@ public class Database {
         return row;
     }
 
-    public String processUpdateQuery(String sql) {
+    public String processUpdateQuery(String sql, int area) {
         if (sql.contains("hpq_hh")) {
             sql += " WHERE id = ";
         } else {
             sql += " WHERE `main.id` = ";
         }
         if (sql.contains("aquani_vol")) {
-            sql += query5ID;
+            if (area == 1) {
+                sql += marinduqueQuery5ID;
+            } else if (area == 2) {
+                sql += marinduqueQuery5ID;
+            }
         } else {
             Random random = new Random();
-            int id = idList.get(random.nextInt(idList.size() - 1) + 1);
-
+            int id = -1;
+            if (area == 1) {
+                id = marinduqueID.get(random.nextInt(marinduqueID.size() - 1) + 1);
+            } else if (area == 2) {
+                id = palawanID.get(random.nextInt(palawanID.size() - 1) + 1);
+            }
             sql += id;
         }
         try {

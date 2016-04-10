@@ -255,9 +255,9 @@ public class GUIController {
                 + " roof AS 'Roof Composition', wall AS 'Wall Composition', nofw AS 'Number of OFW',"
                 + " nnucfam AS 'Number of Families' FROM hpq_hh";
         if (gui.getMarinduqueRadio().isSelected()) {
-            sql += " WHERE id = 2445351 or id = 2192989 or id = 1636555 or id = 1636423 or id = 203774";
+            sql += " WHERE (id = 2445351 or id = 2192989 or id = 1636555 or id = 1636423 or id = 203774) AND prov = 1";
         } else if (gui.getPalawanRadio().isSelected()) {
-            sql += " WHERE id = 2041075 or id = 1844468 or id = 1979123 or id = 443737 or id = 448751";
+            sql += " WHERE (id = 2041075 or id = 1844468 or id = 1979123 or id = 443737 or id = 448751) AND prov = 2";
         }
         sql += " GROUP BY mun, zone, brgy, purok;";
 
@@ -283,9 +283,9 @@ public class GUIController {
                 + " nprog AS 'Number of Other Programs Where the Household Benefits From'"
                 + " FROM hpq_hh";
         if (gui.getMarinduqueRadio().isSelected()) {
-            sql += " WHERE id = 2445351 or id = 2192989 or id = 1636555 or id = 1636423 or id = 203774";
+            sql += " WHERE (id = 2445351 or id = 2192989 or id = 1636555 or id = 1636423 or id = 203774) AND prov = 1";
         } else if (gui.getPalawanRadio().isSelected()) {
-            sql += " WHERE id = 2041075 or id = 1844468 or id = 1979123 or id = 443737 or id = 448751";
+            sql += " WHERE (id = 2041075 or id = 1844468 or id = 1979123 or id = 443737 or id = 448751) AND prov = 2";
         }
         sql += " GROUP BY mun, zone, brgy, purok;";
 
@@ -298,9 +298,9 @@ public class GUIController {
                 + " COUNT(croptype) AS 'Number of Household That Plants This Type of Crop' FROM hpq_crop"
                 + " JOIN hpq_hh ON hpq_crop.`main.id` = hpq_hh.id ";
         if (gui.getMarinduqueRadio().isSelected()) {
-            sql += " WHERE id = 2445351 or id = 2192989 or id = 1636555 or id = 1636423 or id = 203774";
+            sql += " WHERE (id = 2445351 or id = 2192989 or id = 1636555 or id = 1636423 or id = 203774) AND prov = 1";
         } else if (gui.getPalawanRadio().isSelected()) {
-            sql += " WHERE id = 2041075 or id = 1844468 or id = 1979123 or id = 443737 or id = 448751";
+            sql += " WHERE (id = 2041075 or id = 1844468 or id = 1979123 or id = 443737 or id = 448751) AND prov = 2";
         }
         sql += " GROUP BY mun, zone, brgy, purok;";
 
@@ -312,9 +312,9 @@ public class GUIController {
                 + " purok AS 'Purok', mdeady AS 'Cause of Death', COUNT(mdeady) AS 'Total Number of Death'"
                 + " FROM hpq_death JOIN hpq_hh ON hpq_death.`main.id` = hpq_hh.id";
         if (gui.getMarinduqueRadio().isSelected()) {
-            sql += " WHERE id = 2445351 or id = 2192989 or id = 1636555 or id = 1636423 or id = 203774";
+            sql += " WHERE (id = 2445351 or id = 2192989 or id = 1636555 or id = 1636423 or id = 203774) AND prov = 1";
         } else if (gui.getPalawanRadio().isSelected()) {
-            sql += " WHERE id = 2041075 or id = 1844468 or id = 1979123 or id = 443737 or id = 448751";
+            sql += " WHERE (id = 2041075 or id = 1844468 or id = 1979123 or id = 443737 or id = 448751) AND prov = 2";
         }
         sql += " GROUP BY mun, zone, brgy, purok, mdeady;";
 
@@ -328,9 +328,9 @@ public class GUIController {
                 + " ON hpq_hh.id = hpq_aquaequip.`main.id` JOIN hpq_aquani ON hpq_aquaequip.`main.id` ="
                 + " hpq_aquani.`main.id`";
         if (gui.getMarinduqueRadio().isSelected()) {
-            sql += " WHERE id = 388262";
+            sql += " WHERE (id = 388262) AND prov = 1";
         } else if (gui.getPalawanRadio().isSelected()) {
-            sql += " WHERE id = 21142";
+            sql += " WHERE (id = 21142) AND prov = 2";
         }
         sql += " GROUP BY mun, zone, brgy, purok, aquaequiptype;";
 
@@ -345,9 +345,9 @@ public class GUIController {
                 + " SUM(aquani_vol) AS 'Total Volume of Fish Caught'"
                 + " FROM hpq_hh JOIN hpq_crop ON hpq_hh.id = hpq_crop.`main.id`";
         if (gui.getMarinduqueRadio().isSelected()) {
-            sql += " WHERE id = 2445351 or id = 2192989 or id = 1636555 or id = 1636423 or id = 203774";
+            sql += " WHERE (id = 2445351 or id = 2192989 or id = 1636555 or id = 1636423 or id = 203774) AND prov = 1";
         } else if (gui.getPalawanRadio().isSelected()) {
-            sql += " WHERE id = 2041075 or id = 1844468 or id = 1979123 or id = 443737 or id = 448751";
+            sql += " WHERE (id = 2041075 or id = 1844468 or id = 1979123 or id = 443737 or id = 448751) AND prov = 2";
         }
         sql += " GROUP BY mun, zone, brgy, purok;";
 
@@ -372,9 +372,9 @@ public class GUIController {
                 + " JOIN hpq_arcdp_mem ON hpq_hh.id = hpq_arcdp_mem.`main.id` AND hpq_arcdp_mem.arcdp_mem_refno ="
                 + " hpq_mem.memno";
         if (gui.getMarinduqueRadio().isSelected()) {
-            sql += " WHERE id = 150196";
+            sql += " WHERE (id = 150196) AND prov = 1";
         } else if (gui.getPalawanRadio().isSelected()) {
-            sql += " WHERE id = 258375";
+            sql += " WHERE (id = 258375 AND prov = 2)";
         }
         sql += " GROUP BY id, mun, zone, brgy, purok, memno, croptype;";
 
