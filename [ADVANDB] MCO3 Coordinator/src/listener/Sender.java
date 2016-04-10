@@ -47,7 +47,7 @@ public class Sender implements Runnable {
                     bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                     
                     String sendProtocol = t.getId() + "-" + t.getSource() + "-" + t.getSendTo() + "-" + t.getQuery();
-                    System.out.println(sendProtocol);
+                    System.out.println("SENDING TO: " + port + " QUERY:"+ sendProtocol);
                     pw.println(sendProtocol);
                     
                     String ok = bufferedReader.readLine();
@@ -60,6 +60,7 @@ public class Sender implements Runnable {
                     socket.close();
                     
                 }  catch (SocketTimeoutException ex){
+                    System.out.println("TIMEOUT: " + t.getQuery());
                     tm.addTransaction(t);
                 } catch (IOException ex) {
                     ex.printStackTrace();
