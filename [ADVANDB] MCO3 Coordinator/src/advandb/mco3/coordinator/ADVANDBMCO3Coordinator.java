@@ -34,17 +34,29 @@ public class ADVANDBMCO3Coordinator {
         listener.addObserver(Controller.getInstance());
         new Thread(listener).start();
         
-        Sender senderMarinduque = new Sender(listener.getTmMarinduque(), addressMarinduque, portMarinduque, idMarinduque);
-        senderMarinduque.addObserver(Controller.getInstance());
-        new Thread(senderMarinduque).start();
+        Sender senderMarinduque1 = new Sender(listener.getTmMarinduque(), addressMarinduque, portMarinduque, idMarinduque);
+        senderMarinduque1.addObserver(Controller.getInstance());
+        new Thread(senderMarinduque1).start();
         
-        Sender senderCentral = new Sender(listener.getTmCentral(), addressCentral, portCentral, idCentral);
-        senderCentral.addObserver(Controller.getInstance());
-        new Thread(senderCentral).start();
+        Sender senderCentral1 = new Sender(listener.getTmCentral(), addressCentral, portCentral, idCentral);
+        senderCentral1.addObserver(Controller.getInstance());
+        new Thread(senderCentral1).start();
         
-        Sender senderPalawan = new Sender(listener.getTmPalawan(), addressPalawan, portPalawan, idPalawan);
-        senderPalawan.addObserver(Controller.getInstance());
-        new Thread(senderPalawan).start();
+        Sender senderPalawan1 = new Sender(listener.getTmPalawan(), addressPalawan, portPalawan, idPalawan);
+        senderPalawan1.addObserver(Controller.getInstance());
+        new Thread(senderPalawan1).start();
+        
+        Sender senderMarinduque2 = new Sender(listener.getTmMarinduque(), addressMarinduque, portMarinduque, idMarinduque);
+        senderMarinduque2.addObserver(Controller.getInstance());
+        new Thread(senderMarinduque2).start();
+        
+        Sender senderCentral2 = new Sender(listener.getTmCentral(), addressCentral, portCentral, idCentral);
+        senderCentral2.addObserver(Controller.getInstance());
+        new Thread(senderCentral2).start();
+        
+        Sender senderPalawan2 = new Sender(listener.getTmPalawan(), addressPalawan, portPalawan, idPalawan);
+        senderPalawan2.addObserver(Controller.getInstance());
+        new Thread(senderPalawan2).start();
     }
     
 }
