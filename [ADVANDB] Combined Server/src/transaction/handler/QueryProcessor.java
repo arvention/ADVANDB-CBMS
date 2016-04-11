@@ -105,13 +105,7 @@ public class QueryProcessor implements Runnable {
                         if (t.getSource() == COMBINED_ID) {
                             //send transaction to coordinator
                             String sendProtocol = t.getId() + "-" + t.getSource() + "-" + t.getDestination() + "-" + sendQuery;
-                            System.out.println(sendProtocol);
-                            coorPrintWriter.println(sendProtocol);
-
-                        } else {
-                            //send ok message to coordinator
-                            String sendProtocol = "OK-" + t.getId();
-                            System.out.println(sendProtocol);
+                            System.out.println("coordinator sending: " + sendProtocol);
                             coorPrintWriter.println(sendProtocol);
                         }
                         //disconnect to coordinator

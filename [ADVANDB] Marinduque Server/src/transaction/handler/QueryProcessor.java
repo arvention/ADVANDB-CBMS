@@ -106,11 +106,6 @@ public class QueryProcessor implements Runnable {
                             System.out.println(sendProtocol);
                             coorPrintWriter.println(sendProtocol);
 
-                        } else {
-                            //send ok message to coordinator
-                            String sendProtocol = "OK-" + t.getId();
-                            System.out.println(sendProtocol);
-                            coorPrintWriter.println(sendProtocol);
                         }
                         //disconnect to coordinator
                         coorPrintWriter.close();
