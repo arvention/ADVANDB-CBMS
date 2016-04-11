@@ -70,24 +70,42 @@ public class Database {
     }
 
     public String processUpdateQuery(String sql) {
-        if (sql.contains("hpq_hh")) {
-            sql += " WHERE id = ";
-        } else {
-            sql += " WHERE `main.id` = ";
-        }
-        if (sql.contains("aquani_vol")) {
-            sql += query5ID;
-        } else {
-            Random random = new Random();
-            int id = idList.get(random.nextInt(idList.size() - 1) + 1);
+        if (!sql.contains("WHERE")) {
+            if (sql.contains("hpq_hh")) {
+                sql += " WHERE id = ";
+            } else {
+                sql += " WHERE `main.id` = ";
+            }
+            if (sql.contains("aquani_vol")) {
+                sql += query5ID;
+            } else {
+                for (int i = 0; i < idList.size(); i++) {
+                    if (i < idList.size() - 1) {
+                        sql += idList.get(i) + " OR ";
+                    } else{
+                        sql += idList.get(i);
+                    }
+                    if (i < idList.size() - 1) {
+                        if (sql.contains("hpq_hh")) {
+                            sql += "id = ";
+                        } else {
+                            sql += "`main.id` = ";
+                        }
+                    }
+                }
+                /*
+                 Random random = new Random();
+                 int id = idList.get(random.nextInt(idList.size() - 1) + 1);
 
-            sql += id;
+                 sql += id;*/
+            }
         }
         try {
             stmt.executeUpdate(sql);
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
+        System.out.println("update: " + sql);
         return sql;
     }
 

@@ -94,14 +94,42 @@ public class Database {
                     sql += marinduqueQuery5ID;
                 }
             } else {
-                Random random = new Random();
-                int id = -1;
                 if (area == 1) {
-                    id = marinduqueID.get(random.nextInt(marinduqueID.size() - 1) + 1);
+                    for (int i = 0; i < marinduqueID.size(); i++) {
+                        if (i < marinduqueID.size() - 1) {
+                            sql += marinduqueID.get(i) + " OR ";
+                        } else {
+                            sql += marinduqueID.get(i);
+                        }
+                        if (i < marinduqueID.size() - 1) {
+                            if (sql.contains("hpq_hh")) {
+                                sql += "id = ";
+                            } else {
+                                sql += "`main.id` = ";
+                            }
+                        }
+                    }
                 } else if (area == 2) {
-                    id = palawanID.get(random.nextInt(palawanID.size() - 1) + 1);
+                    for (int i = 0; i < palawanID.size(); i++) {
+                        if (i < palawanID.size() - 1) {
+                            sql += palawanID.get(i) + " OR ";
+                        } else {
+                            sql += palawanID.get(i);
+                        }
+                        if (i < palawanID.size() - 1) {
+                            if (sql.contains("hpq_hh")) {
+                                sql += "id = ";
+                            } else {
+                                sql += "`main.id` = ";
+                            }
+                        }
+                    }
                 }
-                sql += id;
+                /*
+                 Random random = new Random();
+                 int id = idList.get(random.nextInt(idList.size() - 1) + 1);
+
+                 sql += id;*/
             }
         }
         try {
