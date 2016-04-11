@@ -39,7 +39,6 @@ public class Database {
         palawanID.add(448751);
         palawanID.add(258375);
 
-
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             String host = "jdbc:mysql://127.0.0.1:3306/poverty_profiling_palawan?user=root";
@@ -72,18 +71,35 @@ public class Database {
     }
 
     public String processUpdateQuery(String sql) {
-        if (sql.contains("hpq_hh")) {
-            sql += " WHERE id = ";
-        } else {
-            sql += " WHERE `main.id` = ";
-        }
-        if (sql.contains("aquani_vol")) {
-            sql += query5ID;
-        } else {
-            Random random = new Random();
-            int id = palawanID.get(random.nextInt(palawanID.size() - 1) + 1);
+        if (!sql.contains("WHERE")) {
+            if (sql.contains("hpq_hh")) {
+                sql += " WHERE id = ";
+            } else {
+                sql += " WHERE `main.id` = ";
+            }
+            if (sql.contains("aquani_vol")) {
+                sql += query5ID;
+            } else {
+                for (int i = 0; i < palawanID.size(); i++) {
+                    if (i < palawanID.size() - 1) {
+                        sql += palawanID.get(i) + " OR ";
+                    } else {
+                        sql += palawanID.get(i);
+                    }
+                    if (i < palawanID.size() - 1) {
+                        if (sql.contains("hpq_hh")) {
+                            sql += "id = ";
+                        } else {
+                            sql += "`main.id` = ";
+                        }
+                    }
+                }
+                /*
+                 Random random = new Random();
+                 int id = idList.get(random.nextInt(idList.size() - 1) + 1);
 
-            sql += id;
+                 sql += id;*/
+            }
         }
         try {
             stmt.executeUpdate(sql);
