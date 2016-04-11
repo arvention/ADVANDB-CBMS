@@ -37,23 +37,24 @@ public class Controller {
         }
     }
 
-    public void notifyObserver(int ID, int location){
+    public void notifyObserver(int ID, int location, int source){
         if(location == MARINDUQUEID){
             DefaultTableModel model = (DefaultTableModel) view.getTableMarinduque().getModel();
-            markFinished(model, ID);
+            markFinished(model, ID, source);
         } else if(location == PALAWANID){
             DefaultTableModel model = (DefaultTableModel) view.getTablePalawan().getModel();
-            markFinished(model, ID);
+            markFinished(model, ID, source);
         } else if(location == CENTRALID){
             DefaultTableModel model = (DefaultTableModel) view.getTableCentral().getModel();
-            markFinished(model, ID);
+            markFinished(model, ID, source);
         }
     }
     
-    private void markFinished(DefaultTableModel model, int ID){
+    private void markFinished(DefaultTableModel model, int ID, int source){
         int index = -1;
             for(int i = 0; i < model.getRowCount() && index == -1; i++){
-                if(Integer.parseInt(model.getValueAt(i, 0).toString().split("-")[0]) == ID){
+                if(Integer.parseInt(model.getValueAt(i, 0).toString().split("-")[0]) == ID
+                    && Integer.parseInt(model.getValueAt(i, 0).toString().split("-")[1]) == source){
                     index = i;
                 }
                 if(index != -1){

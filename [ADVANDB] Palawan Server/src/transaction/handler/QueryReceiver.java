@@ -79,7 +79,7 @@ public class QueryReceiver implements Runnable {
                 tm.addTransaction(transaction);
                 
                 if(source != PALAWAN_ID){
-                    pw.println("OK-" + id);
+                    pw.println("OK-" + id + "-" + source);
                 }
             }
         } catch (IOException e) {

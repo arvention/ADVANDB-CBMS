@@ -5,6 +5,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.net.ConnectException;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
 import model.Transaction;
@@ -55,7 +56,9 @@ public class Sender implements Runnable {
                     System.out.println(ok);
                     
                     int requestID = Integer.parseInt(ok.split("-")[1]);
-                    notifyObservers(requestID, ID);
+                    int source = Integer.parseInt(ok.split("-")[2]);
+                    
+                    notifyObservers(requestID, ID, source);
                     
                     pw.close();
                     socket.close();
@@ -63,14 +66,18 @@ public class Sender implements Runnable {
                 }  catch (SocketTimeoutException ex){
                     System.out.println("TIMEOUT: " + t.getQuery());
                     tm.addTransaction(t);
-                } catch (IOException ex) {
+                } catch(ConnectException e){
+                    System.out.println("CONNECTION ERROR: " + t.getQuery());
+                    tm.addTransaction(t);
+                }
+                catch (IOException ex) {
                     ex.printStackTrace();
                 }
             }
         }
     }
     
-    private void notifyObservers(int ID, int location){
-        observer.notifyObserver(ID, location);
+    private void notifyObservers(int ID, int location, int source){
+        observer.notifyObserver(ID, location, source);
     }
 }

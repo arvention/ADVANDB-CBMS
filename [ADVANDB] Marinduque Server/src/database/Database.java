@@ -55,7 +55,7 @@ public class Database {
         return databaseInstance;
     }
 
-    public int processReadQuery(String sql) {
+    public synchronized int processReadQuery(String sql) {
         int row = 0;
         try {
             ResultSet rs = stmt.executeQuery(sql);
@@ -69,7 +69,7 @@ public class Database {
         return row;
     }
 
-    public String processUpdateQuery(String sql) {
+    public synchronized String processUpdateQuery(String sql) {
         if (!sql.contains("WHERE")) {
             if (sql.contains("hpq_hh")) {
                 sql += " WHERE id = ";
@@ -109,7 +109,7 @@ public class Database {
         return sql;
     }
 
-    public String processDeleteQuery(String sql, String table) {
+    public synchronized String processDeleteQuery(String sql, String table) {
         int id = getFirstID(table);
 
         if (table.equals("hpq_hh")) {

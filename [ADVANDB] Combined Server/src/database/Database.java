@@ -66,7 +66,7 @@ public class Database {
         return databaseInstance;
     }
 
-    public int processReadQuery(String sql) {
+    public synchronized int processReadQuery(String sql) {
         int row = 0;
         try {
             ResultSet rs = stmt.executeQuery(sql);
@@ -80,7 +80,7 @@ public class Database {
         return row;
     }
 
-    public String processUpdateQuery(String sql, int area) {
+    public synchronized String processUpdateQuery(String sql, int area) {
         if (!sql.contains("WHERE")) {
             if (sql.contains("hpq_hh")) {
                 sql += " WHERE id = ";
@@ -91,7 +91,7 @@ public class Database {
                 if (area == 1) {
                     sql += marinduqueQuery5ID;
                 } else if (area == 2) {
-                    sql += marinduqueQuery5ID;
+                    sql += palawanQuery5ID;
                 }
             } else {
                 if (area == 1) {
@@ -140,7 +140,7 @@ public class Database {
         return sql;
     }
 
-    public String processDeleteQuery(String sql, String table) {
+    public synchronized String processDeleteQuery(String sql, String table) {
         if (!sql.contains("WHERE")) {
             int id = getFirstID(table);
 
