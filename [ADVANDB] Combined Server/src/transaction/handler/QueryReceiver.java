@@ -28,7 +28,7 @@ public class QueryReceiver implements Runnable {
     private ServerGUI gui;
     private TransactionMonitor tm;
     private PrintWriter pw;
-    private int COMBINED_ID = 1;
+    private int COMBINED_ID = 3;
 
     public QueryReceiver() {
         port = 1235;
@@ -77,7 +77,9 @@ public class QueryReceiver implements Runnable {
 
                 tm.addTransaction(transaction);
                 
+                System.out.println("SOURCE = " + source);
                 if(source != COMBINED_ID){
+                    System.out.println("SENDING: OK-" + id + "-" + source);
                     pw.println("OK-" + id + "-" + source);
                 }
             }

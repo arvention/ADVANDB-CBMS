@@ -56,8 +56,9 @@ public class Sender implements Runnable {
                     System.out.println(ok);
                     
                     int requestID = Integer.parseInt(ok.split("-")[1]);
+                    int source = Integer.parseInt(ok.split("-")[2]);
                     
-                    notifyObservers(requestID, ID);
+                    notifyObservers(requestID, ID, source);
                     
                     pw.close();
                     socket.close();
@@ -76,7 +77,7 @@ public class Sender implements Runnable {
         }
     }
     
-    private void notifyObservers(int ID, int location){
-        observer.notifyObserver(ID, location, location);
+    private void notifyObservers(int ID, int location, int source){
+        observer.notifyObserver(ID, location, source);
     }
 }

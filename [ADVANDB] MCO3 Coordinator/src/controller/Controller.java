@@ -37,7 +37,7 @@ public class Controller {
         }
     }
 
-    public void notifyObserver(int ID, int source, int location){
+    public void notifyObserver(int ID, int location, int source){
         if(location == MARINDUQUEID){
             DefaultTableModel model = (DefaultTableModel) view.getTableMarinduque().getModel();
             markFinished(model, ID, source);

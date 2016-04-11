@@ -91,7 +91,7 @@ public class Database {
                 if (area == 1) {
                     sql += marinduqueQuery5ID;
                 } else if (area == 2) {
-                    sql += marinduqueQuery5ID;
+                    sql += palawanQuery5ID;
                 }
             } else {
                 if (area == 1) {
